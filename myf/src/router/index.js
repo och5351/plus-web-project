@@ -36,7 +36,7 @@ const routes = [
     component: function () {
       return import('../views/Posting.vue')
     }
-  }
+  },
 ];
 
 const router = new VueRouter({

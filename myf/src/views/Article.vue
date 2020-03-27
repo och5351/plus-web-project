@@ -17,7 +17,7 @@
 <script>
     // @ is an alias to /src
     import data from "@/data"
-    import CommentList from "../components/CommentList";
+    import CommentList from "../components/Article/CommentList";
 
     export default {
         name: 'Article',
