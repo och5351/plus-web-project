@@ -1,6 +1,6 @@
 Update list
 =============
-Chan hae
+Chan hae's History
 -----------
  > ### 2020-03-26
     * Components integration (Jin tae, Moo hyun)
