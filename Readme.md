@@ -6,7 +6,7 @@ Chan hae
     * Components integration (Jin tae, Moo hyun)
 
  > ### 2020-03-27
-    * Components integration (Chan hae, Woo jin)
+    - Components integration (Chan hae, Woo jin)
 
     * Chan hae, Woo jin) Convert html-> vue
 
