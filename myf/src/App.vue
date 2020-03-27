@@ -7,27 +7,19 @@
        active-nav-item-class="font-weight-bold text-success"
         content-class="mt-3">
         <b-tab title="HOME">
-          <router-link to="/">
-          홈 화면
-          </router-link>
+          <router-view/>
         </b-tab>
         <b-tab title="공지사항">
-          <router-link to="/">
-          공지사항 내용들
-          </router-link>
+          <router-link to='/login'></router-link>
         </b-tab>
         <b-tab title="HOT게시판">
-          <router-link to="/">
-          HOT한 게시물
-          </router-link>
+          <router-view/>
         </b-tab>
         <b-tab title="자유게시판">
-          <router-link to="/">
-          자유로운 게시물
-          </router-link>
+          <router-view/>
         </b-tab>
       </b-tabs>
-    <router-view/>
+    
   </div>
 </template>
 

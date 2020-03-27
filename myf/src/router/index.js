@@ -10,9 +10,9 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'post',
     component: function () {
-      return import('../views/Home.vue')
+      return import('../views/Post.vue')
     }
   },
   {

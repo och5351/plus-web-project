@@ -1,7 +1,5 @@
 <template>
     <div class="login">
-        <img src="../../assets/loginComponentIMG/logo.png"><h3>플러스 마켓</h3><br><br><br>
-        <div style="background-color: black; height:5px;"></div>
         <br><br><br><br><br><br><br>
         <div style="position: relative; left: -155px;">I D : <br><br></div>
        <input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!"><br><br>

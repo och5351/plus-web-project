@@ -1,8 +1,5 @@
 <template>
     <div class="sign-up">
-        <img src="../../assets/loginComponentIMG/logo.png"><h3>플러스 마켓</h3><br><br><br>
-        <div style="background-color: black; height:5px;"></div>
-        <br><br>
         <div style="font-size:150%; border:15%;">회 원 가 입</div><br><br>
 
 
