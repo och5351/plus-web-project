@@ -1,8 +1,13 @@
 Update list
 =============
+2020-03-26
+----------
+  Components integration (Jin tae, Moo hyun)
 
 2020-03-27
 ----------
-  woojin) Transfer html->vue
+  Components integration (Chan hae, Woo jin)
 
-  moohyun) Changing the path(All components move 'components/Aricle' here)
+  Chan hae, Woo jin) Convert html-> vue
+
+  Moohyun) Changing the path(All components move 'components' to 'components/Article')
