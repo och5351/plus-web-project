@@ -7,10 +7,10 @@ Chan hae
 
  > ### 2020-03-27
  
-    * Components integration (Chan hae, Woo jin)
+    * Chan hae, Woo jin) Components integration
 
     * Chan hae, Woo jin) Convert html-> vue
 
     * Moohyun) Changing the path(All components move 'components' to 'components/Article')
 
-    * Components(Front end) intergration(chan woong)
+    * Chan woong) Components intergration(Front end)
