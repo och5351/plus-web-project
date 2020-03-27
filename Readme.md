@@ -17,3 +17,8 @@ Chan hae's History
     * Chan woong) Components intergration(Front end)
     
     * Chan woong) Path change (IMG)
+    
+    * Jin ho) Components intergration
+    
+    Comments
+    -> FrontEnd 통합 완료(css 수정 남음)
