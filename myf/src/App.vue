@@ -1,33 +1,52 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/article/1">About</router-link> |
-      <router-link to="/post">Post</router-link>
+  <div id="app" class="container">
+    <div class="logo">
+      <img src="./assets/logo.jpeg" width="150px" height="200px">
     </div>
+      <b-tabs
+       active-nav-item-class="font-weight-bold text-success"
+        content-class="mt-3">
+        <b-tab title="HOME">
+          <router-link to="/">
+          홈 화면
+          </router-link>
+        </b-tab>
+        <b-tab title="공지사항">
+          <router-link to="/">
+          공지사항 내용들
+          </router-link>
+        </b-tab>
+        <b-tab title="HOT게시판">
+          <router-link to="/">
+          HOT한 게시물
+          </router-link>
+        </b-tab>
+        <b-tab title="자유게시판">
+          <router-link to="/">
+          자유로운 게시물
+          </router-link>
+        </b-tab>
+      </b-tabs>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
   color: #42b983;
+  margin-top: 60px;
+  margin-right: 150px;
+  margin-left: 150px;
+
 }
 </style>
