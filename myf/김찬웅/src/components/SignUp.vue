@@ -1,6 +1,6 @@
 <template>
     <div class="sign-up">
-        <img src="../../assets/loginComponentIMG/logo.png"><h3>플러스 마켓</h3><br><br><br>
+        <img src="./이미지/logo.png"><h3>플러스 마켓</h3><br><br><br>
         <div style="background-color: black; height:5px;"></div>
         <br><br>
         <div style="font-size:150%; border:15%;">회 원 가 입</div><br><br>
@@ -8,18 +8,18 @@
 
         <div style="position: relative; left: -155px;">I D : <br><br></div>
         <button v-on:click="idCheck" id="idCheckClear" style="position: relative; right: -395px; border: 1px solid black; width: 55pt; height: 35pt; visibility:visible;">중복 확인</button>
-        <img src="../../assets/loginComponentIMG/check.png" id="idClear" style="width:1%; visibility:hidden; position: relative; right: -335px;">
+        <img src="./이미지/check.png" id="idClear" style="width:1%; visibility:hidden; position: relative; right: -335px;">
         <input type="text" id="id" name="uid" v-model="user.userid" placeholder="ID를 입력해주세요!" style="position: relative; left: -47px;"><br><br>
 
 
         <div style="position: relative; left: -147px;">N A M E : <br><br></div>
-        <img src="../../assets/loginComponentIMG/check.png" v-bind="check" id="nameClear" style="width:1%; visibility:hidden; position: relative; right: -467px;">
+        <img src="./이미지/check.png" v-bind="check" id="nameClear" style="width:1%; visibility:hidden; position: relative; right: -467px;">
         <input type="text" value="*한글만 입력해 주세요." id="nameFalse" style="width:10%; position: relative; right: -415px; visibility:visible; font-weight: bold; border: 0px;">
         <input type="text" id="name" v-model="user.name" @keyup="nameCheck" placeholder="이름을 입력해주세요!" style="position: relative; left: -101px;"><br><br>
 
 
         <div style="position: relative; left: -155px;">P W : <br><br></div>
-        <img src="../../assets/loginComponentIMG/check.png" id="pwClear" style="width:1%; visibility:hidden; position: relative; right: -599px;">
+        <img src="./이미지/check.png" id="pwClear" style="width:1%; visibility:hidden; position: relative; right: -599px;">
         <input type="text" value="*비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요." id="pwFalse" style="width:27%; position: relative; right: -545px; visibility:visible; font-weight: bold; border: 0px;">
         <input type="password" id="pw" name="upw" v-model="user.password" @keyup="pwCheck" style="position: relative; left: -227px;" placeholder="PW를입력해주세요!"><br><br>
 

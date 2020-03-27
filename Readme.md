@@ -11,3 +11,5 @@ Chan hae
     * Chan hae, Woo jin) Convert html-> vue
 
     * Moohyun) Changing the path(All components move 'components' to 'components/Article')
+
+    * Components(Front end) intergration(chan woong)
