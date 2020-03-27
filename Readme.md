@@ -12,8 +12,8 @@ Chan hae's History
 
     * Chan hae, Woo jin) Convert html-> vue
 
-    * Moohyun) Changing the path(All components move 'components' to 'components/Article')
+    * Moohyun) Path change (All components move 'components' to 'components/Article')
 
     * Chan woong) Components intergration(Front end)
     
-    * Chan woong) Changing the path(IMG)
+    * Chan woong) Path change (IMG)
