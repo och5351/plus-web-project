@@ -1,11 +1,11 @@
 Update list
 =============
-# Chan hae
+Chan hae
 -----------
-## 2020-03-26
+### 2020-03-26
 * Components integration (Jin tae, Moo hyun)
 
-## 2020-03-27
+### 2020-03-27
 * Components integration (Chan hae, Woo jin)
 
 * Chan hae, Woo jin) Convert html-> vue
