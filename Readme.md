@@ -1,3 +1,8 @@
+긴급!!(핫픽스 처리 부분)
+=============
+ > ### 2020-03-30
+     SignUp.vue 내 중복확인 Button 404 Error need Fix(post)
+     - xhr.js?b50d:178 POST http://localhost:8080/api/users/idCheck 404 (Not Found)
 Update list
 =============
 테이블 스키마(MySQL)

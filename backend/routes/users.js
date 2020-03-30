@@ -33,6 +33,7 @@ router.post('/signUp', function (req, res) {
     'name': req.body.user.name,
     'password': req.body.user.password
   };
+  console.log(user)
   connection.query('SELECT userid FROM capdi_users WHERE userid = "' + user.userid + '"', function (err, row) {
        const salt = bcrypt.genSaltSync();
        const encryptedPassword = bcrypt.hashSync(user.password, salt);
