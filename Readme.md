@@ -66,7 +66,10 @@ Chan hae's History
  > ### 2020-03-30
  
     * Sql dump file upload
+
     * HeadLine Routing connect
+  
+    * login <-> signup routing connect
 
 Jin tae's History
 -----------

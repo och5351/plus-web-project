@@ -11,8 +11,6 @@
 </template>
 
 <script>
-//import SignUp from './SignUp'
-
 export default {
        data: function () {
     return {
@@ -40,9 +38,7 @@ export default {
         alert('error')
       })
     }
-  },
-  //components:{SignUp}
-
+  }
 }
 </script>
 

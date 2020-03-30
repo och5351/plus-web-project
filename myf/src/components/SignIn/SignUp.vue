@@ -11,6 +11,7 @@
 
 
         <div style="position: relative; left: -147px;">N A M E : <br><br></div>
+        <!-- v-bind 사용처 확인 -->
         <img src="../../assets/loginComponentIMG/check.png" v-bind="check" id="nameClear" style="width:1%; visibility:hidden; position: relative; right: -467px;">
         <input type="text" value="*한글만 입력해 주세요." id="nameFalse" style="width:10%; position: relative; right: -415px; visibility:visible; font-weight: bold; border: 0px;">
         <input type="text" id="name" v-model="user.name" @keyup="nameCheck" placeholder="이름을 입력해주세요!" style="position: relative; left: -101px;"><br><br>
@@ -55,10 +56,10 @@ export default {
     //최종 가입 버튼
     signUp: function () {
 
-          var a = document.getElementById('idClear');
-          var b = document.getElementById('nameClear');
-          var c = document.getElementById('pwClear');
-          var d = document.getElementById('alert-success');
+      var a = document.getElementById('idClear');
+      var b = document.getElementById('nameClear');
+      var c = document.getElementById('pwClear');
+      var d = document.getElementById('alert-success');
 
   if((a.style.visibility=="visible") && (b.style.visibility=="visible") && (c.style.visibility=="visible") && (d.style.display=="inline-block")) {
       this.$http.post('/api/users/signUp', { 

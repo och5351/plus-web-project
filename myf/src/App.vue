@@ -7,41 +7,40 @@
        active-nav-item-class="font-weight-bold text-success"
         content-class="mt-3">
         <b-tab title="HOME" @click="main"/>
-
         <b-tab title="공지사항" @click="login"/>
-
         <b-tab title="HOT게시판" @click="post"/>
- 
-        <b-tab title="커뮤니티" @click="detailPost">
-  
-        </b-tab>
+        <b-tab title="커뮤니티" @click="comunity"/>
       </b-tabs>
       <router-view></router-view>
   </div>
 </template>
 
 <script>
-//import Home from './views/Home'
-//import Post from './views/Post'
-//import Login from './components/SignIn/login'
 
 export default {
   name: 'App',
   methods: {
     main: function(){
-      this.$router.push('/') 
+      if(this.$router.history.current.path != '/'){
+        this.$router.push('/')  
+      }
     },
     login: function(){
-      this.$router.push('/login') 
+      if(this.$router.history.current.path != '/login'){
+        this.$router.push('/login')   
+      }
     },
     post: function(){
-      this.$router.push('/post') 
+      if(this.$router.history.current.path != '/'){
+        this.$router.push('/')  
+      }
     },
-    detailPost: function(){
-      this.$router.push('/')
+    comunity: function(){
+      if(this.$router.history.current.path != '/post'){
+        this.$router.push('/post')  
+      }
     }
-  },
-  //components: {Home, Post, Login}
+  }
 }
 </script>
 
