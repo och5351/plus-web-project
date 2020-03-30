@@ -1,9 +1,3 @@
-긴급!!(핫픽스 처리 부분)
-=============
- > ### 2020-03-30
-     SignUp.vue 내 중복확인 Button 404 Error need Fix(post)
-     - xhr.js?b50d:178 POST http://localhost:8080/api/users/idCheck 404 (Not Found)
-     - post 전송의 에러가 확인 되며 경로이외의 문제로 추정. 확인 요망.
 Update list
 =============
 테이블 스키마(MySQL)
@@ -87,6 +81,10 @@ Jin tae's History
     * 불 필요 View 삭제
     
     * Router Index 일원화
+    
+> ### 2020-03-31
+    
+    * backend-frontend protocol error hotfix.
 
 Moo Hyun's History
 -----------
