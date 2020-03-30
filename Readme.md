@@ -23,6 +23,18 @@ Chan hae's History
     Comments
     -> FrontEnd 통합 완료(css 수정 남음)
 
+테이블 스키마(MySQL)
+-------
+ > ### 2020-03-30
+ 
+     (Dump file)capdi_users.sql
+     
+      @@ Import 방법@@
+     mysql -u -root -p database name < sql file path
+     ex) 
+       $ > cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+       C:\Program Files\MySQL\MySQL Server 8.0\bin> mysql -u root -p capdi < c:/capdi_users.sql
+
 의존성 패키지
 -------
  > ### 2020-03-27
