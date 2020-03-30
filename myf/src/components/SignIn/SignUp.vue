@@ -1,4 +1,5 @@
 <template>
+
     <div class="sign-up">
         <div style="font-size:150%; border:15%;">회 원 가 입</div><br><br>
 
@@ -31,10 +32,14 @@
 <span>또는 <router-link to="/">로그인으로 돌아가기</router-link></span>
     </div>
 </template>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
+
+
 export default {
     data: function () {
   return {
@@ -45,6 +50,7 @@ export default {
     }
   }
 },
+
 watch : {
   check: function() {
   }

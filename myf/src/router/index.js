@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Article from '../views/Article'
 import login from '@/components/SignIn/login'
-import SignUp from '@/components/SignIn/SignUp'
 import clear from '@/components/SignIn/clear'
 
 Vue.use(VueRouter);
@@ -47,9 +46,11 @@ const routes = [
     component: login
   },
   {
-   path: '/SignUp',
-   name: 'signup',
-   component: SignUp
+   path: '/signup',
+   name: 'SignUp',
+   component: function() {
+      return import('../components/SignIn/SignUp.vue')
+   }
  },
  {
    path: '/clear',

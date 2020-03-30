@@ -1,28 +1,5 @@
 Update list
 =============
-Chan hae's History
------------
- > ### 2020-03-26
- 
-    * Components integration (Jin tae, Moo hyun)
-
- > ### 2020-03-27
- 
-    * Chan hae, Woo jin) Components integration
-
-    * Chan hae, Woo jin) Convert html-> vue
-
-    * Moohyun) Path change (All components move 'components' to 'components/Article')
-
-    * Chan woong) Components intergration(Front end)
-    
-    * Chan woong) Path change (IMG)
-    
-    * Jin ho) Components intergration
-    
-    Comments
-    -> FrontEnd 통합 완료(css 수정 남음)
-
 테이블 스키마(MySQL)
 -------
  > ### 2020-03-30
@@ -62,3 +39,46 @@ Chan hae's History
       "node-sass": "^4.13.1",
       "sass-loader": "^8.0.2",
       "vue-template-compiler": "^2.6.11"
+
+Chan hae's History
+-----------
+ > ### 2020-03-26
+ 
+    * Components integration (Jin tae, Moo hyun)
+
+ > ### 2020-03-27
+ 
+    * Chan hae, Woo jin) Components integration
+
+    * Chan hae, Woo jin) Convert html-> vue
+
+    * Moohyun) Path change (All components move 'components' to 'components/Article')
+
+    * Chan woong) Components intergration(Front end)
+    
+    * Chan woong) Path change (IMG)
+    
+    * Jin ho) Components intergration
+    
+    Comments
+    -> FrontEnd 통합 완료(css 수정 남음)
+
+ > ### 2020-03-30
+ 
+    * Sql dump file upload
+    * HeadLine Routing connect
+
+Jin tae's History
+-----------
+
+Moo Hyun's History
+-----------
+
+Chan Woong's History
+-----------
+
+Woo jin's History
+-----------
+
+Jin ho's History
+-----------

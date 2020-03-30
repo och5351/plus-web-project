@@ -7,25 +7,29 @@
        active-nav-item-class="font-weight-bold text-success"
         content-class="mt-3">
         <b-tab title="HOME">
-          <router-view/>
+          <home></home>
         </b-tab>
         <b-tab title="공지사항">
-          <router-link to='/login'></router-link>
+          <login></login>
         </b-tab>
         <b-tab title="HOT게시판">
-          <router-view/>
+          <post></post>
         </b-tab>
-        <b-tab title="자유게시판">
-          <router-view/>
+        <b-tab title="커뮤니티">
+          <post></post>
         </b-tab>
       </b-tabs>
-    
   </div>
 </template>
 
 <script>
+import Home from './views/Home'
+import Post from './views/Post'
+import Login from './components/SignIn/login'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Home, Post, Login}
 }
 </script>
 
