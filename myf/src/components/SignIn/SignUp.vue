@@ -29,7 +29,7 @@
         
         <br>
 <button v-on:click="signUp" id="allClear" style="border: 1px solid black; width: 55pt; height: 35pt;">가입하기</button>
-<span>또는 <router-link to="/">로그인으로 돌아가기</router-link></span>
+<span>또는 <router-link to="/login">로그인으로 돌아가기</router-link></span>
     </div>
 </template>
 
@@ -41,133 +41,129 @@
 
 
 export default {
-    data: function () {
-  return {
-    user: {
-      userid: '',
-      name: '',
-      password: ''
+  data: function () {
+    return {
+      user: {
+        userid: '',
+        name: '',
+        password: ''
+      }
     }
-  }
-},
+  },
 
-watch : {
-  check: function() {
-  }
-},
-methods: {
-  //최종 가입 버튼
-  signUp: function () {
+  methods: {
+    //최종 가입 버튼
+    signUp: function () {
 
-        var a = document.getElementById('idClear');
-        var b = document.getElementById('nameClear');
-        var c = document.getElementById('pwClear');
-        var d = document.getElementById('alert-success');
+          var a = document.getElementById('idClear');
+          var b = document.getElementById('nameClear');
+          var c = document.getElementById('pwClear');
+          var d = document.getElementById('alert-success');
 
-if((a.style.visibility=="visible") && (b.style.visibility=="visible") && (c.style.visibility=="visible") && (d.style.display=="inline-block")) {
-    this.$http.post('/api/users/signUp', { 
+  if((a.style.visibility=="visible") && (b.style.visibility=="visible") && (c.style.visibility=="visible") && (d.style.display=="inline-block")) {
+      this.$http.post('/api/users/signUp', { 
+        user: this.user
+      })
+      .then((res) => {
+        if (res.data.success == true) {
+          alert(res.data.message);
+          this.$router.push('/') 
+        }
+      })
+    }else{
+      alert('회원 정보를 다시 확인해주세요!');
+    }
+    },
+    //아이디 확인 버튼
+    idCheck: function () {
+      var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
+          if( !idReg.test( $("input[name=uid]").val() ) ) {
+              alert("아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)");
+              return;
+          }
+          else{
+      this.$http.post('/api/users/idCheck', {
       user: this.user
-    })
-    .then((res) => {
-      if (res.data.success == true) {
-        alert(res.data.message);
-        this.$router.push('/') 
-      }
-    })
-  }else{
-    alert('회원 정보를 다시 확인해주세요!');
+      })
+      .then((res) => {
+        if (res.data.success == true) {
+          alert(res.data.message);
+          document.getElementById("idClear").style.visibility='visible'; 
+          document.getElementById("idCheckClear").style.visibility='hidden';
+          $("#id").attr("disabled",true).attr("readonly".false);     
+        }
+        if (res.data.success == false) {
+          alert(res.data.message);       
+        }
+      })
+          }
+    },
+    //이름 확인
+    nameCheck: function () {
+      var regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"\\]/g;
+      var v = $("#name").val();
+      if  (regexp.test(v)) {
+            alert("한글만 입력가능 합니다.");
+            document.getElementById("nameClear").style.visibility='hidden';
+            document.getElementById("nameFalse").style.visibility='visible';
+            $("#name").val(v.replace(regexp, ''));
+                }else{
+                  document.getElementById("nameClear").style.visibility='visible';
+                  document.getElementById("nameFalse").style.visibility='hidden';
+                }
+                if(v==''){
+                  document.getElementById("nameClear").style.visibility='hidden';
+                  document.getElementById("nameFalse").style.visibility='visible';
+                }
+    },
+    //비밀 번호 확인
+    pwCheck: function () {
+
+      var pwd1 = $("#pw").val();
+      var pwd2 = $("#pwcheck").val();
+      var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
+
+          if( !pwReg.test( $("input[name=upw]").val() ) ) {
+              document.getElementById("pwClear").style.visibility='hidden';
+              document.getElementById("pwFalse").style.visibility='visible';
+              return;
+          }
+          else {
+            document.getElementById("pwClear").style.visibility='visible';
+            document.getElementById("pwFalse").style.visibility='hidden';
+          }
+          if ( pwd1 != '' && pwd2 == '' ) {
+              null;
+          } else if (pwd1 != "" || pwd2 != "") {
+              if (pwd1 == pwd2) {
+                  $("#alert-success").css('display', 'inline-block');
+                  $("#alert-danger").css('display', 'none');
+
+              } else {
+                  $("#alert-success").css('display', 'none');
+                  $("#alert-danger").css('display', 'inline-block');
+              }
+          }
+    },
+    //비밀 번호 재확인 
+    repwCheck: function () {
+          var pwd1 = $("#pw").val();
+          var pwd2 = $("#pwcheck").val();
+
+          if ( pwd1 != '' && pwd2 == '' ) {
+              null;
+          } else if (pwd1 != "" || pwd2 != "") {
+              if (pwd1 == pwd2) {
+                  $("#alert-success").css('display', 'inline-block');
+                  $("#alert-danger").css('display', 'none');
+
+              } else {
+                  $("#alert-success").css('display', 'none');
+                  $("#alert-danger").css('display', 'inline-block');
+              }
+          }
+    },
   }
-  },
-  //아이디 확인 버튼
-  idCheck: function () {
-    var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
-        if( !idReg.test( $("input[name=uid]").val() ) ) {
-            alert("아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)");
-            return;
-        }
-        else{
-    this.$http.post('/api/users/idCheck', {
-    user: this.user
-    })
-    .then((res) => {
-      if (res.data.success == true) {
-        alert(res.data.message);
-        document.getElementById("idClear").style.visibility='visible'; 
-        document.getElementById("idCheckClear").style.visibility='hidden';
-        $("#id").attr("disabled",true).attr("readonly".false);     
-      }
-      if (res.data.success == false) {
-        alert(res.data.message);       
-      }
-    })
-        }
-  },
-  //이름 확인
-  nameCheck: function () {
-     var regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"\\]/g;
-     var v = $("#name").val();
-     if  (regexp.test(v)) {
-          alert("한글만 입력가능 합니다.");
-          document.getElementById("nameClear").style.visibility='hidden';
-          document.getElementById("nameFalse").style.visibility='visible';
-          $("#name").val(v.replace(regexp, ''));
-               }else{
-                document.getElementById("nameClear").style.visibility='visible';
-                document.getElementById("nameFalse").style.visibility='hidden';
-               }
-               if(v==''){
-                 document.getElementById("nameClear").style.visibility='hidden';
-                document.getElementById("nameFalse").style.visibility='visible';
-               }
-  },
-  //비밀 번호 확인
-  pwCheck: function () {
-
-    var pwd1 = $("#pw").val();
-    var pwd2 = $("#pwcheck").val();
-    var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
-
-        if( !pwReg.test( $("input[name=upw]").val() ) ) {
-            document.getElementById("pwClear").style.visibility='hidden';
-            document.getElementById("pwFalse").style.visibility='visible';
-            return;
-        }
-        else {
-          document.getElementById("pwClear").style.visibility='visible';
-          document.getElementById("pwFalse").style.visibility='hidden';
-        }
-        if ( pwd1 != '' && pwd2 == '' ) {
-            null;
-        } else if (pwd1 != "" || pwd2 != "") {
-            if (pwd1 == pwd2) {
-                $("#alert-success").css('display', 'inline-block');
-                $("#alert-danger").css('display', 'none');
-
-            } else {
-                $("#alert-success").css('display', 'none');
-                $("#alert-danger").css('display', 'inline-block');
-            }
-        }
-  },
-  //비밀 번호 재확인 
-  repwCheck: function () {
-        var pwd1 = $("#pw").val();
-        var pwd2 = $("#pwcheck").val();
-
-        if ( pwd1 != '' && pwd2 == '' ) {
-            null;
-        } else if (pwd1 != "" || pwd2 != "") {
-            if (pwd1 == pwd2) {
-                $("#alert-success").css('display', 'inline-block');
-                $("#alert-danger").css('display', 'none');
-
-            } else {
-                $("#alert-success").css('display', 'none');
-                $("#alert-danger").css('display', 'inline-block');
-            }
-        }
-  },
-}
 }
 </script>
 <style scoped>
