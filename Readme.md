@@ -74,6 +74,12 @@ Chan hae's History
 Jin tae's History
 -----------
 
+> ### 2020-03-30
+
+    * 불 필요 View 삭제
+    
+    * Router Index 일원화
+
 Moo Hyun's History
 -----------
 
