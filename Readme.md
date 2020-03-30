@@ -77,6 +77,8 @@ Chan hae's History
   
     * login <-> signup routing connect
 
+    * Find a backend post error
+
 Jin tae's History
 -----------
 
