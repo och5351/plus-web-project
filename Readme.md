@@ -4,9 +4,7 @@
      SignUp.vue 내 중복확인 Button 404 Error need Fix(post)
      - xhr.js?b50d:178 POST http://localhost:8080/api/users/idCheck 404 (Not Found)
      - post 전송의 에러가 확인 되며 경로이외의 문제로 추정. 확인 요망.
-     
-     ddddddddd
-     ddddddddd
+    
 Update list
 =============
 테이블 스키마(MySQL)
