@@ -85,6 +85,10 @@ Jin tae's History
 > ### 2020-03-31
     
     * backend-frontend protocol error hotfix.
+    
+> ### 2020-04-01
+
+    * backend Sql Connection Secure fix.
 
 Moo Hyun's History
 -----------
