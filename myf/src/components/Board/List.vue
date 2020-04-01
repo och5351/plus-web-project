@@ -1,5 +1,4 @@
 <template>
-
     <div class="container">
 
         <div style="padding-right: 20px">
@@ -27,29 +26,17 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">번호</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">조회수</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                        <tr v-for="(board, bIdx) in boardList[0]" :key="bIdx"
+                        @click="detail(board.board_seq)">
+                            <th scope="row">{{bIdx + 1}}</th>
+                            <td>{{board.title}}</td>
+                            <td>{{board.hit}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -61,7 +48,6 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">First</th>
-                            <th scope="col">Last</th>
                             <th scope="col">Handle</th>
                         </tr>
                         </thead>
@@ -69,18 +55,16 @@
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
-                            <td>Otto</td>
                             <td>@mdo</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
-                            <td>Thornton</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td>Larry the Bird</td>
                             <td>@twitter</td>
                         </tr>
                         </tbody>
@@ -93,7 +77,6 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">First</th>
-                            <th scope="col">Last</th>
                             <th scope="col">Handle</th>
                         </tr>
                         </thead>
@@ -101,18 +84,16 @@
                         <tr>
                             <th scope="row">1</th>
                             <td>Mark</td>
-                            <td>Otto</td>
                             <td>@mdo</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Jacob</td>
-                            <td>Thornton</td>
                             <td>@fat</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td>Larry the Bird</td>
                             <td>@twitter</td>
                         </tr>
                         </tbody>
@@ -146,5 +127,33 @@
         </div>
 
     </div>
-
 </template>
+
+<script>
+
+    import dataset from "../../data/board.json"
+
+    export default {
+        name: "List",
+        data : () => {
+            return {
+                boardList: [dataset]
+            }
+        },
+        methods : {
+            detail : function (seq) {
+                this.$router.push(`article/${seq}`)
+            }
+        }
+        /*
+        mounted () {
+            this.$axios.get('')
+            .then((response) => {
+                response.data.map((item) => {
+                    this.boardList.push(item)
+                })
+            })
+        }
+         */
+    }
+</script>

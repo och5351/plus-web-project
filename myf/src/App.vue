@@ -22,22 +22,22 @@ export default {
   methods: {
     main: function(){
       if(this.$router.history.current.path != '/'){
-        this.$router.push('/')  
+        this.$router.push('/')
       }
     },
     login: function(){
       if(this.$router.history.current.path != '/login'){
-        this.$router.push('/login')   
+        this.$router.push('/login')
       }
     },
     post: function(){
       if(this.$router.history.current.path != '/'){
-        this.$router.push('/')  
+        this.$router.push('/')
       }
     },
     comunity: function(){
-      if(this.$router.history.current.path != '/post'){
-        this.$router.push('/post')  
+      if(this.$router.history.current.path != '/board'){
+        this.$router.push('/board')
       }
     }
   }

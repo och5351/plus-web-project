@@ -17,10 +17,10 @@ const routes = [
     }
   },
   {
-    path: '/post',
-    name: 'Post',
+    path: '/board',
+    name: 'Board',
     component: function () {
-      return import('../views/Post.vue')
+      return import('../views/Board.vue')
     }
   },
   {

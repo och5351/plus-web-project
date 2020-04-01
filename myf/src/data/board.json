@@ -1,0 +1,27 @@
+[
+  {
+    "board_seq" : 1,
+    "title" : "테스트중입니다",
+    "hit" : 256
+  },
+  {
+    "board_seq" : 2,
+    "title" : "테스트1",
+    "hit" : 15
+  },
+  {
+    "board_seq" : 3,
+    "title" : "테스트2",
+    "hit" : 995
+  },
+  {
+    "board_seq" : 4,
+    "title" : "테스트3",
+    "hit" : 124
+  },
+  {
+    "board_seq" : 5,
+    "title" : "테스트4",
+    "hit" : 785
+  }
+]
