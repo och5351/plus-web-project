@@ -21,7 +21,7 @@ Update list
        $ > cd C:\Program Files\MySQL\MySQL Server 8.0\bin
        C:\Program Files\MySQL\MySQL Server 8.0\bin> mysql -u root -p capdi < c:/capdi_users.sql
 
-의존성 패키지
+의존성 패키지(Front End)
 -------
  > ### 2020-03-27
  
