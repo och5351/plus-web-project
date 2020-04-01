@@ -84,7 +84,7 @@ Chan hae's History
 
  > ### 2020-04-01
 
-    * Posting component 수정 중(Delete Navigation Bar)
+    * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
 
 Jin tae's History
 -----------

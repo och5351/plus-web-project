@@ -33,80 +33,62 @@
                         </div>
                     </div>
                     <div id="checkFunction">
+                        
+                        <label class="col-form-label-lg">취미</label>
                         <div class="row">
-                            <div class="col-lg-8 col-sm-4">
-                                <label class="col-form-label-lg">취미</label>
-                                <div class="form-check ">
-                                    <label class="form-check-label ">
-                                                <input class="form-check-input" type="checkbox"  id="Game" v-model="checkedNames" value="게임">게임
-                                                <span class="form-check-sign">
-                                                  <span class="check"></span>
-                                                </span>
-                                    </label>
-
-
-                                    <label class="form-check-label">
-                                              <input class="form-check-input" type="checkbox"  id="Web" v-model="checkedNames" value="웹">웹
-                                              <span class="form-check-sign">
-                                                <span class="check"></span>
-                                              </span>
-                                    </label>
-
-
-                                    <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox"  id="Application" v-model="checkedNames" value="어플">어플
-                                            <span class="form-check-sign">
-                                              <span class="check"></span>
-                                            </span>
-                                    </label>
-
-
-                                    <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox"  id="AI" v-model="checkedNames" value="인공지능">인공지능
-                                          <span class="form-check-sign">
-                                            <span class="check"></span>
-                                          </span>
-                                    </label>
-
-
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox"  id="Music" v-model="checkedNames" value="음악">음악
-                                        <span class="form-check-sign">
-                                          <span class="check"></span>
-                                        </span>
-                                    </label>
-
-
-                                    <label class="form-check-label">
-                                              <input class="form-check-input" type="checkbox"  id="Paint" v-model="checkedNames" value="그림">그림
-                                              <span class="form-check-sign">
-                                                <span class="check"></span>
-                                              </span>
-                                    </label>
-
-                                    <input type="text" class="form-control" id="showCategory" :value="checkedNames" readonly/><br><br>
-                                </div>
+                            
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="Game" v-model="checkedNames" value="게임"/>게임
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
                             </div>
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="Web" v-model="checkedNames" value="웹"/>웹
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </div>
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="Application" v-model="checkedNames" value="어플"/>어플
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </div>
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="AI" v-model="checkedNames" value="인공지능"/>AI
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </div>
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="Music" v-model="checkedNames" value="음악"/>음악
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </div>                                   
+                            <div class="col-xs-8 col-sm-6 col-md-1">
+                                <input class="form-check-input" type="checkbox"  id="Paint" v-model="checkedNames" value="그림"/>그림
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </div>
+                            
                         </div>
                     </div>
-
-
-                    <div id="buttonFunction">
-                        <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
-                                                  <i class="material-icons">done</i> 작성</button>
-                        <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
-                                                  <i class="material-icons">clear</i> 취소</button>
-                    </div>
-
+                    <input type="text" class="form-control" id="showCategory" :value="checkedNames" readonly/><br><br>
                 </div>
             </div>
-        </div>
-        <footer class="py-5 bg-primary">
-            <div class="container" style="position:absolute; bottom: 0;width: 100%;height: 30px">
+
+            <div id="buttonFunction">
+                <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
+                                            <i class="material-icons">done</i> 작성</button>
+                <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
+                                            <i class="material-icons">clear</i> 취소</button>
             </div>
-        </footer>
+        </div> <br><br>
     </div>
-    
+       
 </template>
 <script>
 
