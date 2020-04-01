@@ -73,6 +73,10 @@ Chan hae's History
 
     * Find a backend post error
 
+ > ### 2020-04-01
+
+    * Posting component 수정 중(Delete Navigation Bar)
+
 Jin tae's History
 -----------
 

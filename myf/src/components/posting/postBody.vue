@@ -32,9 +32,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div id="checkFunction">
                         <div class="row">
                             <div class="col-lg-8 col-sm-4">
