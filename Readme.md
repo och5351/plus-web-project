@@ -1,3 +1,10 @@
+필독!!
+====
+ > ### 2020-04-01
+
+     Fork 진행 후 collaborator 미등록 시 협업 불가.
+     반드시 개인적으로 본인 Identify를 Origin repository master에게 확인한 후 등록 하길 바람.
+
 Update list
 =============
 테이블 스키마(MySQL)
