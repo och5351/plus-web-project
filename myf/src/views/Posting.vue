@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import contentsBody from '../components/posting/postBody'
+import contentsBody from '../components/Posting/PostBody'
 
 export default {
     name: 'postingMain',

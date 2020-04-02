@@ -3,9 +3,14 @@
     <div class="logo">
       <img src="./assets/logo.jpeg" width="150px" height="200px">
     </div>
-    <div style="padding-right: 20px">
+    <div class="publicLoginButton" style="padding-right: 20px" v-if="mySession == true">
       <div>
           <span style="width: 50px; vertical-align: middle; float:right;">닉네임</span><img class="rounded-circle" align="right" width="30px" height="30px" src="https://picsum.photos/250/250/?image=59" alt="Circle image"/>
+      </div>
+    </div>
+    <div v-else>
+      <div>
+          <span style="width: 200px; vertical-align: middle; float:right;">로그인 해주세요</span>
       </div>
     </div>
       <b-tabs
@@ -21,32 +26,40 @@
 </template>
 
 <script>
-
-export default {
-  name: 'App',
-  methods: {
-    main: function(){
-      if(this.$router.history.current.path != '/'){
-        this.$router.push('/')
+  export default {
+    name: 'App',
+    methods: {
+      main: function(){
+        if(this.$router.history.current.path != '/'){
+          this.$router.push('/')
+        }
+      },
+      login: function(){
+        if(this.$router.history.current.path != '/login'){
+          this.$router.push('/login')
+        }
+      },
+      post: function(){
+        if(this.$router.history.current.path != '/'){
+          this.$router.push('/')
+        }
+      },
+      comunity: function(){
+        if(this.$router.history.current.path != '/board'){
+          this.$router.push('/board')
+        }
       }
     },
-    login: function(){
-      if(this.$router.history.current.path != '/login'){
-        this.$router.push('/login')
+    data() {
+      return {
+        /*로그인 세션 정보를 받아와서 로그인을 할지 닉네임을 표시할지 선택*/
+        mySession: false
       }
     },
-    post: function(){
-      if(this.$router.history.current.path != '/'){
-        this.$router.push('/')
-      }
+    watch: {
+      
     },
-    comunity: function(){
-      if(this.$router.history.current.path != '/board'){
-        this.$router.push('/board')
-      }
-    }
   }
-}
 </script>
 
 <style>
