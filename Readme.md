@@ -17,6 +17,7 @@
      * 오찬해
      * 류진태
      * 조무현
+     * 김우진
 
 Update list
 =============
@@ -30,7 +31,7 @@ Update list
      mysql -u -root -p database name < sql file path
      ex) 
        $ > cd C:\Program Files\MySQL\MySQL Server 8.0\bin
-       C:\Program Files\MySQL\MySQL Server 8.0\bin> mysql -u root -p capdi < c:/capdi_users.sql
+       C:\Program Files\MySQL\MySQL Server 8.0\bin> mysql -u root -p capdi < c:/capdi.sql
 
 Back End 구동 방법
 -------
