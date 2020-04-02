@@ -28,6 +28,17 @@ Update list
        $ > cd C:\Program Files\MySQL\MySQL Server 8.0\bin
        C:\Program Files\MySQL\MySQL Server 8.0\bin> mysql -u root -p capdi < c:/capdi_users.sql
 
+Back End 구동 방법
+-------
+ > ### 2020-03-27
+     backend\bin\www.js 실행
+
+     ex)In dos
+     $> cd backend\bin
+     backend\bin> node www.js
+
+     실행 후 localhost:3000 확인
+
 의존성 패키지(Front End)
 -------
  > ### 2020-03-27
