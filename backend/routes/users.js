@@ -33,20 +33,17 @@ router.post('/signUp', function (req, res) {
     'password': req.body.user.password
   };
 
-  connection.query('SELECT userid FROM capdi_users WHERE userid = ?',[user.userid], function (err, row) {
        const salt = bcrypt.genSaltSync();
        const encryptedPassword = bcrypt.hashSync(user.password, salt);
 
-      connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row2) {
+      connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
         if (err) throw err;
       });
-
+      
       res.json({
         success: true,
         message: '회원 가입이 완료되었습니다!'
       })
-
-  });
 });
 //아이디 체크
 router.post('/idCheck', function (req, res) {
