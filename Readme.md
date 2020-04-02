@@ -7,6 +7,13 @@
     
      PS. Collaborator 등록을 원하지 않을 시 Fork 후 new branch name(Not master)으로 merge request 바람.
 
+ > ### 현재 협업자 등록 명단(2020-04-02)
+
+     현재 협업자 등록 명단
+     * 오찬해
+     * 류진태
+     * 조무현
+
 Update list
 =============
 테이블 스키마(MySQL)
