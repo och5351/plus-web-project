@@ -1,12 +1,5 @@
 <template>
     <div class="container">
-
-        <div style="padding-right: 20px">
-            <div>
-                <span style="width: 50px; vertical-align: middle; float:right;">닉네임</span><img class="rounded-circle" align="right" width="30px" height="30px" src="https://picsum.photos/250/250/?image=59" alt="Circle image"/>
-            </div>
-        </div>
-
         <div style="width: 80%; padding: 20px; text-align: center;">
 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
