@@ -7,6 +7,10 @@
     
      PS. Collaborator 등록을 원하지 않을 시 Fork 후 new branch name(Not master)으로 merge request 바람.
 
+ > ### 2020-04-02
+
+     현재 데이터베이스 테이블 스키마가 업로드 되었습니다.(capdi.sql)
+
  > ### 현재 협업자 등록 명단(2020-04-02)
 
      현재 협업자 등록 명단
@@ -18,9 +22,9 @@ Update list
 =============
 테이블 스키마(MySQL)
 -------
- > ### 2020-03-30
+ > ### 2020-03-30(capdi_users.sql -> capdi.sql)
  
-     (Dump file)capdi_users.sql
+     (Dump file)capdi.sql
      
       @@ Import 방법 @@
      mysql -u -root -p database name < sql file path
@@ -93,34 +97,38 @@ Chan hae's History
 
  > ### 2020-03-27
  
-    * Chan hae, Woo jin) Components integration
+    * Chan hae, Woo jin) Components integration.
 
-    * Chan hae, Woo jin) Convert html-> vue
+    * Chan hae, Woo jin) Convert html-> vue.
 
-    * Moohyun) Path change (All components move 'components' to 'components/Article')
+    * Moohyun) Path change (All components move 'components' to 'components/Article').
 
-    * Chan woong) Components intergration(Front end)
+    * Chan woong) Components intergration(Front end).
     
-    * Chan woong) Path change (IMG)
+    * Chan woong) Path change (IMG).
     
-    * Jin ho) Components intergration
+    * Jin ho) Components intergration.
     
     Comments
     -> FrontEnd 통합 완료(css 수정 남음)
 
  > ### 2020-03-30
  
-    * Sql dump file upload
+    * Sql dump file upload.
 
-    * HeadLine Routing connect
+    * HeadLine Routing connect.
   
-    * login <-> signup routing connect
+    * login <-> signup routing connect.
 
-    * Find a backend post error
+    * Find a backend post error.
 
  > ### 2020-04-01
 
     * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
+
+ > ### 2020-04-02
+
+    * Delete backend node_modules folder.
 
 Jin tae's History
 -----------
