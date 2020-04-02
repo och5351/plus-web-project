@@ -137,6 +137,10 @@ Moo Hyun's History
 Chan Woong's History
 -----------
 
+ > ### 2020-04-02
+     * DB 1차 구성 (게시판(BOARD),카테고리(CATEGORY),글(WRITING),댓글(COMMENT),대댓글(DEEP),회원(CAPDI_USERS) TABLES)
+
+     * 문제점 : 의도한 기능을 정확히 만족하는지 테스트 필요, 익명 방지를 위한 회원(CAPDI_USERS)테이블의 NAME 칼럼과 외래 키 지정 불가 (기본 키 OR 고유 키를 지정해야 가능한데 동일한 이름을 가진 회원들이 있을 수 있어 지정 불가. 해결법 고민)
 Woo jin's History
 -----------
 
