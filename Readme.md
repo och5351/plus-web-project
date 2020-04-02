@@ -22,7 +22,7 @@ Update list
  
      (Dump file)capdi_users.sql
      
-      @@ Import 방법@@
+      @@ Import 방법 @@
      mysql -u -root -p database name < sql file path
      ex) 
        $ > cd C:\Program Files\MySQL\MySQL Server 8.0\bin
