@@ -34,11 +34,11 @@ Update list
 Back End 구동 방법
 -------
  > ### 2020-03-27
-     backend\bin\www.js 실행
+     backend\bin\www 실행
 
      ex)In dos
      $> cd backend\bin
-     backend\bin> node www.js
+     backend\bin> node www
 
      실행 후 localhost:3000 확인
 
