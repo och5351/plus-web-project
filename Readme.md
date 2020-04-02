@@ -95,39 +95,24 @@ Chan hae's History
     * Components integration (Jin tae, Moo hyun)
 
  > ### 2020-03-27
- 
     * Chan hae, Woo jin) Components integration.
-
     * Chan hae, Woo jin) Convert html-> vue.
-
     * Moohyun) Path change (All components move 'components' to 'components/Article').
-
     * Chan woong) Components intergration(Front end).
-    
     * Chan woong) Path change (IMG).
-    
-    * Jin ho) Components intergration.
-    
+    * Jin ho) Components intergration.  
     Comments
     -> FrontEnd 통합 완료(css 수정 남음)
-
  > ### 2020-03-30
- 
     * Sql dump file upload.
-
     * HeadLine Routing connect.
-  
     * login <-> signup routing connect.
-
     * Find a backend post error.
-
  > ### 2020-04-01
-
     * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
-
  > ### 2020-04-02
-
     * Delete backend node_modules folder.
+    * Name reposition (board -> title)
 
 Jin tae's History
 -----------
