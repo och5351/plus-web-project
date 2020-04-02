@@ -97,11 +97,8 @@ Back End 구동 방법
 
 Chan hae's History
 -----------
- > ### 2020-03-26
- 
+ > ### 2020-03-26 ~ 2020-03-30
     * Components integration (Jin tae, Moo hyun)
-
- > ### 2020-03-27
     * Chan hae, Woo jin) Components integration.
     * Chan hae, Woo jin) Convert html-> vue.
     * Moohyun) Path change (All components move 'components' to 'components/Article').
@@ -110,7 +107,6 @@ Chan hae's History
     * Jin ho) Components intergration.  
     Comments
     -> FrontEnd 통합 완료(css 수정 남음)
- > ### 2020-03-30
     * Sql dump file upload.
     * HeadLine Routing connect.
     * login <-> signup routing connect.
