@@ -5,19 +5,20 @@
     </div>
     <div class="publicLoginButton" style="padding-right: 20px" v-if="mySession == true">
       <div>
-          <span style="width: 50px; vertical-align: middle; float:right;">닉네임</span><img class="rounded-circle" align="right" width="30px" height="30px" src="https://picsum.photos/250/250/?image=59" alt="Circle image"/>
+          <span class="trueLogin">닉네임</span><img class="rounded-circle" align="right" width="30px" height="30px" src="https://picsum.photos/250/250/?image=59" alt="Circle image"/>
       </div>
     </div>
     <div v-else>
       <div>
-          <span style="width: 200px; vertical-align: middle; float:right;">로그인 해주세요</span>
+        <button @click="login" class="loginbox" >Login</button>
+        <span class="loginbox">로그인 해주세요</span>
       </div>
     </div>
       <b-tabs
        active-nav-item-class="font-weight-bold text-success"
         content-class="mt-3">
         <b-tab title="HOME" @click="main"/>
-        <b-tab title="공지사항" @click="login"/>
+        <b-tab title="공지사항" @click="main"/>
         <b-tab title="HOT게시판" @click="post"/>
         <b-tab title="커뮤니티" @click="comunity"/>
       </b-tabs>
@@ -62,16 +63,26 @@
   }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #42b983;
-  margin-top: 60px;
-  margin-right: 150px;
-  margin-left: 150px;
-
-}
+<style scoped>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #42b983;
+    margin-top: 60px;
+    margin-right: 150px;
+    margin-left: 150px;
+  }
+  .loginbox {
+    width: 150px; 
+    vertical-align: middle; 
+    float:right;
+  }
+  .trueLogin{
+    width: 50px; 
+    vertical-align: middle; 
+    float:right;
+  }
 </style>
+

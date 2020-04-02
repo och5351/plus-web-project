@@ -1,7 +1,6 @@
 <template>
     <div class="section">
         <div class="container tim-container">
-            <!--                typography -->
             <div id="title" class="cd-section">
                 <div class="tim-typo">
                     <h1>글쓰기</h1><br>
@@ -36,7 +35,6 @@
                         
                         <label class="col-form-label-lg">취미</label>
                         <div class="row">
-                            
                             <div class="col-xs-8 col-sm-6 col-md-1">
                                 <input class="form-check-input" type="checkbox"  id="Game" v-model="checkedNames" value="게임"/>게임
                                 <span class="form-check-sign">
@@ -73,7 +71,6 @@
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            
                         </div>
                     </div>
                     <input type="text" class="form-control" id="showCategory" :value="checkedNames" readonly/><br><br>
@@ -91,11 +88,11 @@
        
 </template>
 <script>
-
+import axios from 'axios';
 export default {
     name: 'postBody',
     methods: {
-        submitB() {          
+        submitB: function() {          
             //유효성 검사 후 전송
             if (this.titleText == '') {
                 alert('제목을 입력하세요.')
@@ -104,21 +101,21 @@ export default {
             } else if (this.checkedNames == '') {
                 alert('카테고리를 선택하세요.')
             } else {
-                console.log('통신')
-                /*
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: {
-                        "title": title,
-                        "content": content,
-                        "select": select
-                    },
-                    success: success,
-                    dataType: data
-                }) */
+                if(confirm("작성하시겠습니까?")){
+                    axios.post('/api/users/toPosting', {
+                        posting:{
+                            title: this.titleText,
+                            content: this.contentArea,
+                            checkedNames: this.checkedNames
+                        }
+                    }).then(res => { console.log(res.data) 
+                    }).catch(function(error) {
+                        console.log('에러')
+                        console.log(error);
+                    });
+                    this.$router.push('/board')
+                }
             }
-       
         },
         cancleB() {
             //취소 이벤트

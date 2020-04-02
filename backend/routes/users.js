@@ -104,4 +104,14 @@ router.post('/login', function (req, res) {
   })
 });
 
+//글쓰기
+router.post('/toPosting', function (req, res) {
+  const temp = {
+    'title': req.body.posting.title,
+    'content': req.body.posting.content,
+    'checkedNames': req.body.posting.checkedNames
+  } 
+  console.log(temp)
+})
+
 module.exports = router;
