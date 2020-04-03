@@ -1,17 +1,19 @@
+요구 사항
+====
+ > ### 2020-04-03
+    오찬해 -> 류진태
+     게시판 글쓰기 버튼 구현 요망(router-link => /posting).
+                                          
 필독!!
 ====
  > ### 2020-04-01
-
      Fork 진행 후 Collaborator 미등록 시 협업 불가.
      반드시 개인적으로 본인 Identify를 Origin repository master에게 확인시킨 후 등록 하길 바람.
 
  > ### 2020-04-02
+     데이터베이스 테이블 스키마가 업로드 되었습니다.(capdi.sql)
 
-     현재 데이터베이스 테이블 스키마가 업로드 되었습니다.(capdi.sql)
-
- > ### 현재 협업자 등록 명단(2020-04-02)
-
-     현재 협업자 등록 명단
+ > ### 현재 협업자 등록 명단(2020-04-03)
      * 오찬해
      * 류진태
      * 조무현
@@ -104,7 +106,7 @@ Chan hae's History
     * Sql dump file upload.
     * HeadLine Routing connect.
     * login <-> signup routing connect.
-    * Find a backend post error.
+    * Find a backend post error(complete).
  > ### 2020-04-01
     * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
  > ### 2020-04-02

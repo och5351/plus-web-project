@@ -118,7 +118,7 @@ export default {
             }
         },
         cancleB() {
-            //취소 이벤트
+            this.$router.push('/board')
         }
     },
     data() {
