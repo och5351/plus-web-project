@@ -134,6 +134,9 @@ Jin tae's History
 
 Moo Hyun's History
 -----------
+> ### 2020-04-03
+
+    * public/index.html 내 jQuery, js/articleProgress.js 추가 (프로그레스 바)
 
 Chan Woong's History
 -----------
