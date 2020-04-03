@@ -130,6 +130,7 @@ Jin tae's History
 
     * posting router link Connect.
     * posting -> components link Access Error fix.
+    * 중복 import 제거 (axios -> this.$http 사용) 
 
 Moo Hyun's History
 -----------
