@@ -33,39 +33,40 @@ router.post('/signUp', function (req, res) {
     'password': req.body.user.password
   };
 
-       const salt = bcrypt.genSaltSync();
-       const encryptedPassword = bcrypt.hashSync(user.password, salt);
+  const salt = bcrypt.genSaltSync();
+  const encryptedPassword = bcrypt.hashSync(user.password, salt);
 
-      connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
-        if (err) throw err;
-      });
-      
-      res.json({
-        success: true,
-        message: '회원 가입이 완료되었습니다!'
-      })
+  connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
+    if (err) throw err;
+  });
+  
+  res.json({
+    success: true,
+    message: '회원 가입이 완료되었습니다!'
+  })
 });
+
 //아이디 체크
 router.post('/idCheck', function (req, res) {
-const user = {
-  'userid': req.body.user.userid,
-};
+  const user = {
+    'userid': req.body.user.userid,
+  };
+  connection.query('SELECT userid FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
+    if (row[0] === undefined) {
+      res.json({
+        success: true,
+        message: '사용 가능한 아이디 입니다.'
+      })
+    }
+    else {
+      res.json({
+        success: false,
+        message: '이미 사용 중인 아이디 입니다.'
+      })
+    }
+  });
+});
 
-connection.query('SELECT userid FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
-  if (row[0] === undefined) {
-    res.json({
-      success: true,
-      message: '사용 가능한 아이디 입니다.'
-    })
-  }
-  else {
-    res.json({
-      success: false,
-      message: '이미 사용 중인 아이디 입니다.'
-    })
-  }
-});
-});
 //로그인
 router.post('/login', function (req, res) {
   const user = {

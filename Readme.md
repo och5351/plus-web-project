@@ -1,10 +1,3 @@
-@@ 긴급 수정 필요 @@(오찬해 작성)
-===
- > ### 2020-04-02
-
-     backend users.js 중첩쿼리 발견
-     회원 가입 부분 수정 요망!! (김찬웅)
-
 필독!!
 ====
  > ### 2020-04-01
@@ -121,7 +114,6 @@ Chan hae's History
 
 Jin tae's History
 -----------
-
 > ### 2020-03-30
 
     * 불 필요 View 삭제
@@ -141,13 +133,13 @@ Moo Hyun's History
 
 Chan Woong's History
 -----------
- > ### 2020-04-02 
-     * 불 필요 코드 삭제
-       (user.js - 회원 가입 라우트 부분, 중첩 쿼리 수정 완료 + SignUp.vue 중복 확인 img 속성 중 v-bind="check" 삭제)
  > ### 2020-04-02
      * DB 1차 구성 (게시판(BOARD),카테고리(CATEGORY),글(WRITING),댓글(COMMENT),대댓글(DEEP),회원(CAPDI_USERS) TABLES)
 
      * 문제점 : 의도한 기능을 정확히 만족하는지 테스트 필요
+
+      * 불 필요 코드 삭제
+       (user.js - 회원 가입 라우트 부분, 중첩 쿼리 수정 완료 + SignUp.vue 중복 확인 img 속성 중 v-bind="check" 삭제)
 
 Woo jin's History
 -----------
