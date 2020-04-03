@@ -113,7 +113,9 @@ Chan hae's History
     * Delete backend node_modules folder.
     * Name reposition (board -> title)
     * Add axios function to posting.vue
-
+ > ### 2020-04-03
+    * Activate postBody.vue's cancel button.
+    
 Jin tae's History
 -----------
 > ### 2020-03-30
