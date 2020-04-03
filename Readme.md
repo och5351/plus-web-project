@@ -131,6 +131,11 @@ Jin tae's History
 > ### 2020-04-01
 
     * backend Sql Connection Secure fix.
+    
+> ### 2020-04-03
+
+    * posting router link Connect.
+    * posting -> components link Access Error fix.
 
 Moo Hyun's History
 -----------
