@@ -32,6 +32,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    <router-link to="/posting"><button type="button" class="float-right btn btn-success">글쓰기</button></router-link>
                 </div>
 
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
