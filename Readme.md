@@ -44,49 +44,15 @@ Back End 구동 방법
 
 의존성 패키지(Front End)
 -------
- > ### 2020-03-27
- 
-     "dependencies": {
-        "axios": "^0.19.2",
-        "bootstrap": "^4.4.1",
-        "bootstrap-vue": "^2.9.0",
-        "cache-loader": "^4.1.0",
-        "core-js": "^3.6.4",
-        "jquery": "^3.4.1",
-        "popper.js": "^1.16.1",
-        "vue": "^2.6.11",
-        "vue-loader": "^15.9.1",
-        "vue-router": "^3.1.6"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "~4.2.0",
-        "@vue/cli-plugin-eslint": "~4.2.0",
-        "@vue/cli-service": "~4.2.0",
-        "babel-eslint": "^10.0.3",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^6.1.2",
-        "expose-loader": "^0.7.5",
-        "node-sass": "^4.13.1",
-        "sass-loader": "^8.0.2",
-        "vue-template-compiler": "^2.6.11"
-    }
+ > ### 2020-04-04
+     In dos
+     $/myf> npm install 
 
 의존성 패키지(Back End)
 -------
- > ### 2020-04-02
-
-    "dependencies": {
-        "axios": "^0.19.2",
-        "bcrypt-nodejs": "0.0.3",
-        "cookie-parser": "~1.4.4",
-        "debug": "~2.6.9",
-        "express": "~4.16.1",
-        "http-errors": "~1.6.3",
-        "morgan": "~1.9.1",
-        "mysql": "^2.18.1",
-        "pug": "2.0.0-beta11",
-        "vue-router": "^3.1.5"
-    }
+ > ### 2020-04-04
+     In dos
+     $/backend> npm install
 
 Chan hae's History
 -----------
