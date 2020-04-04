@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <div class="logo">
-      <img src="./assets/logo.jpeg" width="150px" height="200px">
+      <img src="./assets/plusLogo.png" width="150px" height="200px">
     </div>
     <div class="publicLoginButton" style="padding-right: 20px" v-if="mySession == true">
       <div>
