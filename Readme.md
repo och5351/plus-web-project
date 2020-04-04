@@ -1,8 +1,6 @@
 Team.plus Project 'Plus-Market' 
 ===
 ![plus 불투명 로고](https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png)
-
-
 필독!!
 ====
  > ### 현재 협업자 등록 명단(2020-04-04)
