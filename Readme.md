@@ -102,7 +102,11 @@ Jin tae's History
 
     * posting router link Connect.
     * posting -> components link Access Error fix.
-    * 중복 import 제거 (axios -> this.$http 사용) 
+    * 중복 import 제거 (axios -> this.$http 사용)
+    
+> ### 2020-04-04
+
+   * json -> database backend router link Test. 
 
 Moo Hyun's History
 -----------
