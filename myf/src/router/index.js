@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path: '/posting',
+    path: '/Posting',
     name: 'Posting',
     component: function () {
       return import('../views/Posting.vue')
