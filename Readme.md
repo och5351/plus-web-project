@@ -109,6 +109,9 @@ Chan hae's History
     * Add axios function to posting.vue
  > ### 2020-04-03
     * Activate postBody.vue's cancel button.
+ > ### 2020-04-04
+    * Project Logo Change
+    * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
     
 Jin tae's History
 -----------
