@@ -24,7 +24,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(board, bIdx) in boardList[0]" :key="bIdx"
+                        <tr v-if="boardList[0] == null">
+                            <td colspan="3" style="text-align: center">데이터가 없습니다</td>
+                        </tr>
+                        <tr v-else v-for="(board, bIdx) in boardList[0]" :key="bIdx"
                         @click="detail(board.board_seq)">
                             <th scope="row">{{bIdx + 1}}</th>
                             <td>{{board.title}}</td>
@@ -139,7 +142,9 @@ export default {
         this.$http.get('api/users/list')
         .then((res) => {
             this.boardList.push(res.data)
-        })
+        }).catch(function() {
+            this.boardList.push()
+        });
     }
 }
 </script>
