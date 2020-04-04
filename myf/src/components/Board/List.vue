@@ -123,30 +123,23 @@
 </template>
 
 <script>
-
-    import dataset from "../../data/board.json"
-
-    export default {
-        name: "List",
-        data : () => {
-            return {
-                boardList: [dataset]
-            }
-        },
-        methods : {
-            detail : function (seq) {
-                this.$router.push(`article/${seq}`)
-            }
+export default {
+    name: "List",
+    data : () => {
+        return {
+            boardList: []
         }
-        /*
-        mounted () {
-            this.$axios.get('')
-            .then((response) => {
-                response.data.map((item) => {
-                    this.boardList.push(item)
-                })
-            })
+    },
+    methods : {
+        detail : function (seq) {
+            this.$router.push(`article/${seq}`)
         }
-         */
+    },
+    mounted () {
+        this.$http.get('api/users/list')
+        .then((res) => {
+            this.boardList.push(res.data)
+        })
     }
+}
 </script>

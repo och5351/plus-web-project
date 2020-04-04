@@ -39,7 +39,7 @@ router.post('/signUp', function (req, res) {
   connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
     if (err) throw err;
   });
-  
+
   res.json({
     success: true,
     message: '회원 가입이 완료되었습니다!'
@@ -108,8 +108,15 @@ router.post('/toPosting', function (req, res) {
     'title': req.body.posting.title,
     'content': req.body.posting.content,
     'checkedNames': req.body.posting.checkedNames
-  } 
+  }
   console.log(temp)
+});
+
+router.get('/list', function (req, res) {
+
+  connection.query('SELECT * FROM writing WHERE board_id = 1', function (err, row) {
+    res.send(row)
+  })
 })
 
 module.exports = router;
