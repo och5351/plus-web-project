@@ -7,6 +7,12 @@ Team.plus Project 'Plus-Market'
  
 필독!!
 ====
+
+ > ### 2020-04-05
+     backend 의존성 패키지가 늘었습니다.
+     반드시 구동 전 npm install 실행 후 구동하여 주시기 바랍니다.
+     -> @tensorflow/tfjs-node 
+
  > ### 현재 협업자 등록 명단(2020-04-04)
      * 오찬해
      * 류진태
