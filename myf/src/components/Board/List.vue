@@ -142,8 +142,8 @@ export default {
         this.$http.get('api/users/list')
         .then((res) => {
             this.boardList.push(res.data)
-        }).catch(function() {
-            this.boardList.push()
+        }).catch(function(error) {
+            console.log(`Error : ${error}`)
         });
     }
 }
