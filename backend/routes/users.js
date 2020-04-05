@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
+var tfScript = require('./../public/TFScripts/tfFunction')
 
 // Connection 객체 생성
 var connection = mysql.createConnection({
@@ -108,8 +109,9 @@ router.post('/toPosting', function (req, res) {
     'title': req.body.posting.title,
     'content': req.body.posting.content,
     'checkedNames': req.body.posting.checkedNames
-  }
+  };
   console.log(temp)
+  tfScript.tfFunc(); //Tensorflow 삽입 완료
 });
 
 router.get('/list', function (req, res) {
