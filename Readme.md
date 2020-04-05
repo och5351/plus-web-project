@@ -86,7 +86,7 @@ Chan hae's History
     * Project Logo Change
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
  > ### 2020-04-05
-    * Import tensorflow.js
+    * Try Import the tensorflow.js
     
 Jin tae's History
 -----------
