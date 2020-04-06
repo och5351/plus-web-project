@@ -32,6 +32,7 @@
     },
     data() {
       return {
+        // returns secondary-comment's data of its primary-comment
         name: data.User.filter(userItem => userItem.userid === this.commentObj.userid)[0].name,
         subCommentList: data.SubComment.filter(item => item.commentid === this.commentObj.commentid).map(subCommentItem => ({
           ...subCommentItem,

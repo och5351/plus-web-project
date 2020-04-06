@@ -19,6 +19,7 @@
       data() {
         return {
           comments: data.Comment.filter(commentItem => {
+            // returns primary comment's data of its article
             return commentItem.contentid === this.contentId;
           })
         }
