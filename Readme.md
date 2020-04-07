@@ -97,6 +97,9 @@ Chan hae's History
     * Create a crawler floder
      Complete crawling list
        - Game
+       - Food
+       - Text
+       - Travel/Photo
     
 Jin tae's History
 -----------

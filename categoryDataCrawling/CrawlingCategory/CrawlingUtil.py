@@ -40,6 +40,16 @@ class CrawUtil:
             a = list.find("a")["href"]
             link.append(a)
 
+        return link
+
+    def travel_photo_get_link(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        link = []
+        for list in soup.find("div", class_="theme_list_d3 getabout").find_all('li'):
+
+            a = list.find("a")["href"]
+            link.append(a)
 
         return link
 
@@ -75,6 +85,14 @@ class CrawUtil:
 
             text = text + str(item.find_all(text=True))
 
+        return text
+
+    def travel_photo_get_text(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        text = ''
+        for item in soup.select('div.article_contents'):
+            text = text + str(item.find_all(text=True))
 
         return text
 
