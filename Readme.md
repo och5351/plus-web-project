@@ -20,13 +20,6 @@ Team.plus Project 'Plus-Market'
      * 김우진
      * 김찬웅
 
- > ### DataBase 게시판 스키마 구성 방안 논의
-     참여대상 : 필수 참여자(오찬해, 류진태, 조무현, 김찬웅)
-     참여 일 : 2020-04-07(화) 오후 7시
-     논의 주제 : DataBase 게시판 스키마 구성(속성, 테이블)
-     참여방식 : 카카오톡 그룹통화
-        ps. 시간 및 일정 변경 협의 개인 연락 요망
-
 Update list
 =============
 테이블 스키마(MySQL)
@@ -100,6 +93,7 @@ Chan hae's History
        - Food
        - Text
        - Travel/Photo
+       - Music
     
 Jin tae's History
 -----------
@@ -135,12 +129,17 @@ Moo Hyun's History
 
 Chan Woong's History
 -----------
+ > ### 2020-04-07
+     * DB 스키마 2차 설계 및 수정 (capdi.sql UPDATE)
+     * 문제점 : comment(댓글) table과 deep(대댓글) table의 연관성 고려,
+     sessins table 삭제 여부 고려,
+     전체적 칼럼 위치 or 인덱스 설정
  > ### 2020-04-02
      * DB 1차 구성 (게시판(BOARD),카테고리(CATEGORY),글(WRITING),댓글(COMMENT),대댓글(DEEP),회원(CAPDI_USERS) TABLES)
 
      * 문제점 : 의도한 기능을 정확히 만족하는지 테스트 필요
 
-      * 불 필요 코드 삭제
+     * 불 필요 코드 삭제
        (user.js - 회원 가입 라우트 부분, 중첩 쿼리 수정 완료 + SignUp.vue 중복 확인 img 속성 중 v-bind="check" 삭제)
 
 Woo jin's History
