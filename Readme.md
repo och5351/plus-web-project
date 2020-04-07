@@ -145,8 +145,27 @@ Chan Woong's History
 
 Woo jin's History
 -----------
+> ### 2020-04-07
+     * AWS를 이용하여 EC2인스턴스 생성
 
-ddd
+     * 웹서버 nginx, 웹 애플리케이션 서버 Phusion Passenger 설치
+
+     * 자동 다중 서버 서비스 Auto Scaling 그룹 설정
+
+     * 서버 트래픽 분산 관리 서비스 Elastic Load Balancing 설정
+
+     * Route 53을 이용하여 도메인 등록
+     
+     * 로드밸러서에 도메인 등록
+        (http://plus-market.com)
+
+     * Certificate Manager를 통한 SSL/TLS 인증서 등록
+        (https://plus-market.com)
+
+     * RDS를 이용하여 MySQL DB인스턴스 생성
+
+     * DB인스턴스에 파라미터 그룹 UTF-8 설정
+        
 
 Jin ho's History
 -----------
