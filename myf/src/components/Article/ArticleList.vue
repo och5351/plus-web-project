@@ -23,11 +23,13 @@ import data from "@/data"
 export default {
     name: 'ArticleList',
     data() {
+        // Get contentID from URL parameters
         const contentId = Number(this.$route.params.contentId);
         const contentData = data.Content.filter(
             contentItem => contentItem.contentid === contentId
         )[0];
         return {
+            // return content's data
             contentId: contentId,
             title: contentData.title,
             context: contentData.context,
