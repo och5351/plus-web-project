@@ -36,7 +36,6 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES ('b','a');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,11 +72,10 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `ca_id` varchar(15) NOT NULL,
+  `ca_id` varchar(40) NOT NULL,
   `ca_name` varchar(10) NOT NULL,
   PRIMARY KEY (`ca_id`),
-  UNIQUE KEY `ca_name` (`ca_name`),
-  UNIQUE KEY `ca_name_2` (`ca_name`)
+  UNIQUE KEY `ca_name` (`ca_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,22 +97,17 @@ DROP TABLE IF EXISTS `comment`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comment` (
   `cm_seq` int(11) NOT NULL AUTO_INCREMENT,
-  `wri_seq` int(11) NOT NULL,
-  `board_id` varchar(15) DEFAULT NULL,
-  `context` varchar(1000) NOT NULL,
-  `userid` varchar(15) NOT NULL,
-  `name` varchar(5) NOT NULL,
-  `write_date` datetime DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL,
+  `post_seq` int(11) NOT NULL,
   `deep_id` varchar(10) DEFAULT NULL,
+  `userid` varchar(15) DEFAULT NULL,
+  `name` varchar(5) DEFAULT NULL,
+  `contents` varchar(500) NOT NULL,
+  `write_date` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`cm_seq`),
   UNIQUE KEY `deep_id` (`deep_id`),
-  KEY `wri_seq` (`wri_seq`),
-  KEY `board_id` (`board_id`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `board_id` FOREIGN KEY (`board_id`) REFERENCES `writing` (`board_id`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`wri_seq`) REFERENCES `writing` (`wri_seq`),
-  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `capdi_users` (`userid`)
+  KEY `post_seq` (`post_seq`),
+  CONSTRAINT `post_seq` FOREIGN KEY (`post_seq`) REFERENCES `post` (`post_seq`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,19 +130,17 @@ DROP TABLE IF EXISTS `deep`;
 CREATE TABLE `deep` (
   `deep_seq` int(11) NOT NULL AUTO_INCREMENT,
   `cm_seq` int(11) NOT NULL,
-  `context` varchar(1000) NOT NULL,
-  `userid` varchar(15) NOT NULL,
-  `name` varchar(5) NOT NULL,
+  `deep_id` varchar(15) DEFAULT NULL,
+  `userid` varchar(15) DEFAULT NULL,
+  `name` varchar(5) DEFAULT NULL,
+  `contents` varchar(500) NOT NULL,
   `write_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
-  `deep_id` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`deep_seq`),
   KEY `cm_seq` (`cm_seq`),
   KEY `deep_id` (`deep_id`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `deep_ibfk_1` FOREIGN KEY (`cm_seq`) REFERENCES `comment` (`cm_seq`),
-  CONSTRAINT `deep_ibfk_2` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`deep_id`),
-  CONSTRAINT `deep_ibfk_3` FOREIGN KEY (`userid`) REFERENCES `capdi_users` (`userid`)
+  CONSTRAINT `cm_seq` FOREIGN KEY (`cm_seq`) REFERENCES `comment` (`cm_seq`) ON DELETE CASCADE,
+  CONSTRAINT `deep_id` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`deep_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -160,6 +151,44 @@ CREATE TABLE `deep` (
 LOCK TABLES `deep` WRITE;
 /*!40000 ALTER TABLE `deep` DISABLE KEYS */;
 /*!40000 ALTER TABLE `deep` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `post` (
+  `post_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `board_id` varchar(15) NOT NULL,
+  `ca_id` varchar(40) NOT NULL,
+  `userid` varchar(15) NOT NULL,
+  `name` varchar(5) DEFAULT NULL,
+  `contents` varchar(1000) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `write_date` datetime DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  `hit` int(11) DEFAULT NULL,
+  `views` int(11) DEFAULT NULL,
+  PRIMARY KEY (`post_seq`),
+  KEY `board_id` (`board_id`),
+  KEY `ca_id` (`ca_id`),
+  KEY `userid` (`userid`),
+  CONSTRAINT `board_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`) ON UPDATE CASCADE,
+  CONSTRAINT `ca_id` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`) ON UPDATE CASCADE,
+  CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `capdi_users` (`userid`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post`
+--
+
+LOCK TABLES `post` WRITE;
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -186,44 +215,6 @@ LOCK TABLES `sessions` WRITE;
 INSERT INTO `sessions` VALUES ('2NYhIo3cCBXloLBElPQbi5mgUlO63uIx',1580462653,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `writing`
---
-
-DROP TABLE IF EXISTS `writing`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `writing` (
-  `wri_seq` int(11) NOT NULL AUTO_INCREMENT,
-  `board_id` varchar(15) DEFAULT NULL,
-  `hit` int(11) DEFAULT NULL,
-  `title` varchar(50) NOT NULL,
-  `context` varchar(1000) NOT NULL,
-  `userid` varchar(15) NOT NULL,
-  `name` varchar(5) NOT NULL,
-  `write_date` datetime DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL,
-  `ca_id` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`wri_seq`),
-  KEY `board_id` (`board_id`),
-  KEY `ca_id` (`ca_id`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `writing_ibfk_1` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`) ON UPDATE CASCADE,
-  CONSTRAINT `writing_ibfk_2` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`),
-  CONSTRAINT `writing_ibfk_3` FOREIGN KEY (`userid`) REFERENCES `capdi_users` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `writing`
---
-
-LOCK TABLES `writing` WRITE;
-/*!40000 ALTER TABLE `writing` DISABLE KEYS */;
-INSERT INTO `writing` VALUES (2,'b',NULL,'','','','',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `writing` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -234,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-02  0:36:01
+-- Dump completed on 2020-04-07 22:45:50
