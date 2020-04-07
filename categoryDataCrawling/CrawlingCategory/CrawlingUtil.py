@@ -53,6 +53,15 @@ class CrawUtil:
 
         return link
 
+    def music_get_link(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        link = []
+        for list in soup.select("div.text_subject"):
+            a = list.find("a")["href"]
+            link.append(a)
+        return link
+
     def get_text(self, URL):
         source_code_from_URL = urllib.request.urlopen(URL)
         soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
@@ -94,6 +103,14 @@ class CrawUtil:
         for item in soup.select('div.article_contents'):
             text = text + str(item.find_all(text=True))
 
+        return text
+
+    def music_get_text(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        text = ''
+        for item in soup.select('#description'):
+            text = text + str(item.find_all(text=True))
         return text
 
     def isInDirectory(self, path):
