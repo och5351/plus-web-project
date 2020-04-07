@@ -2,7 +2,8 @@
 from datetime import datetime
 
 #from CrawlingCategory.GameCategory import GameCategory
-from CrawlingCategory.FoodCategory import FoodCategory
+#from CrawlingCategory.FoodCategory import FoodCategory
+from CrawlingCategory.TextCategory import TextCategory
 import time
 
 
@@ -13,9 +14,9 @@ def job_day():
     for i in range(1):
         rootPath = tempStr[:-16] # 현재 프로그램 경로
 
-        for j in range(3):
-            j += 8
-            FoodCategory(pageNum=j, rootPath=rootPath)
+        for j in range(70):
+            j += 71
+            TextCategory(pageNum=j, rootPath=rootPath)
 
         #GameCategory(count=135, rootPath=rootPath)
 

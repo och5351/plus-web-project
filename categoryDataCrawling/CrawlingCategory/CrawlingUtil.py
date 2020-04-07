@@ -32,6 +32,17 @@ class CrawUtil:
 
         return link
 
+    def text_get_link(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        link = []
+        for list in soup.select("p.subject"):
+            a = list.find("a")["href"]
+            link.append(a)
+
+
+        return link
+
     def get_text(self, URL):
         source_code_from_URL = urllib.request.urlopen(URL)
         soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
@@ -53,6 +64,18 @@ class CrawUtil:
         '''http://recipekorea.com/'''
         for item in soup.select('div.contents_shop_view'):
             text = text + str(item.find_all(text=True))
+        return text
+
+    def text_get_text(self, URL):
+        source_code_from_URL = urllib.request.urlopen(URL)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        text = ''
+
+        for item in soup.select('p.work_intro.tab_content'):
+
+            text = text + str(item.find_all(text=True))
+
+
         return text
 
     def isInDirectory(self, path):
