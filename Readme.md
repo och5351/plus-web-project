@@ -93,6 +93,10 @@ Chan hae's History
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
  > ### 2020-04-05
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
+ > ### 2020-04-07
+    * Create the crawler floder
+     Complete crawling list
+       - Game
     
 Jin tae's History
 -----------
