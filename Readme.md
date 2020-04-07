@@ -100,6 +100,7 @@ Chan hae's History
        - Food
        - Text
        - Travel/Photo
+       - Music
     
 Jin tae's History
 -----------
