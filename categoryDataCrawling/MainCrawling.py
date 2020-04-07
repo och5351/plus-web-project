@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from CrawlingCategory.GameCategory import GameCategory
-
+#from CrawlingCategory.GameCategory import GameCategory
+from CrawlingCategory.FoodCategory import FoodCategory
 import time
 
 
 def job_day():
+    tempStr = __file__
+    today = str(datetime.today().year) + "%02d" % datetime.today().month + "%02d" % datetime.today().day
+
     for i in range(1):
-        tempStr = __file__
-        today = str(datetime.today().year) + "%02d" % datetime.today().month + "%02d" % datetime.today().day
         rootPath = tempStr[:-16] # 현재 프로그램 경로
 
-        GameCategory(count=135, rootPath=rootPath)
+        for j in range(3):
+            j += 8
+            FoodCategory(pageNum=j, rootPath=rootPath)
+
+        #GameCategory(count=135, rootPath=rootPath)
 
         print('\n')
         print("="*120)
