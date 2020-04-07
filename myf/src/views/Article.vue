@@ -1,15 +1,18 @@
 <template>
     <div class="article">
         <progress value="0"></progress>
+        <!-- Header Parts 게시글의 헤더 부분 -->
         <b-container>
             <div class="article-id justify-content-center">{{contentId}}</div>
             <div class="article-title justify-content-center"><h5>{{title}}</h5></div>
             <div class="article-author">작성자 {{user}}</div>
             <div class="article-created">작성일 {{created}}</div>
         </b-container>
+        <!-- Body Parts 게시글의 내용 부분 -->
         <b-container>
             <pre class="article-context justify-content-center">{{context}}</pre>
         </b-container>
+        <!-- Comments Parts 게시글의 댓글 부분 -->
         <CommentList :contentId="contentId"></CommentList>
     </div>
 </template>

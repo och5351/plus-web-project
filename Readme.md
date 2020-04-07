@@ -127,6 +127,10 @@ Moo Hyun's History
 
     * public/index.html 내 jQuery, js/articleProgress.js 추가 (프로그레스 바)
 
+> ### 2020-04-07
+
+    * Pre-work for comments API / 댓글 API 사전 작업
+
 Chan Woong's History
 -----------
  > ### 2020-04-07
