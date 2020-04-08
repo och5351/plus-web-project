@@ -124,12 +124,13 @@ Jin tae's History
 Moo Hyun's History
 -----------
 > ### 2020-04-03
-
     * public/index.html 내 jQuery, js/articleProgress.js 추가 (프로그레스 바)
 
 > ### 2020-04-07
-
     * Pre-work for comments API / 댓글 API 사전 작업
+
+> ### 2020-04-08
+    * Now can toggle comments / 댓글 여닫기 기능 추가
 
 Chan Woong's History
 -----------

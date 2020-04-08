@@ -1,7 +1,7 @@
 <template>
   <div class="comment-list">
     <b-container class="justify-content-center"><hr><h5>댓글
-      <b-button class="btn btn-sm btn-primary"><span class="fas fa-caret-down"></span></b-button>
+      <b-button id="btnOpenComments" onClick="toggleComments()" class="btn btn-sm btn-primary"><span id="span-btnOpenComments" class="fas fa-caret-up"></span></b-button>
     </h5></b-container>
     <div :key="item.commentid" v-for="item in comments">
       <CommentListItem :commentObj="item"></CommentListItem>
