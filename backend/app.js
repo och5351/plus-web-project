@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
+var boardRouter = require('./routes/board');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/comments', commentsRouter);
+app.use('/api/board', boardRouter);
 /* 문제점 ?????
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -36,7 +38,7 @@ app.use(function(req, res, next) {
 app.options('/api/users/signUp', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 
+  res.header('Access-Control-Allow-Headers',
   'Content-Type, Authorization, Content-Length, X-Requested-With');
   res.send();
 });

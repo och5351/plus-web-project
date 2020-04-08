@@ -28,10 +28,10 @@
                             <td colspan="3" style="text-align: center">데이터가 없습니다</td>
                         </tr>
                         <tr v-else v-for="(board, bIdx) in boardList[0]" :key="bIdx"
-                        @click="detail(board.board_seq)">
+                        @click="detail(board.post_seq)">
                             <th scope="row">{{bIdx + 1}}</th>
                             <td>{{board.title}}</td>
-                            <td>{{board.hit}}</td>
+                            <td>{{board.views}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -139,7 +139,7 @@ export default {
         }
     },
     mounted () {
-        this.$http.get('api/users/list')
+        this.$http.get(`api/board/free`)
         .then((res) => {
             this.boardList.push(res.data)
         }).catch(function(error) {

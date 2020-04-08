@@ -1,25 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
+var dbConObj = require('../lib/db_config');
+var conn = dbConObj.init();
 var bcrypt = require('bcrypt-nodejs');
 var tfScript = require('./../lib/TFScripts/tfFunction')
-
-// Connection 객체 생성
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '0000',
-  database: 'capdi'
-});
-
-// Connect
-connection.connect(function (err) {
-  if (err) {
-    console.error('mysql connection error');
-    console.error(err);
-    throw err;
-  }
-});
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -37,7 +21,7 @@ router.post('/signUp', function (req, res) {
   const salt = bcrypt.genSaltSync();
   const encryptedPassword = bcrypt.hashSync(user.password, salt);
 
-  connection.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
+  conn.query('INSERT INTO capdi_users (userid,name,password) VALUES (?,?,?)', [user.userid, user.name, encryptedPassword], function (err, row) {
     if (err) throw err;
   });
 
@@ -52,7 +36,7 @@ router.post('/idCheck', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
   };
-  connection.query('SELECT userid FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
+  conn.query('SELECT userid FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
     if (row[0] === undefined) {
       res.json({
         success: true,
@@ -75,7 +59,7 @@ router.post('/login', function (req, res) {
     'password': req.body.user.password
   };
 
-  connection.query('SELECT userid, password FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
+  conn.query('SELECT userid, password FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
     if (row[0] === undefined) {
       res.json({ // 매칭되는 아이디 없을 경우
         success: false,
@@ -110,15 +94,8 @@ router.post('/toPosting', function (req, res) {
     'content': req.body.posting.content,
     'checkedNames': req.body.posting.checkedNames
   };
-  console.log(temp)
+  console.log(temp);
   tfScript.tfFunc(); //Tensorflow 삽입 완료
 });
-
-router.get('/list', function (req, res) {
-
-  connection.query('SELECT * FROM writing WHERE board_id = 1', function (err, row) {
-    res.send(row)
-  })
-})
 
 module.exports = router;
