@@ -119,7 +119,16 @@ Jin tae's History
     
 > ### 2020-04-04
 
-    * json -> database backend router link Test. 
+    * json -> database backend router link Test.
+    
+> ### 2020-04-08
+    
+    * express mysql 중앙 모듈화 처리
+    * 사용법
+    // mysql 선언
+    var dbConObj = require('../lib/db_config');
+    var conn = dbConObj.init();
+    conn.query('')
 
 Moo Hyun's History
 -----------
