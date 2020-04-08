@@ -141,6 +141,10 @@ Moo Hyun's History
 > ### 2020-04-08
     * Now can toggle comments / 댓글 여닫기 기능 추가
 
+> ### 2020-04-09
+    * Can retrive comments and subcomments in API server / API 서버를 통해 댓글, 대댓글 값 반환 기능 추가
+    * Modified mysql connection style / mysql 진태형 변경사항에 따름
+
 Chan Woong's History
 -----------
  > ### 2020-04-07
