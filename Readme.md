@@ -169,6 +169,9 @@ Woo jin's History
      * RDS를 이용하여 MySQL DB인스턴스 생성
 
      * DB인스턴스에 파라미터 그룹 UTF-8 설정
+
+> ### 2020-04-08
+     * EC2인스턴스에 코드배포
         
 
 Jin ho's History
