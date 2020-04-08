@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-var tfScript = require('./../public/TFScripts/tfFunction')
+var tfScript = require('./../lib/TFScripts/tfFunction')
 
 // Connection 객체 생성
 var connection = mysql.createConnection({

@@ -1,6 +1,6 @@
 exports.tfFunc = function(){
 
-    
+
     const tf = require("@tensorflow/tfjs")
 
     // 옵셔널
@@ -30,4 +30,4 @@ exports.tfFunc = function(){
 
 
 
-};
+}; 
