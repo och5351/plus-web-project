@@ -18,7 +18,7 @@
     </b-container>
   </div>
 </template>
-
+this.$route.params.contentId}
 <script>
   import data from "@/data"
 
@@ -32,6 +32,7 @@
     },
     data() {
       return {
+        commentList: [],
         // returns secondary-comment's data of its primary-comment
         name: data.User.filter(userItem => userItem.userid === this.commentObj.userid)[0].name,
         subCommentList: data.SubComment.filter(item => item.commentid === this.commentObj.commentid).map(subCommentItem => ({
@@ -40,6 +41,13 @@
         })),
         subCommentCreateToggle: false
       }
+    },
+    mounted () {
+      // Temporary param '2' for now...
+      this.$http.get(`/api/comments/sub/2`)
+      .then((res) => {
+        this.commentList.push(res.data);
+      })
     }
   }
 </script>
