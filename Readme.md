@@ -4,30 +4,12 @@ Team.plus Project 'Plus-Market'
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
 </p>
- 
-필독!!
-====
-
- > ### 2020-04-05
-     backend 의존성 패키지가 늘었습니다.
-     반드시 구동 전 npm install 실행 후 구동하여 주시기 바랍니다.
-     -> @tensorflow/tfjs-node 
-
- > ### 현재 협업자 등록 명단(2020-04-04)
-     * 오찬해
-     * 류진태
-     * 조무현
-     * 김우진
-     * 김찬웅
 
 Update list
 =============
 테이블 스키마(MySQL)
 -------
- > ### 2020-03-30(capdi_users.sql -> capdi.sql)
- 
-     (Dump file)capdi.sql
-     
+
       @@ Import 방법 @@
      mysql -u -root -p database name < sql file path
      ex) 
@@ -73,18 +55,14 @@ Chan hae's History
     * HeadLine Routing connect.
     * login <-> signup routing connect.
     * Find a backend post error(complete).
- > ### 2020-04-01
+ > ### 2020-04-01 ~ 2020-04-04
     * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
- > ### 2020-04-02
     * Delete backend node_modules folder.
     * Name reposition (board -> title)
     * Add axios function to posting.vue
- > ### 2020-04-03
     * Activate postBody.vue's cancel button.
- > ### 2020-04-04
     * Project Logo Change
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
- > ### 2020-04-05
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
  > ### 2020-04-07
     * Create a crawler floder
@@ -94,7 +72,10 @@ Chan hae's History
        - Text
        - Travel/Photo
        - Music
+ > ### 2020-04-09
+     * Create a posting.js in BackEnd()
     
+
 Jin tae's History
 -----------
 > ### 2020-03-30

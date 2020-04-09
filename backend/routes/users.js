@@ -6,7 +6,6 @@ var dbConObj = require('../lib/db_config');
 var conn = dbConObj.init();
 
 var bcrypt = require('bcrypt-nodejs');
-var tfScript = require('./../lib/TFScripts/tfFunction')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -90,15 +89,5 @@ router.post('/login', function (req, res) {
   })
 });
 
-//글쓰기
-router.post('/toPosting', function (req, res) {
-  const temp = {
-    'title': req.body.posting.title,
-    'content': req.body.posting.content,
-    'checkedNames': req.body.posting.checkedNames
-  };
-  console.log(temp);
-  tfScript.tfFunc(); //Tensorflow 삽입 완료
-});
 
 module.exports = router;
