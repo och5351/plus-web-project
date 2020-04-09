@@ -74,6 +74,8 @@ Chan hae's History
        - Music
  > ### 2020-04-09
      * Create a posting.js in BackEnd()
+      Complete crawling list
+        - mobile
     
 
 Jin tae's History

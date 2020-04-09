@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import ssl
+
 from bs4 import BeautifulSoup
 import urllib.request
 import os
@@ -62,6 +64,16 @@ class CrawUtil:
             link.append(a)
         return link
 
+    def mobile_get_link(self, URL):
+        context = ssl._create_unverified_context()
+        source_code_from_URL = urllib.request.urlopen(URL, context=context)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        link = []
+        for list in soup.select("td.title"):
+            a = list.find("a")["href"]
+            link.append(a)
+        return link
+
     def get_text(self, URL):
         source_code_from_URL = urllib.request.urlopen(URL)
         soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
@@ -110,6 +122,15 @@ class CrawUtil:
         soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
         text = ''
         for item in soup.select('#description'):
+            text = text + str(item.find_all(text=True))
+        return text
+
+    def mobile_get_text(self, URL):
+        context = ssl._create_unverified_context()
+        source_code_from_URL = urllib.request.urlopen(URL, context=context)
+        soup = BeautifulSoup(source_code_from_URL, 'html.parser', from_encoding='utf-8')
+        text = ''
+        for item in soup.select('div.contentBody > div > p'):
             text = text + str(item.find_all(text=True))
         return text
 
