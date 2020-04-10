@@ -88,13 +88,14 @@
 
 </template>
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
 <script>
 
 export default {
+
     name: 'postBody',
     methods: {
         submitB: function() {
+            var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
             //유효성 검사 후 전송
             if (this.titleText == '') {
                 alert('제목을 입력하세요.')
@@ -106,9 +107,16 @@ export default {
                 if(confirm("작성하시겠습니까?")){
                     this.$http.post('/api/users/toPosting', {
                         posting:{
-                            title: this.titleText,
+                            board_id: 'GETBOARD_ID',
+                            ca_id: this.checkedNames,
+                            userid: 'SESSIONID',
+                            name: 'SESSIONNAME',
                             content: this.contentArea,
-                            checkedNames: this.checkedNames
+                            title: this.titleText,                            
+                            write_date: submitdate,
+                            update_date: submitdate,
+                            hit: 0,
+                            views: 0,
                         }
                     }).then(res => { console.log(res.data)
                     }).catch(function(error) {
@@ -128,6 +136,8 @@ export default {
             checkedNames: [],
             titleText: '',
             contentArea: '',
+            
+
         }
     }
 }

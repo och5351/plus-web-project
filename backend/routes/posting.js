@@ -14,7 +14,26 @@ router.post('/toPosting', function (req, res) {
       'checkedNames': req.body.posting.checkedNames
     };
     console.log(temp);
+    
+    
     tfScript.tfFunc(); //Tensorflow 삽입 완료
+
+    
+
+
   });
   
+
+//수정
+router.post('/toPosting', function (req, res) {
+  const temp = {
+    'title': req.body.posting.title,
+    'content': req.body.posting.content,
+    'checkedNames': req.body.posting.checkedNames
+  };
+  console.log(temp);
+  tfScript.tfFunc(); //Tensorflow 삽입 완료
+});
+
+
 module.exports = router;

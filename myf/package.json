@@ -14,9 +14,11 @@
     "cache-loader": "^4.1.0",
     "core-js": "^3.6.4",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.1",
+    "vue-momentjs": "^0.1.2",
     "vue-router": "^3.1.6"
   },
   "devDependencies": {

@@ -5,6 +5,11 @@ Team.plus Project 'Plus-Market'
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
 </p>
 
+필독!!
+====
+ > ### 2020-04-10
+    * front에 package 2개가 추가 됐습니다.
+
 Update list
 =============
 테이블 스키마(MySQL)
