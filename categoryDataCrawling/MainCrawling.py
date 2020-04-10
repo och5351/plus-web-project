@@ -6,7 +6,8 @@ from datetime import datetime
 #from CrawlingCategory.TextCategory import TextCategory
 #from CrawlingCategory.TravelPhotoCategory import TravelPhotoCategory
 #from CrawlingCategory.MusicCategory import MusicCategory
-from CrawlingCategory.MobileCategory import MobileCategory
+#from CrawlingCategory.MobileCategory import MobileCategory
+from CrawlingCategory.PaintingCategory import PaintingCategory
 
 import time
 
@@ -17,9 +18,9 @@ def job_day():
     for i in range(1):
         rootPath = tempStr[:-16] # 현재 프로그램 경로
 
-        for j in range(1):
-            temp = j + 88
-            MobileCategory(pageNum=temp, rootPath=rootPath)
+        for j in range(500):
+            temp = j + 1
+            PaintingCategory(pageNum=temp, rootPath=rootPath)
 
         #GameCategory(count=135, rootPath=rootPath)
 
