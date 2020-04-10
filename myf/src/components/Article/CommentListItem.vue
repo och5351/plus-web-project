@@ -2,26 +2,23 @@
 <!--  댓글 -->
   <div id="commentListItem" class="comment-list-item">
     <b-container class="comment-box">
-      <div class="comment-author justify-content-center">{{name}}</div>
-      <div class="comment-context justify-content-center">{{commentObj.context}}</div>
-      <div class="comment-created justify-content-center">{{commentObj.created_at}}</div>
+      <div class="comment-author justify-content-center">{{commentObj.name}}</div>
+      <div class="comment-context justify-content-center">{{commentObj.contents}}</div>
+      <div class="comment-created justify-content-center">{{commentObj.write_date}}</div>
 <!--    대댓글 -->
-      <template v-if="subCommentList.length > 0">
-        <div class="comment-list-item-subcomment-list" :key="item.subcommentid" v-for="item in subCommentList">
+      <template v-if="subCommentList[0].length > 0">
+        <div class="comment-list-item-subcomment-list" :key="item" v-for="item in subCommentList[0]">
           <b-container class="subcomment-box">
-            <div class="subcomment-author justify-content-center"><i class="fas fa-sort-up" style="margin-right: 1em;"></i>{{item.user_name}}</div>
-            <div class="subcomment-context justify-content-center">{{item.context}}</div>
-            <div class="subcomment-created justify-content-center">{{item.created_at}}</div>
+            <div class="subcomment-author justify-content-center"><i class="fas fa-sort-up" style="margin-right: 1em;"></i>{{item.name}}</div>
+            <div class="subcomment-context justify-content-center">{{item.contents}}</div>
+            <div class="subcomment-created justify-content-center">{{item.write_date}}</div>
           </b-container>
         </div>
       </template>
     </b-container>
   </div>
 </template>
-this.$route.params.contentId}
 <script>
-  import data from "@/data"
-
   export default {
     name: "CommentListItem",
     props: {
@@ -32,21 +29,12 @@ this.$route.params.contentId}
     },
     data() {
       return {
-        commentList: [],
-        // returns secondary-comment's data of its primary-comment
-        name: data.User.filter(userItem => userItem.userid === this.commentObj.userid)[0].name,
-        subCommentList: data.SubComment.filter(item => item.commentid === this.commentObj.commentid).map(subCommentItem => ({
-          ...subCommentItem,
-          user_name: data.User.filter(item => item.userid === subCommentItem.userid)[0].name
-        })),
-        subCommentCreateToggle: false
+        subCommentList: [],
       }
     },
     mounted () {
-      // Temporary param '2' for now...
-      this.$http.get(`/api/comments/sub/2`)
-      .then((res) => {
-        this.commentList.push(res.data);
+      this.$http.get(`/api/comments/sub/${this.commentObj.cm_seq}`).then((res) => {
+        this.subCommentList.push(res.data);
       })
     }
   }

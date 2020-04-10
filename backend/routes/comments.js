@@ -10,14 +10,12 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-/* Separate implements before merging it
-   댓글 대댓글 분리 구현 후, 병합 예정 */
 // Get Comments, param should be an article's ID
 // 댓글 읽어오기 인자는 문서 고유 ID
 router.get('/get/:articleID', function(req, res, next) {
     var articleID = req.params.articleID;
 
-    conn.query('SELECT * FROM comment WHERE post_seq = ?', [articleID], function(err, row) {
+    conn.query('SELECT c.cm_seq, c.post_seq, u.name, c.contents, date_format(c.write_date, "%Y-%m-%d %W %H:%i:%S") as write_date FROM comment c, capdi_users u WHERE c.post_seq = ? AND c.userid = u.userid', [articleID], function(err, row) {
         res.send(row);
     });
 });
@@ -27,7 +25,7 @@ router.get('/get/:articleID', function(req, res, next) {
 router.get('/sub/:commentID', function(req, res, next) {
     var commentID = req.params.commentID;
 
-    conn.query('SELECT * FROM deep WHERE cm_seq = ?', [commentID], function(err, row) {
+    conn.query('SELECT u.name, d.contents, date_format(d.write_date, "%Y-%m-%d %W %H:%i:%S") as write_date FROM deep d, capdi_users u WHERE d.cm_seq = ? AND d.userid = u.userid ORDER BY d.deep_seq', [commentID], function(err, row) {
         res.send(row);
     })
 });
