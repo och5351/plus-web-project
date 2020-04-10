@@ -128,6 +128,9 @@ Moo Hyun's History
     * Can retrive comments and subcomments in API server / API 서버를 통해 댓글, 대댓글 값 반환 기능 추가
     * Modified mysql connection style / mysql 진태형 변경사항에 따름
 
+> ### 2020-04-10
+    * Can load articles from database / DB에서 게시글 불러오기 가능
+
 Chan Woong's History
 -----------
  > ### 2020-04-07

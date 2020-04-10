@@ -10,7 +10,7 @@
         </b-container>
         <!-- Body Parts 게시글의 내용 부분 -->
         <b-container>
-            <pre class="article-context justify-content-center">{{context}}</pre>
+            <pre class="article-contents justify-content-center">{{contents}}</pre>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
         <CommentList :contentId="contentId"></CommentList>
@@ -19,7 +19,6 @@
 
 <script>
     // @ is an alias to /src
-    import data from "@/data"
     import CommentList from "../components/Article/CommentList";
 
     export default {
@@ -27,14 +26,21 @@
         components: {CommentList},
         data() {
             const contentId = Number(this.$route.params.contentId);
-            const contentData = data.Content.filter(contentItem => contentItem.contentid === contentId)[0];
             return {
                 contentId: contentId,
-                title: contentData.title,
-                context: contentData.context,
-                user: data.User.filter(item => item.userid === contentData.userid)[0].name,
-                created: contentData.created_at
+                title: '',
+                contents: '',
+                user: '',
+                created: ''
             };
+        },
+        mounted () {
+            this.$http.get(`/api/article/get/${this.contentId}`).then((res) => {
+                this.title = res.data[0].title;
+                this.contents = res.data[0].contents;
+                this.user = res.data[0].name;
+                this.created = res.data[0].write_date;
+            })
         }
     }
 </script>
@@ -95,7 +101,7 @@ progress::-moz-progress-bar {
     flex-direction: row;
     float: right;
 }
-.article-context {
+.article-contents {
     clear: both;
     display: flex;
     flex-direction: row;
