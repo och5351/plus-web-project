@@ -3,14 +3,25 @@
         <progress value="0"></progress>
         <!-- Header Parts 게시글의 헤더 부분 -->
         <b-container>
-            <div class="article-id justify-content-center">{{contentId}}</div>
-            <div class="article-title justify-content-center"><h5>{{title}}</h5></div>
-            <div class="article-author">작성자 {{user}}</div>
-            <div class="article-created">작성일 {{created}}</div>
+            <div class="row">
+                <div class="article-id justify-content-center col-sm">{{contentId}}</div>
+                <div class="article-title justify-content-center col-xl"><h5>{{title}}</h5></div>
+                <div class="article-author justify-content-end col-sm">작성자 {{user}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-xl"></div>
+                <div class="article-created justify-content-end col-sm">작성일 {{created}}</div>
+            </div>
         </b-container>
         <!-- Body Parts 게시글의 내용 부분 -->
         <b-container>
-            <pre class="article-contents justify-content-center">{{contents}}</pre>
+            <div class="row">
+                <br><br>
+            </div>
+            <div class="row">
+                <pre class="article-contents justify-content-center col">{{contents}}</pre>
+            </div>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
         <CommentList :contentId="contentId"></CommentList>
@@ -75,36 +86,5 @@ progress::-webkit-progress-value {
 
 progress::-moz-progress-bar {
     background-color: orange;
-}
-/*  본문 스타일링  */
-.article-id {
-    display: flex;
-    flex-direction: row;
-    width: 5%;
-    float: left;
-}
-.article-title {
-    display: flex;
-    flex-direction: row;
-    float: left;
-    justify-content: space-between;
-    align-content: center;
-    width: 80%;
-}
-.article-author {
-    display: flex;
-    flex-direction: row;
-    float: right;
-}
-.article-created {
-    display: flex;
-    flex-direction: row;
-    float: right;
-}
-.article-contents {
-    clear: both;
-    display: flex;
-    flex-direction: row;
-    padding: 2rem;
 }
 </style>

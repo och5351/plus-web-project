@@ -1,6 +1,6 @@
 <template>
   <div class="comment-list">
-    <b-container class="justify-content-center"><hr><h5>댓글
+    <b-container><hr><h5>댓글
       <b-button id="btnOpenComments" v-on:click="toggleComments()" class="btn btn-sm btn-primary" title="댓글 닫기">
         <span id="span-btnOpenComments" class="fas fa-caret-up"></span>
       </b-button>
