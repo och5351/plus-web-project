@@ -83,6 +83,7 @@ Chan hae's History
         - mobile
  > ### 2020-04-10
       * Complete crawling
+      * Complete add queries and change the category in post
     
 
 Jin tae's History

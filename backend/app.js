@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
 var boardRouter = require('./routes/board');
+var posting = require('./routes/posting')
 var articleRouter = require('./routes/article');
 
 var app = express();
@@ -28,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/board', boardRouter);
+app.use('/api/post', posting);
 app.use('/api/article', articleRouter);
 /* 문제점 ?????
 app.use(function(req, res, next) {
