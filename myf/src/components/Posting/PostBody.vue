@@ -121,7 +121,7 @@ export default {
                             userid: 'och5351', //세션에서 받아와야 함
                             name: '오찬해', //세션에서 받아와야 함
                             contents: this.contentArea,
-                            title: this.titleText,                            
+                            title: this.titleText,
                             write_date: submitdate,
                             update_date: submitdate,
                         }
@@ -130,7 +130,7 @@ export default {
                         console.log('에러');
                         console.log(error);
                     });
-                    this.$router.push('/board')
+                    this.$router.push('/Board')
                 }
             }
         },
@@ -161,12 +161,12 @@ export default {
                         console.log('에러');
                         console.log(error);
                     });
-                    this.$router.push('/board')
+                    this.$router.push('/Board')
                 }
             }
         },
         cancleB() {
-            this.$router.push('/board')
+            this.$router.push('/Board')
         }
     },
     data() {
@@ -174,7 +174,7 @@ export default {
             checkedNames: [],
             titleText: '',
             contentArea: '',
-            
+
 
         }
     }

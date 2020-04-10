@@ -17,7 +17,7 @@ const routes = [
     }
   },
   {
-    path: '/board',
+    path: '/Board',
     name: 'Board',
     component: function () {
       return import('../views/Board.vue')
@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path: '/Posting',
+    path: '/Posting/:ca_id',
     name: 'Posting',
     component: function () {
       return import('../views/Posting.vue')

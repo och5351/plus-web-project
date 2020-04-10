@@ -35,7 +35,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <router-link to="/posting"><button type="button" class="float-right btn btn-success">글쓰기</button></router-link>
+                    <button type="button" class="float-right btn btn-success" @click="post(this.ca_id)">글쓰기</button>
                 </div>
 
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -100,46 +100,37 @@
 
         </div>
 
-        <div>
-            <div style="padding-left: 30%">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<!--        <paginated-list :list-array="pageArray" />-->
 
     </div>
 </template>
 
 <script>
+
+//import PaginatedList  from 'PaginatedList '
+
 export default {
     name: "List",
+    comments : {
+        //PaginatedList
+    },
     data : () => {
         return {
-            boardList: []
+            ca_id : 'free',
+            boardList: [],
+            pageArray: []
         }
     },
     methods : {
         detail : function (seq) {
             this.$router.push(`article/${seq}`)
+        },
+        post : (category_id) => {
+            this.$router.push(`Posting/${category_id}`)
         }
     },
-    mounted () {
-        this.$http.get(`api/board/free`)
+    created () {
+        this.$http.get('api/board/free')
         .then((res) => {
             this.boardList.push(res.data)
         }).catch(function(error) {
