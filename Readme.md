@@ -76,6 +76,8 @@ Chan hae's History
      * Create a posting.js in BackEnd()
       Complete crawling list
         - mobile
+ > ### 2020-04-10
+      * Complete crawling
     
 
 Jin tae's History
