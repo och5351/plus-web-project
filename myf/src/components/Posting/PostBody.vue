@@ -155,7 +155,7 @@ export default {
                     
                     this.$http.post('/api/post/updatePost', {
                         posting:{
-                            post_seq: 1, //작성 글에서 받아 와야 함
+                            post_seq: this.num, //작성 글에서 받아 와야 함
                             board_id: '1', //게시판에서 받아 와야 함
                             ca_id: '1', //this.checkedNames,
                             userid: 'och5351', //세션에서 받아와야 함
