@@ -84,13 +84,20 @@
             </div>
 
             <div id="buttonFunction">
-                <!-- if 구문 삽입 (작성인지 수정인지 확인 게시글에서 받아와야 함.)-->
-                <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
+                <!-- 삭제 버튼 구현 -->
+                <div v-if="this.att == 'post'">
+                    <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
                                             <i class="material-icons">done</i> 작성</button>
-                <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateB">
-                                            <i class="material-icons">done</i> 수정</button>
-                <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
-                                            <i class="material-icons">clear</i> 취소</button>
+                    <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
+                                        <i class="material-icons">clear</i> 취소</button>
+                </div>
+                <div v-else>
+                    <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateB">
+                                                <i class="material-icons">done</i> 수정</button>
+                    <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
+                                                <i class="material-icons">clear</i> 취소</button>
+                </div>
+               
             </div>
         </div> <br><br>
     </div>
@@ -100,8 +107,8 @@
 <script>
 
 export default {
-
-    name: 'postBody',
+    
+    name: 'postBody', 
     methods: {
         submitB: function() { //작성 버튼
             var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
@@ -130,13 +137,13 @@ export default {
                         console.log('에러');
                         console.log(error);
                     });
-                    this.$router.push('/Board')
+                    this.$router.push({name:'Board'})
                 }
             }
         },
-        updateB: function(){ //수정 버튼
-            var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
-            //유효성 검사 후 전송
+        updateB: function(){ //수정 버튼           
+            var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')            
+            //유효성 검사 후 전송          
             if (this.titleText == '') {
                 alert('제목을 입력하세요.')
             } else if (this.contentArea == '') {
@@ -145,9 +152,10 @@ export default {
                 alert('카테고리를 선택하세요.')
             } else {
                 if(confirm("작성하시겠습니까?")){
+                    
                     this.$http.post('/api/post/updatePost', {
                         posting:{
-                            post_seq: 9, //작성 글에서 받아 와야 함
+                            post_seq: 1, //작성 글에서 받아 와야 함
                             board_id: '1', //게시판에서 받아 와야 함
                             ca_id: '1', //this.checkedNames,
                             userid: 'och5351', //세션에서 받아와야 함
@@ -166,11 +174,15 @@ export default {
             }
         },
         cancleB() {
-            this.$router.push('/Board')
+            this.$router.push({name:'Board'})
         }
     },
     data() {
+        const num = this.$route.params.num;
+        const att = this.$route.params.att
         return{
+            num: num,
+            att: att,
             checkedNames: [],
             titleText: '',
             contentArea: '',
@@ -179,8 +191,7 @@ export default {
         }
     }
 }
-
 </script>
-<style scoped>
 
+<style scoped>
 </style>

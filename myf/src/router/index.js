@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path: '/Posting/:ca_id',
+    path: '/Posting/:num',
     name: 'Posting',
     component: function () {
       return import('../views/Posting.vue')

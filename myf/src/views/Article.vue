@@ -52,7 +52,8 @@
         },
         methods: {
             editPost: function() {
-                this.$router.push(`/Posting/${this.contentId}`);
+                //this.$router.push(`/Posting/${this.contentId}`);
+                this.$router.push({name: 'Posting', params:{num:this.contentId, att: 'edit'}});
             }
         },
         mounted () {
