@@ -12,10 +12,10 @@
     <div class="form-group" id="commentSection" >
       <br><hr>
       <div class="row">
-        <input type="text" class="form-control col-lg-10" name="txtComment" id="commentArticle" placeholder="댓글 내용" v-on:keyup.enter.passive="addComment()">
+        <input type="text" class="form-control col-9" name="txtComment" id="commentArticle" placeholder="댓글 내용" v-on:keyup.enter.passive="addComment()">
         <!-- Spacer...! -->
-        <div class="col-sm-1"></div>
-        <input type="submit" class="btn btn-primary col-sm" value="댓글 작성" v-on:click.passive="addComment()">
+        <div class="col-1"></div>
+        <input type="submit" class="btn btn-primary col-2" value="댓글 작성" v-on:click.passive="addComment()">
       </div>
     </div>
   </div>

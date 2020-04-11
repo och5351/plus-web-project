@@ -141,6 +141,10 @@ Moo Hyun's History
     * Can load comments, sub-comments from database / DB에서 댓글 불러오기 가능
     * Create comment input textbox / 댓글 달기 텍스트 입력 창 생성
 
+> ### 2020-04-11
+    * Add post editing button / 글 수정버튼 추가
+    * Align article page / 게시글 보기 페이지 정렬
+
 Chan Woong's History
 -----------
  > ### 2020-04-07
