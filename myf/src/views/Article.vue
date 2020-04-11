@@ -44,6 +44,7 @@
             const contentId = Number(this.$route.params.contentId);
             return {
                 contentId: contentId,
+                boardId: '',
                 title: '',
                 contents: '',
                 user: '',
@@ -52,12 +53,13 @@
         },
         methods: {
             editPost: function() {
-                //this.$router.push(`/Posting/${this.contentId}`);
-                this.$router.push({name: 'Posting', params:{num:this.contentId, att: 'edit'}});
+                this.$router.push({name: 'Posting', params:{num:this.contentId, att: 'edit', board_id:this.board_id}});
             }
         },
         mounted () {
             this.$http.get(`/api/article/get/${this.contentId}`).then((res) => {
+                this.boardId = res.data[0].board_id;
+                this.categoryId = res.data[0].ca_id;
                 this.title = res.data[0].title;
                 this.contents = res.data[0].contents;
                 this.user = res.data[0].name;
