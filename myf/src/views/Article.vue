@@ -3,15 +3,24 @@
         <progress value="0"></progress>
         <!-- Header Parts 게시글의 헤더 부분 -->
         <b-container>
-            <div class="row">
+            <b-container class="row">
                 <div class="article-id justify-content-center col-sm">{{contentId}}</div>
                 <div class="article-title justify-content-center col-xl"><h5>{{title}}</h5></div>
                 <div class="article-author justify-content-end col-sm">작성자 {{user}}</div>
-            </div>
+            </b-container>
             <div class="row">
                 <div class="col-sm"></div>
                 <div class="col-xl"></div>
                 <div class="article-created justify-content-end col-sm">작성일 {{created}}</div>
+            </div>
+            <div class="row">
+                <div class="col-8"></div>
+                <div class="col-2"></div>
+                <div class="col-2">
+                    <b-button class="btn-sm btn-primary" v-on:click="editPost()">
+                        <span class="fas fa-edit"> 수정</span>
+                    </b-button>
+                </div>
             </div>
         </b-container>
         <!-- Body Parts 게시글의 내용 부분 -->
@@ -44,6 +53,11 @@
                 user: '',
                 created: ''
             };
+        },
+        methods: {
+            editPost: function() {
+                this.$router.push(`/Posting/${this.contentId}`);
+            }
         },
         mounted () {
             this.$http.get(`/api/article/get/${this.contentId}`).then((res) => {
