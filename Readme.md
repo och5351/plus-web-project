@@ -143,10 +143,13 @@ Moo Hyun's History
 
 Chan Woong's History
 -----------
+ > ### 2020-04-11
+     * DB 스키마 3차 설계 및 수정 (capdi.sql UPDATE)
+     * 지속적 수정 및 개선 필요
  > ### 2020-04-07
      * DB 스키마 2차 설계 및 수정 (capdi.sql UPDATE)
      * 문제점 : comment(댓글) table과 deep(대댓글) table의 연관성 고려,
-     sessins table 삭제 여부 고려,
+     sessions table 삭제 여부 고려,
      전체적 칼럼 위치 or 인덱스 설정
  > ### 2020-04-02
      * DB 1차 구성 (게시판(BOARD),카테고리(CATEGORY),글(WRITING),댓글(COMMENT),대댓글(DEEP),회원(CAPDI_USERS) TABLES)

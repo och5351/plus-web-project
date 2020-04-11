@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
-  `board_id` varchar(15) NOT NULL,
+  `board_id` int(11) NOT NULL AUTO_INCREMENT,
   `board_name` varchar(10) NOT NULL,
   PRIMARY KEY (`board_id`),
   UNIQUE KEY `board_name` (`board_name`)
@@ -36,7 +36,6 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES ('1','공지사항'),('2','커뮤니티');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,10 +47,12 @@ DROP TABLE IF EXISTS `capdi_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `capdi_users` (
+  `user_idx` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(15) NOT NULL,
-  `name` varchar(5) NOT NULL,
+  `name` varchar(10) NOT NULL,
   `password` varchar(100) NOT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`user_idx`),
+  UNIQUE KEY `userid` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -61,7 +62,6 @@ CREATE TABLE `capdi_users` (
 
 LOCK TABLES `capdi_users` WRITE;
 /*!40000 ALTER TABLE `capdi_users` DISABLE KEYS */;
-INSERT INTO `capdi_users` VALUES ('asdfg12','김조옹옹민','$2a$10$Dgli4UdVye4Uzc7IIHf.2.jbWB7BTTA39bh5dN5gGKy3zCMAyDq72'),('asdfg123','김종민','$2a$10$wrPykvOM8e4hq0W6lvS1oupAjJ0kkARwtsrygctncpFpkstEXHmwi'),('Operator','운영자','$2a$10$JZAWEP/914sFhE4Jo1XTRO76Mqr6XiJfsWG6W1MhJFmuOdSZFy47K');
 /*!40000 ALTER TABLE `capdi_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `ca_id` varchar(40) NOT NULL,
+  `ca_id` int(11) NOT NULL AUTO_INCREMENT,
   `ca_name` varchar(10) NOT NULL,
   PRIMARY KEY (`ca_id`),
   UNIQUE KEY `ca_name` (`ca_name`)
@@ -86,7 +86,6 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES ('2','게임'),('5','그림'),('3','모바일'),('6','소설'),('7','여행/사진'),('1','음식'),('4','음악');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,18 +97,17 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comment` (
-  `cm_seq` int(11) NOT NULL AUTO_INCREMENT,
-  `post_seq` int(11) NOT NULL,
-  `deep_id` varchar(10) DEFAULT NULL,
-  `userid` varchar(15) DEFAULT NULL,
-  `name` varchar(9) DEFAULT NULL,
+  `cm_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `user_idx` int(11) NOT NULL,
   `contents` varchar(500) NOT NULL,
   `write_date` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
-  PRIMARY KEY (`cm_seq`),
-  UNIQUE KEY `deep_id` (`deep_id`),
-  KEY `post_seq` (`post_seq`),
-  CONSTRAINT `post_seq` FOREIGN KEY (`post_seq`) REFERENCES `post` (`post_seq`) ON DELETE CASCADE
+  `update_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`cm_id`),
+  KEY `post_comment_post_id` (`post_id`),
+  KEY `capdi_users_comment_user_idx` (`user_idx`),
+  CONSTRAINT `capdi_users_comment_user_idx` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
+  CONSTRAINT `post_comment_post_id` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,19 +128,12 @@ DROP TABLE IF EXISTS `deep`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `deep` (
-  `deep_seq` int(11) NOT NULL AUTO_INCREMENT,
-  `cm_seq` int(11) NOT NULL,
-  `deep_id` varchar(15) DEFAULT NULL,
-  `userid` varchar(15) DEFAULT NULL,
-  `name` varchar(9) DEFAULT NULL,
-  `contents` varchar(500) NOT NULL,
-  `write_date` datetime DEFAULT NULL,
-  `update_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`deep_seq`),
-  KEY `cm_seq` (`cm_seq`),
-  KEY `deep_id` (`deep_id`),
-  CONSTRAINT `cm_seq` FOREIGN KEY (`cm_seq`) REFERENCES `comment` (`cm_seq`) ON DELETE CASCADE,
-  CONSTRAINT `deep_id` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`deep_id`) ON DELETE CASCADE
+  `deep_id` int(11) NOT NULL,
+  `cm_id` int(11) NOT NULL,
+  KEY `comment_deep_deep_id` (`deep_id`),
+  KEY `comment_deep_cm_id` (`cm_id`),
+  CONSTRAINT `comment_deep_cm_id` FOREIGN KEY (`cm_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE,
+  CONSTRAINT `comment_deep_deep_id` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -163,24 +154,23 @@ DROP TABLE IF EXISTS `post`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `post` (
-  `post_seq` int(11) NOT NULL AUTO_INCREMENT,
-  `board_id` varchar(15) NOT NULL,
-  `ca_id` varchar(40) NOT NULL,
-  `userid` varchar(15) NOT NULL,
-  `name` varchar(9) DEFAULT NULL,
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `board_id` int(11) NOT NULL,
+  `ca_id` int(11) NOT NULL,
+  `user_idx` int(11) NOT NULL,
   `contents` varchar(1000) NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `title` varchar(25) NOT NULL,
   `write_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   `hit` int(11) DEFAULT NULL,
   `views` int(11) DEFAULT NULL,
-  PRIMARY KEY (`post_seq`),
-  KEY `board_id` (`board_id`),
-  KEY `ca_id` (`ca_id`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `board_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`) ON UPDATE CASCADE,
-  CONSTRAINT `ca_id` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`) ON UPDATE CASCADE,
-  CONSTRAINT `userid` FOREIGN KEY (`userid`) REFERENCES `capdi_users` (`userid`) ON UPDATE CASCADE
+  PRIMARY KEY (`post_id`),
+  KEY `board_post_board_id` (`board_id`),
+  KEY `category_post_ca_id` (`ca_id`),
+  KEY `capdi_users_post_user_idx` (`user_idx`),
+  CONSTRAINT `board_post_board_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`) ON DELETE CASCADE,
+  CONSTRAINT `capdi_users_post_user_idx` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
+  CONSTRAINT `category_post_ca_id` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -227,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-10 17:35:35
+-- Dump completed on 2020-04-11 16:49:58
