@@ -33,10 +33,11 @@
     methods: {
       toggleComments: function() {
         // Toggle Comments/ 댓글 토글
-        $("[id='commentSection']").toggle();
+        $("[id='commentSection']").slideToggle();
+        this.showComment = !this.showComment;
 
         // Changes btn's arrow direction/ 화살표 방향 변경
-        if ($("[id='commentSection']").is(":visible") == false) {
+        if (this.showComment) {
             $("#span-btnOpenComments").attr("class", "fa fa-caret-down");
             $("#btnOpenComments").attr("title", "댓글 열기");
         } else {
@@ -62,6 +63,7 @@
     data() {
       return {
         commentList: Object,
+        showComment: false
       }
     },
     components: {

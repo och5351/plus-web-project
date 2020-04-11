@@ -8,6 +8,7 @@
                 <div class="article-title justify-content-center col-7"><h5>{{title}}</h5></div>
                 <div class="article-author justify-content-end col-3">작성자 {{user}}</div>
             </div>
+            <!-- 세션값을 이용해 수정버튼을 나타내자 -->
             <div class="row">
                 <div class="col-2">
                     <b-button class="btn-sm btn-primary" v-on:click="editPost()">
@@ -19,9 +20,12 @@
             </div>
         </b-container>
         <!-- Body Parts 게시글의 내용 부분 -->
+        <div>
+            <hr>
+        </div>
         <b-container>
             <div class="row">
-                <pre class="article-contents justify-content-center col">{{contents}}</pre>
+                <pre class="article-contents justify-content-center text-left col">{{contents}}</pre>
             </div>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
