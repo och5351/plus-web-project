@@ -9,7 +9,7 @@
       </div>
 <!--    대댓글 -->
       <template v-if="String(subCommentList[0]).length > 0">
-        <div class="comment-list-item-subcomment-list" :key="item.cm_seq" v-for="item in subCommentList[0]">
+        <div class="comment-list-item-subcomment-list" :key="item.cm_id" v-for="item in subCommentList[0]">
           <b-container class="subcomment-box">
             <div class="row">
               <div class="subcomment-author justify-content-center col-3"><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{item.name}}</div>
@@ -37,7 +37,7 @@
       }
     },
     mounted () {
-      this.$http.get(`/api/comments/sub/${this.commentObj.cm_seq}`).then((res) => {
+      this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {
         this.subCommentList.push(res.data);
       })
     }

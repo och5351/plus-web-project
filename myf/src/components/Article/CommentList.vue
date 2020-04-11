@@ -6,7 +6,7 @@
       </b-button>
       &nbsp;
     </h5></b-container>
-    <div id="commentSection" :key="comment.cm_seq" v-for="comment in commentList">
+    <div id="commentSection" :key="comment.cm_id" v-for="comment in commentList">
       <CommentListItem :commentObj="comment"></CommentListItem>
     </div>
     <div class="form-group" id="commentSection" >

@@ -144,6 +144,7 @@ Moo Hyun's History
 > ### 2020-04-11
     * Add post editing button / 글 수정버튼 추가
     * Align article page / 게시글 보기 페이지 정렬
+    * Rewrite query with modified DB / 수정된 DB에 맞춰 쿼리 재작성
 
 Chan Woong's History
 -----------

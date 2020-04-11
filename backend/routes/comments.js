@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.get('/get/:articleID', function(req, res, next) {
     var articleID = req.params.articleID;
 
-    conn.query('SELECT c.cm_seq, c.post_seq, u.name, c.contents, date_format(c.write_date, "%Y-%m-%d %W %H:%i:%S") as write_date FROM comment c, capdi_users u WHERE c.post_seq = ? AND c.userid = u.userid', [articleID], function(err, row) {
+    conn.query('SELECT DISTINCT c.cm_id, c.post_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date FROM comment c, capdi_users u WHERE c.post_id = ? AND c.user_idx = u.user_idx AND c.cm_id NOT IN (SELECT deep_id FROM deep)', [articleID], function(err, row) {
         res.send(row);
     });
 });
@@ -25,7 +25,7 @@ router.get('/get/:articleID', function(req, res, next) {
 router.get('/sub/:commentID', function(req, res, next) {
     var commentID = req.params.commentID;
 
-    conn.query('SELECT u.name, d.contents, date_format(d.write_date, "%Y-%m-%d %W %H:%i:%S") as write_date FROM deep d, capdi_users u WHERE d.cm_seq = ? AND d.userid = u.userid ORDER BY d.deep_seq', [commentID], function(err, row) {
+    conn.query('SELECT c.cm_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date FROM comment c, capdi_users u, deep d WHERE d.cm_id=? AND c.cm_id = d.deep_id AND c.user_idx = u.user_idx', [commentID], function(err, row) {
         res.send(row);
     })
 });
