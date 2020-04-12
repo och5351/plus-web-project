@@ -8,8 +8,8 @@ Team.plus Project 'Plus-Market'
 <br><br><br>
 <h1 align="center">
 Envoirment
-
-<br>
+</h1>
+<br><br><br>
 
  ## Front End
  ### Vue.js(CLI)
@@ -22,9 +22,11 @@ Envoirment
 
  ## Server
  ### Amazon web services
+<br><br><br>
 <h1 align="center">
 Update list
-</h1><br><br>
+</h1><br><br><br>
+
 테이블 스키마(MySQL)
 -------
 
@@ -57,9 +59,10 @@ Back End 구동 방법
      In dos
      $/backend> npm install
 
+<br><br><br>
 <h1 align="center">
 History
-</h1><br><br>
+</h1><br><br><br>
 
 Chan hae's History
 -----------
