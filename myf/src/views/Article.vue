@@ -53,7 +53,7 @@
         },
         methods: {
             editPost: function() {
-                this.$router.push({name: 'Posting', query:{num:this.contentId, att:'edit', board_id:this.board_id}});
+                this.$router.push({name: 'Posting', query:{contentId:this.contentId, att:'edit', board_id:this.board_id}});
             }
         },
         mounted () {

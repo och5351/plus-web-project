@@ -178,7 +178,10 @@ export default {
             }
         },
         cancleB() {
-            this.$router.push()
+            if(this.att == 'post')
+                this.$router.push('/Borad')
+            else
+                this.$router.push('/article/')
         }
     },
     data() {
