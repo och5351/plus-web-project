@@ -3,7 +3,7 @@ Team.plus Project 'Plus-Market'
 </h1>
 <p align="center">with Vue</p>
 <p align="right">Member</p>
-<p align="right">오찬해, 류진태</p>
+<p align="right" style="font-size:5px">오찬해, 류진태</p>
 <p align="right">조무현, 김찬웅</p>
 <p align="right">김우진, 신진호</p>
 <p align="right">오지수, 박상훈</p>
