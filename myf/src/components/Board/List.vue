@@ -35,7 +35,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <button type="button" class="float-right btn btn-success" @click="post(this.ca_id)">글쓰기</button>
+                    <button type="button" class="float-right btn btn-success" @click="post()">글쓰기</button>
                 </div>
 
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -110,7 +110,7 @@
 //import PaginatedList  from 'PaginatedList '
 
 export default {
-    name: "List",
+    name : "List",
     comments : {
         //PaginatedList
     },
@@ -125,12 +125,15 @@ export default {
         detail : function (seq) {
             this.$router.push(`article/${seq}`)
         },
-        post : (category_id) => {
-            this.$router.push(`Posting/${category_id}`)
+        post : function () {
+            this.$router.push({
+                name : 'Posting',
+                params : {board_id: 'board', category : this.ca_id, att: 'post'}
+            })
         }
     },
     created () {
-        this.$http.get('api/board/free')
+        this.$http.get(`api/board/${this.ca_id}`)
         .then((res) => {
             this.boardList.push(res.data)
         }).catch(function(error) {
