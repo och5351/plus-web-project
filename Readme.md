@@ -1,7 +1,8 @@
+<h1 align="center">
 Team.plus Project 'Plus-Market' 
-===
+</h1>
 <p align="center">with Vue</p>
-<br>
+<br><br>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
 </p>
@@ -12,16 +13,16 @@ Envoirment
 <br><br><br>
 
  ## Front End
- ### Vue.js(CLI)
- ### BootStrap(Vue)
+    * Vue.js(CLI)
+    * BootStrap(Vue)
 <br>
 
  ## Back End
- ### Express.js
+    * Express.js
 <br>
 
  ## Server
- ### Amazon web services
+    * Amazon web services
 <br><br><br>
 <h1 align="center">
 Update list
