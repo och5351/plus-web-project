@@ -122,10 +122,10 @@ export default {
         }
     },
     methods : {
-        detail : function (seq) {
+        detail (seq) {
             this.$router.push(`article/${seq}`)
         },
-        post : function () {
+        post () {
             this.$router.push({
                 name : 'Posting',
                 params : {board_id: 'board', category : this.ca_id, att: 'post'}
