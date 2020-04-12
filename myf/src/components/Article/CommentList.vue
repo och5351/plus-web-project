@@ -57,7 +57,18 @@
         // Clear input text / 입력창 지우기
         $("input#commentArticle").val('');
         $("input#commentArticle").blur();
-        console.log(contentId, comment);
+
+        // Before send post data, must to check sessions / POST 전달 이전에 반드시 세션체크 할 것
+        this.$http.post('/api/comments/add', {
+          data: {
+            post_id: contentId,
+            user_idx: 1,  // Get attribute from session / 세션에서 받아오기
+            contents: comment
+          }
+        })
+
+        // Reloading a page, have to find more smoother way to reload / 페이지 리로딩, 좀 더 부드러운 방법으로 컴포넌트를 다시 불러올 것
+        location.reload();
       }
     },
     data() {

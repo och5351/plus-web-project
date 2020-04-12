@@ -145,6 +145,8 @@ Moo Hyun's History
     * Add post editing button / 글 수정버튼 추가
     * Align article page / 게시글 보기 페이지 정렬
     * Rewrite query with modified DB / 수정된 DB에 맞춰 쿼리 재작성
+> ### 2020-04-12
+    * Fully functional add comment button / 댓글 달기 버튼 기능 추가
 
 Chan Woong's History
 -----------

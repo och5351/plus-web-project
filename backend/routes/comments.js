@@ -32,7 +32,19 @@ router.get('/sub/:commentID', function(req, res, next) {
 
 // Add Comments 댓글 작성
 router.post('/add', function(req, res, next) {
-    
+    const data = {
+        'post_id': req.body.data.post_id,
+        'user_idx': req.body.data.user_idx,
+        'contents': req.body.data.contents
+    }
+
+    conn.query('INSERT INTO comment(post_id, user_idx, contents, write_date) VALUES(?, ?, ?, NOW())', [data.post_id, data.user_idx, data.contents], function(err, res) {
+        if (err) {
+            console.log("An error occured...!");
+        } else {
+            console.log("Succeed");
+        }
+    })
 });
 
 module.exports = router;
