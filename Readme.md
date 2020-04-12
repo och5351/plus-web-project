@@ -1,22 +1,30 @@
 Team.plus Project 'Plus-Market' 
 ===
-
+<p align="center">with Vue</p>
+<br>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
 </p>
-
+<br><br><br>
+<h1 align="center">
 Envoirment
-===
- # Front End
+
+<br>
+
+ ## Front End
  ### Vue.js(CLI)
  ### BootStrap(Vue)
- # Back End
- ### Express.js
- # Server
- ### Amazon web services
+<br>
 
+ ## Back End
+ ### Express.js
+<br>
+
+ ## Server
+ ### Amazon web services
+<h1 align="center">
 Update list
-=============
+</h1><br><br>
 테이블 스키마(MySQL)
 -------
 
@@ -48,6 +56,10 @@ Back End 구동 방법
  > ### 2020-04-04
      In dos
      $/backend> npm install
+
+<h1 align="center">
+History
+</h1><br><br>
 
 Chan hae's History
 -----------
