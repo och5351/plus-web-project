@@ -37,7 +37,8 @@ router.post('/Posting', function (req, res) {
   const temp = {
     'board_id': req.body.posting.board_id,
     'ca_id': req.body.posting.ca_id,
-    'userid': req.body.posting.userid,
+    'user_id': req.body.posting.user_idx,
+    'user_idx': req.body.posting.user_idx,
     'name': req.body.posting.name,
     'contents': req.body.posting.contents,
     'title': req.body.posting.title,
@@ -46,7 +47,7 @@ router.post('/Posting', function (req, res) {
   };
   
   conn.query('INSERT INTO post(board_id, ca_id, user_idx, contents, title, write_date, update_date, hit, views) VALUES(?,?,?,?,?,?,?,?,?)', 
-  [temp.board_id, temp.ca_id, temp.userid, temp.contents, temp.title, temp.write_date, 
+  [temp.board_id, temp.ca_id, temp.user_idx, temp.contents, temp.title, temp.write_date, 
     temp.update_date, 0, 0], function (err, row) {
     //res.send(row)
     if(err){
@@ -71,8 +72,8 @@ router.post('/updatePost', function (req, res) {
     'update_date': req.body.posting.update_date,
   };
   
-  conn.query('UPDATE post SET board_id = ?, ca_id = ?, userid = ?, name = ?, contents = ?, title = ?, update_date = ? WHERE post_seq = ?', 
-  [temp.board_id, temp.ca_id, temp.userid, temp.name, temp.contents, temp.title, 
+  conn.query('UPDATE post SET board_id = ?, ca_id = ?, user_idx = ?, name = ?, contents = ?, title = ?, update_date = ? WHERE post_seq = ?', 
+  [temp.board_id, temp.ca_id, temp.user_idx, temp.name, temp.contents, temp.title, 
     temp.update_date, temp.post_seq], function (err, row) {
     //res.send(row)
     if(err){

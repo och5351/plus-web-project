@@ -33,7 +33,7 @@
                     </div>
                     <div id="checkFunction">
 
-                        <label class="col-form-label-lg">취미</label>
+                        <label class="col-form-label-lg">HashTag</label>
                         <div class="row" style="width:110%">
                             <div class="col-xs- col-sm-6 col-md-1">
                                 <input class="form-check-input" type="checkbox"  id="Food" v-model="checkedNames" value="음식"/>음식
@@ -129,13 +129,15 @@ export default {
                     this.$http.post('/api/post/Posting', {
                         posting:{
                             board_id: this.board_id, //게시판에서 받아 와야 함
-                            ca_id: this.category,//this.checkedNames,
-                            userid: 'och5351', //세션에서 받아와야 함
+                            ca_id: this.category,
+                            user_idx: '1', //세션에서 받아와야 함
+                            user_id: 'och5351', //세션에서 받아와야 함
                             name: '오찬해', //세션에서 받아와야 함
                             contents: this.contentArea,
                             title: this.titleText,
                             write_date: submitdate,
                             update_date: submitdate,
+                            //hashTag: hashTagDistributor(this.checkedNames),
                         }
                     }).then(res => { console.log(res.data)
                     }).catch(function(error) {
@@ -148,7 +150,7 @@ export default {
         },
         updateB: function(){ //수정 버튼
             var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
-            //유효성 검사 후 전송
+            //유효성 검사 후 전송            
             if (this.titleText == '') {
                 alert('제목을 입력하세요.')
             } else if (this.contentArea == '') {
@@ -162,7 +164,8 @@ export default {
                             post_seq: this.num, //작성 글에서 받아 와야 함
                             board_id: this.board_id, //게시판에서 받아 와야 함
                             ca_id: '1', //this.checkedNames,
-                            userid: 'och5351', //세션에서 받아와야 함
+                            user_id: 'och5351', //세션에서 받아와야 함
+                            user_idx: '1', //세션에서 받아와야 함
                             name: '오찬해', //세션에서 받아와야 함
                             contents: this.contentArea,
                             title: this.titleText,
@@ -173,22 +176,53 @@ export default {
                         console.log('에러');
                         console.log(error);
                     });
-                    this.$router.push('/Board')
+                    this.$router.push({name:'Board'})
                 }
             }
         },
-        cancleB() {
+        cancleB() { //취소 버튼
             if(this.att == 'post'){                
                 if(confirm("작성을 취속하시겠습니까?\n작업하시던 내용은 사라집니다.")){
-                    this.$router.push('/board')
+                    this.$router.push({name:'Board'})
                 }
             }
             else{
                  if(confirm("작성을 취속하시겠습니까?\n작업하시던 내용은 사라집니다.")){
                     this.$router.push(`/article/${this.contentId}`)
                 }
+            }                
+        },
+        hashTagDistributor(val){ // checkNames to index
+            if(val == '음식'){
+                return 1
+            }else if(val == '게임'){
+                return 2
+            }else if(val == '모바일'){
+                return 3
+            }else if(val == '음악'){
+                return 4
+            }else if(val == '그림'){
+                return 5
+            }else if(val == '소설'){
+                return 6
+            }else{
+                return 7
             }
-                
+        },
+        hashTagAdder(checkArr){ //hash 태그 index 배열로 변환
+            var hashTag = []
+            if(checkArr != null){
+                for(var i = 0; i < checkArr.length; i++){
+                    if(i==0){
+                        hashTag.push(this.hashTagDistributor(checkArr[i]))                   
+                    }else{
+                        hashTag.push(this.hashTagDistributor(checkArr[i]))
+                    }
+                }
+            }
+            hashTag.sort()
+            hashTag = hashTag.map(String)
+            return hashTag
         }
     },
     data() {
@@ -203,7 +237,7 @@ export default {
             category : category,
             checkedNames: [],
             titleText: '',
-            contentArea: ''
+            contentArea: '',
         }
     }
 }
