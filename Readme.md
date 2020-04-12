@@ -2,6 +2,10 @@
 Team.plus Project 'Plus-Market' 
 </h1>
 <p align="center">with Vue</p>
+<p align="right">오찬해, 류진태</p>
+<p align="right">조무현, 김찬웅</p>
+<p align="right">김우진, 신진호</p>
+<p align="right">오지수, 박상훈</p>
 <br><br>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
