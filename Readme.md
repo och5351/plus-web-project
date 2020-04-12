@@ -5,10 +5,15 @@ Team.plus Project 'Plus-Market'
 <img src="https://user-images.githubusercontent.com/45858414/78417423-d75d8f80-766c-11ea-938c-4c6ca8f2034e.png" width="30%">
 </p>
 
-필독!!
-====
- > ### 2020-04-10
-    * front에 package 2개가 추가 됐습니다.
+Envoirment
+===
+ # Front End
+ ### Vue.js(CLI)
+ ### BootStrap(Vue)
+ # Back End
+ ### Express.js
+ # Server
+ ### Amazon web services
 
 Update list
 =============
@@ -69,22 +74,15 @@ Chan hae's History
     * Project Logo Change
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
- > ### 2020-04-07
+ > ### 2020-04-07 ~ 2020-04-10
     * Create a crawler floder
-     Complete crawling list
-       - Game
-       - Food
-       - Text
-       - Travel/Photo
-       - Music
- > ### 2020-04-09
-     * Create a posting.js in BackEnd()
-      Complete crawling list
-        - mobile
- > ### 2020-04-10
-      * Complete crawling
-      * Complete add queries and change the category in post
-    
+    * Complete crawling(Game, Food, Text, Travel/Photo, Music, Mobile, Paint)   
+    * Create a posting.js in BackEnd        
+    * Complete crawling
+    * Complete add queries and change the category in post
+ > ### 2020-04-12
+    * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
+    * Made a function hashTagDistributor(It's need the 'hashTag' attribute in capdi's post table).
 
 Jin tae's History
 -----------

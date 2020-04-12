@@ -6,29 +6,37 @@ var tfScript = require('./../lib/TFScripts/tfFunction')
 var dbConObj = require('../lib/db_config');
 var conn = dbConObj.init();
 
-//세션확인
-router.get('/Posting/sessCheck', function (req, res) {
-  const temp = {
-    'board_id': req.body.posting.board_id,
-    'ca_id': req.body.posting.ca_id,
-    'userid': req.body.posting.userid,
-    'name': req.body.posting.name,
-    'contents': req.body.posting.contents,
-    'title': req.body.posting.title,
-    'write_date': req.body.posting.write_date,
-    'update_date': req.body.posting.update_date,
-  };
+//세션 확인
+router.get('/Posting/sessCheck/:user_id', function (req, res) {
   
-  conn.query('', 
-  [temp.board_id, temp.ca_id, temp.userid, temp.contents, temp.title, temp.write_date, 
-    temp.update_date, 0, 0], function (err, row) {
-    //res.send(row)
+  var user_id = req.params.user_id    
+  console.log(user_id)
+  
+  conn.query('SELECT count(*) FROM capdi_users WHERE userid = ?', 
+  [user_id], function (err, row) {    
     if(err){
       console.log(err)
+      res.send(err)
     }else
-      console.log('Insert complete')
+      res.send(row)
   });
-  //tfScript.tfFunc(); //Tensorflow 삽입 완료
+});
+
+//수정 2차 세션 확인
+router.get('/Posting/sessCheckEdit?/:user_idx/:user_id/:content_id', function (req, res) {
+  
+  var user_idx = req.params.user_idx
+  var user_id = req.params.user_id
+  var post_id = req.params.content_id  
+  
+  conn.query('SELECT count(*), title, contents FROM post WHERE post_id=? AND user_idx=?', 
+  [user_idx, post_id], function (err, row) {    
+    if(err){
+      console.log(err)
+      res.send(err)
+    }else
+      res.send(row)
+  });
 });
 
 

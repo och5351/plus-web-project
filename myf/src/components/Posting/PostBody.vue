@@ -84,7 +84,7 @@
             </div>
 
             <div id="buttonFunction">
-                <!-- 삭제 버튼 구현 -->
+                <!-- 삭제 버튼 구현 요망-->
                 <div v-if="this.att == 'post'">
                     <button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
                                             <i class="material-icons">done</i> 작성</button>
@@ -109,10 +109,34 @@ window.onbeforeunload = function() {
     return '';
 };
 export default {
-
     name: 'postBody',
-    created(){
-        this.$route.params
+    mounted(){
+        var mySessionIDX = '1'
+        var mySessionID = 'och5351' // session 만들었을 시 삭제
+        if(this.att == 'edit'){ //edit 쿼리 조회
+            this.$http.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`).then((res) => {//session에 정해졌을 시 하나로    
+                if(res.data[0]['count(*)'] != '0'){ // session OK!
+                    var dic = {} //dictionary 반응속도 최적화
+                    dic = res.data[0]  
+                    this.titleText = dic['title']
+                    this.contentArea = dic['contents']
+                }else{
+                    alert('세션 에러!! \n다시 로그인 해주세요.')
+                    this.$router.replace('/login')
+                }
+            }).catch(function(error) {
+                console.log(`Error : ${error}`)
+            });
+        }else{//posting 쿼리 조회
+            this.$http.get(`/Posting/sessCheck/${mySessionID}`).then((res) => { 
+                if(res.data[0]['count(*)'] == '0'){ // session OK!                                
+                    alert('세션 에러!! \n다시 로그인 해주세요.')
+                    this.$router.replace('/login')
+                }
+            }).catch(function(error) {
+                console.log(`Error : ${error}`)
+            });
+        }
     },
     methods: {
         submitB: function() { //작성 버튼
