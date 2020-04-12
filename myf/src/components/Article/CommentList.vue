@@ -10,7 +10,7 @@
       <CommentListItem :commentObj="comment"></CommentListItem>
     </div>
     <div class="form-group" id="commentSection" >
-      <br><hr>
+      <br>
       <div class="row">
         <input type="text" class="form-control col-9" name="txtComment" id="commentArticle" placeholder="댓글 내용" v-on:keyup.enter.passive="addComment()">
         <!-- Spacer...! -->

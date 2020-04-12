@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
 router.get('/get/:articleID', function(req, res, next) {
     var articleID = req.params.articleID;
 
-    conn.query('SELECT DISTINCT c.cm_id, c.post_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date FROM comment c, capdi_users u WHERE c.post_id = ? AND c.user_idx = u.user_idx AND c.cm_id NOT IN (SELECT deep_id FROM deep)', [articleID], function(err, row) {
+    conn.query('SELECT DISTINCT c.cm_id, c.post_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
+    FROM comment c, capdi_users u WHERE c.post_id = ? AND c.user_idx = u.user_idx AND c.cm_id NOT IN (SELECT deep_id FROM deep)', [articleID], function(err, row) {
         res.send(row);
     });
 });
@@ -25,7 +26,8 @@ router.get('/get/:articleID', function(req, res, next) {
 router.get('/sub/:commentID', function(req, res, next) {
     var commentID = req.params.commentID;
 
-    conn.query('SELECT c.cm_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date FROM comment c, capdi_users u, deep d WHERE d.cm_id=? AND c.cm_id = d.deep_id AND c.user_idx = u.user_idx', [commentID], function(err, row) {
+    conn.query('SELECT c.cm_id, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
+    FROM comment c, capdi_users u, deep d WHERE d.cm_id=? AND c.cm_id = d.deep_id AND c.user_idx = u.user_idx', [commentID], function(err, row) {
         res.send(row);
     })
 });
@@ -45,6 +47,32 @@ router.post('/add', function(req, res, next) {
             res.send('Succeed');
         }
     })
+});
+
+// Add Comments 댓글 작성
+router.post('/addSub', function (req, res, next) {
+    const data = {
+        'post_id': req.body.data.post_id,
+        'cm_id': req.body.data.cm_id,
+        'user_idx': req.body.data.user_idx,
+        'contents': req.body.data.contents
+    }
+
+    sql1 = "INSERT INTO comment(post_id, user_idx, contents, write_date) VALUES(?, ?, ?, NOW());";
+    sql2 = "INSERT INTO deep(deep_id, cm_id) VALUES((SELECT MAX(cm_id) FROM comment), ?);";
+
+    try {
+        conn.beginTransaction();
+        conn.query(sql1, [data.post_id, data.user_idx, data.contents])
+        conn.query(sql2, [data.cm_id]);
+        conn.commit();
+    } catch(err) {
+        if (err != null) {
+            res.send(err);
+        } else {
+            res.send('Succeed');
+        }
+    }
 });
 
 module.exports = router;
