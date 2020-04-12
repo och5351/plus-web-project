@@ -19,7 +19,7 @@ router.post('/Posting', function (req, res) {
     'update_date': req.body.posting.update_date,
   };
   
-  conn.query('INSERT INTO post(board_id, ca_id, userid, name, contents, title, write_date, update_date, hit, views) VALUES(?,?,?,?,?,?,?,?,?,?)', 
+  conn.query('INSERT INTO post(board_id, ca_id, user_idx, contents, title, write_date, update_date, hit, views) VALUES(?,?,?,?,?,?,?,?,?,?)', 
   [temp.board_id, temp.ca_id, temp.userid, temp.name, temp.contents, temp.title, temp.write_date, 
     temp.update_date, 0, 0], function (err, row) {
     //res.send(row)

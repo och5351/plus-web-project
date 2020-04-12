@@ -105,10 +105,15 @@
 </template>
 
 <script>
-
+window.onbeforeunload = function() {
+    return '';
+};
 export default {
 
     name: 'postBody',
+    created(){
+        this.$route.params
+    },
     methods: {
         submitB: function() { //작성 버튼
             var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
@@ -152,11 +157,10 @@ export default {
                 alert('카테고리를 선택하세요.')
             } else {
                 if(confirm("작성하시겠습니까?")){
-
                     this.$http.post('/api/post/updatePost', {
                         posting:{
                             post_seq: this.num, //작성 글에서 받아 와야 함
-                            board_id: '1', //게시판에서 받아 와야 함
+                            board_id: this.board_id, //게시판에서 받아 와야 함
                             ca_id: '1', //this.checkedNames,
                             userid: 'och5351', //세션에서 받아와야 함
                             name: '오찬해', //세션에서 받아와야 함
@@ -174,14 +178,14 @@ export default {
             }
         },
         cancleB() {
-            this.$router.push({name:'Board'})
+            this.$router.push()
         }
     },
     data() {
-        const num = this.$route.params.num;
-        const att = this.$route.params.att;
-        const board_id = this.$route.params.board_id;
-        const category = this.$route.params.category;
+        const num = this.$route.query.num;
+        const att = this.$route.query.att;
+        const board_id = this.$route.query.board_id;
+        const category = this.$route.query.category;
         return{
             num: num,
             att: att,

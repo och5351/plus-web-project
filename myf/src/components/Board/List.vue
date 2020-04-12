@@ -128,7 +128,7 @@ export default {
         post () {
             this.$router.push({
                 name : 'Posting',
-                params : {board_id: 'board', category : this.ca_id, att: 'post'}
+                query : {board_id: 1, category : 1, att: 'post'}
             })
         }
     },
