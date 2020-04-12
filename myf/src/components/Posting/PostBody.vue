@@ -178,19 +178,26 @@ export default {
             }
         },
         cancleB() {
-            if(this.att == 'post')
-                this.$router.push('/Borad')
-            else
-                this.$router.push('/article/')
+            if(this.att == 'post'){                
+                if(confirm("작성을 취속하시겠습니까?\n작업하시던 내용은 사라집니다.")){
+                    this.$router.push('/board')
+                }
+            }
+            else{
+                 if(confirm("작성을 취속하시겠습니까?\n작업하시던 내용은 사라집니다.")){
+                    this.$router.push(`/article/${this.contentId}`)
+                }
+            }
+                
         }
     },
     data() {
-        const num = this.$route.query.num;
+        const contentId = this.$route.query.contentId;
         const att = this.$route.query.att;
         const board_id = this.$route.query.board_id;
         const category = this.$route.query.category;
         return{
-            num: num,
+            contentId: contentId,
             att: att,
             board_id : board_id,
             category : category,
