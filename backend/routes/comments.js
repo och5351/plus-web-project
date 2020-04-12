@@ -38,11 +38,11 @@ router.post('/add', function(req, res, next) {
         'contents': req.body.data.contents
     }
 
-    conn.query('INSERT INTO comment(post_id, user_idx, contents, write_date) VALUES(?, ?, ?, NOW())', [data.post_id, data.user_idx, data.contents], function(err, res) {
-        if (err) {
-            console.log("An error occured...!");
+    conn.query('INSERT INTO comment(post_id, user_idx, contents, write_date) VALUES(?, ?, ?, NOW())', [data.post_id, data.user_idx, data.contents], function(err, row) {
+        if (err != null) {
+            res.send('Error');
         } else {
-            console.log("Succeed");
+            res.send('Succeed');
         }
     })
 });

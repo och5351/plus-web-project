@@ -173,6 +173,9 @@ Moo Hyun's History
 > ### 2020-04-12
     * Fully functional add comment button / 댓글 달기 버튼 기능 추가
 
+> ### 2020-04-13
+    * Change reloading system in comment / 댓글 재조회 기능 변경
+
 Chan Woong's History
 -----------
  > ### 2020-04-11

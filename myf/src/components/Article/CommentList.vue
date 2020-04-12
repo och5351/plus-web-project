@@ -67,21 +67,23 @@
           }
         })
 
-        // Reloading a page, have to find more smoother way to reload / 페이지 리로딩, 좀 더 부드러운 방법으로 컴포넌트를 다시 불러올 것
-        location.reload();
+        // Reload comments / 댓글 다시 불러오기
+        this.$http.get(`/api/comments/get/${this.contentId}`).then((res) => {
+          this.commentList = res.data;
+        })
       }
     },
     data() {
       return {
         commentList: Object,
-        showComment: false
+        showComment: false,
+        resetKey: 0
       }
     },
     components: {
       CommentListItem
     },
     mounted () {
-    // Temporary param '2' for now...
     this.$http.get(`/api/comments/get/${this.contentId}`).then((res) => {
       this.commentList = res.data;
     })
