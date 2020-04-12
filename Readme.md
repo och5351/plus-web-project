@@ -120,6 +120,12 @@ Jin tae's History
     var dbConObj = require('../lib/db_config');
     var conn = dbConObj.init();
     conn.query('')
+    
+> ### 2020-04-12
+    
+    * posting router fix.
+    * board post button error fix.
+    * method => 함수 function 변경
 
 Moo Hyun's History
 -----------

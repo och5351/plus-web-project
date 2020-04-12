@@ -36,7 +36,7 @@
                         <label class="col-form-label-lg">취미</label>
                         <div class="row" style="width:110%">
                             <div class="col-xs- col-sm-6 col-md-1">
-                                <input class="form-check-input" type="checkbox"  id="Game" v-model="checkedNames" value="음식"/>음식
+                                <input class="form-check-input" type="checkbox"  id="Food" v-model="checkedNames" value="음식"/>음식
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
@@ -97,7 +97,7 @@
                     <button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
                                                 <i class="material-icons">clear</i> 취소</button>
                 </div>
-               
+
             </div>
         </div> <br><br>
     </div>
@@ -107,8 +107,8 @@
 <script>
 
 export default {
-    
-    name: 'postBody', 
+
+    name: 'postBody',
     methods: {
         submitB: function() { //작성 버튼
             var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
@@ -123,8 +123,8 @@ export default {
                 if(confirm("작성하시겠습니까?")){
                     this.$http.post('/api/post/Posting', {
                         posting:{
-                            board_id: '1', //게시판에서 받아 와야 함
-                            ca_id: '1',//this.checkedNames,
+                            board_id: this.board_id, //게시판에서 받아 와야 함
+                            ca_id: this.category,//this.checkedNames,
                             userid: 'och5351', //세션에서 받아와야 함
                             name: '오찬해', //세션에서 받아와야 함
                             contents: this.contentArea,
@@ -141,9 +141,9 @@ export default {
                 }
             }
         },
-        updateB: function(){ //수정 버튼           
-            var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')            
-            //유효성 검사 후 전송          
+        updateB: function(){ //수정 버튼
+            var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
+            //유효성 검사 후 전송
             if (this.titleText == '') {
                 alert('제목을 입력하세요.')
             } else if (this.contentArea == '') {
@@ -152,7 +152,7 @@ export default {
                 alert('카테고리를 선택하세요.')
             } else {
                 if(confirm("작성하시겠습니까?")){
-                    
+
                     this.$http.post('/api/post/updatePost', {
                         posting:{
                             post_seq: this.num, //작성 글에서 받아 와야 함
@@ -179,15 +179,17 @@ export default {
     },
     data() {
         const num = this.$route.params.num;
-        const att = this.$route.params.att
+        const att = this.$route.params.att;
+        const board_id = this.$route.params.board_id;
+        const category = this.$route.params.category;
         return{
             num: num,
             att: att,
+            board_id : board_id,
+            category : category,
             checkedNames: [],
             titleText: '',
-            contentArea: '',
-
-
+            contentArea: ''
         }
     }
 }
