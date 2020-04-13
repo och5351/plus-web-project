@@ -27,10 +27,17 @@ export default {
       })
       .then((res) => {
         if (res.data.success == true) {
+          // Session setting / 세션 지정
+          this.$session.set('user_idx', res.data.user_idx);
+          this.$session.set('userid', res.data.userid);
+
           alert(res.data.message);
           this.$router.push('/clear') 
         }
         if (res.data.success == false) {
+          // Session removing / 세션 삭제
+          this.$session.remove('user_idx');
+          this.$session.remove('userid');
           alert(res.data.message);
         }
       })
