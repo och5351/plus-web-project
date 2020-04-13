@@ -11,11 +11,14 @@
     </div>
     <div class="form-group" id="commentSection" >
       <br>
-      <div class="row">
+      <div class="row" v-if="this.$session.get('user_idx') != null">
         <input type="text" class="form-control col-9" name="txtComment" id="commentArticle" placeholder="댓글 내용" v-on:keyup.enter.passive="addComment()">
         <!-- Spacer...! -->
         <div class="col-1"></div>
         <input type="submit" class="btn btn-primary col-2" value="댓글 작성" v-on:click.passive="addComment()">
+      </div>
+      <div class="row" v-else>
+        <div class="col"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
       </div>
     </div>
   </div>
@@ -58,11 +61,15 @@
         $("input#commentArticle").val('');
         $("input#commentArticle").blur();
 
-        // Before send post data, must to check sessions / POST 전달 이전에 반드시 세션체크 할 것
+        if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
+          alert('로그인 후 이용 가능한 기능입니다!');
+          return;
+        }
+
         this.$http.post('/api/comments/add', {
           data: {
             post_id: contentId,
-            user_idx: 1,  // Get attribute from session / 세션에서 받아오기
+            user_idx: this.$session.get('user_idx'),  // Get attribute from session / 세션에서 받아오기
             contents: comment
           }
         })

@@ -179,6 +179,7 @@ Moo Hyun's History
     * Empty post redirection / 빈 포스트 주소 입력 시, 게시판으로 리다이렉션
     * Create session when users do login / 로그인시 세션 생성 (로그인 실패시 세션 삭제)
     * Don't show edit button on other user's post / 타인 게시글의 수정버튼을 볼 수 없음
+    * Can't see add comment/subcomment button when logged-out / 로그아웃 시, 댓글/대댓글 작성버튼을 볼 수 없음
 
 Chan Woong's History
 -----------

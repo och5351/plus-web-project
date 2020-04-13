@@ -6,7 +6,7 @@
         <div class="col-2">{{commentObj.name}}</div>
         <div class="col-6 text-left">{{commentObj.contents}}</div>
         <div class="col-3"><small>{{commentObj.write_date}}</small></div>
-        <div class="col-1"><b-button class="btn btn-sm btn-primary" title="대댓글 작성" v-on:click.passive="openForm(commentObj.cm_id)"><span class="far fa-hand-point-left"></span></b-button></div>
+        <div class="col-1"><b-button class="btn btn-sm btn-primary" title="대댓글 작성" v-on:click.passive="openForm(commentObj.cm_id)" v-if="this.$session.get('user_idx') != null"><span class="far fa-hand-point-left"></span></b-button></div>
       </div>
 <!--    대댓글 -->
       <!-- <template v-if="subCommentList.length > 0"> -->
@@ -22,7 +22,7 @@
         </div>
       <!-- </template> -->
     </b-container>
-    <div class="form-group sub-comment-form-group" :id="'subCommentForm' + commentObj.cm_id">
+    <div class="form-group sub-comment-form-group" :id="'subCommentForm' + commentObj.cm_id" v-if="this.$session.get('user_idx') != null">
       <div class="row align-items-start">
         <div class="col-2"></div>
         <input type="text" class="form-control col-7" name="txtComment" :id="'commentArticle' + commentObj.cm_id" placeholder="대댓글 내용" v-on:keyup.enter.passive="addSubComment(commentObj.cm_id)">
@@ -77,12 +77,17 @@
         $("input#commentArticle"+cm_id).val('');
         $("input#commentArticle"+cm_id).blur();
 
+        if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
+          alert('로그인 후 이용 가능한 기능입니다!');
+          return;
+        }
+
         // // Before send post data, must to check sessions / POST 전달 이전에 반드시 세션체크 할 것
         this.$http.post('/api/comments/addSub', {
           data: {
             post_id: contentId,
             cm_id: cm_id,
-            user_idx: 1,  // Get attribute from session / 세션에서 받아오기
+            user_idx: this.$session.get('user_idx'),  // Get attribute from session / 세션에서 받아오기
             contents: comment
           }
         })
