@@ -25,7 +25,7 @@
         </div>
         <b-container>
             <div class="row">
-                <div class="article-contents justify-content-center text-left col" style="white-space:pre-warp;">{{contents}}</div>
+                <div class="article-contents justify-content-center text-left col" style="white-space:pre-line;">{{contents}}</div>
             </div>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
