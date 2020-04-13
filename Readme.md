@@ -178,6 +178,7 @@ Moo Hyun's History
     * Create add subcomment button in fully functional / 대댓글 달기 버튼 추가 및 기능구현
     * Empty post redirection / 빈 포스트 주소 입력 시, 게시판으로 리다이렉션
     * Create session when users do login / 로그인시 세션 생성 (로그인 실패시 세션 삭제)
+    * Don't show edit button on other user's post / 타인 게시글의 수정버튼을 볼 수 없음
 
 Chan Woong's History
 -----------

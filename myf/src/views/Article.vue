@@ -10,10 +10,12 @@
             </div>
             <!-- 세션값을 이용해 수정버튼을 나타내자 -->
             <div class="row">
-                <div class="col-2">
+                <div class="col-2" v-if="this.$session.get('user_idx') == this.author_idx">
                     <b-button class="btn-sm btn-primary" v-on:click="editPost()">
                         <span class="fas fa-edit"> 수정</span>
                     </b-button>
+                </div>
+                <div class="col-2" v-else>
                 </div>
                 <div class="col-7"></div>
                 <div class="article-created justify-content-end col-3">작성일 <small>{{created}}</small></div>
@@ -48,12 +50,17 @@
                 title: '',
                 contents: '',
                 user: '',
-                created: ''
+                created: '',
+                author_idx: ''
             };
         },
         methods: {
             editPost: function() {
-                this.$router.push({name: 'Posting', query:{contentId:this.contentId, att:'edit', board_id:this.board_id}});
+                if (this.$session.get('user_idx') != this.author_idx) {
+                    alert('해당 게시글에 대한 권한이 없습니다.');
+                } else {
+                    this.$router.push({name: 'Posting', query:{contentId:this.contentId, att:'edit', board_id:this.board_id}});
+                }
             }
         },
         mounted () {
@@ -65,6 +72,7 @@
                     this.contents = res.data[0].contents;
                     this.user = res.data[0].name;
                     this.created = res.data[0].write_date;
+                    this.author_idx = res.data[0].user_idx;
                 } else {
                     this.$router.push('/board');
                 }
