@@ -53,7 +53,6 @@
     mounted () {
       this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {
         this.subCommentList = res.data;
-        console.log(this.subCommentList);
       });
       $('.sub-comment-form-group').hide();
     },

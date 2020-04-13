@@ -176,6 +176,7 @@ Moo Hyun's History
 > ### 2020-04-13
     * Change reloading system in comment / 댓글 재조회 기능 변경
     * Create add subcomment button in fully functional / 대댓글 달기 버튼 추가 및 기능구현
+    * Empty post redirection / 빈 포스트 주소 입력 시, 게시판으로 리다이렉션
 
 Chan Woong's History
 -----------

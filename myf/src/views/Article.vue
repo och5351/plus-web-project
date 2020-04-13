@@ -25,7 +25,7 @@
         </div>
         <b-container>
             <div class="row">
-                <pre class="article-contents justify-content-center text-left col">{{contents}}</pre>
+                <div class="article-contents justify-content-center text-left col" style="white-space:pre;">{{contents}}</div>
             </div>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
@@ -58,12 +58,16 @@
         },
         mounted () {
             this.$http.get(`/api/article/get/${this.contentId}`).then((res) => {
-                this.boardId = res.data[0].board_id;
-                this.categoryId = res.data[0].ca_id;
-                this.title = res.data[0].title;
-                this.contents = res.data[0].contents;
-                this.user = res.data[0].name;
-                this.created = res.data[0].write_date;
+                if (res.data.length != 0) {
+                    this.boardId = res.data[0].board_id;
+                    this.categoryId = res.data[0].ca_id;
+                    this.title = res.data[0].title;
+                    this.contents = res.data[0].contents;
+                    this.user = res.data[0].name;
+                    this.created = res.data[0].write_date;
+                } else {
+                    this.$router.push('/board');
+                }
             })
         }
     }
