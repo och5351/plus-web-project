@@ -1,6 +1,6 @@
 <template>
     <div>
-        <BoardList/>
+        <BoardList ca_id="free"/>
     </div>
 </template>
 
