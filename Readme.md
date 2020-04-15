@@ -145,6 +145,10 @@ Jin tae's History
     * posting router fix.
     * board post button error fix.
     * method => 함수 function 변경
+    
+> ### 2020-04-16
+    
+    * router method props change.
 
 Moo Hyun's History
 -----------
@@ -233,4 +237,3 @@ Jin ho's History
 -----------
 > ### 2020-04-12
     * Pull requested!
-     
