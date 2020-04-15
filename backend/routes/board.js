@@ -10,7 +10,7 @@ router.get('/:category_id', function (req, res) {
 
     var category_id = req.params.category_id;
 
-    conn.query('SELECT * FROM post WHERE ca_id = ?', [category_id], function (err, row) {
+    conn.query('SELECT * FROM capdi.post WHERE ca_id = (SELECT ca_id FROM capdi.category WHERE ca_name = ?)', [category_id], function (err, row) {
         res.send(row)
     })
 });

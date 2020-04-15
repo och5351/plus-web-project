@@ -24,11 +24,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-if="boardList[0] == null">
+                        <tr v-if="boardList === ''">
                             <td colspan="3" style="text-align: center">데이터가 없습니다</td>
                         </tr>
-                        <tr v-else v-for="(board, bIdx) in boardList[0]" :key="bIdx"
-                        @click="detail(board.post_seq)">
+                        <tr v-else v-for="(board, bIdx) in boardList" :key="bIdx"
+                        @click="detail(board.post_id)">
                             <th scope="row">{{bIdx + 1}}</th>
                             <td>{{board.title}}</td>
                             <td>{{board.views}}</td>
@@ -114,11 +114,13 @@ export default {
     comments : {
         //PaginatedList
     },
+    props : {
+        ca_id: String
+    },
     data : () => {
         return {
-            ca_id : 'free',
-            boardList: [],
-            pageArray: []
+            boardList: '',
+            pageArray: ''
         }
     },
     methods : {
@@ -135,7 +137,7 @@ export default {
     created () {
         this.$http.get(`api/board/${this.ca_id}`)
         .then((res) => {
-            this.boardList.push(res.data)
+            this.boardList = res.data
         }).catch(function(error) {
             console.log(`Error : ${error}`)
         });
