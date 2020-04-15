@@ -7,7 +7,7 @@
       &nbsp;
     </h5></b-container>
     <div id="commentSection" :key="comment.cm_id" v-for="comment in commentList">
-      <CommentListItem :commentObj="comment"></CommentListItem>
+      <CommentListItem :commentObj="comment" :authorIdx="authorIdx"></CommentListItem>
     </div>
     <div class="form-group" id="commentSection" >
       <br>
@@ -32,6 +32,7 @@
     name: 'CommentList',
     props: {
       contentId : Number,
+      authorIdx: Number
     },
     methods: {
       toggleComments: function() {
@@ -84,7 +85,7 @@
       return {
         commentList: Object,
         showComment: false,
-        resetKey: 0
+        resetKey: 0,
       }
     },
     components: {

@@ -3,7 +3,8 @@
   <div id="commentListItem" class="comment-list-item">
     <b-container class="comment-box">
       <div class="row align-items-start" style="margin-bottom: 0.25em;">
-        <div class="col-2">{{commentObj.name}}</div>
+        <div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx" >{{commentObj.name}}</div>
+        <div class="col-2" v-else>{{commentObj.name}}</div>
         <div class="col-6 text-left">{{commentObj.contents}}</div>
         <div class="col-3"><small>{{commentObj.write_date}}</small></div>
         <div class="col-1"><b-button class="btn btn-sm btn-primary" title="대댓글 작성" v-on:click.passive="openForm(commentObj.cm_id)" v-if="this.$session.get('user_idx') != null"><span class="far fa-hand-point-left"></span></b-button></div>
@@ -13,7 +14,8 @@
         <div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
           <b-container class="subcomment-box">
             <div class="row align-items-start">
-              <div class="col-2"><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{subcomment.name}}</div>
+              <div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="subcomment.user_idx == authorIdx"><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{subcomment.name}}</div>
+              <div class="col-2" v-else><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{subcomment.name}}</div>
               <div class="col-6 text-left">{{subcomment.contents}}</div>
               <div class="col-3"><small>{{subcomment.write_date}}</small></div>
               <div class="col-1"></div>
@@ -40,7 +42,8 @@
   export default {
     name: "CommentListItem",
     props: {
-      commentObj: Object
+      commentObj: Object,
+      authorIdx: Number
     },
     components: {
 

@@ -181,6 +181,9 @@ Moo Hyun's History
     * Don't show edit button on other user's post / 타인 게시글의 수정버튼을 볼 수 없음
     * Can't see add comment/subcomment button when logged-out / 로그아웃 시, 댓글/대댓글 작성버튼을 볼 수 없음
 
+> ### 2020-04-15
+    * Highlight post author's comments/subcomments / 게시글 작성자의 댓글, 대댓글 하이라이팅
+
 Chan Woong's History
 -----------
  > ### 2020-04-11
