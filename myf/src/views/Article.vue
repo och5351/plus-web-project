@@ -31,7 +31,7 @@
             </div>
         </b-container>
         <!-- Comments Parts 게시글의 댓글 부분 -->
-        <CommentList :contentId="contentId" :authorIdx="this.author_idx"></CommentList>
+        <CommentList :contentId="contentId" :authorIdx="Number(this.author_idx)"></CommentList>
     </div>
 </template>
 

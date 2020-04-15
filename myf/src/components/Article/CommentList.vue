@@ -7,7 +7,7 @@
       &nbsp;
     </h5></b-container>
     <div id="commentSection" :key="comment.cm_id" v-for="comment in commentList">
-      <CommentListItem :commentObj="comment" :authorIdx="authorIdx"></CommentListItem>
+      <CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
     </div>
     <div class="form-group" id="commentSection" >
       <br>

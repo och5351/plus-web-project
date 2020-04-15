@@ -5,24 +5,33 @@
       <div class="row align-items-start" style="margin-bottom: 0.25em;">
         <div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx" >{{commentObj.name}}</div>
         <div class="col-2" v-else>{{commentObj.name}}</div>
-        <div class="col-6 text-left">{{commentObj.contents}}</div>
+        <div class="col-5 text-left">{{commentObj.contents}}</div>
         <div class="col-3"><small>{{commentObj.write_date}}</small></div>
-        <div class="col-1"><b-button class="btn btn-sm btn-primary" title="대댓글 작성" v-on:click.passive="openForm(commentObj.cm_id)" v-if="this.$session.get('user_idx') != null"><span class="far fa-hand-point-left"></span></b-button></div>
+        <div class="col-2">
+          <b-button class="btn btn-sm btn-primary" title="대댓글 작성" v-on:click.passive="openForm(commentObj.cm_id)" v-if="this.$session.get('user_idx') != null">
+            <span class="far fa-hand-point-left"></span>
+          </b-button>
+          <b-button class="btn btn-sm btn-danger" title="댓글 삭제" v-on:click.passive="deleteComment(commentObj.cm_id, true)" v-if="this.$session.get('user_idx') == commentObj.user_idx">
+            <span class="far fa-trash-alt"></span>
+          </b-button>
+        </div>
       </div>
 <!--    대댓글 -->
-      <!-- <template v-if="subCommentList.length > 0"> -->
         <div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
           <b-container class="subcomment-box">
             <div class="row align-items-start">
               <div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="subcomment.user_idx == authorIdx"><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{subcomment.name}}</div>
               <div class="col-2" v-else><small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{subcomment.name}}</div>
-              <div class="col-6 text-left">{{subcomment.contents}}</div>
+              <div class="col-5 text-left">{{subcomment.contents}}</div>
               <div class="col-3"><small>{{subcomment.write_date}}</small></div>
-              <div class="col-1"></div>
+              <div class="col-2 text-right">
+                <b-button class="btn btn-sm btn-danger" title="대댓글 삭제" v-on:click.passive="deleteComment(subcomment.cm_id, false)" v-if="sessUserIdx == subcomment.user_idx">
+                  <span class="far fa-trash-alt"></span>
+                </b-button>
+              </div>
             </div>
           </b-container>
         </div>
-      <!-- </template> -->
     </b-container>
     <div class="form-group sub-comment-form-group" :id="'subCommentForm' + commentObj.cm_id" v-if="this.$session.get('user_idx') != null">
       <div class="row align-items-start">
@@ -51,6 +60,7 @@
     data() {
       return {
         subCommentList: Object,
+        sessUserIdx: Number
       }
     },
     mounted () {
@@ -58,16 +68,18 @@
         this.subCommentList = res.data;
       });
       $('.sub-comment-form-group').hide();
+
+      this.sessUserIdx = this.$session.get('user_idx')
     },
     methods: {
       // Opening subcomment form / 대댓글 창 여닫기
-      openForm: function(cm_id) {
+      openForm: function (cm_id) {
         $('.sub-comment-form-group').slideUp();
         $('#subCommentForm'+cm_id).slideDown();
         $('#commentArticle'+cm_id).focus();
       },
       // Add subcomment / 대댓글 작성
-      addSubComment: function(cm_id) {
+      addSubComment: function (cm_id) {
         var contentId = this.$route.params.contentId;
         var comment = $("input#commentArticle"+cm_id).val().trim();
 
@@ -94,6 +106,22 @@
             contents: comment
           }
         })
+
+        // Reload subcomments / 대댓글 다시 불러오기
+        this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {
+          this.subCommentList = res.data;
+        });
+      },
+      // Delete Comment / 댓글 삭제
+      deleteComment: function (cm_id, reload) {
+        this.$http.post('/api/comments/remove', {
+          data: {
+            cm_id: cm_id
+          }
+          }).then((res) => {
+            if (res.data.success && reload) { alert(res.data.message); setTimeout(() => {location.reload();}, 10); }
+            else { alert(res.data.message); }
+          });
 
         // Reload subcomments / 대댓글 다시 불러오기
         this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {

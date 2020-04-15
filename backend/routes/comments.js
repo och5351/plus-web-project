@@ -75,4 +75,25 @@ router.post('/addSub', function (req, res, next) {
     }
 });
 
+router.post('/remove', function (req, res, next) {
+    const data = {
+        'cm_id': req.body.data.cm_id
+    }
+
+    sql = "DELETE FROM comment WHERE cm_id = ? AND (SELECT COUNT(deep_id) FROM deep WHERE cm_id = ?) = 0";
+    conn.query(sql, [data.cm_id, data.cm_id], function(err, result) {
+        if (result.affectedRows != 0) {
+            res.json({
+                success: true,
+                message: '댓글 삭제 성공'
+            });
+        } else {
+            res.json({
+                success: false,
+                message: '대댓글이 존재하는 댓글은 삭제가 불가능합니다.'
+            });
+        }
+    });
+})
+
 module.exports = router;

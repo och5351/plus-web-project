@@ -184,6 +184,9 @@ Moo Hyun's History
 > ### 2020-04-15
     * Highlight post author's comments/subcomments / 게시글 작성자의 댓글, 대댓글 하이라이팅
 
+> ### 2020-04-16
+    * Add deleting comment/subcomment button / 댓글 삭제 버튼 추가
+
 Chan Woong's History
 -----------
  > ### 2020-04-11
