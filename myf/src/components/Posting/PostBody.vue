@@ -111,13 +111,13 @@ window.onbeforeunload = function() {
 export default {
     name: 'postBody',
     mounted(){
+        
         var mySessionIDX = '1'
         var mySessionID = 'och5351' // session 만들었을 시 삭제
         if(this.att == 'edit'){ //edit 쿼리 조회
             this.$http.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`).then((res) => {//session에 정해졌을 시 하나로    
                 if(res.data[0]['count(*)'] != '0'){ // session OK!
-                    var dic = {} //dictionary 반응속도 최적화
-                    dic = res.data[0]  
+                    var dic = res.data[0]         
                     this.titleText = dic['title']
                     this.contentArea = dic['contents']
                 }else{
