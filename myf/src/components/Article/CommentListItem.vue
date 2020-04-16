@@ -120,13 +120,13 @@
           }
           }).then((res) => {
             if (res.data.success && reload) { alert(res.data.message); setTimeout(() => {location.reload();}, 10); }
+            else if (res.data.success && !reload) { // Reload subcomments / 대댓글 다시 불러오기
+              this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {
+                this.subCommentList = res.data;
+              });
+            }
             else { alert(res.data.message); }
           });
-
-        // Reload subcomments / 대댓글 다시 불러오기
-        this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then((res) => {
-          this.subCommentList = res.data;
-        });
       }
     }
   }
