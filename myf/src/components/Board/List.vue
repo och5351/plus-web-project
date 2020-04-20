@@ -123,6 +123,14 @@ export default {
             pageArray: ''
         }
     },
+    created () {
+        this.$http.get(`api/board/${this.ca_id}`)
+            .then((res) => {
+                this.boardList = res.data
+            }).catch(function(error) {
+            console.log(`Error : ${error}`)
+        });
+    },
     methods : {
         detail (seq) {
             this.$router.push(`article/${seq}`)
@@ -133,14 +141,6 @@ export default {
                 query : {board_id: 1, category : 1, att: 'post'}
             })
         }
-    },
-    created () {
-        this.$http.get(`api/board/${this.ca_id}`)
-        .then((res) => {
-            this.boardList = res.data
-        }).catch(function(error) {
-            console.log(`Error : ${error}`)
-        });
     }
 }
 </script>
