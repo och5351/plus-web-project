@@ -6,10 +6,9 @@
 
 <script>
 
-import BoardList from '../components/Board/List'
+import BoardList from '../components/Board/CategoryList'
 
 export default {
-    name : 'Board',
     components: {
         BoardList
     }

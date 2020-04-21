@@ -20,7 +20,7 @@ const routes = [
     path: '/Board',
     name: 'Board',
     component: function () {
-      return import('../views/Board.vue')
+      return import('../views/BoardView.vue')
     }
   },
   {

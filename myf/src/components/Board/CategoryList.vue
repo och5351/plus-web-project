@@ -110,7 +110,6 @@
 //import PaginatedList  from 'PaginatedList '
 
 export default {
-    name : "List",
     comments : {
         //PaginatedList
     },
