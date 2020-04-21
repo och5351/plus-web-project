@@ -149,6 +149,10 @@ Jin tae's History
 > ### 2020-04-16
     
     * router method props change.
+    
+> ### 2020-04-21
+    
+    * vue style design apply.
 
 Moo Hyun's History
 -----------
