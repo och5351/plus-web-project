@@ -33,10 +33,10 @@ Envoirment
 Update list
 </h1>
 <br>
-링크 : <a href="https://github.com/skymir-git/plus-web-project/blob/master/Update.md">Update list</a>
+Link : <a href="https://github.com/skymir-git/plus-web-project/blob/master/Update.md">Update list</a>
 
 <br>
 <h1 align="center">
 History
 </h1><br>
-링크 : <a href="https://github.com/skymir-git/plus-web-project/blob/master/History.md">History</a>
+Link : <a href="https://github.com/skymir-git/plus-web-project/blob/master/History.md">History</a>
