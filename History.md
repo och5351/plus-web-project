@@ -81,6 +81,10 @@ Jin tae's History
 > ### 2020-04-21
     
     * vue style design apply.
+    
+> ### 2020-04-22
+    
+    * change log detach.
 
 Moo Hyun's History
 -----------
