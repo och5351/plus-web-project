@@ -62,10 +62,180 @@
     <!-- 광고 -->
       <div class="col-md-3">
         <div class="ad">
-          <b-img src="https://picsum.photos/300/150/?image=41" fluid-grow alt="Fluid-grow image"></b-img>
+          <b-img src="https://picsum.photos/300/500/?image=41" fluid-grow alt="Fluid-grow image"></b-img>
         </div>
       </div>
     </div>
+
+    <!-- 이미지 -->
+    <div class="row">
+      <div class="col-md-12">
+       <b-alert show variant="light" align=left><a href="#" class="alert-link">이미지</a></b-alert>
+        <b-container class="bg-white" id="img_box">
+          <b-row id="first_line">
+            <b-col cols="2">
+              <b-img thumbnail left src="https://picsum.photos/125/125/?image=54" alt="Image 1"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=58" alt="Image 2"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=59" alt="Image 3"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=57" alt="Image 4"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=52" alt="Image 5"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=51" alt="Image 6"></b-img>
+            </b-col>
+          </b-row>
+            <b-row id="second_line">
+            <b-col cols="2">
+              <b-img thumbnail left src="https://picsum.photos/125/125/?image=54" alt="Image 1"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=58" alt="Image 2"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=59" alt="Image 3"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=57" alt="Image 4"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=52" alt="Image 5"></b-img>
+            </b-col>
+            <b-col cols="2">
+              <b-img thumbnail src="https://picsum.photos/125/125/?image=51" alt="Image 6"></b-img>
+            </b-col>
+          </b-row>
+        </b-container>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-4 mx-auto text-info">
+
+            <!-- Content -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">바로가기</h5>
+            <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+              consectetur
+              adipisicing elit.</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto text-dark">
+            <!-- Links -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Game</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!" >League Of Legend</a>
+              </li>
+              <li>
+                <a href="#!">Battle Ground</a>
+              </li>
+              <li>
+                <a href="#!">Sudden Attack</a>
+              </li>
+              <li>
+                <a href="#!">Maple Stroy</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto text-dark">
+            <!-- Links -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Music</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Ballade</a>
+              </li>
+              <li>
+                <a href="#!">Hip Hop</a>
+              </li>
+              <li>
+                <a href="#!">Jazz</a>
+              </li>
+              <li>
+                <a href="#!">PoP</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 mx-auto text-dark">
+
+            <!-- Links -->
+            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Food</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">Korean</a>
+              </li>
+              <li>
+                <a href="#!">Western food</a>
+              </li>
+              <li>
+                <a href="#!">Instant</a>
+              </li>
+              <li>
+                <a href="#!">Junk food</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+
+      <!-- Social buttons -->
+      <ul class="list-unstyled list-inline text-center">
+        <li class="list-inline-item">
+            <i class="fab fa-facebook-f"> </i>
+        </li>
+        <li class="list-inline-item">
+            <i class="fab fa-twitter"> </i>
+        </li>
+        <li class="list-inline-item">
+            <i class="fab fa-google-plus-g"> </i>
+        </li>
+        <li class="list-inline-item">
+            <i class="fab fa-github"> </i>
+        </li>
+      </ul>
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="http://plus-market.com">PLUS</a>
+      </div>
+
+    </footer>
+    <!-- Footer -->
+
 
     <!-- 라우터 연결할때만 이거 보고 할거임 탭's 안쓸꼬야
       <b-tabs
@@ -133,6 +303,8 @@
   }
 </script>
 
+
+
 <style scoped>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -143,6 +315,7 @@
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 0px;
+    margin-bottom: 150px;
   }
   #banner{
     margin-top: 10px;
@@ -158,6 +331,14 @@
     overflow:hidden;
     text-overflow:ellipsis;
   }
+  #first_line{
+    margin-bottom: 30px;
+  }
+
+  .footer{
+    margin-top: 50px;
+    color:black;
+  }
 
   .loginbutton {
     margin-top: 10px;
@@ -171,6 +352,12 @@
   }
 
   .hottopic{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ad{
     margin-top: 10px;
+    height: 200px;
   }
 </style>

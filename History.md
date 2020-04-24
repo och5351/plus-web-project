@@ -185,5 +185,8 @@ Jin ho's History
     
     * 위 수정에 맞게 Home.vue css 수정 및 로그인 박스 라우터 필요
 
-    
+  ### 2020-04-24
+    * Home.vue에 image그리드 및 Footer 생성.
+
+
   
