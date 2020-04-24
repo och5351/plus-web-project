@@ -111,7 +111,7 @@ window.onbeforeunload = function() {
 export default {
     name: 'postBody',
     mounted(){
-        
+        console.log(this.$session.get('user_idx'))
         var mySessionIDX = '1'
         var mySessionID = 'och5351' // session 만들었을 시 삭제
         if(this.att == 'edit'){ //edit 쿼리 조회

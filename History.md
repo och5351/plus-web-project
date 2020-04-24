@@ -176,3 +176,17 @@ Jin ho's History
 -----------
 > ### 2020-04-12
     * Pull requested!
+
+  ### 2020-04-22
+    * Home.vue 수정
+
+  ### 2020-04-23
+    * App.vue -> Navbar 수정
+    
+    * 위 수정에 맞게 Home.vue css 수정 및 로그인 박스 라우터 필요
+
+  ### 2020-04-24
+    * Home.vue에 image그리드 및 Footer 생성.
+
+
+  
