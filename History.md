@@ -85,6 +85,11 @@ Jin tae's History
 > ### 2020-04-22
     
     * change log detach.
+    
+> ### 2020-04-25
+    
+    * Main Design Pattern Vue Change.
+    * Router-view 최적화
 
 Moo Hyun's History
 -----------
