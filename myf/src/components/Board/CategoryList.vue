@@ -31,13 +31,13 @@
 //import PaginatedList  from 'PaginatedList '
 
 export default {
-    comments : {
+    components: {
         //PaginatedList
     },
-    props : {
-        caName: String
+    props: {
+        caName : String,
     },
-    data : () => {
+    data () {
         return {
             boardList: null,
             pageArray: null,
@@ -52,7 +52,7 @@ export default {
             console.log(`Error : ${error}`)
         });
     },
-    methods : {
+    methods: {
         detail (seq) {
             this.$router.push(`article/${seq}`)
         },

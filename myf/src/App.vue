@@ -30,7 +30,7 @@
       </b-collapse>
       </b-navbar>
     </div>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
   </div>
 </template>
 
@@ -54,7 +54,7 @@
         }
       },
       board (category) {
-        this.$router.push(`/board/${category}`);
+        this.$router.push(`/board/${category}`)
       },
     },
     data() {

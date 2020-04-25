@@ -11,12 +11,12 @@ import CategoryList from '../components/Board/CategoryList'
 export default {
     data () {
         return {
-            caName : this.$route.params.category_name,
+            caName : this.$route.params.category_name
         }
     },
     components: {
         CategoryList
-    }
+    },
 }
 
 </script>
