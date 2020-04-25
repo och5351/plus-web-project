@@ -11,7 +11,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item @click="main">Home</b-nav-item>
-          <b-nav-item href="/board">Hot게시판</b-nav-item>
+          <b-nav-item @click="board">자유게시판</b-nav-item>
         </b-navbar-nav>
           <b-dropdown size="sm" text="커뮤니티">
             <b-dropdown-item href="#">여행</b-dropdown-item>
@@ -53,11 +53,9 @@
           this.$router.push('/')
         }
       },
-      comunity: function(){
-        if(this.$router.history.current.path != '/board'){
-          this.$router.push('/board')
-        }
-      }
+      board () {
+        this.$router.push('/board/free');
+      },
     },
     data() {
       return {

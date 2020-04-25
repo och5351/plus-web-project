@@ -1,16 +1,21 @@
 <template>
     <div>
-        <BoardList ca_id="free"/>
+        <CategoryList :caName="caName"/>
     </div>
 </template>
 
 <script>
 
-import BoardList from '../components/Board/CategoryList'
+import CategoryList from '../components/Board/CategoryList'
 
 export default {
+    data () {
+        return {
+            caName : this.$route.params.category_name,
+        }
+    },
     components: {
-        BoardList
+        CategoryList
     }
 }
 

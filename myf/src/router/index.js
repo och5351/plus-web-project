@@ -17,8 +17,8 @@ const routes = [
     }
   },
   {
-    path: '/Board',
-    name: 'Board',
+    path: '/board/:category_name',
+    name: 'board',
     component: function () {
       return import('../views/BoardView.vue')
     }
