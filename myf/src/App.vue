@@ -11,13 +11,13 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item @click="main">Home</b-nav-item>
-          <b-nav-item @click="board">자유게시판</b-nav-item>
+          <b-nav-item @click="board('free')">자유게시판</b-nav-item>
         </b-navbar-nav>
           <b-dropdown size="sm" text="커뮤니티">
-            <b-dropdown-item href="#">여행</b-dropdown-item>
-            <b-dropdown-item href="#">음식</b-dropdown-item>
-            <b-dropdown-item href="#">만화</b-dropdown-item>
-            <b-dropdown-item href="#">노래</b-dropdown-item>
+            <b-dropdown-item href="board('tour')">여행</b-dropdown-item>
+            <b-dropdown-item href="board('food')">음식</b-dropdown-item>
+            <b-dropdown-item href="board('catoon')">만화</b-dropdown-item>
+            <b-dropdown-item href="board('music')">노래</b-dropdown-item>
           </b-dropdown>
 
         <!-- 오른쪽 검색창 -->
@@ -53,8 +53,8 @@
           this.$router.push('/')
         }
       },
-      board () {
-        this.$router.push('/board/free');
+      board (category) {
+        this.$router.push(`/board/${category}`);
       },
     },
     data() {
