@@ -10,7 +10,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-if="boardList === ''">
+                <tr v-if="boardList === null">
                     <td colspan="3" style="text-align: center">데이터가 없습니다</td>
                 </tr>
                 <tr v-else v-for="(board, bIdx) in boardList" :key="bIdx"
@@ -39,13 +39,14 @@ export default {
     },
     data : () => {
         return {
-            boardList: '',
-            pageArray: ''
+            boardList: null,
+            pageArray: null,
         }
     },
     created () {
         this.$http.get(`/api/board/${this.caName}`)
             .then((res) => {
+                if (res.data.length === 0) return;
                 this.boardList = res.data
             }).catch(function(error) {
             console.log(`Error : ${error}`)
