@@ -14,10 +14,10 @@
           <b-nav-item @click="board('free')">자유게시판</b-nav-item>
         </b-navbar-nav>
           <b-dropdown size="sm" text="커뮤니티">
-            <b-dropdown-item href="board('tour')">여행</b-dropdown-item>
-            <b-dropdown-item href="board('food')">음식</b-dropdown-item>
-            <b-dropdown-item href="board('catoon')">만화</b-dropdown-item>
-            <b-dropdown-item href="board('music')">노래</b-dropdown-item>
+            <b-dropdown-item @click="board('tour')">여행</b-dropdown-item>
+            <b-dropdown-item @click="board('food')">음식</b-dropdown-item>
+            <b-dropdown-item @click="board('catoon')">만화</b-dropdown-item>
+            <b-dropdown-item @click="board('music')">노래</b-dropdown-item>
           </b-dropdown>
 
         <!-- 오른쪽 검색창 -->
