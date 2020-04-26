@@ -59,7 +59,7 @@
                 if (this.$session.get('user_idx') != this.author_idx) {
                     alert('해당 게시글에 대한 권한이 없습니다.');
                 } else {
-                    this.$router.push({name: 'Posting', query:{contentId:this.contentId, att:'edit', board_id:this.board_id}});
+                    this.$router.push({name: 'Posting', params:{contentId:this.contentId, att:'edit', board_id:this.board_id}});
                 }
             }
         },

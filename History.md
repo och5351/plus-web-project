@@ -38,7 +38,6 @@ Jin tae's History
 > ### 2020-03-30
 
     * 불 필요 View 삭제
-    
     * Router Index 일원화
     
 > ### 2020-03-31
@@ -89,7 +88,12 @@ Jin tae's History
 > ### 2020-04-25
     
     * Main Design Pattern Vue Change.
-    * Router-view 최적화
+    * Router-view optimization
+    
+> ### 2020-04-28
+    
+    * backend api code optimization
+    * board vue code optimization
 
 Moo Hyun's History
 -----------
