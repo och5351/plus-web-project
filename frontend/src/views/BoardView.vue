@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CategoryList :caName="caName"/>
+        <CategoryList :categoryName="categoryName"/>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ import CategoryList from '../components/Board/CategoryList'
 export default {
     data () {
         return {
-            caName : this.$route.params.category_name
+            categoryName : this.$route.params.categoryName
         }
     },
     components: {
