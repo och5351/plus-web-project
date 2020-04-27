@@ -99,6 +99,7 @@ Jin tae's History
     
     * main vue page link error flx.
     * Vue page navigation apply.
+    * page navigation Vuex apply.
 
 Moo Hyun's History
 -----------
@@ -184,6 +185,9 @@ Woo jin's History
 
 > ### 2020-04-08
      * EC2인스턴스에 코드배포
+
+> ### 2020-04-27
+     * 배포 자동화 서비스인 CodeDeploy를 사용하기 위해 IAM을 이용하여 권한 역할, 정책, 인스턴스 프로파일 생성
         
 
 Jin ho's History

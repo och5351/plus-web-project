@@ -49,13 +49,16 @@
 </template>
 
 <script>
+    import store from '../../store/store'
+
     export default {
+        store,
         props: {
             categoryName: String,
         },
         data() {
             return {
-                pageNum: 1,
+                pageNum: store.getters.getPageNum,
                 pageSize: 10,
                 totalPage: [],
                 categoryId: null,
@@ -64,6 +67,7 @@
         },
         created() {
             this.getPosts()
+            store.commit('setCategory', this.categoryName)
         },
         computed: {
             displayedPosts() {
@@ -73,6 +77,9 @@
         watch: {
             boardList() {
                 this.setPages();
+            },
+            pageNum() {
+                store.commit('setPageNum', this.pageNum)
             }
         },
         methods: {
@@ -86,8 +93,8 @@
                         this.boardList = res.data
                         this.categoryId = res.data[0].ca_id
                     }).catch(function (error) {
-                        console.log(`Error : ${error}`)
-                    });
+                    console.log(`Error : ${error}`)
+                });
             },
             setPages() {
                 let numberOfPages = Math.ceil(this.boardList.length / this.pageSize);
@@ -107,11 +114,11 @@
                     .then((res) => {
                         this.categoryId = res.data[0].ca_id
                     }).catch((error) => {
-                        console.log(`Error : ${error}`)
-                    })
+                    console.log(`Error : ${error}`)
+                })
             },
             detail(seq) {
-                this.$http.put(`/api/board/views/${seq}`)
+                this.$http.post(`/api/board/views/${seq}`)
                 this.$router.push(`/article/${seq}/`)
             },
             post() {
