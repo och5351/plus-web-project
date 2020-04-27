@@ -99,6 +99,7 @@ Jin tae's History
     
     * main vue page link error flx.
     * Vue page navigation apply.
+    * page navigation Vuex apply.
 
 Moo Hyun's History
 -----------
