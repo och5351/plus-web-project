@@ -253,43 +253,6 @@
 
 <script>
   export default {
-    name: 'App',
-    methods: {
-      main: function(){
-        if(this.$router.history.current.path != '/'){
-          this.$router.push('/')
-        }
-      },
-      login: function(){
-        if(this.$router.history.current.path != '/login'){
-          this.$router.push('/login')
-        }
-      },
-      post: function(){
-        if(this.$router.history.current.path != '/'){
-          this.$router.push('/')
-        }
-      },
-      comunity: function(){
-        if(this.$router.history.current.path != '/board'){
-          this.$router.push('/board')
-        }
-      }
-    },
-    data() {
-      return {
-        /*로그인 세션 정보를 받아와서 로그인을 할지 닉네임을 표시할지 선택*/
-        mySession: false
-      }
-    },
-    watch: {
-      
-    },
-  }
-</script>
-
-<script>
-  export default {
     data() {
       return {
         items: [
@@ -297,13 +260,17 @@
           { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
           { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
           { age: 38, first_name: 'Jami', last_name: 'Carney' }
-        ]
+        ],
+        mySession: false
       }
-    }
+    },
+    methods: {
+      login: function(){
+        this.$router.push('/login')
+      }
+    },
   }
 </script>
-
-
 
 <style scoped>
   #app {
