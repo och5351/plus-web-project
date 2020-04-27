@@ -86,8 +86,8 @@
                         this.boardList = res.data
                         this.categoryId = res.data[0].ca_id
                     }).catch(function (error) {
-                    console.log(`Error : ${error}`)
-                });
+                        console.log(`Error : ${error}`)
+                    });
             },
             setPages() {
                 let numberOfPages = Math.ceil(this.boardList.length / this.pageSize);
@@ -107,11 +107,11 @@
                     .then((res) => {
                         this.categoryId = res.data[0].ca_id
                     }).catch((error) => {
-                    console.log(`Error : ${error}`)
-                })
+                        console.log(`Error : ${error}`)
+                    })
             },
             detail(seq) {
-                this.$http.get(`/api/board/views/${seq}`)
+                this.$http.put(`/api/board/views/${seq}`)
                 this.$router.push(`/article/${seq}/`)
             },
             post() {
