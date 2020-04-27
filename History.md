@@ -94,6 +94,11 @@ Jin tae's History
     
     * backend api code optimization
     * board vue code optimization
+    
+> ### 2020-04-29
+    
+    * main vue page link error flx.
+    * Vue page navigation apply.
 
 Moo Hyun's History
 -----------
