@@ -1,10 +1,10 @@
 <template>
     <div class="login">
         <br><br>
-        <div style="position: relative; left: -155px;">I D : <br><br></div>
-       <input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!"><br><br>
-       <div style="position: relative; left: -155px;">P W : <br><br></div>
-       <input type="password" id="password" v-model="user.password" placeholder="PW를 입력해주세요!"><br><br>
+        <div class="tag">I D :</div>
+        <input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!"><br><br>
+        <div class="tag">P W :</div>
+        <input type="password" id="password" v-model="user.password" placeholder="PW를 입력해주세요!"><br><br>
        <button v-on:click="login">로그인</button>
 <p>만약, 계정이 없다면, <router-link to='/SignUp'>회원가입을 먼저 진행해주세요!<router-view/></router-link></p>
     </div>
@@ -50,19 +50,13 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  text-align: center;
-  position: absolute;
-  transform: translate( 310%, -250% );
-  font-size: 250%;
-}
-img {
-  width: 10%;
-  vertical-align: middle;
-}
 .login {
 margin-top: 40px;
 text-align: center;
+}
+.tag {
+    position: relative;
+    margin-left: -175px;
 }
 input {
     margin: 0px 0;
