@@ -61,7 +61,7 @@ router.post('/login', function (req, res) {
     'password': req.body.user.password
   };
 
-  conn.query('SELECT userid, password FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
+  conn.query('SELECT user_idx, userid, password FROM capdi_users WHERE userid = ?', [user.userid], function (err, row) {
     if (row[0] === undefined) {
       res.json({ // 매칭되는 아이디 없을 경우
         success: false,
@@ -74,7 +74,9 @@ router.post('/login', function (req, res) {
         if (res2) {
           res.json({ // 로그인 성공
             success: true,
-            message: '로그인 성공!'
+            message: '로그인 성공!',
+            user_idx: row[0].user_idx,
+            userid: row[0].userid
           })
         }
         else {

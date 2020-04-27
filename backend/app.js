@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var commentsRouter = require('./routes/comments');
 var boardRouter = require('./routes/board');
-var posting = require('./routes/posting')
+var posting = require('./routes/posting');
 var articleRouter = require('./routes/article');
 
 var app = express();
