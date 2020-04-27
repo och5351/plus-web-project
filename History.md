@@ -33,7 +33,7 @@ Chan hae's History
     * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
     * Made a function hashTagDistributor(It's need the 'hashTag' attribute in capdi's post table).
  > ### 2020-04-27
-    * Success conversion .h5 file to Json. 
+    * Success conversion .h5 file to Json. ( https://blog.naver.com/dhcksgo5319/221932780328 )
 
 Jin tae's History
 -----------
