@@ -1,14 +1,22 @@
+
+
 exports.tfFunc = function(){
+    
+    //myStorage = window.localStorage;
+    rTfFunc() //함수 호출
+    //const tf = require("@tensorflow/tfjs")
+    
+    //console.log(model.summary())
+    
 
-
-    const tf = require("@tensorflow/tfjs")
-
+    
     // 옵셔널
     // '@tensorflow/tfjs-node-gpu' gpu와 사용하고 싶다면
-    require("@tensorflow/tfjs-node")
-
+    //require("@tensorflow/tfjs-node")
+    /*
     // Train a simple model:
     const model = tf.sequential()
+
     model.add(tf.layers.dense({ units: 100, activation: "relu", inputShape: [10] }))
     model.add(tf.layers.dense({ units: 1, activation: "linear" }))
     model.compile({ optimizer: "sgd", loss: "meanSquaredError" })
@@ -27,7 +35,13 @@ exports.tfFunc = function(){
 
     console.log("삽입 완료");
 
-
-
+*/
 
 }; 
+//tensorflow.js 변환 async 지정 함수
+async function rTfFunc(){
+    const tf = require("@tensorflow/tfjs-node")
+    const model = await tf.loadLayersModel('file://C:/Users/och5351/Desktop/tensorflowSave/2020.03.11/tfjs_target_dir/model.json')
+    console.log(model)
+}
+

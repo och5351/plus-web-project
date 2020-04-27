@@ -29,7 +29,7 @@ router.get('/Posting/sessCheckEdit?/:user_idx/:user_id/:content_id', function (r
   var user_id = req.params.user_id
   var post_id = req.params.content_id  
   
-  conn.query('SELECT count(*), title, contents FROM post WHERE post_id=? AND user_idx=?', 
+  conn.query('SELECT count(*), title, contents FROM post WHERE post_id=? AND user_idx=?', 1
   [user_idx, post_id], function (err, row) {    
     if(err){
       console.log(err)
