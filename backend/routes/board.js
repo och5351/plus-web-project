@@ -26,7 +26,7 @@ router.get("/info/:category_name", function (req, res) {
   );
 });
 
-router.put("/views/:postId", function (req, res) {
+router.post("/views/:postId", function (req, res) {
   conn.query("UPDATE post SET views = views + 1 WHERE post_id = ?", [
     req.params.postId,
   ]);
