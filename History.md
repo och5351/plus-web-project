@@ -32,6 +32,8 @@ Chan hae's History
  > ### 2020-04-12
     * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
     * Made a function hashTagDistributor(It's need the 'hashTag' attribute in capdi's post table).
+ > ### 2020-04-27
+    * Success conversion .h5 file to Json. 
 
 Jin tae's History
 -----------

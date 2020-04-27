@@ -3,7 +3,7 @@
 exports.tfFunc = function(){
     
     //myStorage = window.localStorage;
-    rTfFunc() //함수 호출
+    rTfFunc()
     //const tf = require("@tensorflow/tfjs")
     
     //console.log(model.summary())
