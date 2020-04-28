@@ -8,8 +8,11 @@ import tensorflow.keras.utils as kerasUtil
 from tensorflow.keras.preprocessing.text import Tokenizer
 import datetime as dt
 
+from preprosess.WordsProcessor import WordsProcessor as wp
 
 
 if __name__ == "__main__":
-    # execute only if run as a script
-    print("main")
+    # load Preprocessor * input excute count
+    preprocessor = wp(10)
+    preprocessor.foodCategory_load_file()
+
