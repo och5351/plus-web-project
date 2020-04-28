@@ -23,17 +23,17 @@ Chan hae's History
     * Project Logo Change
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
- > ### 2020-04-07 ~ 2020-04-10
+ > ### 2020-04-07 ~ 2020-04-27
     * Create a crawler floder
     * Complete crawling(Game, Food, Text, Travel/Photo, Music, Mobile, Paint)   
     * Create a posting.js in BackEnd        
     * Complete crawling
     * Complete add queries and change the category in post
- > ### 2020-04-12
     * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
     * Made a function hashTagDistributor(It's need the 'hashTag' attribute in capdi's post table).
- > ### 2020-04-27
     * Success conversion .h5 file to Json. ( https://blog.naver.com/dhcksgo5319/221932780328 )
+ > ### 2020-04-27
+    * Current Making Preprocessor(Python)
 
 Jin tae's History
 -----------

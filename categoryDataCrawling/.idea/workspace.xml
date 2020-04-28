@@ -23,14 +23,13 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Using-RNN-with-Tensorflow.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -127,8 +126,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.MainCrawling" />
       <item itemvalue="Python.GameCategory" />
+      <item itemvalue="Python.MainCrawling" />
       <item itemvalue="Python.testPy" />
     </list>
     <recent_temporary>
@@ -170,10 +169,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" width="1092" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584549194821" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1586527973293">
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1588087136321">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586527973293" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588087136321" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1588087146311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588087146311" />
     <state width="1877" height="284" key="GridCell.Tab.0.bottom" timestamp="1586480382880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -214,10 +217,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584360842194" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/categoryDataCrawling$aa.coverage" NAME="aa Coverage Results" MODIFIED="1584552340837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CrawlingCategory" />
-    <SUITE FILE_PATH="coverage/categoryDataCrawling$GameCategory.coverage" NAME="GameCategory Coverage Results" MODIFIED="1584544808469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CrawlingCategory" />
-    <SUITE FILE_PATH="coverage/categoryDataCrawling$MainCrawling.coverage" NAME="MainCrawling Coverage Results" MODIFIED="1586479574305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
