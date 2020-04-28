@@ -190,7 +190,9 @@ Woo jin's History
 
 > ### 2020-04-27
      * 배포 자동화 서비스인 CodeDeploy를 사용하기 위해 IAM을 이용하여 권한 역할, 정책, 인스턴스 프로파일 생성
-        
+
+> ### 2020-04-28
+     * 배포 명세서 파일 appspec.yml 작성, 배포 시 사용하는 scripts file 작성      
 
 Jin ho's History
 -----------
