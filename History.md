@@ -210,5 +210,10 @@ Jin ho's History
   ### 2020-04-24
     * Home.vue에 image그리드 및 Footer 생성.
 
+  ### 2020-04-29
+    * Components/Board/CategoryList.vue Css 작업
+        추후 게시판 글 input 필요
+    * 페이지 번호 & 검색 부문 생성 필요
+ 
 
   
