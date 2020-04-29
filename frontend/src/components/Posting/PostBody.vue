@@ -170,9 +170,9 @@
                             posting: {
                                 board_id: this.board_id, //게시판에서 받아 와야 함
                                 ca_id: this.categoryId,
-                                user_idx: '1', //세션에서 받아와야 함
-                                user_id: 'och5351', //세션에서 받아와야 함
-                                name: '오찬해', //세션에서 받아와야 함
+                                user_idx: this.$session.get('user_idx'), //세션에서 받아와야 함
+                                user_id: this.$session.get('user_id'), //세션에서 받아와야 함
+                                name: this.$session.get('name'), //세션에서 받아와야 함
                                 contents: this.contentArea,
                                 title: this.titleText,
                                 write_date: submitdate,
@@ -205,9 +205,9 @@
                                 post_seq: this.num, //작성 글에서 받아 와야 함
                                 board_id: this.board_id, //게시판에서 받아 와야 함
                                 ca_id: '1', //this.checkedNames,
-                                user_id: 'och5351', //세션에서 받아와야 함
-                                user_idx: '1', //세션에서 받아와야 함
-                                name: '오찬해', //세션에서 받아와야 함
+                                user_idx: this.$session.get('user_idx'), //세션에서 받아와야 함
+                                user_id: this.$session.get('user_id'), //세션에서 받아와야 함
+                                name: this.$session.get('name'), //세션에서 받아와야 함
                                 contents: this.contentArea,
                                 title: this.titleText,
                                 update_date: submitdate,
