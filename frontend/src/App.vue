@@ -1,16 +1,17 @@
 <template>
   <div id="app" class="container">
-    <div class="logo">
+    <div class="logo" @click="main">
       <img style="width: 200px; height: 200px" alt="Vue logo" src="./assets/plusLogo.png">
     </div>
 
     <div>
       <b-navbar toggleable="lg" type="dark" variant="secondary">
-      <b-navbar-brand href="#">Plus</b-navbar-brand>
+      <b-navbar-brand class="link" @click="main">Plus</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item @click="main">Home</b-nav-item>
+          <b-nav-item @click="board('notice')">공지사항</b-nav-item>
           <b-nav-item @click="board('free')">자유게시판</b-nav-item>
         </b-navbar-nav>
           <b-dropdown size="sm" text="커뮤니티">
@@ -89,5 +90,8 @@
     width: 50px; 
     vertical-align: middle; 
     float:right;
+  }
+  .link, .logo {
+    cursor: pointer;
   }
 </style>

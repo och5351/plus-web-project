@@ -43,7 +43,7 @@
                 </nav>
             </div>
 
-            <button type="button" class="float-right btn btn-success" @click="post()">글쓰기</button>
+            <button v-if="this.$session.get('user_idx')" type="button" class="float-right btn btn-success" @click="post()">글쓰기</button>
         </div>
     </div>
 </template>
