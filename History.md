@@ -92,16 +92,20 @@ Jin tae's History
     * Main Design Pattern Vue Change.
     * Router-view optimization
     
-> ### 2020-04-28
+> ### 2020-04-27
     
     * backend api code optimization
     * board vue code optimization
     
-> ### 2020-04-29
+> ### 2020-04-28
     
     * main vue page link error flx.
     * Vue page navigation apply.
     * page navigation Vuex apply.
+    
+> ### 2020-04-29
+    
+    * Vue session apply.
 
 Moo Hyun's History
 -----------

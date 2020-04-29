@@ -1,14 +1,23 @@
-
+import re
 
 class StopWords:
-    def __init__(self):
-        print("불용어 처리가 준비 되었습니다.\n")
+    stopWordsDic = []
 
     # 불용어 사전 업로드
     def load_stopWordsDic(self):
-        f = open('stopwordsKorean.txt',
-                 'r', -1, "utf-8")
-        data = f.readlines()
+        f = open('stopwordsKorean.txt', 'r', -1, "utf-8")
+        self.stopWordsDic = f.readlines()
         f.close()
-        data = [x.replace("\n", "") for x in data]
+        self.stopWordsDic = [x.replace("\n", "") for x in self.stopWordsDic]
+
+    def pre_stopWord(self, data):
+        data = re.sub("[-=+,#/\?:%$.@*\"※~&%!\\'|\(\)\[\]\<\>`\'\\\\n\\\\t{}◀▶▲☞“”ⓒ◇]", "", data)
         return data
+
+    def stopWording(self, data, tempDic):
+        for post in data:
+            for word in post:
+                if word not in self.stopWordsDic:
+                    tempDic[word] = tempDic.get(word, 0)
+
+        return tempDic
