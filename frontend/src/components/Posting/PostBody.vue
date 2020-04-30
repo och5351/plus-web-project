@@ -12,7 +12,7 @@
                     </div>
                     <div id="inputs">
                         <div class="row">
-                            <div class="col-lg-8 col-sm-4">
+                            <div class="col-lg-12 col-sm-4">
                                 <div>
                                     <label class="col-form-label-lg">제목</label>
                                     <input type="text" class="form-control" v-model="titleText" id="titleText">
@@ -24,10 +24,10 @@
 
                     <div id="content">
                         <div class="row">
-                            <div class="col-lg-8 col-sm-4">
+                            <div class="col-lg-12 col-sm-4">
                                 <div>
                                     <label class="col-form-label-lg">본문</label>
-                                    <textarea type="text" class="form-control" cols="1000" rows="20"
+                                    <textarea type="text" class="form-control" cols="500" rows="20"
                                               v-model="contentArea" id="contentArea"></textarea><br>
                                 </div>
                             </div>
@@ -36,50 +36,50 @@
                     <div id="checkFunction">
 
                         <label class="col-form-label-lg">HashTag</label>
-                        <div class="row" style="width:110%">
-                            <div class="col-xs- col-sm-6 col-md-1">
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Food" v-model="checkedNames"
                                        value="음식"/>음식
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Game" v-model="checkedNames"
                                        value="게임"/>게임
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Web" v-model="checkedNames"
                                        value="모바일"/>모바일
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Application" v-model="checkedNames"
                                        value="음악"/>음악
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="AI" v-model="checkedNames"
                                        value="그림"/>그림
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Music" v-model="checkedNames"
                                        value="소설"/>소설
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
                             </div>
-                            <div class="col-xs-8 col-sm-6 col-md-1">
+                            <div class="col-xs-8 col-sm-6 col-md-3">
                                 <input class="form-check-input" type="checkbox" id="Paint" v-model="checkedNames"
                                        value="여행/사진"/>여행/사진
                                 <span class="form-check-sign">
@@ -130,9 +130,9 @@
             console.log(this.$session.get('user_idx'))
             var mySessionIDX = '1'
             var mySessionID = 'och5351' // session 만들었을 시 삭제
-            if (this.att == 'edit') { //edit 쿼리 조회
+            if (this.att === 'edit') { //edit 쿼리 조회
                 this.$http.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`).then((res) => {//session에 정해졌을 시 하나로
-                    if (res.data[0]['count(*)'] != '0') { // session OK!
+                    if (res.data[0]['count(*)'] !== '0') { // session OK!
                         var dic = res.data[0]
                         this.titleText = dic['title']
                         this.contentArea = dic['contents']
@@ -145,7 +145,7 @@
                 });
             } else {//posting 쿼리 조회
                 this.$http.get(`/Posting/sessCheck/${mySessionID}`).then((res) => {
-                    if (res.data[0]['count(*)'] == '0') { // session OK!
+                    if (res.data[0]['count(*)'] === '0') { // session OK!
                         alert('세션 에러!! \n다시 로그인 해주세요.')
                         this.$router.replace('/login')
                     }
@@ -158,11 +158,11 @@
             submitB: function () { //작성 버튼
                 var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
                 //유효성 검사 후 전송
-                if (this.titleText == '') {
+                if (this.titleText === '') {
                     alert('제목을 입력하세요.')
-                } else if (this.contentArea == '') {
+                } else if (this.contentArea === '') {
                     alert('본문을 입력하세요.')
-                } else if (this.checkedNames == '') {
+                } else if (this.checkedNames === '') {
                     alert('카테고리를 선택하세요.')
                 } else {
                     if (confirm("작성하시겠습니까?")) {
@@ -192,11 +192,11 @@
             updateB: function () { //수정 버튼
                 var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
                 //유효성 검사 후 전송
-                if (this.titleText == '') {
+                if (this.titleText === '') {
                     alert('제목을 입력하세요.')
-                } else if (this.contentArea == '') {
+                } else if (this.contentArea === '') {
                     alert('본문을 입력하세요.')
-                } else if (this.checkedNames == '') {
+                } else if (this.checkedNames === '') {
                     alert('카테고리를 선택하세요.')
                 } else {
                     if (confirm("작성하시겠습니까?")) {
@@ -223,7 +223,7 @@
                 }
             },
             cancleB() { //취소 버튼
-                if (this.att == 'post') {
+                if (this.att === 'post') {
                     if (confirm("작성을 취소하시겠습니까?\n작업하시던 내용은 사라집니다.")) {
                         this.$router.push(`/board/${this.categoryName}`)
                     }
@@ -234,20 +234,14 @@
                 }
             },
             hashTagDistributor(val) { // checkNames to index
-                if (val == '음식') {
-                    return 1
-                } else if (val == '게임') {
-                    return 2
-                } else if (val == '모바일') {
-                    return 3
-                } else if (val == '음악') {
-                    return 4
-                } else if (val == '그림') {
-                    return 5
-                } else if (val == '소설') {
-                    return 6
-                } else {
-                    return 7
+                switch (val) {
+                    case '음식': return 1
+                    case '게임': return 2
+                    case '모바일': return 3
+                    case '음악': return 4
+                    case '그림': return 5
+                    case '소설': return 6
+                    default: return 7
                 }
             },
             hashTagAdder(checkArr) { //hash 태그 index 배열로 변환
@@ -285,6 +279,3 @@
         }
     }
 </script>
-
-<style scoped>
-</style>
