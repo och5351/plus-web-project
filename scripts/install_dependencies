@@ -1,0 +1,9 @@
+echo '============================'
+echo 'Running install_dependencies'
+echo '============================'
+
+source /home/ec2-user/.bash_profile
+cd /var/www/plus-web-project/backend
+npm install
+cd /var/www/plus-web-project/frontend
+npm install
