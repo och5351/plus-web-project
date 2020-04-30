@@ -1,24 +1,7 @@
 <template>
     <div class="container">
-        <!-- 로그인 박스 -->
-        <div class="loginBox">
-            <span> 
-                <a href="#" class="memrog"> 회원가입 ｜ </a>
-                <a href="#" class="ldpw">아이디 ·</a>
-                <a href="#" class="idpw"> 비밀번호 찾기 </a>
-            </span>
-                <b-button href="#" variant="outline-secondary" size="md"> 로그인 </b-button>
-        </div>
-
-        <!-- 게시판 설명 -->
-        <div class="border" id="exBox">
-            <div class="card text-dark bg secondary mb-3">
-            <div class="card-header">자유게시판</div>
-            <div class="card-body">
-                <h5 class="card-title">싸우면 무현이 부름</h5>
-                <p class="card-text">3대 500 조무현 : 진실의 방으로...!</p>
-            </div>
-            </div>
+        <div>
+            <category-head></category-head>
         </div>
 
         <div style="padding: 20px; text-align: center;">
@@ -64,132 +47,22 @@
                 </nav>
             </div>
 
-            <button v-if="this.$session.get('user_idx')" type="button" class="float-right btn btn-success" @click="post()">글쓰기</button>
+            <button v-if="this.$session.get('user_idx')" type="button" class="float-right btn btn-success"
+                    @click="post()">글쓰기
+            </button>
         </div>
-            <!-- Footer -->
-            <footer class="footer">
-            <!-- Footer Links -->
-            <div class="container text-center text-md-left">
 
-                <!-- Grid row -->
-                <div class="row">
+        <div>
+            <category-footer></category-footer>
+        </div>
 
-                <!-- Grid column -->
-                <div class="col-md-4 mx-auto text-info">
-
-                    <!-- Content -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">바로가기</h5>
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-2 mx-auto text-dark">
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Game</h5>
-                    <ul class="list-unstyled">
-                    <li>
-                        <a href="#!" >League Of Legend</a>
-                    </li>
-                    <li>
-                        <a href="#!">Battle Ground</a>
-                    </li>
-                    <li>
-                        <a href="#!">Sudden Attack</a>
-                    </li>
-                    <li>
-                        <a href="#!">Maple Stroy</a>
-                    </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-2 mx-auto text-dark">
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Music</h5>
-                    <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Ballade</a>
-                    </li>
-                    <li>
-                        <a href="#!">Hip Hop</a>
-                    </li>
-                    <li>
-                        <a href="#!">Jazz</a>
-                    </li>
-                    <li>
-                        <a href="#!">PoP</a>
-                    </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none">
-
-                <!-- Grid column -->
-                <div class="col-md-2 mx-auto text-dark">
-
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Food</h5>
-
-                    <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Korean</a>
-                    </li>
-                    <li>
-                        <a href="#!">Western food</a>
-                    </li>
-                    <li>
-                        <a href="#!">Instant</a>
-                    </li>
-                    <li>
-                        <a href="#!">Junk food</a>
-                    </li>
-                    </ul>
-                </div>
-                <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-
-            <!-- Social buttons -->
-            <ul class="list-unstyled list-inline text-center">
-                <li class="list-inline-item">
-                    <i class="fab fa-facebook-f"> </i>
-                </li>
-                <li class="list-inline-item">
-                    <i class="fab fa-twitter"> </i>
-                </li>
-                <li class="list-inline-item">
-                    <i class="fab fa-google-plus-g"> </i>
-                </li>
-                <li class="list-inline-item">
-                    <i class="fab fa-github"> </i>
-                </li>
-            </ul>
-
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="http://plus-market.com">PLUS</a>
-            </div>
-
-            </footer>
-            <!-- Footer -->
     </div>
 </template>
 
 <script>
     import store from '../../store/store'
+    import CategoryHead from  './CategoryHead'
+    import CategoryFooter from './CategoryFooter'
 
     export default {
         store,
@@ -204,6 +77,10 @@
                 categoryId: null,
                 boardList: null,
             }
+        },
+        components: {
+            CategoryHead,
+            CategoryFooter
         },
         created() {
             this.getPosts()
@@ -276,25 +153,6 @@
         float: left;
     }
 
-    #exBox{
-        margin-top: 20px;
-        margin-bottom:  20px;
-    }
-
-    span{
-        font-size: 14px;
-        -webkit-text-fill-color: gray;
-    }
-    .memrog{
-        font-weight: 700;
-    }
-
-    .loginBox{
-        margin-top: 15px;
-        margin-bottom: 10px;
-        text-align: right;
-    }
-
     button.page-link {
         display: inline-block;
     }
@@ -304,5 +162,5 @@
         color: #29b3ed;
         font-weight: 500;
     }
-    
+
 </style>

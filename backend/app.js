@@ -11,6 +11,7 @@ var commentsRouter = require('./routes/comments');
 var boardRouter = require('./routes/board');
 var posting = require('./routes/posting');
 var articleRouter = require('./routes/article');
+var healthRouter = require('./routes/health');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/board', boardRouter);
 app.use('/api/post', posting);
 app.use('/api/article', articleRouter);
+app.use('/health', healthRouter);
 /* 문제점 ?????
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -50,18 +52,18 @@ app.options('/api/users/signUp', (req, res) => {
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
