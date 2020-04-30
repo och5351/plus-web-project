@@ -106,6 +106,10 @@ Jin tae's History
 > ### 2020-04-29
     
     * Vue session apply.
+    
+> ### 2020-04-30
+    
+    * post vue session check.
 
 Moo Hyun's History
 -----------
