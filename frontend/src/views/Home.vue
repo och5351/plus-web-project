@@ -28,8 +28,12 @@
 
       <!-- 로그인 박스 -->
       <div class="col-md-3">
-        <div class="loginbox">
+        <div v-if="(this.$session.get('user_idx'))==null" class="loginbox">
            <b-button @click="login" class="loginbutton" align="center" >Login</b-button>
+        </div>
+        <div v-else>
+            {{this.$session.get('name')}}님 환영 합니다!
+            <button v-on:click="logout">로그아웃</button>
         </div>
 
       <!-- 공지사항 박스 -->
@@ -267,6 +271,11 @@
     methods: {
       login: function(){
         this.$router.push('/login')
+      },
+      // 로그아웃 시 세션 삭제 후 새로 고침
+      logout: function (){
+        this.$session.destroy();
+        location.reload();
       }
     },
   }
@@ -312,6 +321,7 @@
     width: 250px;
     height: 70px;
   }
+
   .trueLogin{
     width: 50px; 
     vertical-align: middle; 

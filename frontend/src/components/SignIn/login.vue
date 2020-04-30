@@ -30,14 +30,16 @@ export default {
           // Session setting / 세션 지정
           this.$session.set('user_idx', res.data.user_idx);
           this.$session.set('userid', res.data.userid);
+          this.$session.set('name', res.data.name);
 
           alert(res.data.message);
-          this.$router.push('/clear') 
+          this.$router.push('/') 
         }
         if (res.data.success == false) {
           // Session removing / 세션 삭제
           this.$session.remove('user_idx');
           this.$session.remove('userid');
+          this.$session.remove('name');
           alert(res.data.message);
         }
       })
