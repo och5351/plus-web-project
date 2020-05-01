@@ -5,9 +5,10 @@ using text file(crawling file)
 
 '''
 
-from eunjeon import Mecab
 from preprosess.StopWords import StopWords
 from preprosess.Loader import Loader
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class WordsProcessor:
 
@@ -46,6 +47,13 @@ class WordsProcessor:
         self.wordsDic = self.st.stopWording(paintCategory, self.wordsDic)
         self.wordsDic = self.st.stopWording(travelPhotoCategory, self.wordsDic)
         self.wordsDic = self.st.stopWording(textCategory, self.wordsDic)
+
+    def wordHotEncoding(self, afterArr):
+        afterArr = list(afterArr)
+        token = Tokenizer()
+        token.fit_on_texts(afterArr)
+        print(token.word_index)
+
 
     def get_wordDic(self):
         return self.wordsDic
