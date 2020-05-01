@@ -106,6 +106,10 @@ Jin tae's History
 > ### 2020-04-29
     
     * Vue session apply.
+    
+> ### 2020-04-30
+    
+    * post vue session check.
 
 Moo Hyun's History
 -----------
@@ -150,19 +154,24 @@ Moo Hyun's History
 
 Chan Woong's History
 -----------
+ > ### 2020-04-30
+     * 불 필요 코드 및 파일 삭제 (clear.vue)
+     * 세션 존재 여부로 페이지 상태 변경 (Home.vue, user.js)
+     * 로그아웃 버튼 활성화 (세션 삭제)
+
  > ### 2020-04-11
      * DB 스키마 3차 설계 및 수정 (capdi.sql UPDATE)
      * 지속적 수정 및 개선 필요
+
  > ### 2020-04-07
      * DB 스키마 2차 설계 및 수정 (capdi.sql UPDATE)
      * 문제점 : comment(댓글) table과 deep(대댓글) table의 연관성 고려,
      sessions table 삭제 여부 고려,
      전체적 칼럼 위치 or 인덱스 설정
+
  > ### 2020-04-02
      * DB 1차 구성 (게시판(BOARD),카테고리(CATEGORY),글(WRITING),댓글(COMMENT),대댓글(DEEP),회원(CAPDI_USERS) TABLES)
-
      * 문제점 : 의도한 기능을 정확히 만족하는지 테스트 필요
-
      * 불 필요 코드 삭제
        (user.js - 회원 가입 라우트 부분, 중첩 쿼리 수정 완료 + SignUp.vue 중복 확인 img 속성 중 v-bind="check" 삭제)
 

@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 // Components 분리
 import login from "../components/SignIn/login";
 import SignUp from "../components/SignIn/SignUp";
-import clear from "../components/SignIn/clear";
 
 Vue.use(VueRouter);
 
@@ -46,11 +45,6 @@ const routes = [
     path: "/signup",
     name: "SignUp",
     component: SignUp,
-  },
-  {
-    path: "/clear",
-    name: "clear",
-    component: clear,
   },
 ];
 
