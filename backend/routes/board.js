@@ -16,6 +16,16 @@ router.get("/:category_name", function (req, res) {
   );
 });
 
+router.get("/detail/:category_name", function (req, res) {
+  conn.query(
+    "SELECT * FROM capdi.category_detail WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?)",
+    [req.params.category_name],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
 router.get("/info/:category_name", function (req, res) {
   conn.query(
     "SELECT * FROM capdi.category WHERE ca_name = ?",

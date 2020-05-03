@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            <category-head></category-head>
+            <category-head :categoryName="categoryName"></category-head>
         </div>
 
         <div style="padding: 20px; text-align: center;">
