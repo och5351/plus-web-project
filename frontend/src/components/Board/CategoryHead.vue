@@ -30,8 +30,8 @@
         },
         data() {
             return {
-                categoryNameDetail : '',
-                categoryDetail : '',
+                categoryNameDetail : null,
+                categoryDetail : null,
             }
         },
         created() {
