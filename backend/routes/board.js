@@ -8,7 +8,17 @@ const conn = dbConObj.init();
 // 글 리스트
 router.get("/:category_name", function (req, res) {
   conn.query(
-    "SELECT * FROM capdi.post WHERE ca_id = (SELECT ca_id FROM capdi.category WHERE ca_name = ?)",
+    "SELECT * FROM post WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?)",
+    [req.params.category_name],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.get("/detail/:category_name", function (req, res) {
+  conn.query(
+    "SELECT * FROM category_detail WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?)",
     [req.params.category_name],
     function (err, row) {
       res.send(row);
@@ -18,7 +28,7 @@ router.get("/:category_name", function (req, res) {
 
 router.get("/info/:category_name", function (req, res) {
   conn.query(
-    "SELECT * FROM capdi.category WHERE ca_name = ?",
+    "SELECT * FROM category WHERE ca_name = ?",
     [req.params.category_name],
     function (err, row) {
       res.send(row);

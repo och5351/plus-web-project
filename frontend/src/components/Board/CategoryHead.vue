@@ -11,17 +11,48 @@
         </div>
 
         <!-- 게시판 설명 -->
-        <div class="border" id="exBox">
+        <div v-if="categoryNameDetail" class="border" id="exBox">
             <div class="card text-dark bg secondary mb-3">
-                <div class="card-header">자유게시판</div>
+                <div class="card-header">{{categoryNameDetail}}게시판</div>
                 <div class="card-body">
-                    <h5 class="card-title">싸우면 무현이 부름</h5>
-                    <p class="card-text">3대 500 조무현 : 진실의 방으로...!</p>
+                    <h5 class="card-title">{{categoryName}}</h5>
+                    <p class="card-text">{{categoryDetail}}</p>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            categoryName: String,
+        },
+        data() {
+            return {
+                categoryNameDetail : null,
+                categoryDetail : null,
+            }
+        },
+        created() {
+            this.getCategoryDetail();
+        },
+        methods: {
+            getCategoryDetail() {
+                this.$http.get(`/api/board/detail/${this.categoryName}`)
+                    .then((res) => {
+                        if (res.data.length === 0) {
+                            return
+                        }
+                        this.categoryNameDetail = res.data[0].ca_name
+                        this.categoryDetail = res.data[0].ca_detail
+                    }).catch((error) => {
+                    console.log(`Error : ${error}`)
+                })
+            },
+        },
+    }
+</script>
 
 <style>
     #exBox {
