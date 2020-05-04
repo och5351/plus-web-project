@@ -49,11 +49,15 @@ class WordsProcessor:
         self.wordsDic = self.st.stopWording(textCategory, self.wordsDic)
 
     def wordHotEncoding(self, afterArr):
+
         afterArr = list(afterArr)
         token = Tokenizer()
         token.fit_on_texts(afterArr)
-        print(token.word_index)
-
+        x = token.texts_to_sequences(afterArr)
+        paddingNum = 300
+        padded_x = pad_sequences(x, paddingNum)
+        word_size = len(token.word_index) + 1
+        return padded_x, paddingNum, word_size
 
     def get_wordDic(self):
         return self.wordsDic
