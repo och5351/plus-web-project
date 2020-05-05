@@ -126,31 +126,30 @@
     export default {
         name: 'postBody',
         mounted () {
-            if (this.categoryId === null) this.$router.go(-1)
-            console.log(this.$session.get('user_idx'))
-            var mySessionIDX = '1'
-            var mySessionID = 'och5351' // session 만들었을 시 삭제
+            if (this.categoryId === null) this.$router.go(-1);
+            var mySessionIDX = this.$session.get('user_idx');
+            var mySessionID = this.$session.get('user_id');
             if (this.att === 'edit') { //edit 쿼리 조회
-                this.$http.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`).then((res) => {//session에 정해졌을 시 하나로
+                this.$http.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`).then((res) => {
                     if (res.data[0]['count(*)'] !== '0') { // session OK!
-                        var dic = res.data[0]
-                        this.titleText = dic['title']
-                        this.contentArea = dic['contents']
+                        var dic = res.data[0];
+                        this.titleText = dic['title'];
+                        this.contentArea = dic['contents'];
                     } else {
                         alert('세션 에러!! \n다시 로그인 해주세요.')
-                        this.$router.replace('/login')
+                        this.$router.replace('/login');
                     }
                 }).catch(function (error) {
-                    console.log(`Error : ${error}`)
+                    console.log(`Error : ${error}`);
                 });
             } else {//posting 쿼리 조회
                 this.$http.get(`/Posting/sessCheck/${mySessionID}`).then((res) => {
                     if (res.data[0]['count(*)'] === '0') { // session OK!
-                        alert('세션 에러!! \n다시 로그인 해주세요.')
-                        this.$router.replace('/login')
+                        alert('세션 에러!! \n다시 로그인 해주세요.');
+                        this.$router.replace('/login');
                     }
                 }).catch(function (error) {
-                    console.log(`Error : ${error}`)
+                    console.log(`Error : ${error}`);
                 });
             }
         },
@@ -159,11 +158,11 @@
                 var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
                 //유효성 검사 후 전송
                 if (this.titleText === '') {
-                    alert('제목을 입력하세요.')
+                    alert('제목을 입력하세요.');
                 } else if (this.contentArea === '') {
-                    alert('본문을 입력하세요.')
+                    alert('본문을 입력하세요.');
                 } else if (this.checkedNames === '') {
-                    alert('카테고리를 선택하세요.')
+                    alert('카테고리를 선택하세요.');
                 } else {
                     if (confirm("작성하시겠습니까?")) {
                         this.$http.post('/api/post/Posting', {
@@ -180,7 +179,7 @@
                                 //hashTag: hashTagDistributor(this.checkedNames),
                             }
                         }).then(res => {
-                            console.log(res.data)
+                            console.log(res.data);
                         }).catch(function (error) {
                             console.log('에러');
                             console.log(error);
@@ -193,11 +192,11 @@
                 var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss')
                 //유효성 검사 후 전송
                 if (this.titleText === '') {
-                    alert('제목을 입력하세요.')
+                    alert('제목을 입력하세요.');
                 } else if (this.contentArea === '') {
-                    alert('본문을 입력하세요.')
+                    alert('본문을 입력하세요.');
                 } else if (this.checkedNames === '') {
-                    alert('카테고리를 선택하세요.')
+                    alert('카테고리를 선택하세요.');
                 } else {
                     if (confirm("작성하시겠습니까?")) {
                         this.$http.post('/api/post/updatePost', {
@@ -218,18 +217,18 @@
                             console.log('에러');
                             console.log(error);
                         });
-                        this.$router.push(`/board/${this.categoryName}`)
+                        this.$router.push(`/board/${this.categoryName}`);
                     }
                 }
             },
             cancleB() { //취소 버튼
                 if (this.att === 'post') {
                     if (confirm("작성을 취소하시겠습니까?\n작업하시던 내용은 사라집니다.")) {
-                        this.$router.push(`/board/${this.categoryName}`)
+                        this.$router.push(`/board/${this.categoryName}`);
                     }
                 } else {
                     if (confirm("작성을 취소하시겠습니까?\n작업하시던 내용은 사라집니다.")) {
-                        this.$router.push(`/article/${this.contentId}`)
+                        this.$router.push(`/article/${this.contentId}`);
                     }
                 }
             },
@@ -248,16 +247,16 @@
                 var hashTag = []
                 if (checkArr != null) {
                     for (var i = 0; i < checkArr.length; i++) {
-                        if (i == 0) {
+                        if (i === 0) {
                             hashTag.push(this.hashTagDistributor(checkArr[i]))
                         } else {
                             hashTag.push(this.hashTagDistributor(checkArr[i]))
                         }
                     }
                 }
-                hashTag.sort()
-                hashTag = hashTag.map(String)
-                return hashTag
+                hashTag.sort();
+                hashTag = hashTag.map(String);
+                return hashTag;
             }
         },
         data() {
