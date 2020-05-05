@@ -184,7 +184,7 @@
                             console.log('에러');
                             console.log(error);
                         });
-                        this.$router.push(`/board/${this.categoryName}`)
+                        this.$router.push(`/board/${this.categoryName}`);
                     }
                 }
             },
@@ -212,7 +212,7 @@
                                 update_date: submitdate,
                             }
                         }).then(res => {
-                            console.log(res.data)
+                            console.log(res.data);
                         }).catch(function (error) {
                             console.log('에러');
                             console.log(error);
@@ -248,9 +248,9 @@
                 if (checkArr != null) {
                     for (var i = 0; i < checkArr.length; i++) {
                         if (i === 0) {
-                            hashTag.push(this.hashTagDistributor(checkArr[i]))
+                            hashTag.push(this.hashTagDistributor(checkArr[i]));
                         } else {
-                            hashTag.push(this.hashTagDistributor(checkArr[i]))
+                            hashTag.push(this.hashTagDistributor(checkArr[i]));
                         }
                     }
                 }
