@@ -160,6 +160,9 @@ Moo Hyun's History
 > ### 2020-04-16
     * Add deleting comment/subcomment button / 댓글 삭제 버튼 추가
 
+> ### 2020-05-06
+		* Showing up notice, hot, recent post in mainpage / 메인페이지에서 인기글, 최신글, 공지사항 확인가능
+
 Chan Woong's History
 -----------
  > ### 2020-04-30

@@ -20,4 +20,33 @@ router.get('/get/:articleID', function(req, res, next) {
     });
 });
 
+// Load notice / 공지사항 불러오기
+router.get('/notice', function(req, res, next) {
+    var ca_id = 6;  // 공지사항 카테고리 번호
+    var limit = 7;
+
+    conn.query('SELECT post_id, title from post WHERE ca_id=? ORDER BY write_date DESC LIMIT ?', [ca_id, limit], function(err, row) {
+        res.send(row);
+    })
+})
+
+// Load recently updated posts / 최신글 불러오기
+router.get('/new', function(req, res, next) {
+    var limit = 7;
+    
+    conn.query('SELECT post_id, title from post ORDER BY write_date DESC LIMIT ?', [limit], function(err, row) {
+        res.send(row);
+    })
+})
+
+// Load hot posts / 인기글 불러오기
+router.get('/hot', function(req, res, next) {
+    var limit = 7;
+
+    //TODO: 쿼리 수정
+    conn.query('SELECT post_id, title, TIMESTAMPDIFF(WEEK, write_date, NOW()) as week from post ORDER BY hit/views DESC, week LIMIT ?', [limit], function(err, row) {
+        res.send(row);
+    })
+})
+
 module.exports = router;

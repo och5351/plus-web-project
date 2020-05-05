@@ -30,13 +30,13 @@
 					<button v-on:click="logout">로그아웃</button>
 				</div>
 
+				<!-- TODO: 리스트 CSS 수정 -->
 				<!-- 공지사항 박스 -->
 				<div class="border" id="notice">
 					<label>공지사항</label><br />
-					<b-link href="#"> 공지사항은 누가 전파한다?</b-link><br />
-					<b-link href="#"> 당직사관이 전파한다</b-link><br />
-					<b-link href="#"> 애국가 1절만 제창</b-link><br />
-					<b-link href="#"> 동해물과 백두산이 마르고 닳도록 하느님이 누구시죠</b-link><br />
+					<div :key="item.post_id" v-for="item in notice">
+						<b-link v-bind:href="'/article/' + item.post_id">{{ item.title }}</b-link> <br />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -49,9 +49,17 @@
 						<b-card no-body>
 							<b-tabs pills card>
 								<b-tab title="인기글" active
-									><b-card-text> <b-table striped hover :items="items"></b-table> </b-card-text
+									><b-card-text>
+										<div :key="item.post_id" v-for="item in hot">
+											<b-link v-bind:href="'/article/' + item.post_id">{{ item.title }}</b-link> <br />
+										</div> </b-card-text
 								></b-tab>
-								<b-tab title="최신글"><b-card-text>Tab contents 2</b-card-text></b-tab>
+								<b-tab title="최신글"
+									><b-card-text>
+										<div :key="item.post_id" v-for="item in recent">
+											<b-link v-bind:href="'/article/' + item.post_id">{{ item.title }}</b-link> <br />
+										</div> </b-card-text
+								></b-tab>
 							</b-tabs>
 						</b-card>
 					</div>
@@ -243,15 +251,14 @@
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
 	data() {
 		return {
-			items: [
-				{ age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-				{ age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-				{ age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-				{ age: 38, first_name: 'Jami', last_name: 'Carney' },
-			],
+			notice: Object,
+			recent: Object,
+			hot: Object,
 			mySession: false,
 		};
 	},
@@ -264,6 +271,18 @@ export default {
 			this.$session.destroy();
 			location.reload();
 		},
+	},
+	mounted() {
+		// Load notice / 공지사항 불러오기
+		axios.get('/api/article/notice').then(res => {
+			this.notice = res.data;
+		});
+		axios.get('/api/article/new').then(res => {
+			this.recent = res.data;
+		});
+		axios.get('/api/article/hot').then(res => {
+			this.hot = res.data;
+		});
 	},
 };
 </script>
