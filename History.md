@@ -114,6 +114,10 @@ Jin tae's History
 > ### 2020-05-03
     
     * 게시판 설명 DB 테이블 추가 및 기능 구현.
+    
+> ### 2020-05-05
+    
+    * ESLint - Prettier Code Refactoring.
 
 Moo Hyun's History
 -----------
