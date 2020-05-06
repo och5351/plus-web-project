@@ -161,12 +161,8 @@ Moo Hyun's History
     * Add deleting comment/subcomment button / 댓글 삭제 버튼 추가
 
 > ### 2020-05-06
-<<<<<<< HEAD
 	* Showing up notice, hot, recent post in mainpage / 메인페이지에서 인기글, 최신글, 공지사항 확인가능
 	* Add hit button / 추천 버튼 추가
-=======
-    * Showing up notice, hot, recent post in mainpage / 메인페이지에서 인기글, 최신글, 공지사항 확인가능
->>>>>>> 1b9694fb4b4bfc15fceb759c0fa74f28819ff812
 
 Chan Woong's History
 -----------
