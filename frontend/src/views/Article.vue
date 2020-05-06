@@ -34,6 +34,13 @@
 					{{ contents }}
 				</div>
 			</div>
+			<div class="row text-center justify-content-center col">
+				<p>
+					<b-button v-on:click.passive="hitPost()"
+						><span class="fas fa-thumbs-up">&nbsp;{{ hit }}</span></b-button
+					>
+				</p>
+			</div>
 		</b-container>
 		<!-- Comments Parts 게시글의 댓글 부분 -->
 		<CommentList :contentId="contentId" :authorIdx="Number(this.author_idx)"></CommentList>
@@ -57,6 +64,7 @@ export default {
 			user: '',
 			created: '',
 			author_idx: '',
+			hit: '',
 		};
 	},
 	methods: {
@@ -67,6 +75,19 @@ export default {
 				this.$router.push({
 					name: 'Posting',
 					params: { contentId: this.contentId, att: 'edit', board_id: this.board_id },
+				});
+			}
+		},
+		hitPost: function () {
+			if (this.$session.get('user_idx') == null) {
+				alert('로그인 후 추천가능합니다.');
+			} else {
+				const axios = require('axios');
+				axios.post(`/api/article/hit/${this.contentId}`).then(res => {
+					axios.get(`/api/article/get/${this.contentId}`).then(res => {
+						this.hit = res.data[0].hit;
+					});
+					alert(res.data);
 				});
 			}
 		},
@@ -81,6 +102,7 @@ export default {
 				this.user = res.data[0].name;
 				this.created = res.data[0].write_date;
 				this.author_idx = res.data[0].user_idx;
+				this.hit = res.data[0].hit;
 			} else {
 				this.$router.push('/board');
 			}
