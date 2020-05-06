@@ -11,16 +11,22 @@ class StopWords:
         self.stopWordsDic = [x.replace("\n", "") for x in self.stopWordsDic]
 
     def pre_stopWord(self, data):
-        data = re.sub("[-=+,#/\?:%$.@*\"※~&%!\\'|\(\)\[\]\<\>`\'\\\\n\\\\t{}◀▶▲△☞“”ⓒ◇]", "", data)
+        data = re.sub("[-=+,#/\?:%$.@*\"※~&%!;\\'|\(\)\[\]\<\>`\'\\\\n\\\\t{}◀▶▲△☞“”ⓒ◇]", "", data)
         return data
 
-    def stopWording(self, data, tempDic):
-        for post in data:
+    def stopWording(self, data, studyDic, validateDic):
+        for post in data[0]:
             s = ''
             for word in post:
                 if word not in self.stopWordsDic:
                     s += ' ' + word
+            studyDic.append(s)
 
-            tempDic[s] = tempDic.get(s, 0)
+        for post in data[1]:
+            s = ''
+            for word in post:
+                if word not in self.stopWordsDic:
+                    s += ' ' + word
+            validateDic.append(s)
 
-        return tempDic
+        return studyDic, validateDic
