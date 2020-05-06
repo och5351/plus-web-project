@@ -39,7 +39,13 @@ router.get("/info/:category_name", function (req, res) {
 router.post("/views/:postId", function (req, res) {
   conn.query("UPDATE post SET views = views + 1 WHERE post_id = ?", [
     req.params.postId,
-  ]);
+  ], function (err, row) {
+    if (err)
+      console.log(err);
+    else
+      console.log('Update Views');
+
+  })
   conn.commit();
 });
 

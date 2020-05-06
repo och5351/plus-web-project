@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- 로그인 박스 -->
-		<div class="loginBox">
+		<div v-if="this.$session.get('user_idx') === undefined" class="loginBox">
 			<span>
 				<a href="#" class="memrog"> 회원가입 ｜ </a>
 				<a href="#" class="ldpw">아이디 ·</a>

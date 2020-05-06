@@ -142,11 +142,11 @@ export default {
 	mounted() {
 		if (this.categoryId === null) this.$router.go(-1);
 		var mySessionIDX = this.$session.get('user_idx');
-		var mySessionID = this.$session.get('user_id');
+		var mySessionID = this.$session.get('userid');
 		if (this.att === 'edit') {
 			//edit 쿼리 조회
 			this.$http
-				.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${mySessionID}/${this.contentId}`)
+				.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${this.contentId}`)
 				.then(res => {
 					if (res.data[0]['count(*)'] !== '0') {
 						// session OK!
@@ -193,11 +193,11 @@ export default {
 					this.$http
 						.post('/api/post/Posting', {
 							posting: {
-								board_id: this.board_id, //게시판에서 받아 와야 함
+								board_id: this.board_id,
 								ca_id: this.categoryId,
-								user_idx: this.$session.get('user_idx'), //세션에서 받아와야 함
-								user_id: this.$session.get('user_id'), //세션에서 받아와야 함
-								name: this.$session.get('name'), //세션에서 받아와야 함
+								user_idx: this.$session.get('user_idx'),
+								user_id: this.$session.get('userid'),
+								name: this.$session.get('name'),
 								contents: this.contentArea,
 								title: this.titleText,
 								write_date: submitdate,
@@ -231,12 +231,12 @@ export default {
 					this.$http
 						.post('/api/post/updatePost', {
 							posting: {
-								post_seq: this.num, //작성 글에서 받아 와야 함
-								board_id: this.board_id, //게시판에서 받아 와야 함
+								post_seq: this.num,
+								board_id: this.board_id,
 								ca_id: '1', //this.checkedNames,
-								user_idx: this.$session.get('user_idx'), //세션에서 받아와야 함
-								user_id: this.$session.get('user_id'), //세션에서 받아와야 함
-								name: this.$session.get('name'), //세션에서 받아와야 함
+								user_idx: this.$session.get('user_idx'),
+								user_id: this.$session.get('userid'),
+								name: this.$session.get('name'),
 								contents: this.contentArea,
 								title: this.titleText,
 								update_date: submitdate,
