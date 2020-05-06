@@ -118,6 +118,11 @@ Jin tae's History
 > ### 2020-05-05
     
     * ESLint - Prettier Code Refactoring.
+    
+> ### 2020-05-06
+    
+    * posting login box session apply.
+    * unused vue file delete.
 
 Moo Hyun's History
 -----------
