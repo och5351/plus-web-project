@@ -318,7 +318,7 @@ export default {
 }
 
 .footer {
-	margin-top: 50px;
+	margin-top: 60px;
 	color: black;
 }
 
@@ -341,6 +341,6 @@ export default {
 
 .ad {
 	margin-top: 10px;
-	height: 200px;
+	height: 250px;
 }
 </style>

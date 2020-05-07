@@ -1,15 +1,17 @@
 <template>
 	<div class="sign-up">
-		<div style="font-size: 150%; border: 15%;">회 원 가 입</div>
+		<br />
+		<div style="font-size: 150%; border: 15%; color: green;">회 원 가 입</div>
+		<br />
 		<br />
 
-		<div style="position: relative; left: -115px;">I D :</div>
+		<div style="position: relative; left: -140px; color: green;">I D )</div>
 		<button
 			v-on:click="idCheck"
 			id="idCheckClear"
 			style="
 				position: relative;
-				right: -275px;
+				right: -350px;
 				border: 1px solid black;
 				width: 75pt;
 				height: 35pt;
@@ -21,7 +23,7 @@
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="idClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -205px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -260px;"
 		/>
 		<input
 			type="text"
@@ -32,17 +34,18 @@
 			style="position: relative; left: -77px;"
 		/><br /><br />
 
-		<div style="position: relative; left: -97px;">N A M E : <br /></div>
+		<div style="position: relative; left: -125px; color: green;">N A M E ) <br /></div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="nameClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -367px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -400px;"
 		/>
 		<input
 			type="text"
-			value="*한글만 입력해 주세요."
+			value="* 한글만 입력해 주세요."
 			id="nameFalse"
-			style="width: 20%; position: relative; right: -315px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 20%; position: relative; right: -380px; visibility: visible; font-weight: bold; border: 0px;"
+			disabled
 		/>
 		<input
 			type="text"
@@ -53,17 +56,18 @@
 			style="position: relative; left: -139px;"
 		/><br /><br />
 
-		<div style="position: relative; left: -115px;">P W : <br /></div>
+		<div style="position: relative; left: -140px; color: green;">P W )<br /></div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="pwClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -509px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -540px;"
 		/>
 		<input
 			type="text"
-			value="*비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
+			value="* 비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
 			id="pwFalse"
-			style="width: 45%; position: relative; right: -455px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 45%; position: relative; right: -520px; visibility: visible; font-weight: bold; border: 0px;"
+			disabled
 		/>
 		<input
 			type="password"
@@ -75,7 +79,7 @@
 			placeholder="PW를입력해주세요!"
 		/><br /><br />
 
-		<div style="position: relative; left: -77px;">C H E C K P W : <br /></div>
+		<div style="position: relative; left: -102px; color: green;">C H E C K P W ) <br /></div>
 		<input
 			type="password"
 			id="pwcheck"
@@ -90,7 +94,9 @@
 		<button v-on:click="signUp" id="allClear" style="border: 1px solid black; width: 67pt; height: 35pt;">
 			가입하기
 		</button>
-		<span>또는 <router-link to="/login">로그인으로 돌아가기</router-link></span>
+		<p>또는 <router-link to="/login">로그인으로 돌아가기</router-link></p>
+		<br />
+		<br />
 	</div>
 </template>
 
@@ -239,7 +245,7 @@ img {
 
 input {
 	margin: 0px 0;
-	width: 20%;
+	width: 25%;
 	padding: 15px;
 }
 
@@ -252,13 +258,14 @@ button {
 }
 
 p {
-	margin-top: 40px;
-	font-size: 20px;
-}
-
-span {
-	display: block;
-	margin-top: 20px;
+	margin-top: 60px;
+	margin-bottom: 50px;
 	font-size: 15px;
+	color: green;
+}
+p a {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #df0174;
 }
 </style>

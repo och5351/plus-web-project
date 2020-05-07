@@ -247,5 +247,12 @@ Jin ho's History
         추후 게시판 글 input 필요
     * 페이지 번호 & 검색 부문 생성 필요
  
+  ### 2020-05-07
+    * login.vue Css Update
+
+    * SignUp.vue Css Upadate
+        아이디 중복확인 클릭 후, 중복이 아닐 경우 나오는 체크 이미지 위치 확인 해야함
+
+    * CategoryHead.vue 로그인 박스 class id 오타 수정.
 
   
