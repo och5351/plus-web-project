@@ -111,19 +111,19 @@
 
 			<div id="buttonFunction">
 				<!-- 삭제 버튼 구현 요망-->
-				<div v-if="this.att == 'post'">
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitB">
+				<div v-if="this.att === 'post'">
+					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitButton">
 						<i class="material-icons">done</i> 작성
 					</button>
-					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
+					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
 						<i class="material-icons">clear</i> 취소
 					</button>
 				</div>
 				<div v-else>
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateB">
+					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateButton">
 						<i class="material-icons">done</i> 수정
 					</button>
-					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancleB">
+					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
 						<i class="material-icons">clear</i> 취소
 					</button>
 				</div>
@@ -139,46 +139,69 @@ window.onbeforeunload = function () {
 };
 export default {
 	name: 'postBody',
+	data() {
+		const contentId = this.$route.params.contentId;
+		const att = this.$route.params.att;
+		const board_id = this.$route.params.board_id;
+		const categoryId = this.$route.params.categoryId;
+		const categoryName = this.$route.params.categoryName;
+		return {
+			contentId: contentId,
+			att: att,
+			board_id: board_id || null,
+			categoryId: categoryId || null,
+			categoryName: categoryName || null,
+			checkedNames: [],
+			titleText: '',
+			contentArea: '',
+			sessionIdx: this.$session.get('user_idx'),
+			sessionId: this.$session.get('userid'),
+			sessionName: this.$session.get('name'),
+		};
+	},
 	mounted() {
 		if (this.categoryId === null) this.$router.go(-1);
-		var mySessionIDX = this.$session.get('user_idx');
-		var mySessionID = this.$session.get('userid');
-		if (this.att === 'edit') {
-			//edit 쿼리 조회
-			this.$http
-				.get(`/api/post/Posting/sessCheckEdit/${mySessionIDX}/${this.contentId}`)
-				.then(res => {
-					if (res.data[0]['count(*)'] !== '0') {
-						// session OK!
-						var dic = res.data[0];
-						this.titleText = dic['title'];
-						this.contentArea = dic['contents'];
-					} else {
-						alert('세션 에러!! \n다시 로그인 해주세요.');
-						this.$router.replace('/login');
-					}
-				})
-				.catch(function (error) {
-					console.log(`Error : ${error}`);
-				});
-		} else {
-			//posting 쿼리 조회
-			this.$http
-				.get(`/Posting/sessCheck/${mySessionID}`)
-				.then(res => {
-					if (res.data[0]['count(*)'] === '0') {
-						// session OK!
-						alert('세션 에러!! \n다시 로그인 해주세요.');
-						this.$router.replace('/login');
-					}
-				})
-				.catch(function (error) {
-					console.log(`Error : ${error}`);
-				});
-		}
+		let att = this.att;
+		this.getPosts(att);
 	},
 	methods: {
-		submitB: function () {
+		getPosts(att) {
+			if (att === 'edit') {
+				this.$http
+					.get(`/api/post/Posting/sessCheckEdit/${this.sessionIdx}/${this.contentId}`)
+					.then(res => {
+						if (res.data[0]['count(*)'] !== '0') {
+							// session OK!
+							var dic = res.data[0];
+							this.titleText = dic['title'];
+							this.contentArea = dic['contents'];
+						} else {
+							alert('세션 에러!! \n다시 로그인 해주세요.');
+							this.$router.replace('/login');
+						}
+					})
+					.catch(function (error) {
+						console.log(`Error : ${error}`);
+					});
+			} else {
+				this.$http
+					.get(`/Posting/sessCheck/${this.sessionId}`)
+					.then(res => {
+						if (res.data[0]['count(*)'] === '0') {
+							// session OK!
+							alert('세션 에러!! \n다시 로그인 해주세요.');
+							this.$router.replace('/login');
+						}
+					})
+					.catch(function (error) {
+						console.log(`Error : ${error}`);
+					});
+			}
+		},
+		setPoint() {
+			this.$http.get(`/api/post/point/${this.$session.get('userid')}`).then(res => console.log(res));
+		},
+		submitButton() {
 			//작성 버튼
 			var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
 			//유효성 검사 후 전송
@@ -195,9 +218,9 @@ export default {
 							posting: {
 								board_id: this.board_id,
 								ca_id: this.categoryId,
-								user_idx: this.$session.get('user_idx'),
-								user_id: this.$session.get('userid'),
-								name: this.$session.get('name'),
+								user_idx: this.sessionIdx,
+								user_id: this.sessionId,
+								name: this.sessionName,
 								contents: this.contentArea,
 								title: this.titleText,
 								write_date: submitdate,
@@ -207,8 +230,7 @@ export default {
 						})
 						.then(res => {
 							console.log(res.data);
-							// Test 예정
-							//this.$http.post(`/api/post/point/${this.$session.get('userid')}`).then(res => console.log(res));
+							this.setPoint();
 						})
 						.catch(function (error) {
 							console.log('에러');
@@ -218,7 +240,7 @@ export default {
 				}
 			}
 		},
-		updateB: function () {
+		updateButton() {
 			//수정 버튼
 			var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
 			//유효성 검사 후 전송
@@ -236,9 +258,9 @@ export default {
 								post_seq: this.num,
 								board_id: this.board_id,
 								ca_id: '1', //this.checkedNames,
-								user_idx: this.$session.get('user_idx'),
-								user_id: this.$session.get('userid'),
-								name: this.$session.get('name'),
+								user_idx: this.sessionIdx,
+								user_id: this.sessionId,
+								name: this.sessionName,
 								contents: this.contentArea,
 								title: this.titleText,
 								update_date: submitdate,
@@ -255,7 +277,7 @@ export default {
 				}
 			}
 		},
-		cancleB() {
+		cancelButton() {
 			//취소 버튼
 			if (this.att === 'post') {
 				if (confirm('작성을 취소하시겠습니까?\n작업하시던 내용은 사라집니다.')) {
@@ -302,23 +324,6 @@ export default {
 			hashTag = hashTag.map(String);
 			return hashTag;
 		},
-	},
-	data() {
-		const contentId = this.$route.params.contentId;
-		const att = this.$route.params.att;
-		const board_id = this.$route.params.board_id;
-		const categoryId = this.$route.params.categoryId;
-		const categoryName = this.$route.params.categoryName;
-		return {
-			contentId: contentId,
-			att: att,
-			board_id: board_id || null,
-			categoryId: categoryId || null,
-			categoryName: categoryName || null,
-			checkedNames: [],
-			titleText: '',
-			contentArea: '',
-		};
 	},
 };
 </script>

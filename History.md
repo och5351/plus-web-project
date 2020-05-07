@@ -125,6 +125,10 @@ Jin tae's History
     
     * posting login box session apply.
     * unused vue file delete.
+    
+> ### 2020-05-08
+    
+    * posting point Test & Vue page Error fix.
 
 Moo Hyun's History
 -----------

@@ -141,7 +141,10 @@ export default {
 		},
 		detail(seq) {
 			this.$http.post(`/api/board/views/${seq}`).then(res => console.log(res));
-			this.$router.push(`/article/${seq}/`);
+			this.$router.push({
+				path: `/article/${seq}/`,
+				params: { categoryName: this.categoryName, categoryId: this.categoryId },
+			});
 		},
 		post() {
 			this.$router.push({
