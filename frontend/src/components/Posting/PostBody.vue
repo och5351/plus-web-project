@@ -207,6 +207,8 @@ export default {
 						})
 						.then(res => {
 							console.log(res.data);
+							// Test 예정
+							//this.$http.post(`/api/post/point/${this.$session.get('userid')}`).then(res => console.log(res));
 						})
 						.catch(function (error) {
 							console.log('에러');

@@ -40,13 +40,14 @@ router.post("/views/:postId", function (req, res) {
   conn.query("UPDATE post SET views = views + 1 WHERE post_id = ?", [
     req.params.postId,
   ], function (err, row) {
-    if (err)
+    if (err) {
       console.log(err);
-    else
+    } else {
+      res.send(row);
       console.log('Update Views');
+    }
 
   })
-  conn.commit();
 });
 
 module.exports = router;

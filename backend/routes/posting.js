@@ -37,6 +37,16 @@ router.get('/Posting/sessCheckEdit?/:user_idx/:content_id', function (req, res) 
   });
 });
 
+router.post('/point/:user_id', function (req, res) {
+  conn.query('UPDATE capdi_users SET point = point + 50 WHERE userid = ?', [req.params.user_id], function (err, row) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(row);
+    }
+  });
+})
+
 
 //글쓰기
 router.post('/Posting', function (req, res) {

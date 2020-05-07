@@ -140,7 +140,7 @@ export default {
 				});
 		},
 		detail(seq) {
-			this.$http.post(`/api/board/views/${seq}`);
+			this.$http.post(`/api/board/views/${seq}`).then(res => console.log(res));
 			this.$router.push(`/article/${seq}/`);
 		},
 		post() {
