@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/plus-web-project
+    destination: /var/www/
 hooks:
   AfterInstall:
     - location: scripts/set_owner

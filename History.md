@@ -14,7 +14,7 @@ Chan hae's History
     * HeadLine Routing connect.
     * login <-> signup routing connect.
     * Find a backend post error(complete).
- > ### 2020-04-01 ~ 2020-04-04
+ > ### 2020-04-01 ~ 2020-04-27
     * Posting component 수정 중(Delete Navigation Bar, CheckBox 정리)
     * Delete backend node_modules folder.
     * Name reposition (board -> title)
@@ -23,7 +23,6 @@ Chan hae's History
     * Project Logo Change
     * Clear Module not Found Error CaseSensitivePathsPlugin (cause : path in Posting.vue)
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
- > ### 2020-04-07 ~ 2020-04-27
     * Create a crawler floder
     * Complete crawling(Game, Food, Text, Travel/Photo, Music, Mobile, Paint)   
     * Create a posting.js in BackEnd        
@@ -32,8 +31,11 @@ Chan hae's History
     * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
     * Made a function hashTagDistributor(It's need the 'hashTag' attribute in capdi's post table).
     * Success conversion .h5 file to Json. ( https://blog.naver.com/dhcksgo5319/221932780328 )
- > ### 2020-04-27
     * Current Making Preprocessor(Python)
+ > ### 2020-05-06
+    * Create a word preprocessor(python)
+    * Create a deep learning model
+       -> Find a shpae error in model.py model.fit
 
 Jin tae's History
 -----------
@@ -106,6 +108,27 @@ Jin tae's History
 > ### 2020-04-29
     
     * Vue session apply.
+    
+> ### 2020-04-30
+    
+    * post vue session check.
+    
+> ### 2020-05-03
+    
+    * 게시판 설명 DB 테이블 추가 및 기능 구현.
+    
+> ### 2020-05-05
+    
+    * ESLint - Prettier Code Refactoring.
+    
+> ### 2020-05-06
+    
+    * posting login box session apply.
+    * unused vue file delete.
+    
+> ### 2020-05-08
+    
+    * posting point Test & Vue page Error fix.
 
 Moo Hyun's History
 -----------
@@ -113,40 +136,44 @@ Moo Hyun's History
     * public/index.html 내 jQuery, js/articleProgress.js 추가 (프로그레스 바)
 
 > ### 2020-04-07
-    * Pre-work for comments API / 댓글 API 사전 작업
+    * Pre-work for comments API / 注释API的工作前准备 / 댓글 API 사전 작업
 
 > ### 2020-04-08
-    * Now can toggle comments / 댓글 여닫기 기능 추가
+    * Now can toggle comments / 现在可以切换评论 / 댓글 여닫기 기능 추가
 
 > ### 2020-04-09
-    * Can retrive comments and subcomments in API server / API 서버를 통해 댓글, 대댓글 값 반환 기능 추가
-    * Modified mysql connection style / mysql 진태형 변경사항에 따름
+    * Can retrive comments and subcomments in API server / 可以在API服务器中检索注释和子注释/ API 서버를 통해 댓글, 대댓글 값 반환 기능 추가
+    * Modified mysql connection style / 修改了mysql的连接风格 / mysql 진태형 변경사항에 따름
 
 > ### 2020-04-10
-    * Can load articles from database / DB에서 게시글 불러오기 가능
-    * Can load comments, sub-comments from database / DB에서 댓글 불러오기 가능
-    * Create comment input textbox / 댓글 달기 텍스트 입력 창 생성
+    * Can load articles from database / 可以从数据库加载文章 / DB에서 게시글 불러오기 가능
+    * Can load comments, sub-comments from database / 可以从数据库中加载评论和子评论 / DB에서 댓글 불러오기 가능
+    * Create comment input textbox / 创建评论输入文本框 / 댓글 달기 텍스트 입력 창 생성
 
 > ### 2020-04-11
-    * Add post editing button / 글 수정버튼 추가
-    * Align article page / 게시글 보기 페이지 정렬
-    * Rewrite query with modified DB / 수정된 DB에 맞춰 쿼리 재작성
+    * Add post editing button / 添加帖子编辑按钮 / 글 수정버튼 추가
+    * Align article page / 对齐文章页面 / 게시글 보기 페이지 정렬
+    * Rewrite query with modified DB / 用修改后的数据库重写查询 / 수정된 DB에 맞춰 쿼리 재작성
 > ### 2020-04-12
-    * Fully functional add comment button / 댓글 달기 버튼 기능 추가
+    * Fully functional add comment button / 功能齐全的添加评论按钮 / 댓글 달기 버튼 기능 추가
 
 > ### 2020-04-13
-    * Change reloading system in comment / 댓글 재조회 기능 변경
-    * Create add subcomment button in fully functional / 대댓글 달기 버튼 추가 및 기능구현
-    * Empty post redirection / 빈 포스트 주소 입력 시, 게시판으로 리다이렉션
-    * Create session when users do login / 로그인시 세션 생성 (로그인 실패시 세션 삭제)
-    * Don't show edit button on other user's post / 타인 게시글의 수정버튼을 볼 수 없음
-    * Can't see add comment/subcomment button when logged-out / 로그아웃 시, 댓글/대댓글 작성버튼을 볼 수 없음
+    * Change reloading system in comment / 更改评论中的重新加载系统 / 댓글 재조회 기능 변경
+    * Create add subcomment button in fully functional / 功能齐全的创建添加子注释按钮 / 대댓글 달기 버튼 추가 및 기능구현
+    * Empty post redirection / 空帖子重定向 / 빈 포스트 주소 입력 시, 게시판으로 리다이렉션
+    * Create session when users do login / 用户登录后创建会话 / 로그인시 세션 생성 (로그인 실패시 세션 삭제)
+    * Don't show edit button on other user's post / 在其他用户的帖子上不显示编辑按钮 / 타인 게시글의 수정버튼을 볼 수 없음
+    * Can't see add comment/subcomment button when logged-out / 注销时看不到添加评论/子评论按钮 / 로그아웃 시, 댓글/대댓글 작성버튼을 볼 수 없음
 
 > ### 2020-04-15
-    * Highlight post author's comments/subcomments / 게시글 작성자의 댓글, 대댓글 하이라이팅
+    * Highlight post author's comments/subcomments / 突出显示帖子作者的评论/子评论 / 게시글 작성자의 댓글, 대댓글 하이라이팅
 
 > ### 2020-04-16
-    * Add deleting comment/subcomment button / 댓글 삭제 버튼 추가
+    * Add deleting comment/subcomment button / 添加删除评论/子评论按钮 / 댓글 삭제 버튼 추가
+
+> ### 2020-05-06
+	* Showing up notice, hot, recent post in mainpage / 在主页上显示通知，热门，最新帖子 / 메인페이지에서 인기글, 최신글, 공지사항 확인가능
+	* Add hit button / 添加点击按钮 / 추천 버튼 추가
 
 Chan Woong's History
 -----------
@@ -224,5 +251,12 @@ Jin ho's History
         추후 게시판 글 input 필요
     * 페이지 번호 & 검색 부문 생성 필요
  
+  ### 2020-05-07
+    * login.vue Css Update
+
+    * SignUp.vue Css Upadate
+        아이디 중복확인 클릭 후, 중복이 아닐 경우 나오는 체크 이미지 위치 확인 해야함
+
+    * CategoryHead.vue 로그인 박스 class id 오타 수정.
 
   
