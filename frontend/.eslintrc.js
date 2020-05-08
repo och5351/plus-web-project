@@ -22,6 +22,7 @@ module.exports = {
 				trailingComma: 'all',
 				printWidth: 120,
 				bracketSpacing: true,
+				jsxBracketSameLine: true,
 				arrowParens: 'avoid',
 			},
 		],
