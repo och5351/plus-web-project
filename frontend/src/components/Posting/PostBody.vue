@@ -185,7 +185,7 @@ export default {
 					});
 			} else {
 				this.$http
-					.get(`/Posting/sessCheck/${this.sessionId}`)
+					.get(`/api/post/Posting/sessCheck/${this.sessionId}`)
 					.then(res => {
 						if (res.data[0]['count(*)'] === '0') {
 							// session OK!
