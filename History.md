@@ -128,7 +128,8 @@ Jin tae's History
     
 > ### 2020-05-08
     
-    * posting point Test & Vue page Error fix.
+    * posting point Test & Vue page Error fix. (AM)
+    * posting point apply (PM)
 
 Moo Hyun's History
 -----------
