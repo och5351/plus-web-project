@@ -4,12 +4,19 @@
 		<div class="tag">I D )</div>
 		<input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" /><br /><br />
 		<div class="tag">P W )</div>
-		<input type="password" id="password" v-model="user.password" placeholder="PW를 입력해주세요!" /><br /><br />
+		<input
+			v-on:keydown.enter="login"
+			type="password"
+			id="password"
+			v-model="user.password"
+			placeholder="PW를 입력해주세요!"
+		/>
+		<br /><br />
 		<button v-on:click="login">로그인</button>
 		<p>
 			만약, 계정이 없다면,
-			<router-link to="/SignUp"
-				>회원가입을 먼저 진행해주세요!
+			<router-link to="/SignUp">
+				회원가입을 먼저 진행해주세요!
 				<router-view />
 			</router-link>
 		</p>
