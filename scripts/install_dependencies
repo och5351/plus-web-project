@@ -4,7 +4,8 @@ echo '============================'
 
 source /home/ec2-user/.bash_profile
 cd /var/www/plus-web-project/backend
-sudo npm install
+npm install
 cd /var/www/plus-web-project/frontend
-sudo npm install
-sudo npm run build
+npm install
+cd /var/www/plus-web-project/frontend
+npm run build
