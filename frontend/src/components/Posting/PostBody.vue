@@ -110,7 +110,6 @@
 			</div>
 
 			<div id="buttonFunction">
-				<!-- 삭제 버튼 구현 요망-->
 				<div v-if="this.att === 'post'">
 					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitButton">
 						<i class="material-icons">done</i> 작성
@@ -180,7 +179,7 @@ export default {
 							this.$router.replace('/login');
 						}
 					})
-					.catch(function (error) {
+					.catch(error => {
 						console.log(`Error : ${error}`);
 					});
 			} else {
@@ -193,7 +192,7 @@ export default {
 							this.$router.replace('/login');
 						}
 					})
-					.catch(function (error) {
+					.catch(error => {
 						console.log(`Error : ${error}`);
 					});
 			}
@@ -225,16 +224,15 @@ export default {
 								title: this.titleText,
 								write_date: submitdate,
 								update_date: submitdate,
-								//hashTag: hashTagDistributor(this.checkedNames),
+								hashTag: this.hashTagDistributor(this.checkedNames),
 							},
 						})
 						.then(res => {
 							console.log(res.data);
 							this.setPoint();
 						})
-						.catch(function (error) {
-							console.log('에러');
-							console.log(error);
+						.catch(error => {
+							console.log(`Error : ${error}`);
 						});
 					this.$router.push(`/board/${this.categoryName}`);
 				}
@@ -251,7 +249,7 @@ export default {
 			} else if (this.checkedNames === '') {
 				alert('카테고리를 선택하세요.');
 			} else {
-				if (confirm('작성하시겠습니까?')) {
+				if (confirm('수정하시겠습니까?')) {
 					this.$http
 						.post('/api/post/updatePost', {
 							posting: {
@@ -269,9 +267,8 @@ export default {
 						.then(res => {
 							console.log(res.data);
 						})
-						.catch(function (error) {
-							console.log('에러');
-							console.log(error);
+						.catch(error => {
+							console.log(`Error : ${error}`);
 						});
 					this.$router.push(`/board/${this.categoryName}`);
 				}

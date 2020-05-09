@@ -67,6 +67,7 @@ router.post("/Posting", function (req, res) {
     title: req.body.posting.title,
     write_date: req.body.posting.write_date,
     update_date: req.body.posting.update_date,
+    hashTag: req.body.posting.hashTag,
   };
 
   conn.query(
