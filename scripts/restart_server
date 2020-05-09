@@ -2,4 +2,7 @@ echo '======================'
 echo 'Running restart_server'
 echo '======================'
 
+sudo rm -rf /var/www/plus-web-project/*
+cp -rf /var/www/temp/* /var/www/plus-web-project
+
 service nginx restart
