@@ -37,17 +37,13 @@ router.get("/info/:category_name", function (req, res) {
 });
 
 router.post("/views/:postId", function (req, res) {
-  conn.query("UPDATE post SET views = views + 1 WHERE post_id = ?", [
-    req.params.postId,
-  ], function (err, row) {
-    if (err) {
-      console.log(err);
-    } else {
+  conn.query(
+    "UPDATE post SET views = views + 1 WHERE post_id = ?",
+    [req.params.postId],
+    function (err, row) {
       res.send(row);
-      console.log('Update Views');
     }
-
-  })
+  );
 });
 
 module.exports = router;

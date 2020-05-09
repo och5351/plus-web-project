@@ -14,10 +14,7 @@ router.get("/Posting/sessCheck/:user_id", function (req, res) {
     "SELECT count(*) FROM capdi_users WHERE userid = ?",
     [user_id],
     function (err, row) {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else res.send(row);
+      res.send(row);
     }
   );
 });
@@ -34,9 +31,7 @@ router.get("/Posting/sessCheckEdit?/:user_idx/:content_id", function (
     "SELECT count(*), title, contents FROM post WHERE post_id=? AND user_idx=?",
     [post_id, user_idx],
     function (err, row) {
-      if (err) {
-        res.send(err);
-      } else res.send(row);
+      res.send(row);
     }
   );
 });
@@ -46,11 +41,7 @@ router.get("/point/:user_id", function (req, res) {
     "UPDATE capdi_users SET point = point + 50 WHERE userid = ?",
     [req.params.user_id],
     function (err, row) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(row);
-      }
+      res.send(row);
     }
   );
 });
@@ -84,8 +75,7 @@ router.post("/Posting", function (req, res) {
       0,
     ],
     function (err, row) {
-      if (err) console.log(err);
-      else res.send(row);
+      res.send(row);
     }
   );
   //tfScript.tfFunc(); //Tensorflow 삽입 완료
@@ -116,8 +106,7 @@ router.post("/updatePost", function (req, res) {
       temp.post_seq,
     ],
     function (err, row) {
-      if (err) console.log(err);
-      else console.log("Update complete");
+      res.send(row);
     }
   );
 });
