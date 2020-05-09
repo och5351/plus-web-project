@@ -10,7 +10,7 @@ hooks:
       runas: root
     - location: scripts/install_dependencies
       timeout: 120
-      runas: root
+      runas: ec2-user
   ApplicationStart:
     - location: scripts/restart_server
       timeout: 10
