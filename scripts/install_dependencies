@@ -7,4 +7,4 @@ cd /var/www/plus-web-project/backend
 npm install
 cd /var/www/plus-web-project/frontend
 npm install
-npm run build
+sudo npm run build
