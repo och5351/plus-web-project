@@ -2,9 +2,9 @@ echo '======================='
 echo 'Running validate_server'
 echo '======================='
 
-result=$(curl -s -o /dev/null -w "%{http_code}" http://15.165.160.168/health) 
+result=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80/health) 
 
-echo Check http://15.165.160.168/health
+echo Check http://localhost:80/health
 echo $result
 
 if [[ "$result" =~ "200" ]]; then
