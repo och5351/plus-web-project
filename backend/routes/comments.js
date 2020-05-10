@@ -21,6 +21,20 @@ router.get('/get/:articleID', function(req, res, next) {
     });
 });
 
+// Get Comments like count
+// 댓글 좋아요 갯수 가져오기
+router.get('/like/:commentID', function(req, res, next) {
+    var commentId = req.params.commentID;
+
+    conn.query('SELECT COUNT(CASE WHEN cm_like=true THEN 1 END) as dolike, \
+    COUNT(CASE WHEN cm_like=false THEN 1 END) as dislike,\
+    COUNT(*) as total \
+    FROM (SELECT cm_like FROM comment_like WHERE cm_id = ?) a;\
+    ', [commentId], function(err, row) {
+        res.send(row);
+    });
+});
+
 // Get Sub-Comments, param should be an comment's ID
 // 대댓글 읽어오기 인자는 댓글 고유 ID
 router.get('/sub/:commentID', function(req, res, next) {

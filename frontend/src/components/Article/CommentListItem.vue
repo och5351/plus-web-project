@@ -4,9 +4,21 @@
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em;">
 				<div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx">
-					{{ commentObj.name }}
+					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
+					><a
+						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;{{
+							commentObj.name
+						}}</a
+					>
 				</div>
-				<div class="col-2" v-else>{{ commentObj.name }}</div>
+				<div class="col-2" v-else>
+					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
+					><a
+						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;{{
+							commentObj.name
+						}}</a
+					>
+				</div>
 				<div class="col-5 text-left">{{ commentObj.contents }}</div>
 				<div class="col-3">
 					<small>{{ commentObj.write_date }}</small>
@@ -103,15 +115,31 @@ export default {
 	components: {},
 	data() {
 		return {
+			commentLike: String,
+			commentDislike: String,
 			subCommentList: Object,
 			sessUserIdx: Number,
 		};
 	},
 	mounted() {
+		// 대댓글 불러오기
 		this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 			this.subCommentList = res.data;
 		});
 		$('.sub-comment-form-group').hide();
+
+		// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
+		this.$http.get(`/api/comments/like/${this.commentObj.cm_id}`).then(res => {
+			var like = (res.data[0].dolike / res.data[0].total) * 50;
+			var dislike = 50 - like;
+
+			// 최소 5픽셀
+			like = like <= 5 ? 5 : like;
+			dislike = dislike <= 5 ? 5 : dislike;
+
+			this.commentLike = like + 'px';
+			this.commentDislike = dislike + 'px';
+		});
 
 		this.sessUserIdx = this.$session.get('user_idx');
 	},
