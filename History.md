@@ -130,6 +130,12 @@ Jin tae's History
     
     * posting point Test & Vue page Error fix. (AM)
     * posting point apply (PM)
+    
+> ### 2020-05-11
+    
+    * eslint rule add.
+    * api error fix.
+    * multi code fix & signUp.vue code refectory.
 
 Moo Hyun's History
 -----------
