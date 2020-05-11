@@ -4,18 +4,17 @@
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em;">
 				<div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx">
-					<a href="" v-on:click="likeComment(commentObj.cm_id, true)"
-						><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
-					><a href="" v-on:click="likeComment(commentObj.cm_id, false)"
-						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;</a
-					>
+					<a href="" v-on:click="likeComment(commentObj.cm_id, true)">
+						<span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span>
+					</a>
+					<a href="" v-on:click="likeComment(commentObj.cm_id, false)">
+						<span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;
+					</a>
 					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
-					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
-					><a
-						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;</a
-					>
+					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a>
+					<a><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;</a>
 					{{ commentObj.name }}
 				</div>
 				<div class="col-5 text-left">{{ commentObj.contents }}</div>
