@@ -3,6 +3,7 @@ module.exports = {
 	// 현재 eslintrc 파일을 기준으로 ESLint 규칙을 적용
 	root: true,
 	env: {
+		browser: true,
 		es6: true,
 		node: true,
 	},

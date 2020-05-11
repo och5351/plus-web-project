@@ -100,11 +100,9 @@
 	</div>
 </template>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <script>
+import $ from 'jquery';
+
 export default {
 	data: function () {
 		return {
@@ -118,24 +116,19 @@ export default {
 
 	methods: {
 		//최종 가입 버튼
-		signUp: function () {
-			var a = document.getElementById('idClear');
-			var b = document.getElementById('nameClear');
-			var c = document.getElementById('pwClear');
-			var d = document.getElementById('alert-success');
+		signUp() {
+			var id = $('#idClear').css('visibility');
+			var name = $('#nameClear').css('visibility');
+			var pw = $('#pwClear').css('visibility');
+			var aler = $('#alert-success').css('display');
 
-			if (
-				a.style.visibility == 'visible' &&
-				b.style.visibility == 'visible' &&
-				c.style.visibility == 'visible' &&
-				d.style.display == 'inline-block'
-			) {
+			if (id === 'visible' && name === 'visible' && pw === 'visible' && aler === 'inline-block') {
 				this.$http
 					.post('/api/users/signUp', {
 						user: this.user,
 					})
 					.then(res => {
-						if (res.data.success == true) {
+						if (res.data.success === true) {
 							alert(res.data.message);
 							this.$router.push('/');
 						}
@@ -145,7 +138,7 @@ export default {
 			}
 		},
 		//아이디 확인 버튼
-		idCheck: function () {
+		idCheck() {
 			var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
 			if (!idReg.test($('input[name=uid]').val())) {
 				alert('아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)');
@@ -158,9 +151,9 @@ export default {
 					.then(res => {
 						if (res.data.success == true) {
 							alert(res.data.message);
-							document.getElementById('idClear').style.visibility = 'visible';
-							document.getElementById('idCheckClear').style.visibility = 'hidden';
-							$('#id').attr('disabled', true).attr('readonly'.false);
+							$('#idClear').css('visibility', 'visible');
+							$('#idCheckClear').css('visibility', 'hidden');
+							$('#id').attr('disabled', true).attr('readonly', false);
 						}
 						if (res.data.success == false) {
 							alert(res.data.message);
@@ -169,36 +162,36 @@ export default {
 			}
 		},
 		//이름 확인
-		nameCheck: function () {
-			var regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"\\]/g;
+		nameCheck() {
+			var regexp = /[a-z0-9]|[ [\]{}()<>?|`~!@#$%^&*-_+=,.;:'"\\]/g;
 			var v = $('#name').val();
 			if (regexp.test(v)) {
 				alert('한글만 입력가능 합니다.');
-				document.getElementById('nameClear').style.visibility = 'hidden';
-				document.getElementById('nameFalse').style.visibility = 'visible';
+				$('#nameClear').css('visibility', 'hidden');
+				$('#nameFalse').css('visibility', 'visible');
 				$('#name').val(v.replace(regexp, ''));
 			} else {
-				document.getElementById('nameClear').style.visibility = 'visible';
-				document.getElementById('nameFalse').style.visibility = 'hidden';
+				$('#nameClear').css('visibility', 'visible');
+				$('#nameFalse').css('visibility', 'hidden');
 			}
 			if (v == '') {
-				document.getElementById('nameClear').style.visibility = 'hidden';
-				document.getElementById('nameFalse').style.visibility = 'visible';
+				$('#nameClear').css('visibility', 'hidden');
+				$('#nameFalse').css('visibility', 'visible');
 			}
 		},
 		//비밀 번호 확인
-		pwCheck: function () {
+		pwCheck() {
 			var pwd1 = $('#pw').val();
 			var pwd2 = $('#pwcheck').val();
 			var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
 
 			if (!pwReg.test($('input[name=upw]').val())) {
-				document.getElementById('pwClear').style.visibility = 'hidden';
-				document.getElementById('pwFalse').style.visibility = 'visible';
+				$('#pwClear').css('visibility', 'hidden');
+				$('#pwFalse').css('visibility', 'visible');
 				return;
 			} else {
-				document.getElementById('pwClear').style.visibility = 'visible';
-				document.getElementById('pwFalse').style.visibility = 'hidden';
+				$('#pwClear').css('visibility', 'visible');
+				$('#pwFalse').css('visibility', 'hidden');
 			}
 			if (pwd1 != '' && pwd2 == '') {
 				null;
@@ -213,7 +206,7 @@ export default {
 			}
 		},
 		//비밀 번호 재확인
-		repwCheck: function () {
+		repwCheck() {
 			var pwd1 = $('#pw').val();
 			var pwd2 = $('#pwcheck').val();
 

@@ -130,6 +130,12 @@ Jin tae's History
     
     * posting point Test & Vue page Error fix. (AM)
     * posting point apply (PM)
+    
+> ### 2020-05-11
+    
+    * eslint rule add.
+    * api error fix.
+    * multi code fix & signUp.vue code refectory.
 
 Moo Hyun's History
 -----------
@@ -175,6 +181,10 @@ Moo Hyun's History
 > ### 2020-05-06
 	* Showing up notice, hot, recent post in mainpage / 在主页上显示通知，热门，最新帖子 / 메인페이지에서 인기글, 최신글, 공지사항 확인가능
 	* Add hit button / 添加点击按钮 / 추천 버튼 추가
+
+> ### 2020-05-11
+    * Add comment like table / 像表一样添加评论 / 댓글추천 테이블 생성
+    * Show comment like in article page / 在文章页面上显示评论 / 게시글 페이지에서 댓글추천 보이기 기능
 
 Chan Woong's History
 -----------
