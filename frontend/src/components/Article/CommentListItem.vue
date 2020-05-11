@@ -4,20 +4,19 @@
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em;">
 				<div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx">
-					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
-					><a
-						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;{{
-							commentObj.name
-						}}</a
+					<a href="" v-on:click="likeComment(commentObj.cm_id, true)"
+						><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
+					><a href="" v-on:click="likeComment(commentObj.cm_id, false)"
+						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;</a
 					>
+					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
 					<a><span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span></a
 					><a
-						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;{{
-							commentObj.name
-						}}</a
+						><span class="far fa-angry" v-bind:style="'color: red; font-size: ' + this.commentDislike"></span>&nbsp;</a
 					>
+					{{ commentObj.name }}
 				</div>
 				<div class="col-5 text-left">{{ commentObj.contents }}</div>
 				<div class="col-3">
@@ -129,7 +128,7 @@ export default {
 		$('.sub-comment-form-group').hide();
 
 		// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
-		this.$http.get(`/api/comments/like/${this.commentObj.cm_id}`).then(res => {
+		this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {
 			var like = (res.data[0].dolike / res.data[0].total) * 50;
 			var dislike = 50 - like;
 
@@ -208,6 +207,20 @@ export default {
 					} else {
 						alert(res.data.message);
 					}
+				});
+		},
+		// Like comment / 댓글 추천
+		likeComment: function (cm_id, type) {
+			this.$http
+				.post('/api/comments/like/', {
+					data: {
+						cm_id: cm_id,
+						type: type,
+						user_idx: this.$session.get('user_idx'),
+					},
+				})
+				.then(res => {
+					if (res.data.message != null) alert(res.data.message);
 				});
 		},
 	},
