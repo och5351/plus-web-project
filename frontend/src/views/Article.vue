@@ -57,6 +57,7 @@ export default {
 	data() {
 		const contentId = Number(this.$route.params.contentId);
 		return {
+			categoryId: this.$route.params.categoryId,
 			contentId: contentId,
 			boardId: '',
 			title: '',
@@ -74,7 +75,7 @@ export default {
 			} else {
 				this.$router.push({
 					name: 'Posting',
-					params: { contentId: this.contentId, att: 'edit', board_id: this.board_id },
+					params: { contentId: this.contentId, att: 'edit', board_id: this.board_id, categoryId: this.categoryId },
 				});
 			}
 		},

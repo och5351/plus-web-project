@@ -1,15 +1,17 @@
 <template>
 	<div class="sign-up">
-		<div style="font-size: 150%; border: 15%;">회 원 가 입</div>
+		<br />
+		<div style="font-size: 150%; border: 15%; color: green;">회 원 가 입</div>
+		<br />
 		<br />
 
-		<div style="position: relative; left: -115px;">I D :</div>
+		<div style="position: relative; left: -140px; color: green;">I D )</div>
 		<button
 			v-on:click="idCheck"
 			id="idCheckClear"
 			style="
 				position: relative;
-				right: -275px;
+				right: -350px;
 				border: 1px solid black;
 				width: 75pt;
 				height: 35pt;
@@ -21,7 +23,7 @@
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="idClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -205px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -260px;"
 		/>
 		<input
 			type="text"
@@ -32,17 +34,18 @@
 			style="position: relative; left: -77px;"
 		/><br /><br />
 
-		<div style="position: relative; left: -97px;">N A M E : <br /></div>
+		<div style="position: relative; left: -125px; color: green;">N A M E ) <br /></div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="nameClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -367px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -400px;"
 		/>
 		<input
 			type="text"
-			value="*한글만 입력해 주세요."
+			value="* 한글만 입력해 주세요."
 			id="nameFalse"
-			style="width: 20%; position: relative; right: -315px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 20%; position: relative; right: -380px; visibility: visible; font-weight: bold; border: 0px;"
+			disabled
 		/>
 		<input
 			type="text"
@@ -53,17 +56,18 @@
 			style="position: relative; left: -139px;"
 		/><br /><br />
 
-		<div style="position: relative; left: -115px;">P W : <br /></div>
+		<div style="position: relative; left: -140px; color: green;">P W )<br /></div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="pwClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -509px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -540px;"
 		/>
 		<input
 			type="text"
-			value="*비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
+			value="* 비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
 			id="pwFalse"
-			style="width: 45%; position: relative; right: -455px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 45%; position: relative; right: -520px; visibility: visible; font-weight: bold; border: 0px;"
+			disabled
 		/>
 		<input
 			type="password"
@@ -75,7 +79,7 @@
 			placeholder="PW를입력해주세요!"
 		/><br /><br />
 
-		<div style="position: relative; left: -77px;">C H E C K P W : <br /></div>
+		<div style="position: relative; left: -102px; color: green;">C H E C K P W ) <br /></div>
 		<input
 			type="password"
 			id="pwcheck"
@@ -90,15 +94,15 @@
 		<button v-on:click="signUp" id="allClear" style="border: 1px solid black; width: 67pt; height: 35pt;">
 			가입하기
 		</button>
-		<span>또는 <router-link to="/login">로그인으로 돌아가기</router-link></span>
+		<p>또는 <router-link to="/login">로그인으로 돌아가기</router-link></p>
+		<br />
+		<br />
 	</div>
 </template>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 <script>
+import $ from 'jquery';
+
 export default {
 	data: function () {
 		return {
@@ -112,24 +116,19 @@ export default {
 
 	methods: {
 		//최종 가입 버튼
-		signUp: function () {
-			var a = document.getElementById('idClear');
-			var b = document.getElementById('nameClear');
-			var c = document.getElementById('pwClear');
-			var d = document.getElementById('alert-success');
+		signUp() {
+			var id = $('#idClear').css('visibility');
+			var name = $('#nameClear').css('visibility');
+			var pw = $('#pwClear').css('visibility');
+			var aler = $('#alert-success').css('display');
 
-			if (
-				a.style.visibility == 'visible' &&
-				b.style.visibility == 'visible' &&
-				c.style.visibility == 'visible' &&
-				d.style.display == 'inline-block'
-			) {
+			if (id === 'visible' && name === 'visible' && pw === 'visible' && aler === 'inline-block') {
 				this.$http
 					.post('/api/users/signUp', {
 						user: this.user,
 					})
 					.then(res => {
-						if (res.data.success == true) {
+						if (res.data.success === true) {
 							alert(res.data.message);
 							this.$router.push('/');
 						}
@@ -139,7 +138,7 @@ export default {
 			}
 		},
 		//아이디 확인 버튼
-		idCheck: function () {
+		idCheck() {
 			var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
 			if (!idReg.test($('input[name=uid]').val())) {
 				alert('아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)');
@@ -152,9 +151,9 @@ export default {
 					.then(res => {
 						if (res.data.success == true) {
 							alert(res.data.message);
-							document.getElementById('idClear').style.visibility = 'visible';
-							document.getElementById('idCheckClear').style.visibility = 'hidden';
-							$('#id').attr('disabled', true).attr('readonly'.false);
+							$('#idClear').css('visibility', 'visible');
+							$('#idCheckClear').css('visibility', 'hidden');
+							$('#id').attr('disabled', true).attr('readonly', false);
 						}
 						if (res.data.success == false) {
 							alert(res.data.message);
@@ -163,36 +162,36 @@ export default {
 			}
 		},
 		//이름 확인
-		nameCheck: function () {
-			var regexp = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"\\]/g;
+		nameCheck() {
+			var regexp = /[a-z0-9]|[ [\]{}()<>?|`~!@#$%^&*-_+=,.;:'"\\]/g;
 			var v = $('#name').val();
 			if (regexp.test(v)) {
 				alert('한글만 입력가능 합니다.');
-				document.getElementById('nameClear').style.visibility = 'hidden';
-				document.getElementById('nameFalse').style.visibility = 'visible';
+				$('#nameClear').css('visibility', 'hidden');
+				$('#nameFalse').css('visibility', 'visible');
 				$('#name').val(v.replace(regexp, ''));
 			} else {
-				document.getElementById('nameClear').style.visibility = 'visible';
-				document.getElementById('nameFalse').style.visibility = 'hidden';
+				$('#nameClear').css('visibility', 'visible');
+				$('#nameFalse').css('visibility', 'hidden');
 			}
 			if (v == '') {
-				document.getElementById('nameClear').style.visibility = 'hidden';
-				document.getElementById('nameFalse').style.visibility = 'visible';
+				$('#nameClear').css('visibility', 'hidden');
+				$('#nameFalse').css('visibility', 'visible');
 			}
 		},
 		//비밀 번호 확인
-		pwCheck: function () {
+		pwCheck() {
 			var pwd1 = $('#pw').val();
 			var pwd2 = $('#pwcheck').val();
 			var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
 
 			if (!pwReg.test($('input[name=upw]').val())) {
-				document.getElementById('pwClear').style.visibility = 'hidden';
-				document.getElementById('pwFalse').style.visibility = 'visible';
+				$('#pwClear').css('visibility', 'hidden');
+				$('#pwFalse').css('visibility', 'visible');
 				return;
 			} else {
-				document.getElementById('pwClear').style.visibility = 'visible';
-				document.getElementById('pwFalse').style.visibility = 'hidden';
+				$('#pwClear').css('visibility', 'visible');
+				$('#pwFalse').css('visibility', 'hidden');
 			}
 			if (pwd1 != '' && pwd2 == '') {
 				null;
@@ -207,7 +206,7 @@ export default {
 			}
 		},
 		//비밀 번호 재확인
-		repwCheck: function () {
+		repwCheck() {
 			var pwd1 = $('#pw').val();
 			var pwd2 = $('#pwcheck').val();
 
@@ -239,7 +238,7 @@ img {
 
 input {
 	margin: 0px 0;
-	width: 20%;
+	width: 25%;
 	padding: 15px;
 }
 
@@ -252,13 +251,14 @@ button {
 }
 
 p {
-	margin-top: 40px;
-	font-size: 20px;
-}
-
-span {
-	display: block;
-	margin-top: 20px;
+	margin-top: 60px;
+	margin-bottom: 50px;
 	font-size: 15px;
+	color: green;
+}
+p a {
+	text-decoration: underline;
+	cursor: pointer;
+	color: #df0174;
 }
 </style>

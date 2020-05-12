@@ -67,6 +67,7 @@ export default {
 			// No empty comments! / 댓글 내용 입력확인
 			if (comment == '') {
 				alert('[오류]\n댓글에 입력할 내용을 작성해주시길 바랍니다!');
+				return;
 			}
 
 			// Clear input text / 입력창 지우기

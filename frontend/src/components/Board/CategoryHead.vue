@@ -4,7 +4,7 @@
 		<div v-if="this.$session.get('user_idx') === undefined" class="loginBox">
 			<span>
 				<a href="#" class="memrog"> 회원가입 ｜ </a>
-				<a href="#" class="ldpw">아이디 ·</a>
+				<a href="#" class="idpw">아이디 ·</a>
 				<a href="#" class="idpw"> 비밀번호 찾기 </a>
 			</span>
 			<b-button href="#" variant="outline-secondary" size="md"> 로그인</b-button>

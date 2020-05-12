@@ -21,6 +21,20 @@ router.get('/get/:articleID', function(req, res, next) {
     });
 });
 
+// Get Comments like count
+// 댓글 좋아요 갯수 가져오기
+router.get('/getlike/:commentID', function(req, res, next) {
+    var commentId = req.params.commentID;
+
+    conn.query('SELECT COUNT(CASE WHEN cm_like=true THEN 1 END) as dolike, \
+    COUNT(CASE WHEN cm_like=false THEN 1 END) as dislike,\
+    COUNT(*) as total \
+    FROM (SELECT cm_like FROM comment_like WHERE cm_id = ?) a;\
+    ', [commentId], function(err, row) {
+        res.send(row);
+    });
+});
+
 // Get Sub-Comments, param should be an comment's ID
 // 대댓글 읽어오기 인자는 댓글 고유 ID
 router.get('/sub/:commentID', function(req, res, next) {
@@ -75,11 +89,13 @@ router.post('/addSub', function (req, res, next) {
     }
 });
 
+// Delete Comment 댓글 삭제
 router.post('/remove', function (req, res, next) {
     const data = {
         'cm_id': req.body.data.cm_id
     }
-
+    sql = "DELETE FROM comment_like WHERE cm_id = ?";
+    conn.query(sql, [data.cm_id]);
     sql = "DELETE FROM comment WHERE cm_id = ? AND (SELECT COUNT(deep_id) FROM deep WHERE cm_id = ?) = 0";
     conn.query(sql, [data.cm_id, data.cm_id], function(err, result) {
         if (result.affectedRows != 0) {
@@ -95,5 +111,34 @@ router.post('/remove', function (req, res, next) {
         }
     });
 })
+
+router.post('/like', function (req, res, next) {
+    const data = {
+        cm_id: req.body.data.cm_id,
+        type: req.body.data.type,
+        user_idx: req.body.data.user_idx,
+    };
+
+    if (data.user_idx == null) {
+        message = '로그인 후 사용가능합니다.';
+        res.json(message);
+    } else {
+        sql = 'SELECT cm_like FROM comment_like WHERE cm_id = ? AND user_idx = ?';
+        
+        // 로그인 아이디로 추천이 되어있는지 확인
+        conn.query(sql, [data.cm_id, data.user_idx], function (err, row) {
+            if (row[0] != null && row[0].cm_like == data.type) {
+                sql2 = 'DELETE FROM comment_like WHERE cm_id = ? AND user_idx = ?';
+                conn.query(sql2, [data.cm_id, data.user_idx]);
+            } else if (row[0] != null && row[0].cm_like != data.type) {
+                sql2 = 'UPDATE comment_like SET cm_like = ? WHERE cm_id = ? AND user_idx = ?';
+                conn.query(sql2, [data.type, data.cm_id, data.user_idx]);
+            } else {
+                sql2 = 'INSERT INTO comment_like(cm_like, cm_id, user_idx) VALUES(?, ?, ?)';
+                conn.query(sql2, [data.type, data.cm_id, data.user_idx]);
+            }
+        });
+    }
+});
 
 module.exports = router;
