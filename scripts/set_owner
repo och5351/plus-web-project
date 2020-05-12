@@ -2,6 +2,4 @@ echo '================='
 echo 'Running set_owner'
 echo '================='
 
-sudo rm -rf /var/www/plus-web-project/*
-cp -rf /var/www/temp/* /var/www/plus-web-project
 chown -R ec2-user /var/www/plus-web-project
