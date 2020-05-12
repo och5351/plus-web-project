@@ -241,6 +241,9 @@ Woo jin's History
 > ### 2020-04-28
      * 배포 명세서 파일 appspec.yml 작성, 배포 시 사용하는 scripts file 작성      
 
+> ### 2020-05-12
+     * AWS 데브옵스 서비스인 CodeBuild, CodePipeline을 이용하여 CD(Continuous Deployment) 구축완료    
+
 Jin ho's History
 -----------
 > ### 2020-04-12
