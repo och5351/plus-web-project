@@ -11,6 +11,7 @@ var commentsRouter = require('./routes/comments');
 var boardRouter = require('./routes/board');
 var posting = require('./routes/posting');
 var articleRouter = require('./routes/article');
+var healthRouter = require('./routes/health');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/board', boardRouter);
 app.use('/api/post', posting);
 app.use('/api/article', articleRouter);
+app.use('/health', healthRouter);
 
 /* 문제점 ?????
 app.use(function(req, res, next) {
