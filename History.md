@@ -36,6 +36,10 @@ Chan hae's History
     * Create a word preprocessor(python)
     * Create a deep learning model
        -> Find a shpae error in model.py model.fit
+ > ### 2020-05-13
+    * Running model comment.
+        - Accuracy is very low. 
+        - Each category data is required(At least 1,000).
 
 Jin tae's History
 -----------
