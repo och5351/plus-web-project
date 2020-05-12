@@ -42,16 +42,14 @@ if __name__ == "__main__":
 
     # 워드 원 핫 인코딩
     x_train, x_val = wp.get_wordDic()
+
     train_padded_x, train_paddingNum, train_word_size = wp.wordHotEncoding(x_train)
     val_padded_x, val_paddingNum, val_word_size = wp.wordHotEncoding(x_val)
 
-    print(train_word_size)
-    print(val_word_size)
+    #print(train_word_size)
+    #print(val_word_size)
 
-    '''
-    # layer 구성
     md.layer_maker(train_paddingNum, train_word_size, learning_rate=0.0001)
     
     # 학습
     md.run_model(train_padded_x, y_train, val_padded_x, y_val)
-    '''

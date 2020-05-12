@@ -54,7 +54,7 @@ class WordsProcessor:
         token = Tokenizer()
         token.fit_on_texts(x_test)
         x = token.texts_to_sequences(x_test)
-        paddingNum = 300
+        paddingNum = 200
         padded_x = pad_sequences(x, paddingNum)
         word_size = len(token.word_index) + 1
 

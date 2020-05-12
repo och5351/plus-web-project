@@ -11,21 +11,20 @@ class Model:
 
     def layer_maker(self, paddingNum, word_size, learning_rate):
         self.model = Sequential()
-        self.model.add(Embedding(word_size, 100, input_length=paddingNum))
+        self.model.add(Embedding(word_size, 100))
         self.model.add(Dropout(0.5))
         self.model.add(Conv1D(64, 5, padding='valid', activation='relu'))
         self.model.add(MaxPooling1D(pool_size=4))
-        self.model.add(LSTM(55))
-        self.model.add(Dense(8))
-        self.model.add(Activation('sigmoid'))
+        self.model.add(LSTM(55, activation='tanh'))
+        self.model.add(Dense(7, activation='softmax'))
         self.model.summary()
-
+        # , input_length=paddingNum
         self.model.compile(loss='categorical_crossentropy',
                       optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
                       metrics=['accuracy'])
 
     def run_model(self, train_padding_x, y_train, val_padding_x, y_val):
-        self.history = self.model.fit(train_padding_x, y_train, batch_size=100, epochs=20, validation_data=(val_padding_x, y_val))
+        self.history = self.model.fit(train_padding_x, y_train, batch_size=50, epochs=20, validation_data=(val_padding_x, y_val))
 
         y_vloss = self.history.history['val_loss']
         y_loss = self.history.history['loss']
