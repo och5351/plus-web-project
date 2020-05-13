@@ -264,7 +264,7 @@ export default {
 	},
 	methods: {
 		login: function () {
-			this.$router.push('/login');
+			this.$router.push('/login/redirect=main');
 		},
 		// 로그아웃 시 세션 삭제 후 새로 고침
 		logout: function () {

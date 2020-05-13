@@ -2,12 +2,15 @@
 	<div>
 		<!-- 로그인 박스 -->
 		<div v-if="this.$session.get('user_idx') === undefined" class="loginBox">
+			<b-button @click="signUp" variant="outline-secondary" class="memrog">회원가입</b-button>
 			<span>
-				<a href="#" class="memrog"> 회원가입 ｜ </a>
-				<a href="#" class="idpw">아이디 ·</a>
-				<a href="#" class="idpw"> 비밀번호 찾기 </a>
+				<!--<a href="#" class="idpw">아이디 ·</a>
+				<a href="#" class="idpw"> 비밀번호 찾기 </a>-->
 			</span>
-			<b-button href="#" variant="outline-secondary" size="md"> 로그인</b-button>
+			<b-button @click="login" variant="outline-secondary" size="md">로그인</b-button>
+		</div>
+		<div v-else class="loginBox">
+			<b-button @click="logout" variant="outline-secondary">로그아웃</b-button>
 		</div>
 
 		<!-- 게시판 설명 -->
@@ -52,6 +55,16 @@ export default {
 					console.log(`Error : ${error}`);
 				});
 		},
+		signUp() {
+			this.$router.push('/SignUp');
+		},
+		login() {
+			this.$router.push(`/login/redirect=${this.categoryName}`);
+		},
+		logout() {
+			this.$session.destroy();
+			location.reload();
+		},
 	},
 };
 </script>
@@ -68,6 +81,8 @@ span {
 }
 
 .memrog {
+	margin: 10px;
+	cursor: pointer;
 	font-weight: 700;
 }
 

@@ -27,6 +27,7 @@
 export default {
 	data: function () {
 		return {
+			redirect: this.$route.params.redirect,
 			user: {
 				userid: '',
 				password: '',
@@ -47,7 +48,12 @@ export default {
 						this.$session.set('name', res.data.name);
 
 						alert(res.data.message);
-						this.$router.push('/');
+
+						if (this.redirect !== 'main') {
+							this.$router.push(`/board/${this.redirect}`);
+						} else {
+							this.$router.push('/');
+						}
 					}
 					if (res.data.success == false) {
 						// Session removing / 세션 삭제

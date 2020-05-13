@@ -140,6 +140,10 @@ Jin tae's History
     * eslint rule add.
     * api error fix.
     * multi code fix & signUp.vue code refectory.
+    
+> ### 2020-05-11
+    
+    * [Add] post login redirect link
 
 Moo Hyun's History
 -----------
