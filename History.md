@@ -281,4 +281,7 @@ Jin ho's History
 
     * CategoryHead.vue 로그인 박스 class id 오타 수정.
 
-  
+  ### 2020-05-13
+<p align="center">
+<img src="https://user-images.githubusercontent.com/45858414/81828316-a0846e80-9574-11ea-82cc-4579a26224df.png"/>
+</p>
