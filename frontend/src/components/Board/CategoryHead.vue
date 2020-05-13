@@ -59,7 +59,10 @@ export default {
 			this.$router.push('/SignUp');
 		},
 		login() {
-			this.$router.push(`/login/redirect=${this.categoryName}`);
+			this.$router.push({
+				path: '/login',
+				query: { redirect: this.categoryName },
+			});
 		},
 		logout() {
 			this.$session.destroy();

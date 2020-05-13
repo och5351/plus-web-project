@@ -27,7 +27,7 @@
 export default {
 	data: function () {
 		return {
-			redirect: this.$route.params.redirect,
+			redirect: this.$route.query.redirect,
 			user: {
 				userid: '',
 				password: '',
