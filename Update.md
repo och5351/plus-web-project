@@ -20,7 +20,7 @@ Back End Run
 의존성 패키지(Front End)
 -------
      In dos
-     $/myf> npm install 
+     $/frontend> npm install 
 
 의존성 패키지(Back End)
 -------
