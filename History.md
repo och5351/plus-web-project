@@ -250,30 +250,36 @@ Woo jin's History
      * 배포 명세서 파일 appspec.yml 작성, 배포 시 사용하는 scripts file 작성      
 
 > ### 2020-05-12
-     * AWS 데브옵스 서비스인 CodeBuild, CodePipeline을 이용하여 CD(Continuous Deployment) 구축완료    
+     * AWS 데브옵스 서비스인 CodeBuild, CodePipeline을 이용하여 CD(Continuous Deployment) 구축완료   
+
+> ### 2020-05-13
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/45858414/81828316-a0846e80-9574-11ea-82cc-4579a26224df.png"/>
+</p> 
 
 Jin ho's History
 -----------
 > ### 2020-04-12
     * Pull requested!
 
-  ### 2020-04-22
+> ### 2020-04-22
     * Home.vue 수정
 
-  ### 2020-04-23
+> ### 2020-04-23
     * App.vue -> Navbar 수정
     
     * 위 수정에 맞게 Home.vue css 수정 및 로그인 박스 라우터 필요
 
-  ### 2020-04-24
+> ### 2020-04-24
     * Home.vue에 image그리드 및 Footer 생성.
 
-  ### 2020-04-29
+> ### 2020-04-29
     * Components/Board/CategoryList.vue Css 작업
         추후 게시판 글 input 필요
     * 페이지 번호 & 검색 부문 생성 필요
  
-  ### 2020-05-07
+> ### 2020-05-07
     * login.vue Css Update
 
     * SignUp.vue Css Upadate
@@ -281,7 +287,4 @@ Jin ho's History
 
     * CategoryHead.vue 로그인 박스 class id 오타 수정.
 
-  ### 2020-05-13
-<p align="center">
-<img src="https://user-images.githubusercontent.com/45858414/81828316-a0846e80-9574-11ea-82cc-4579a26224df.png"/>
-</p>
+
