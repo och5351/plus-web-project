@@ -150,6 +150,10 @@ Jin tae's History
     
     * [Modify] Redirect Path.
     * [Fix] module code optimization.
+    
+> ### 2020-05-15
+    
+    * [Add] post delete -> point 차감 기능
 
 Moo Hyun's History
 -----------

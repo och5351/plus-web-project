@@ -112,18 +112,25 @@
 			<div id="buttonFunction">
 				<div v-if="this.att === 'post'">
 					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitButton">
-						<i class="material-icons">done</i> 작성
+						작성
 					</button>
 					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
-						<i class="material-icons">clear</i> 취소
+						취소
 					</button>
 				</div>
 				<div v-else>
 					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateButton">
-						<i class="material-icons">done</i> 수정
+						수정
 					</button>
-					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
-						<i class="material-icons">clear</i> 취소
+					<button
+						class="btn btn-danger btn-round"
+						style="margin-left: 20px; margin-right: 20px;"
+						@click.prevent="cancelButton"
+					>
+						취소
+					</button>
+					<button class="btn btn-warning btn-round" style="margin-left: 20px;" @click.prevent="removeButton">
+						삭제
 					</button>
 				</div>
 			</div>
@@ -197,8 +204,10 @@ export default {
 					});
 			}
 		},
-		setPoint() {
-			this.$http.get(`/api/post/point/${this.$session.get('userid')}`).then(res => console.log(res));
+		setPoint(type) {
+			if (type === 'update')
+				this.$http.get(`/api/post/pointUpdate/${this.$session.get('userid')}`).then(res => console.log(res));
+			else this.$http.get(`/api/post/pointDelete/${this.$session.get('userid')}`).then(res => console.log(res));
 		},
 		submitButton() {
 			//작성 버튼
@@ -229,7 +238,7 @@ export default {
 						})
 						.then(res => {
 							console.log(res.data);
-							this.setPoint();
+							this.setPoint('update');
 						})
 						.catch(error => {
 							console.log(`Error : ${error}`);
@@ -284,6 +293,20 @@ export default {
 				if (confirm('작성을 취소하시겠습니까?\n작업하시던 내용은 사라집니다.')) {
 					this.$router.push(`/article/${this.contentId}`);
 				}
+			}
+		},
+		removeButton() {
+			if (confirm('정말로 삭제하시겠습니까?')) {
+				this.$http
+					.post(`/api/post/deletePost/${this.contentId}`)
+					.then(res => {
+						console.log(res);
+						this.setPoint('delete');
+						this.$router.go(-2);
+					})
+					.catch(error => {
+						console.log(`Error : ${error}`);
+					});
 			}
 		},
 		hashTagDistributor(val) {

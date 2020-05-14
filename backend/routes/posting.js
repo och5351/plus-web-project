@@ -36,7 +36,7 @@ router.get("/Posting/sessCheckEdit?/:user_idx/:content_id", function (
   );
 });
 
-router.get("/point/:user_id", function (req, res) {
+router.get("/pointUpdate/:user_id", function (req, res) {
   conn.query(
     "UPDATE capdi_users SET point = point + 50 WHERE userid = ?",
     [req.params.user_id],
@@ -44,6 +44,16 @@ router.get("/point/:user_id", function (req, res) {
       res.send(row);
     }
   );
+});
+
+router.get("/pointDelete/:user_id", function (req, res) {
+    conn.query(
+        "UPDATE capdi_users SET point = point - 50 WHERE userid = ?",
+        [req.params.user_id],
+        function (err, row) {
+            res.send(row);
+        }
+    );
 });
 
 //글쓰기
@@ -110,5 +120,11 @@ router.post("/updatePost", function (req, res) {
     }
   );
 });
+
+router.post("/deletePost/:categoryId", function (req, res) {
+    conn.query('DELETE FROM post WHERE post_id = ?', [req.params.categoryId], function (err, row) {
+        res.send(row);
+    })
+})
 
 module.exports = router;
