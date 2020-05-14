@@ -112,7 +112,7 @@ export default {
 					this.boardList = res.data;
 					this.categoryId = res.data[0].ca_id;
 				})
-				.catch(function (error) {
+				.catch(error => {
 					console.log(`Error : ${error}`);
 				});
 		},

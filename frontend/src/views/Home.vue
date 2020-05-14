@@ -251,8 +251,6 @@
 </template>
 
 <script>
-const axios = require('axios');
-
 export default {
 	data() {
 		return {
@@ -277,13 +275,13 @@ export default {
 	},
 	mounted() {
 		// Load notice / 공지사항 불러오기
-		axios.get('/api/article/notice').then(res => {
+		this.$http.get('/api/article/notice').then(res => {
 			this.notice = res.data;
 		});
-		axios.get('/api/article/new').then(res => {
+		this.$http.get('/api/article/new').then(res => {
 			this.recent = res.data;
 		});
-		axios.get('/api/article/hot').then(res => {
+		this.$http.get('/api/article/hot').then(res => {
 			this.hot = res.data;
 		});
 	},

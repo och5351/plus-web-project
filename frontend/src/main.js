@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-import axios from 'axios';
+import http from 'axios';
 import BootstrapVue from 'bootstrap-vue';
 import moment from 'moment';
 import VueMomentJS from 'vue-momentjs';
@@ -15,7 +15,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueMomentJS, moment);
 
 Vue.config.productionTip = false;
-Vue.prototype.$http = axios;
+Vue.prototype.$http = http;
 
 new Vue({
 	router,
