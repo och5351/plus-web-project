@@ -41,30 +41,23 @@ export default {
 					user: this.user,
 				})
 				.then(res => {
-					if (res.data.success == true) {
+					if (res.data.success === true) {
 						// Session setting / 세션 지정
 						this.$session.set('user_idx', res.data.user_idx);
 						this.$session.set('userid', res.data.userid);
 						this.$session.set('name', res.data.name);
 
-						alert(res.data.message);
-
-						if (this.redirect !== 'main') {
-							this.$router.push(`/board/${this.redirect}`);
-						} else {
-							this.$router.push('/');
-						}
+						this.$router.push(this.redirect);
 					}
-					if (res.data.success == false) {
+					if (res.data.success === false) {
 						// Session removing / 세션 삭제
 						this.$session.remove('user_idx');
 						this.$session.remove('userid');
 						this.$session.remove('name');
-						alert(res.data.message);
 					}
 				})
-				.catch(function () {
-					alert('error');
+				.catch(error => {
+					console.log(`Error : ${error}`);
 				});
 		},
 	},

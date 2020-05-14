@@ -266,7 +266,7 @@ export default {
 		login: function () {
 			this.$router.push({
 				path: '/login',
-				query: { redirect: 'main' },
+				query: { redirect: this.$route.fullPath },
 			});
 		},
 		// 로그아웃 시 세션 삭제 후 새로 고침

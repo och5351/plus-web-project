@@ -61,7 +61,7 @@ export default {
 		login() {
 			this.$router.push({
 				path: '/login',
-				query: { redirect: this.categoryName },
+				query: { redirect: this.$route.fullPath },
 			});
 		},
 		logout() {
