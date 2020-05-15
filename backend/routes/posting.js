@@ -7,7 +7,7 @@ var dbConObj = require("../lib/db_config");
 var conn = dbConObj.init();
 
 //세션 확인
-router.get("/Posting/sessCheck/:user_id", function (req, res) {
+router.get("/sessCheck/:user_id", function (req, res) {
   var user_id = req.params.user_id;
 
   conn.query(
@@ -20,10 +20,7 @@ router.get("/Posting/sessCheck/:user_id", function (req, res) {
 });
 
 //수정 2차 세션 확인
-router.get("/Posting/sessCheckEdit?/:user_idx/:content_id", function (
-  req,
-  res
-) {
+router.get("/sessCheckEdit?/:user_idx/:content_id", function (req, res) {
   var user_idx = req.params.user_idx;
   var post_id = req.params.content_id;
 
@@ -56,14 +53,22 @@ router.get("/pointDelete/:user_id", function (req, res) {
   );
 });
 
+router.get("/categoryName/:categoryId", function (req, res) {
+  conn.query(
+    "SELECT ca_name FROM category WHERE ca_id = ?",
+    [req.params.categoryId],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
 //글쓰기
-router.post("/Posting", function (req, res) {
+router.post("/insertPost", function (req, res) {
   const temp = {
     board_id: req.body.posting.board_id,
     ca_id: req.body.posting.ca_id,
-    user_id: req.body.posting.user_idx,
     user_idx: req.body.posting.user_idx,
-    name: req.body.posting.name,
     contents: req.body.posting.contents,
     title: req.body.posting.title,
     write_date: req.body.posting.write_date,
@@ -97,7 +102,7 @@ router.post("/updatePost", function (req, res) {
     post_seq: req.body.posting.post_seq,
     board_id: req.body.posting.board_id,
     ca_id: req.body.posting.ca_id,
-    name: req.body.posting.name,
+    user_idx: req.body.posting.user_idx,
     contents: req.body.posting.contents,
     title: req.body.posting.title,
     update_date: req.body.posting.update_date,
@@ -109,7 +114,6 @@ router.post("/updatePost", function (req, res) {
       temp.board_id,
       temp.ca_id,
       temp.user_idx,
-      temp.name,
       temp.contents,
       temp.title,
       temp.update_date,

@@ -154,6 +154,7 @@ Jin tae's History
 > ### 2020-05-15
     
     * [Add] post delete -> point 차감 기능
+    * [Fix] post vue modify error
 
 Moo Hyun's History
 -----------

@@ -167,6 +167,11 @@ export default {
 	},
 	mounted() {
 		if (this.categoryId === null) this.$router.go(-1);
+		if (this.categoryName === null) {
+			this.$http.get(`/api/post/categoryName/${this.categoryId}`).then(res => {
+				this.categoryName = res.data[0].ca_name;
+			});
+		}
 		let att = this.att;
 		this.getPosts(att);
 	},
@@ -174,7 +179,7 @@ export default {
 		getPosts(att) {
 			if (att === 'edit') {
 				this.$http
-					.get(`/api/post/Posting/sessCheckEdit/${this.sessionIdx}/${this.contentId}`)
+					.get(`/api/post/sessCheckEdit/${this.sessionIdx}/${this.contentId}`)
 					.then(res => {
 						if (res.data[0]['count(*)'] !== '0') {
 							// session OK!
@@ -191,7 +196,7 @@ export default {
 					});
 			} else {
 				this.$http
-					.get(`/api/post/Posting/sessCheck/${this.sessionId}`)
+					.get(`/api/post/sessCheck/${this.sessionId}`)
 					.then(res => {
 						if (res.data[0]['count(*)'] === '0') {
 							// session OK!
@@ -222,13 +227,11 @@ export default {
 			} else {
 				if (confirm('작성하시겠습니까?')) {
 					this.$http
-						.post('/api/post/Posting', {
+						.post('/api/post/insertPost', {
 							posting: {
 								board_id: this.board_id,
 								ca_id: this.categoryId,
 								user_idx: this.sessionIdx,
-								user_id: this.sessionId,
-								name: this.sessionName,
 								contents: this.contentArea,
 								title: this.titleText,
 								write_date: submitdate,
@@ -262,12 +265,10 @@ export default {
 					this.$http
 						.post('/api/post/updatePost', {
 							posting: {
-								post_seq: this.num,
-								board_id: this.board_id,
-								ca_id: '1', //this.checkedNames,
+								post_seq: this.contentId,
+								board_id: 1,
+								ca_id: this.categoryId,
 								user_idx: this.sessionIdx,
-								user_id: this.sessionId,
-								name: this.sessionName,
 								contents: this.contentArea,
 								title: this.titleText,
 								update_date: submitdate,
@@ -275,11 +276,11 @@ export default {
 						})
 						.then(res => {
 							console.log(res.data);
+							this.$router.push(`/board/${this.categoryName}`);
 						})
 						.catch(error => {
 							console.log(`Error : ${error}`);
 						});
-					this.$router.push(`/board/${this.categoryName}`);
 				}
 			}
 		},
