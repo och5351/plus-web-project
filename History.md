@@ -25,7 +25,7 @@ Chan hae's History
     * Tensorflow.js import success(In backend [Create backend\public\TFScripts\tfFunction.js])
     * Create a crawler floder
     * Complete crawling(Game, Food, Text, Travel/Photo, Music, Mobile, Paint)   
-    * Create a posting.js in BackEnd        
+    * Create a post.js in BackEnd        
     * Complete crawling
     * Complete add queries and change the category in post
     * Complete SessionCheck in Post.vue(If make the session It's perfect(Current hardcording 'userid', useridx'))
@@ -153,8 +153,12 @@ Jin tae's History
     
 > ### 2020-05-15
     
-    * [Add] post delete -> point 차감 기능
-    * [Fix] post vue modify error
+    * [Add] post delete -> point 차감 기능.
+    * [Fix] post vue modify error.
+    
+> ### 2020-05-16
+    
+    * [Add] Admin Console User Control.
 
 Moo Hyun's History
 -----------

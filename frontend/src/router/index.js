@@ -16,6 +16,13 @@ const routes = [
 		},
 	},
 	{
+		path: '/admin/:systemMenu',
+		name: 'admin',
+		component: function () {
+			return import('../views/AdminConsole.vue');
+		},
+	},
+	{
 		path: '/board/:categoryName',
 		name: 'board',
 		component: function () {

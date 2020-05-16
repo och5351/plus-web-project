@@ -1,7 +1,24 @@
 <template>
 	<div id="app" class="container">
-		<div class="logo" @click="main">
-			<img style="width: 200px; height: 200px;" alt="Vue logo" src="./assets/plusLogo.png" />
+		<div class="logo">
+			<img @click="main" style="width: 200px; height: 200px;" alt="Vue logo" src="./assets/plusLogo.png" />
+			<div v-if="this.$session.get('user_idx') === 1" style="float: right;">
+				<b-button v-b-toggle.sidebar-no-header>Admin Console</b-button>
+				<b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" backdrop shadow>
+					<template>
+						<div class="p-3">
+							<h4 id="sidebar-no-header-title">Plus Market Admin Console</h4>
+							<nav class="mb-3">
+								<b-nav vertical>
+									<b-nav-item active @click="AdminMenu('user')">사용자 관리</b-nav-item>
+									<b-nav-item @click="AdminMenu('board')">게시판 관리</b-nav-item>
+									<b-nav-item @click="AdminMenu('category')">카테고리 관리</b-nav-item>
+								</b-nav>
+							</nav>
+						</div>
+					</template>
+				</b-sidebar>
+			</div>
 		</div>
 
 		<div>
@@ -44,6 +61,9 @@ export default {
 		},
 		board(category) {
 			this.$router.push(`/board/${category}`);
+		},
+		AdminMenu(menu) {
+			this.$router.push(`/admin/${menu}`);
 		},
 	},
 	data() {
