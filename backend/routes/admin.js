@@ -26,14 +26,39 @@ router.post("/userModify", function (req, res) {
   );
 });
 
-router.get("/userDelete/:userid", function (req, res) {
+router.post("/userDelete", function (req, res) {
   conn.query(
     "DELETE FROM capdi_users WHERE userid = ?",
-    [req.params.userid],
+    [req.body.user.userid],
     function (err, row) {
       res.send(row);
     }
   );
+});
+
+router.get("/category", function (req, res) {
+  conn.query(
+    "SELECT ca_id as categoryId, ca_name as categoryName FROM category order by ca_id",
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.post("/categoryAdd", function (req, res) {
+  conn.query(
+    "INSERT INTO category (ca_name) values (?)",
+    [req.body.category.categoryName],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.get("/board", function (req, res) {
+  conn.query("SELECT * FROM board", function (err, row) {
+    res.send(row);
+  });
 });
 
 module.exports = router;

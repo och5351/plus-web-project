@@ -159,6 +159,10 @@ Jin tae's History
 > ### 2020-05-16
     
     * [Add] Admin Console User Control.
+    
+> ### 2020-05-17
+    
+    * [Add] Admin Console Category functions.
 
 Moo Hyun's History
 -----------

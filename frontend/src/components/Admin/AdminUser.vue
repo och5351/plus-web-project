@@ -93,10 +93,16 @@ export default {
 		UserDelete(index) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				this.user.userid = this.users[index].userid;
-				this.$http.get(`/api/admin/userDelete/${this.user.userid}`).then(res => {
-					location.reload();
-					console.log(res);
-				});
+				this.$http
+					.post('/api/admin/userDelete', {
+						user: {
+							userid: this.user.userid,
+						},
+					})
+					.then(res => {
+						location.reload();
+						console.log(res);
+					});
 			}
 		},
 	},
@@ -113,4 +119,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+input {
+	margin: 5px;
+}
+</style>
