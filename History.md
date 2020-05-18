@@ -215,10 +215,15 @@ Moo Hyun's History
 
 Chan Woong's History
 -----------
+ > ### 2020-5-18
+     * DB 테이블 추가 및 스키마 구조 변경 (+attendance table, 추후 삭제 버튼 고려 전체 외래키 on delete cascade 적용)
+     * 출석부 페이지 구현 
+     * 등급 업데이트 구현
+     
  > ### 2020-04-30
      * 불 필요 코드 및 파일 삭제 (clear.vue)
      * 세션 존재 여부로 페이지 상태 변경 (Home.vue, user.js)
-     * 로그아웃 버튼 활성화 (세션 삭제)aaa
+     * 로그아웃 버튼 활성화 (세션 삭제)
 
  > ### 2020-04-11
      * DB 스키마 3차 설계 및 수정 (capdi.sql UPDATE)
