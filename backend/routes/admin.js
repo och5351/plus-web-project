@@ -55,6 +55,16 @@ router.post("/categoryAdd", function (req, res) {
   );
 });
 
+router.post("/categoryModify", function (req, res) {
+  conn.query(
+    "UPDATE category SET ca_name = ? WHERE ca_id = ?",
+    [req.body.category.categoryName, req.body.category.categoryId],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
 router.get("/board", function (req, res) {
   conn.query("SELECT * FROM board", function (err, row) {
     res.send(row);

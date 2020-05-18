@@ -85,7 +85,21 @@ export default {
 					});
 			}
 		},
-		CategoryModify() {},
+		CategoryModify() {
+			if (confirm('정말로 수정하시겠습니까?')) {
+				this.$http
+					.post('/api/admin/categoryModify', {
+						category: {
+							categoryId: this.category.categoryId,
+							categoryName: this.category.categoryName,
+						},
+					})
+					.then(res => {
+						location.reload();
+						console.log(res);
+					});
+			}
+		},
 		CategoryDelete() {},
 	},
 	created() {
