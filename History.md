@@ -218,7 +218,7 @@ Chan Woong's History
  > ### 2020-04-30
      * 불 필요 코드 및 파일 삭제 (clear.vue)
      * 세션 존재 여부로 페이지 상태 변경 (Home.vue, user.js)
-     * 로그아웃 버튼 활성화 (세션 삭제)
+     * 로그아웃 버튼 활성화 (세션 삭제)aaa
 
  > ### 2020-04-11
      * DB 스키마 3차 설계 및 수정 (capdi.sql UPDATE)
