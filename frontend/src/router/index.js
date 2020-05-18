@@ -44,6 +44,13 @@ const routes = [
 		},
 	},
 	{
+		path: '/Mypage',
+		name: 'Mypage',
+		component: function () {
+			return import('../views/Mypage.vue');
+		},
+	},
+	{
 		path: '/login',
 		name: 'login',
 		component: login,

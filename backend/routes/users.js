@@ -104,4 +104,29 @@ router.post("/login", function (req, res) {
   );
 });
 
+// 로그인 시 등급 체크
+router.get('/check/:user_idx', function (req, res) {
+  conn.query('select rating from capdi_users where user_idx = ?', [req.params.user_idx], function (err, row) {
+    if (err) {
+      console.log('Rating Check Err!!')
+    } else {
+      res.json({
+        rating: row[0].rating,
+      });
+    }
+  });
+})
+
+// 등급 업데이트
+router.get('/update/:user_idx', function (req, res) {
+  conn.query('UPDATE capdi_users SET rating = "우수회원" WHERE user_idx = ? and point >= 1000', [req.params.user_idx], function (err, row) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Update Rating Success');
+    }
+  });
+})
+
+
 module.exports = router;

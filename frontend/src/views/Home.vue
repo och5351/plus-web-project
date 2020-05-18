@@ -22,13 +22,17 @@
 
 			<!-- 로그인 박스 -->
 			<div class="col-md-3">
-				<div v-if="this.$session.get('user_idx') == null" class="loginbox">
-					<b-button @click="login" class="loginbutton" align="center">Login</b-button>
-				</div>
-				<div v-else>
-					{{ this.$session.get('name') }}님 환영 합니다!
-					<button v-on:click="logout">로그아웃</button>
-				</div>
+        <div v-if="this.$session.get('user_idx') == null" class="loginbox">
+          <b-button @click="login" class="loginbutton" align="center">Login</b-button>
+        </div>
+        <div v-else>
+          {{ this.$session.get('rating') }}
+          {{ this.$session.get('name') }}님 환영 합니다!
+          <button
+            v-on:click="Mypage"
+          >마이페이지</button>
+          <button v-on:click="logout">로그아웃</button>
+        </div>
 
 				<!-- TODO: 리스트 CSS 수정 -->
 				<!-- 공지사항 박스 -->
@@ -271,6 +275,9 @@ export default {
 		logout: function () {
 			this.$session.destroy();
 			location.reload();
+		},
+		Mypage: function () {
+			this.$router.push('/Mypage');
 		},
 	},
 	mounted() {

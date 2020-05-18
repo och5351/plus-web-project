@@ -47,6 +47,13 @@ export default {
 						this.$session.set('userid', res.data.userid);
 						this.$session.set('name', res.data.name);
 
+						this.UpdateRating();
+
+						// 등급 표시
+						this.$http.get(`/api/users/check/${this.$session.get('user_idx')}`).then(res => {
+							this.$session.set('rating', res.data.rating);
+						});
+                        alert(res.data.message);
 						this.$router.push(this.redirect);
 					}
 					if (res.data.success === false) {
@@ -54,12 +61,17 @@ export default {
 						this.$session.remove('user_idx');
 						this.$session.remove('userid');
 						this.$session.remove('name');
+						this.$session.remove('rating');
+						alert(res.data.message);
 					}
 				})
 				.catch(error => {
 					console.log(`Error : ${error}`);
 				});
 		},
+		UpdateRating () {
+			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then(res => console.log(res));
+		}
 	},
 };
 </script>
