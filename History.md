@@ -163,6 +163,10 @@ Jin tae's History
 > ### 2020-05-17
     
     * [Add] Admin Console Category functions.
+    
+> ### 2020-05-19
+    
+    * [Fix] Api Error & code change
 
 Moo Hyun's History
 -----------
