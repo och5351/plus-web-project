@@ -1,9 +1,9 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 // mysql 선언
-var dbConObj = require("../lib/db_config");
-var conn = dbConObj.init();
+const dbConObj = require("../lib/db_config");
+const conn = dbConObj.init();
 
 router.get("/users", function (req, res) {
   conn.query("SELECT * FROM capdi_users", function (err, row) {
@@ -12,14 +12,10 @@ router.get("/users", function (req, res) {
 });
 
 router.post("/userModify", function (req, res) {
-  const temp = {
-    userid: req.body.user.userid,
-    point: req.body.user.point,
-    rating: req.body.user.rating,
-  };
+  const user = req.body.user;
   conn.query(
     "UPDATE capdi_users SET point = ?, rating = ? WHERE userid = ?",
-    [temp.point, temp.rating, temp.userid],
+    [user.point, user.rating, user.userid],
     function (err, row) {
       res.send(row);
     }

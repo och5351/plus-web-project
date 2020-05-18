@@ -1,14 +1,14 @@
 <template>
-  <div>
-    {{ this.$session.get('name') }}님 환영 합니다!
-    <FullCalendar
-      defaultView="dayGridMonth"
-      :plugins="calendarPlugins"
-      :events="events"
-      locale="ko"
-      @dateClick="handleDateClick"
-    />
-  </div>
+	<div>
+		{{ this.$session.get('name') }}님 환영 합니다!
+		<FullCalendar
+			defaultView="dayGridMonth"
+			:plugins="calendarPlugins"
+			:events="events"
+			locale="ko"
+			@dateClick="handleDateClick"
+		/>
+	</div>
 </template>
 
 <script>
@@ -50,17 +50,17 @@ export default {
 					})
 					.then(res => {
 						if (res.data.success == true) {
-              this.setAttPoint();
+							this.setAttPoint();
 							alert(res.data.message);
-							location.reload()
+							location.reload();
 						}
 					});
 			}
-	},
-	// 출석 포인트
-    setAttPoint() {
-      this.$http.get(`/api/attendance/point/${this.$session.get('userid')}`).then(res => console.log(res));
-    }
+		},
+		// 출석 포인트
+		setAttPoint() {
+			this.$http.get(`/api/attendance/point/${this.$session.get('userid')}`).then(res => console.log(res));
+		},
 	},
 	created() {
 		//user_idx 전송 후 기록 받기

@@ -81,6 +81,7 @@
 
 		<div style="position: relative; left: -102px; color: green;">C H E C K P W ) <br /></div>
 		<input
+			v-on:keydown.enter="signUp"
 			type="password"
 			id="pwcheck"
 			style="position: relative; left: -23px;"

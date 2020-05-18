@@ -53,7 +53,7 @@ export default {
 						this.$http.get(`/api/users/check/${this.$session.get('user_idx')}`).then(res => {
 							this.$session.set('rating', res.data.rating);
 						});
-                        alert(res.data.message);
+						alert(res.data.message);
 						this.$router.push(this.redirect);
 					}
 					if (res.data.success === false) {
@@ -69,9 +69,9 @@ export default {
 					console.log(`Error : ${error}`);
 				});
 		},
-		UpdateRating () {
+		UpdateRating() {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then(res => console.log(res));
-		}
+		},
 	},
 };
 </script>
