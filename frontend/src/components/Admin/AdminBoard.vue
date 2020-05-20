@@ -17,8 +17,8 @@
 						<b-button style="margin-right: 10px;" variant="primary" @click="AdminBoard(index)">수정</b-button>
 						<b-button variant="danger" @click="BoardDelete(index)">삭제</b-button>
 					</th>
-					<td>{{ board.board_id }}</td>
-					<td>{{ board.board_name }}</td>
+					<td>{{ board.boardId }}</td>
+					<td>{{ board.boardName }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -68,8 +68,8 @@ export default {
 	methods: {
 		AdminBoard(index) {
 			this.edit = true;
-			this.boardAction.boardId = this.boards[index].board_id;
-			this.boardAction.boardName = this.boards[index].board_name;
+			this.boardAction.boardId = this.boards[index].boardId;
+			this.boardAction.boardName = this.boards[index].boardName;
 		},
 		BoardAdd() {
 			if (confirm('정말로 추가하시겠습니까?')) {
