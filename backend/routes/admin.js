@@ -61,6 +61,16 @@ router.post("/categoryModify", function (req, res) {
   );
 });
 
+router.post("/categoryDelete", function (req, res) {
+  conn.query(
+    "DELETE FROM category WHERE ca_id = ?",
+    [req.body.category.categoryId],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
 router.get("/board", function (req, res) {
   conn.query("SELECT * FROM board", function (err, row) {
     res.send(row);

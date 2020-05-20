@@ -100,7 +100,20 @@ export default {
 					});
 			}
 		},
-		CategoryDelete() {},
+		CategoryDelete() {
+			if (confirm('정말로 삭제하시겠습니까?')) {
+				this.$http
+					.post('/api/admin/categoryDelete', {
+						category: {
+							categoryId: this.category.categoryId,
+						},
+					})
+					.then(res => {
+						location.reload();
+						console.log(res);
+					});
+			}
+		},
 	},
 	created() {
 		if (this.user_idx !== 1) {
