@@ -72,9 +72,42 @@ router.post("/categoryDelete", function (req, res) {
 });
 
 router.get("/board", function (req, res) {
-  conn.query("SELECT * FROM board", function (err, row) {
-    res.send(row);
-  });
+  conn.query(
+    "SELECT board_id as boardId, board_name as boardName FROM board",
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.post("/boardAdd", function (req, res) {
+  conn.query(
+    "INSERT INTO board (board_name) values (?)",
+    [req.body.boardAction.boardName],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.post("/boardModify", function (req, res) {
+  conn.query(
+    "UPDATE board SET board_name = ? WHERE board_id = ?",
+    [req.body.boardAction.boardName, req.body.boardAction.boardId],
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.post("/boardDelete", function (req, res) {
+  conn.query(
+    "DELETE FROM board WHERE board_id = ?",
+    [req.body.boardAction.boardId],
+    function (err, row) {
+      res.send(row);
+    }
+  );
 });
 
 module.exports = router;

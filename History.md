@@ -167,6 +167,10 @@ Jin tae's History
 > ### 2020-05-19
     
     * [Fix] Api Error & code change
+    
+> ### 2020-05-22
+    
+    * [Fix] Admin Console Board functions.
 
 Moo Hyun's History
 -----------
