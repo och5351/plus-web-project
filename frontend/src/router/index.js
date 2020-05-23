@@ -2,8 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Components 분리
-import login from '../components/SignIn/login';
-import SignUp from '../components/SignIn/SignUp';
+import login from '../components/Sign/login';
+import SignUp from '../components/Sign/SignUp';
 
 Vue.use(VueRouter);
 
