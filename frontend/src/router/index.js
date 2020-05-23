@@ -37,10 +37,10 @@ const routes = [
 		},
 	},
 	{
-		path: '/Posting',
+		path: '/post',
 		name: 'Posting',
 		component: function () {
-			return import('../views/Posting.vue');
+			return import('../views/PostMain.vue');
 		},
 	},
 	{
