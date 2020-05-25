@@ -14,7 +14,7 @@
 				</tr>
 				<tr v-else v-for="(board, index) in boards" :key="index">
 					<th scope="row">
-						<b-button style="margin-right: 10px;" variant="primary" @click="AdminBoard(index)">수정</b-button>
+						<b-button style="margin-right: 10px;" variant="primary" @click="ViewBoard(index)">수정</b-button>
 						<b-button variant="danger" @click="BoardDelete(index)">삭제</b-button>
 					</th>
 					<td>{{ board.boardId }}</td>
@@ -66,7 +66,7 @@ export default {
 		};
 	},
 	methods: {
-		AdminBoard(index) {
+		ViewBoard(index) {
 			this.edit = true;
 			this.boardAction.boardId = this.boards[index].boardId;
 			this.boardAction.boardName = this.boards[index].boardName;
@@ -100,12 +100,12 @@ export default {
 					});
 			}
 		},
-		BoardDelete() {
+		BoardDelete(index) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/boardDelete', {
 						boardAction: {
-							boardId: this.boardAction.boardId,
+							boardId: this.boards[index].boardId,
 						},
 					})
 					.then(res => {

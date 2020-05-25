@@ -14,7 +14,7 @@
 				</tr>
 				<tr v-else v-for="(category, index) in categorys" :key="index">
 					<th scope="row">
-						<b-button style="margin-right: 10px;" variant="primary" @click="AdminCategory(index)">수정</b-button>
+						<b-button style="margin-right: 10px;" variant="primary" @click="ViewCategory(index)">수정</b-button>
 						<b-button variant="danger" @click="CategoryDelete(index)">삭제</b-button>
 					</th>
 					<td>{{ category.categoryId }}</td>
@@ -66,7 +66,7 @@ export default {
 		};
 	},
 	methods: {
-		AdminCategory(index) {
+		ViewCategory(index) {
 			this.edit = true;
 			this.category.categoryId = this.categorys[index].categoryId;
 			this.category.categoryName = this.categorys[index].categoryName;
@@ -100,12 +100,12 @@ export default {
 					});
 			}
 		},
-		CategoryDelete() {
+		CategoryDelete(index) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/categoryDelete', {
 						category: {
-							categoryId: this.category.categoryId,
+							categoryId: this.categorys[index].categoryId,
 						},
 					})
 					.then(res => {

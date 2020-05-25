@@ -16,7 +16,7 @@
 				</tr>
 				<tr v-else v-for="(user, index) in users" :key="index">
 					<th scope="row">
-						<b-button style="margin-right: 10px;" variant="primary" @click="AdminUsers(index)">수정</b-button>
+						<b-button style="margin-right: 10px;" variant="primary" @click="ViewUser(index)">수정</b-button>
 						<b-button variant="danger" @click="UserDelete(index)">삭제</b-button>
 					</th>
 					<td>{{ user.userid }}</td>
@@ -67,7 +67,7 @@ export default {
 		};
 	},
 	methods: {
-		AdminUsers(index) {
+		ViewUser(index) {
 			this.edit = true;
 			this.user.userid = this.users[index].userid;
 			this.user.name = this.users[index].name;
@@ -92,11 +92,10 @@ export default {
 		},
 		UserDelete(index) {
 			if (confirm('정말로 삭제하시겠습니까?')) {
-				this.user.userid = this.users[index].userid;
 				this.$http
 					.post('/api/admin/userDelete', {
 						user: {
-							userid: this.user.userid,
+							userid: this.users[index].userid,
 						},
 					})
 					.then(res => {
