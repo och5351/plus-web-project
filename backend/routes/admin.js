@@ -17,7 +17,7 @@ router.post("/userModify", function (req, res) {
     "UPDATE capdi_users SET point = ?, rating = ? WHERE userid = ?",
     [user.point, user.rating, user.userid],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 수정하였습니다." });
     }
   );
 });
@@ -27,7 +27,7 @@ router.post("/userDelete", function (req, res) {
     "DELETE FROM capdi_users WHERE userid = ?",
     [req.body.user.userid],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 삭제하였습니다." });
     }
   );
 });
@@ -46,7 +46,7 @@ router.post("/categoryAdd", function (req, res) {
     "INSERT INTO category (ca_name) values (?)",
     [req.body.category.categoryName],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 추가하였습니다." });
     }
   );
 });
@@ -56,7 +56,7 @@ router.post("/categoryModify", function (req, res) {
     "UPDATE category SET ca_name = ? WHERE ca_id = ?",
     [req.body.category.categoryName, req.body.category.categoryId],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 수정하였습니다." });
     }
   );
 });
@@ -66,7 +66,7 @@ router.post("/categoryDelete", function (req, res) {
     "DELETE FROM category WHERE ca_id = ?",
     [req.body.category.categoryId],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 삭제하였습니다." });
     }
   );
 });
@@ -85,7 +85,7 @@ router.post("/boardAdd", function (req, res) {
     "INSERT INTO board (board_name) values (?)",
     [req.body.boardAction.boardName],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 추가하였습니다." });
     }
   );
 });
@@ -95,7 +95,7 @@ router.post("/boardModify", function (req, res) {
     "UPDATE board SET board_name = ? WHERE board_id = ?",
     [req.body.boardAction.boardName, req.body.boardAction.boardId],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 수정하였습니다." });
     }
   );
 });
@@ -105,7 +105,7 @@ router.post("/boardDelete", function (req, res) {
     "DELETE FROM board WHERE board_id = ?",
     [req.body.boardAction.boardId],
     function (err, row) {
-      res.send(row);
+      res.json({ message: "성공적으로 삭제하였습니다." });
     }
   );
 });

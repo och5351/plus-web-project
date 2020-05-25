@@ -86,7 +86,7 @@ export default {
 					})
 					.then(res => {
 						location.reload();
-						console.log(res);
+						alert(res.data.message);
 					});
 			}
 		},
@@ -100,7 +100,7 @@ export default {
 					})
 					.then(res => {
 						location.reload();
-						console.log(res);
+						alert(res.data.message);
 					});
 			}
 		},
