@@ -171,6 +171,10 @@ Jin tae's History
 > ### 2020-05-22
     
     * [Fix] Admin Console Board functions.
+    
+> ### 2020-05-25
+    
+    * [Fix] Vue Api Error.
 
 Moo Hyun's History
 -----------
