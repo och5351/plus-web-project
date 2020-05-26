@@ -9,10 +9,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="categorys === null">
+				<tr v-if="categoryList === null">
 					<td colspan="3" style="text-align: center;">데이터가 없습니다</td>
 				</tr>
-				<tr v-else v-for="(category, index) in categorys" :key="index">
+				<tr v-else v-for="(category, index) in categoryList" :key="index">
 					<th scope="row">
 						<b-button style="margin-right: 10px;" variant="primary" @click="ViewCategory(index)">수정</b-button>
 						<b-button variant="danger" @click="CategoryDelete(index)">삭제</b-button>
@@ -31,7 +31,7 @@
 			<b-modal id="add" title="카테고리 관리 시스템" @ok="CategoryAdd">
 				<div>
 					<label>CategoryName : </label>
-					<input type="text" v-model="category.categoryName" />
+					<input type="text" v-model="category.name" />
 				</div>
 			</b-modal>
 		</div>
@@ -40,11 +40,11 @@
 			<b-modal v-model="edit" title="카테고리 관리 시스템" @ok="CategoryModify">
 				<div>
 					<label>ID : </label>
-					{{ category.categoryId }}
+					{{ category.id }}
 				</div>
 				<div>
 					<label>CategoryName : </label>
-					<input type="text" v-model="category.categoryName" />
+					<input type="text" v-model="category.name" />
 				</div>
 			</b-modal>
 		</div>
@@ -57,26 +57,27 @@ export default {
 	data() {
 		return {
 			user_idx: this.$session.get('user_idx'),
-			categorys: null,
+			categoryList: null,
 			edit: false,
 			category: {
-				categoryId: null,
-				categoryName: null,
+				id: null,
+				name: null,
 			},
 		};
 	},
 	methods: {
 		ViewCategory(index) {
 			this.edit = true;
-			this.category.categoryId = this.categorys[index].categoryId;
-			this.category.categoryName = this.categorys[index].categoryName;
+			this.category.id = this.categoryList[index].categoryId;
+			this.category.name = this.categoryList[index].categoryName;
 		},
 		CategoryAdd() {
+			this.category.name = null;
 			if (confirm('정말로 추가하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/categoryAdd', {
 						category: {
-							categoryName: this.category.categoryName,
+							name: this.category.name,
 						},
 					})
 					.then(res => {
@@ -90,8 +91,8 @@ export default {
 				this.$http
 					.post('/api/admin/categoryModify', {
 						category: {
-							categoryId: this.category.categoryId,
-							categoryName: this.category.categoryName,
+							id: this.category.id,
+							name: this.category.name,
 						},
 					})
 					.then(res => {
@@ -105,7 +106,7 @@ export default {
 				this.$http
 					.post('/api/admin/categoryDelete', {
 						category: {
-							categoryId: this.categorys[index].categoryId,
+							id: this.categoryList[index].categoryId,
 						},
 					})
 					.then(res => {
@@ -120,8 +121,8 @@ export default {
 			alert('잘못된 접근방법입니다');
 			this.$router.go(-1);
 		} else {
-			this.$http.get(`/api/admin/category`).then(res => {
-				this.categorys = res.data;
+			this.$http.get(`/api/admin/categoryList`).then(res => {
+				this.categoryList = res.data;
 			});
 		}
 	},

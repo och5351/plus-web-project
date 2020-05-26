@@ -9,10 +9,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="boards === null">
+				<tr v-if="boardList === null">
 					<td colspan="3" style="text-align: center;">데이터가 없습니다</td>
 				</tr>
-				<tr v-else v-for="(board, index) in boards" :key="index">
+				<tr v-else v-for="(board, index) in boardList" :key="index">
 					<th scope="row">
 						<b-button style="margin-right: 10px;" variant="primary" @click="ViewBoard(index)">수정</b-button>
 						<b-button variant="danger" @click="BoardDelete(index)">삭제</b-button>
@@ -31,7 +31,7 @@
 			<b-modal id="add" title="게시판 관리 시스템" @ok="BoardAdd">
 				<div>
 					<label>BoardName : </label>
-					<input type="text" v-model="boardAction.boardName" />
+					<input type="text" v-model="board.name" />
 				</div>
 			</b-modal>
 		</div>
@@ -40,11 +40,11 @@
 			<b-modal v-model="edit" title="게시판 관리 시스템" @ok="BoardModify">
 				<div>
 					<label>ID : </label>
-					{{ boardAction.boardId }}
+					{{ board.id }}
 				</div>
 				<div>
 					<label>BoardName : </label>
-					<input type="text" v-model="boardAction.boardName" />
+					<input type="text" v-model="board.name" />
 				</div>
 			</b-modal>
 		</div>
@@ -57,26 +57,27 @@ export default {
 	data() {
 		return {
 			user_idx: this.$session.get('user_idx'),
-			boards: null,
+			boardList: null,
 			edit: false,
-			boardAction: {
-				boardId: null,
-				boardName: null,
+			board: {
+				id: null,
+				name: null,
 			},
 		};
 	},
 	methods: {
 		ViewBoard(index) {
 			this.edit = true;
-			this.boardAction.boardId = this.boards[index].boardId;
-			this.boardAction.boardName = this.boards[index].boardName;
+			this.board.id = this.boardList[index].boardId;
+			this.board.name = this.boardList[index].boardName;
 		},
 		BoardAdd() {
+			this.board.name = null;
 			if (confirm('정말로 추가하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/boardAdd', {
-						boardAction: {
-							boardName: this.boardAction.boardName,
+						board: {
+							name: this.board.name,
 						},
 					})
 					.then(res => {
@@ -89,9 +90,9 @@ export default {
 			if (confirm('정말로 수정하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/boardModify', {
-						boardAction: {
-							boardId: this.boardAction.boardId,
-							boardName: this.boardAction.boardName,
+						board: {
+							id: this.board.id,
+							name: this.board.name,
 						},
 					})
 					.then(res => {
@@ -104,8 +105,8 @@ export default {
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/boardDelete', {
-						boardAction: {
-							boardId: this.boards[index].boardId,
+						board: {
+							id: this.boardList[index].boardId,
 						},
 					})
 					.then(res => {
@@ -120,8 +121,8 @@ export default {
 			alert('잘못된 접근방법입니다');
 			this.$router.go(-1);
 		} else {
-			this.$http.get(`/api/admin/board`).then(res => {
-				this.boards = res.data;
+			this.$http.get(`/api/admin/boardList`).then(res => {
+				this.boardList = res.data;
 			});
 		}
 	},

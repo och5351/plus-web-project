@@ -11,10 +11,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-if="users === null">
+				<tr v-if="userList === null">
 					<td colspan="5" style="text-align: center;">데이터가 없습니다</td>
 				</tr>
-				<tr v-else v-for="(user, index) in users" :key="index">
+				<tr v-else v-for="(user, index) in userList" :key="index">
 					<th scope="row">
 						<b-button style="margin-right: 10px;" variant="primary" @click="ViewUser(index)">수정</b-button>
 						<b-button variant="danger" @click="UserDelete(index)">삭제</b-button>
@@ -31,7 +31,7 @@
 			<b-modal v-model="edit" title="사용자 관리 시스템" @ok="UserModify">
 				<div>
 					<label>ID : </label>
-					{{ user.userid }}
+					{{ user.id }}
 				</div>
 				<div>
 					<label>NAME : </label>
@@ -56,10 +56,10 @@ export default {
 	data() {
 		return {
 			user_idx: this.$session.get('user_idx'),
-			users: null,
+			userList: null,
 			edit: false,
 			user: {
-				userid: null,
+				id: null,
 				name: null,
 				point: 0,
 				rating: null,
@@ -69,17 +69,17 @@ export default {
 	methods: {
 		ViewUser(index) {
 			this.edit = true;
-			this.user.userid = this.users[index].userid;
-			this.user.name = this.users[index].name;
-			this.user.point = this.users[index].point;
-			this.user.rating = this.users[index].rating;
+			this.user.id = this.userList[index].userid;
+			this.user.name = this.userList[index].name;
+			this.user.point = this.userList[index].point;
+			this.user.rating = this.userList[index].rating;
 		},
 		UserModify() {
 			if (confirm('정말로 수정하시겠습니까?')) {
 				this.$http
 					.post('/api/admin/userModify', {
 						user: {
-							userid: this.user.userid,
+							id: this.user.id,
 							point: this.user.point,
 							rating: this.user.rating,
 						},
@@ -95,7 +95,7 @@ export default {
 				this.$http
 					.post('/api/admin/userDelete', {
 						user: {
-							userid: this.users[index].userid,
+							id: this.userList[index].userid,
 						},
 					})
 					.then(res => {
@@ -110,8 +110,8 @@ export default {
 			alert('잘못된 접근방법입니다');
 			this.$router.go(-1);
 		} else {
-			this.$http.get(`/api/admin/users`).then(res => {
-				this.users = res.data;
+			this.$http.get(`/api/admin/userList`).then(res => {
+				this.userList = res.data;
 			});
 		}
 	},
