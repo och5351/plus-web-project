@@ -175,6 +175,10 @@ Jin tae's History
 > ### 2020-05-25
     
     * [Fix] Vue Api Error.
+    
+> ### 2020-05-25
+    
+    * [Fix] variable naming change.
 
 Moo Hyun's History
 -----------
