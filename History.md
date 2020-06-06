@@ -179,6 +179,10 @@ Jin tae's History
 > ### 2020-05-25
     
     * [Fix] variable naming change.
+    
+> ### 2020-06-06
+    
+    * [Fix] Exception catch.
 
 Moo Hyun's History
 -----------
