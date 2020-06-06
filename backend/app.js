@@ -1,19 +1,19 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var adminRouter = require("./routes/admin");
-var usersRouter = require("./routes/users");
-var attendanceRouter = require("./routes/attendance");
-var commentsRouter = require("./routes/comments");
-var boardRouter = require("./routes/board");
-var postRouter = require("./routes/post");
-var articleRouter = require("./routes/article");
+const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/admin");
+const usersRouter = require("./routes/users");
+const attendanceRouter = require("./routes/attendance");
+const commentsRouter = require("./routes/comments");
+const boardRouter = require("./routes/board");
+const postRouter = require("./routes/post");
+const articleRouter = require("./routes/article");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -33,23 +33,6 @@ app.use("/api/comments", commentsRouter);
 app.use("/api/board", boardRouter);
 app.use("/api/post", postRouter);
 app.use("/api/article", articleRouter);
-
-/* 문제점 ?????
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-*/
-/*
-app.options('/api/users/signUp', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers',
-  'Content-Type, Authorization, Content-Length, X-Requested-With');
-  res.send();
-});
-*/
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

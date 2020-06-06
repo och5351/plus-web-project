@@ -143,7 +143,6 @@ export default {
 			var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
 			if (!idReg.test($('input[name=uid]').val())) {
 				alert('아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)');
-				return;
 			} else {
 				this.$http
 					.post('/api/users/idCheck', {

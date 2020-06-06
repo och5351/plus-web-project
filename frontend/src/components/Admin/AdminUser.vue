@@ -87,6 +87,9 @@ export default {
 					.then(res => {
 						location.reload();
 						alert(res.data.message);
+					})
+					.catch(function () {
+						alert('알 수없는 오류가 발생 했습니다.');
 					});
 			}
 		},
@@ -101,6 +104,9 @@ export default {
 					.then(res => {
 						location.reload();
 						alert(res.data.message);
+					})
+					.catch(function () {
+						alert('알 수없는 오류가 발생 했습니다.');
 					});
 			}
 		},

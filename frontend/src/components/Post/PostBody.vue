@@ -183,7 +183,7 @@ export default {
 					.then(res => {
 						if (res.data[0]['count(*)'] !== '0') {
 							// session OK!
-							var dic = res.data[0];
+							const dic = res.data[0];
 							this.titleText = dic['title'];
 							this.contentArea = dic['contents'];
 						} else {
@@ -216,7 +216,7 @@ export default {
 		},
 		submitButton() {
 			//작성 버튼
-			var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
+			const submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
 			//유효성 검사 후 전송
 			if (this.titleText === '') {
 				alert('제목을 입력하세요.');
@@ -252,7 +252,7 @@ export default {
 		},
 		updateButton() {
 			//수정 버튼
-			var submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
+			const submitdate = this.$moment(new Date()).format('YYYYMMDDHHmmss');
 			//유효성 검사 후 전송
 			if (this.titleText === '') {
 				alert('제목을 입력하세요.');
@@ -331,9 +331,9 @@ export default {
 		},
 		hashTagAdder(checkArr) {
 			//hash 태그 index 배열로 변환
-			var hashTag = [];
+			let hashTag = [];
 			if (checkArr != null) {
-				for (var i = 0; i < checkArr.length; i++) {
+				for (let i = 0; i < checkArr.length; i++) {
 					if (i === 0) {
 						hashTag.push(this.hashTagDistributor(checkArr[i]));
 					} else {
