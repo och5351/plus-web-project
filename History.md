@@ -183,6 +183,14 @@ Jin tae's History
 > ### 2020-06-06
     
     * [Fix] Exception catch.
+    
+> ### 2020-06-11
+    
+    * [Fix] Arrow Pattern change.
+    
+> ### 2020-06-12
+    
+    * [Fix] Post -> main View Error.
 
 Moo Hyun's History
 -----------

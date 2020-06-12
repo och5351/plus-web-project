@@ -246,7 +246,7 @@ export default {
 						.catch(error => {
 							console.log(`Error : ${error}`);
 						});
-					this.$router.push(`/board/${this.categoryName}`);
+					this.$router.go(-1).reload();
 				}
 			}
 		},
