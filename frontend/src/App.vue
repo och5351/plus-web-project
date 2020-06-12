@@ -35,7 +35,7 @@
 						<b-dropdown-item @click="board('tour')">여행</b-dropdown-item>
 						<b-dropdown-item @click="board('food')">음식</b-dropdown-item>
 						<b-dropdown-item @click="board('cartoon')">만화</b-dropdown-item>
-						<b-dropdown-item @click="board('music')">노래</b-dropdown-item>
+						<b-dropdown-item @click="board('music')">음악</b-dropdown-item>
 					</b-dropdown>
 
 					<!-- 오른쪽 검색창 -->
