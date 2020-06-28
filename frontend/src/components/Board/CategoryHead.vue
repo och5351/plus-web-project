@@ -14,7 +14,7 @@
 		</div>
 
 		<!-- 게시판 설명 -->
-		<div v-if="categoryNameDetail" class="border" id="exBox">
+		<div v-if="categoryNameDetail" id="exBox">
 			<div class="card text-dark bg secondary mb-3">
 				<div class="card-header">{{ categoryNameDetail }}게시판</div>
 				<div class="card-body">
