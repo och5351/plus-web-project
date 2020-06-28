@@ -10,6 +10,7 @@
 					<tr>
 						<th scope="col">번호</th>
 						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
 						<th scope="col">조회수</th>
 					</tr>
 				</thead>
@@ -19,7 +20,11 @@
 					</tr>
 					<tr v-else v-for="(board, bIdx) in displayedPosts" :key="bIdx" @click="detail(board.post_id)">
 						<th scope="row">{{ board.post_id }}</th>
-						<td>{{ board.title }}</td>
+						<td style="cursor: pointer;">{{ board.title }}</td>
+						<td>
+							<img alt="관리자" width="16" height="16" src="/css/rating.png" />
+							{{ board.name }}
+						</td>
 						<td>{{ board.views }}</td>
 					</tr>
 				</tbody>
