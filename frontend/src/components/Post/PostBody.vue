@@ -158,7 +158,7 @@
           name="file"
           v-on:change="handleFileUpload()"
         />
-        <button v-on:click="submitFile()">확인</button>
+        <!-- <button v-on:click="submitFile()">확인</button> -->
       </div>
 
       <div id="buttonFunction">
@@ -315,6 +315,7 @@ export default {
               },
             })
             .then((res) => {
+              this.submitFile();
               console.log(res.data);
               this.setPoint("update");
             })
