@@ -6,10 +6,10 @@ files:
 hooks:
   AfterInstall:
     - location: scripts/set_owner
-      timeout: 5
+      timeout: 20
       runas: root
     - location: scripts/install_dependencies
-      timeout: 120
+      timeout: 200
       runas: ec2-user
   ApplicationStart:
     - location: scripts/restart_server
