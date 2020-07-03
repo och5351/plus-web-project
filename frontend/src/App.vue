@@ -83,9 +83,7 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #42b983;
-	margin-top: 60px;
-	margin-right: 150px;
-	margin-left: 150px;
+	margin: 0 auto;
 }
 .loginbox {
 	width: 150px;
