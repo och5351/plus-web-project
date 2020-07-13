@@ -110,4 +110,23 @@ router.post("/boardDelete", function (req, res) {
   );
 });
 
+router.get("/postList", function (req, res) {
+  conn.query(
+    "SELECT p.*, (select name from capdi_users u where p.user_idx = u.user_idx) as writer, (select ca_name from category_detail c where p.ca_id = c.ca_id) as type FROM post p",
+    function (err, row) {
+      res.send(row);
+    }
+  );
+});
+
+router.post("/postDelete", function (req, res) {
+  conn.query(
+    "DELETE FROM post WHERE post_id = ?",
+    [req.body.post.id],
+    function (err, row) {
+      res.json({ message: "성공적으로 삭제하였습니다." });
+    }
+  );
+});
+
 module.exports = router;
