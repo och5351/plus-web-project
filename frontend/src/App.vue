@@ -2,7 +2,7 @@
 	<div id="app" class="container">
 		<div class="logo">
 			<img @click="main" style="width: 200px; height: 200px;" alt="Vue logo" src="./assets/plusLogo.png" />
-			<div v-if="this.$session.get('user_idx') === 1" style="float: right;">
+			<div v-if="this.$session.get('user_idx') === 1" style="margin-top: 10%; float: right;">
 				<b-button v-b-toggle.sidebar-no-header>Admin Console</b-button>
 				<b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" backdrop shadow>
 					<template>
@@ -12,6 +12,7 @@
 								<b-nav vertical>
 									<b-nav-item active @click="AdminMenu('user')">사용자 관리</b-nav-item>
 									<b-nav-item @click="AdminMenu('board')">게시판 관리</b-nav-item>
+									<b-nav-item @click="AdminMenu('post')">게시글 관리</b-nav-item>
 									<b-nav-item @click="AdminMenu('category')">카테고리 관리</b-nav-item>
 								</b-nav>
 							</nav>
