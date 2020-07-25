@@ -55,7 +55,6 @@ export default {
 	name: 'AdminUser',
 	data() {
 		return {
-			user_idx: this.$session.get('user_idx'),
 			userList: null,
 			edit: false,
 			user: {
@@ -112,7 +111,7 @@ export default {
 		},
 	},
 	created() {
-		if (this.user_idx !== 1) {
+		if (this.$session.get('rating') !== '관리자') {
 			alert('잘못된 접근방법입니다');
 			this.$router.push('/');
 		} else {

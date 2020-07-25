@@ -56,7 +56,6 @@ export default {
 	name: 'AdminCategory',
 	data() {
 		return {
-			user_idx: this.$session.get('user_idx'),
 			categoryList: null,
 			edit: false,
 			category: {
@@ -126,7 +125,7 @@ export default {
 		},
 	},
 	created() {
-		if (this.user_idx !== 1) {
+		if (this.$session.get('rating') !== '관리자') {
 			alert('잘못된 접근방법입니다');
 			this.$router.push('/');
 		} else {
