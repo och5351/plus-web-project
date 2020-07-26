@@ -76,7 +76,6 @@ export default {
 			mySession: false,
 		};
 	},
-	watch: {},
 };
 </script>
 
