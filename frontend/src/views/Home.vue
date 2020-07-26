@@ -26,6 +26,7 @@
 					<b-button @click="login" class="loginbutton" align="center">Login</b-button>
 				</div>
 				<div v-else>
+					<img alt="관리자" width="16" height="16" src="/css/rating.png" />
 					[{{ this.$session.get('rating') }}]<br />
 					{{ this.$session.get('name') }}님 환영 합니다! <br />
 					<b-button variant="primary" v-on:click="Mypage">마이페이지</b-button>&nbsp;
