@@ -83,9 +83,8 @@ export default {
 			if (this.$session.get('user_idx') == null) {
 				alert('로그인 후 추천가능합니다.');
 			} else {
-				const axios = require('axios');
-				axios.post(`/api/article/hit/${this.contentId}`).then(res => {
-					axios.get(`/api/article/get/${this.contentId}`).then(res => {
+				this.$http.post(`/api/article/hit/${this.contentId}`).then(res => {
+					this.$http.get(`/api/article/get/${this.contentId}`).then(res => {
 						this.hit = res.data[0].hit;
 					});
 					alert(res.data);
@@ -95,7 +94,7 @@ export default {
 	},
 	mounted() {
 		this.$http.get(`/api/article/get/${this.contentId}`).then(res => {
-			if (res.data.length != 0) {
+			if (res.data.length !== 0) {
 				this.boardId = res.data[0].board_id;
 				this.categoryId = res.data[0].ca_id;
 				this.title = res.data[0].title;

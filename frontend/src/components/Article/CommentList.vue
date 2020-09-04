@@ -13,7 +13,7 @@
 		<div id="commentSection" :key="comment.cm_id" v-for="comment in commentList">
 			<CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
 		</div>
-		<div class="form-group" id="commentSection">
+		<div class="form-group">
 			<br />
 			<div class="row" v-if="this.$session.get('user_idx') != null">
 				<input
@@ -37,7 +37,6 @@
 
 <script>
 import CommentListItem from './CommentListItem';
-import $ from 'jquery';
 
 export default {
 	name: 'CommentList',
@@ -48,21 +47,21 @@ export default {
 	methods: {
 		toggleComments: function () {
 			// Toggle Comments/ 댓글 토글
-			$("[id='commentSection']").slideToggle();
+			this.$("[id='commentSection']").slideToggle();
 			this.showComment = !this.showComment;
 
 			// Changes btn's arrow direction/ 화살표 방향 변경
 			if (this.showComment) {
-				$('#span-btnOpenComments').attr('class', 'fa fa-caret-down');
-				$('#btnOpenComments').attr('title', '댓글 열기');
+				this.$('#span-btnOpenComments').attr('class', 'fa fa-caret-down');
+				this.$('#btnOpenComments').attr('title', '댓글 열기');
 			} else {
-				$('#span-btnOpenComments').attr('class', 'fa fa-caret-up');
-				$('#btnOpenComments').attr('title', '댓글 닫기');
+				this.$('#span-btnOpenComments').attr('class', 'fa fa-caret-up');
+				this.$('#btnOpenComments').attr('title', '댓글 닫기');
 			}
 		},
 		addComment: function () {
 			var contentId = this.$route.params.contentId;
-			var comment = $('input#commentArticle').val().trim();
+			var comment = this.$('input#commentArticle').val().trim();
 
 			// No empty comments! / 댓글 내용 입력확인
 			if (comment == '') {
@@ -71,8 +70,8 @@ export default {
 			}
 
 			// Clear input text / 입력창 지우기
-			$('input#commentArticle').val('');
-			$('input#commentArticle').blur();
+			this.$('input#commentArticle').val('');
+			this.$('input#commentArticle').blur();
 
 			if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
 				alert('로그인 후 이용 가능한 기능입니다!');

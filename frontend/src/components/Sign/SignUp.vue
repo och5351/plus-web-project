@@ -102,8 +102,6 @@
 </template>
 
 <script>
-import $ from 'jquery';
-
 export default {
 	data: function () {
 		return {
@@ -118,10 +116,10 @@ export default {
 	methods: {
 		//최종 가입 버튼
 		signUp() {
-			var id = $('#idClear').css('visibility');
-			var name = $('#nameClear').css('visibility');
-			var pw = $('#pwClear').css('visibility');
-			var aler = $('#alert-success').css('display');
+			var id = this.$('#idClear').css('visibility');
+			var name = this.$('#nameClear').css('visibility');
+			var pw = this.$('#pwClear').css('visibility');
+			var aler = this.$('#alert-success').css('display');
 
 			if (id === 'visible' && name === 'visible' && pw === 'visible' && aler === 'inline-block') {
 				this.$http
@@ -141,7 +139,7 @@ export default {
 		//아이디 확인 버튼
 		idCheck() {
 			var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
-			if (!idReg.test($('input[name=uid]').val())) {
+			if (!idReg.test(this.$('input[name=uid]').val())) {
 				alert('아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)');
 			} else {
 				this.$http
@@ -151,9 +149,9 @@ export default {
 					.then(res => {
 						if (res.data.success == true) {
 							alert(res.data.message);
-							$('#idClear').css('visibility', 'visible');
-							$('#idCheckClear').css('visibility', 'hidden');
-							$('#id').attr('disabled', true).attr('readonly', false);
+							this.$('#idClear').css('visibility', 'visible');
+							this.$('#idCheckClear').css('visibility', 'hidden');
+							this.$('#id').attr('disabled', true).attr('readonly', false);
 						}
 						if (res.data.success == false) {
 							alert(res.data.message);
@@ -164,61 +162,61 @@ export default {
 		//이름 확인
 		nameCheck() {
 			var regexp = /[a-z0-9]|[ [\]{}()<>?|`~!@#$%^&*-_+=,.;:'"\\]/g;
-			var v = $('#name').val();
+			var v = this.$('#name').val();
 			if (regexp.test(v)) {
 				alert('한글만 입력가능 합니다.');
-				$('#nameClear').css('visibility', 'hidden');
-				$('#nameFalse').css('visibility', 'visible');
-				$('#name').val(v.replace(regexp, ''));
+				this.$('#nameClear').css('visibility', 'hidden');
+				this.$('#nameFalse').css('visibility', 'visible');
+				this.$('#name').val(v.replace(regexp, ''));
 			} else {
-				$('#nameClear').css('visibility', 'visible');
-				$('#nameFalse').css('visibility', 'hidden');
+				this.$('#nameClear').css('visibility', 'visible');
+				this.$('#nameFalse').css('visibility', 'hidden');
 			}
 			if (v == '') {
-				$('#nameClear').css('visibility', 'hidden');
-				$('#nameFalse').css('visibility', 'visible');
+				this.$('#nameClear').css('visibility', 'hidden');
+				this.$('#nameFalse').css('visibility', 'visible');
 			}
 		},
 		//비밀 번호 확인
 		pwCheck() {
-			var pwd1 = $('#pw').val();
-			var pwd2 = $('#pwcheck').val();
+			var pwd1 = this.$('#pw').val();
+			var pwd2 = this.$('#pwcheck').val();
 			var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
 
-			if (!pwReg.test($('input[name=upw]').val())) {
-				$('#pwClear').css('visibility', 'hidden');
-				$('#pwFalse').css('visibility', 'visible');
+			if (!pwReg.test(this.$('input[name=upw]').val())) {
+				this.$('#pwClear').css('visibility', 'hidden');
+				this.$('#pwFalse').css('visibility', 'visible');
 				return;
 			} else {
-				$('#pwClear').css('visibility', 'visible');
-				$('#pwFalse').css('visibility', 'hidden');
+				this.$('#pwClear').css('visibility', 'visible');
+				this.$('#pwFalse').css('visibility', 'hidden');
 			}
 			if (pwd1 != '' && pwd2 == '') {
 				null;
 			} else if (pwd1 != '' || pwd2 != '') {
 				if (pwd1 == pwd2) {
-					$('#alert-success').css('display', 'inline-block');
-					$('#alert-danger').css('display', 'none');
+					this.$('#alert-success').css('display', 'inline-block');
+					this.$('#alert-danger').css('display', 'none');
 				} else {
-					$('#alert-success').css('display', 'none');
-					$('#alert-danger').css('display', 'inline-block');
+					this.$('#alert-success').css('display', 'none');
+					this.$('#alert-danger').css('display', 'inline-block');
 				}
 			}
 		},
 		//비밀 번호 재확인
 		repwCheck() {
-			var pwd1 = $('#pw').val();
-			var pwd2 = $('#pwcheck').val();
+			var pwd1 = this.$('#pw').val();
+			var pwd2 = this.$('#pwcheck').val();
 
 			if (pwd1 != '' && pwd2 == '') {
 				null;
 			} else if (pwd1 != '' || pwd2 != '') {
 				if (pwd1 == pwd2) {
-					$('#alert-success').css('display', 'inline-block');
-					$('#alert-danger').css('display', 'none');
+					this.$('#alert-success').css('display', 'inline-block');
+					this.$('#alert-danger').css('display', 'none');
 				} else {
-					$('#alert-success').css('display', 'none');
-					$('#alert-danger').css('display', 'inline-block');
+					this.$('#alert-success').css('display', 'none');
+					this.$('#alert-danger').css('display', 'inline-block');
 				}
 			}
 		},

@@ -102,8 +102,6 @@
 	</div>
 </template>
 <script>
-import $ from 'jquery';
-
 export default {
 	name: 'CommentListItem',
 	props: {
@@ -124,7 +122,7 @@ export default {
 		this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 			this.subCommentList = res.data;
 		});
-		$('.sub-comment-form-group').hide();
+		this.$('.sub-comment-form-group').hide();
 
 		// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
 		this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {
@@ -144,26 +142,26 @@ export default {
 	methods: {
 		// Opening subcomment form / 대댓글 창 여닫기
 		openForm: function (cm_id) {
-			$('.sub-comment-form-group').slideUp();
-			$('#subCommentForm' + cm_id).slideDown();
-			$('#commentArticle' + cm_id).focus();
+			this.$('.sub-comment-form-group').slideUp();
+			this.$('#subCommentForm' + cm_id).slideDown();
+			this.$('#commentArticle' + cm_id).focus();
 		},
 		// Add subcomment / 대댓글 작성
 		addSubComment: function (cm_id) {
 			var contentId = this.$route.params.contentId;
-			var comment = $('input#commentArticle' + cm_id)
+			var comment = this.$('input#commentArticle' + cm_id)
 				.val()
 				.trim();
 
 			// No empty comments! / 댓글 내용 입력확인
-			if (comment == '') {
+			if (comment === '') {
 				alert('[오류]\n댓글에 입력할 내용을 작성해주시길 바랍니다!');
 				return;
 			}
 
 			// Clear input text / 입력창 지우기
-			$('input#commentArticle' + cm_id).val('');
-			$('input#commentArticle' + cm_id).blur();
+			this.$('input#commentArticle' + cm_id).val('');
+			this.$('input#commentArticle' + cm_id).blur();
 
 			if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
 				alert('로그인 후 이용 가능한 기능입니다!');
