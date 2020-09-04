@@ -47,21 +47,21 @@ export default {
 	methods: {
 		toggleComments: function () {
 			// Toggle Comments/ 댓글 토글
-			this.$("[id='commentSection']").slideToggle();
+			this._$("[id='commentSection']").slideToggle();
 			this.showComment = !this.showComment;
 
 			// Changes btn's arrow direction/ 화살표 방향 변경
 			if (this.showComment) {
-				this.$('#span-btnOpenComments').attr('class', 'fa fa-caret-down');
-				this.$('#btnOpenComments').attr('title', '댓글 열기');
+				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-down');
+				this._$('#btnOpenComments').attr('title', '댓글 열기');
 			} else {
-				this.$('#span-btnOpenComments').attr('class', 'fa fa-caret-up');
-				this.$('#btnOpenComments').attr('title', '댓글 닫기');
+				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-up');
+				this._$('#btnOpenComments').attr('title', '댓글 닫기');
 			}
 		},
 		addComment: function () {
 			var contentId = this.$route.params.contentId;
-			var comment = this.$('input#commentArticle').val().trim();
+			var comment = this._$('input#commentArticle').val().trim();
 
 			// No empty comments! / 댓글 내용 입력확인
 			if (comment == '') {
@@ -70,8 +70,8 @@ export default {
 			}
 
 			// Clear input text / 입력창 지우기
-			this.$('input#commentArticle').val('');
-			this.$('input#commentArticle').blur();
+			this._$('input#commentArticle').val('');
+			this._$('input#commentArticle').blur();
 
 			if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
 				alert('로그인 후 이용 가능한 기능입니다!');

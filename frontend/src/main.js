@@ -17,7 +17,7 @@ Vue.use(VueMomentJS, moment);
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
-Vue.prototype.$ = jQuery;
+Vue.prototype._$ = jQuery;
 
 new Vue({
 	router,

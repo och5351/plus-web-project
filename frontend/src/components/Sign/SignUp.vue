@@ -116,10 +116,10 @@ export default {
 	methods: {
 		//최종 가입 버튼
 		signUp() {
-			var id = this.$('#idClear').css('visibility');
-			var name = this.$('#nameClear').css('visibility');
-			var pw = this.$('#pwClear').css('visibility');
-			var aler = this.$('#alert-success').css('display');
+			var id = this._$('#idClear').css('visibility');
+			var name = this._$('#nameClear').css('visibility');
+			var pw = this._$('#pwClear').css('visibility');
+			var aler = this._$('#alert-success').css('display');
 
 			if (id === 'visible' && name === 'visible' && pw === 'visible' && aler === 'inline-block') {
 				this.$http
@@ -139,7 +139,7 @@ export default {
 		//아이디 확인 버튼
 		idCheck() {
 			var idReg = /^[A-Za-z]+[A-Za-z0-9]{3,15}$/g;
-			if (!idReg.test(this.$('input[name=uid]').val())) {
+			if (!idReg.test(this._$('input[name=uid]').val())) {
 				alert('아이디는 영문자로 시작하는 4~15자 영문자 또는 숫자이어야 합니다.(특수 문자 제외)');
 			} else {
 				this.$http
@@ -149,9 +149,9 @@ export default {
 					.then(res => {
 						if (res.data.success == true) {
 							alert(res.data.message);
-							this.$('#idClear').css('visibility', 'visible');
-							this.$('#idCheckClear').css('visibility', 'hidden');
-							this.$('#id').attr('disabled', true).attr('readonly', false);
+							this._$('#idClear').css('visibility', 'visible');
+							this._$('#idCheckClear').css('visibility', 'hidden');
+							this._$('#id').attr('disabled', true).attr('readonly', false);
 						}
 						if (res.data.success == false) {
 							alert(res.data.message);
@@ -162,61 +162,61 @@ export default {
 		//이름 확인
 		nameCheck() {
 			var regexp = /[a-z0-9]|[ [\]{}()<>?|`~!@#$%^&*-_+=,.;:'"\\]/g;
-			var v = this.$('#name').val();
+			var v = this._$('#name').val();
 			if (regexp.test(v)) {
 				alert('한글만 입력가능 합니다.');
-				this.$('#nameClear').css('visibility', 'hidden');
-				this.$('#nameFalse').css('visibility', 'visible');
-				this.$('#name').val(v.replace(regexp, ''));
+				this._$('#nameClear').css('visibility', 'hidden');
+				this._$('#nameFalse').css('visibility', 'visible');
+				this._$('#name').val(v.replace(regexp, ''));
 			} else {
-				this.$('#nameClear').css('visibility', 'visible');
-				this.$('#nameFalse').css('visibility', 'hidden');
+				this._$('#nameClear').css('visibility', 'visible');
+				this._$('#nameFalse').css('visibility', 'hidden');
 			}
 			if (v == '') {
-				this.$('#nameClear').css('visibility', 'hidden');
-				this.$('#nameFalse').css('visibility', 'visible');
+				this._$('#nameClear').css('visibility', 'hidden');
+				this._$('#nameFalse').css('visibility', 'visible');
 			}
 		},
 		//비밀 번호 확인
 		pwCheck() {
-			var pwd1 = this.$('#pw').val();
-			var pwd2 = this.$('#pwcheck').val();
+			var pwd1 = this._$('#pw').val();
+			var pwd2 = this._$('#pwcheck').val();
 			var pwReg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{4,15}$/;
 
-			if (!pwReg.test(this.$('input[name=upw]').val())) {
-				this.$('#pwClear').css('visibility', 'hidden');
-				this.$('#pwFalse').css('visibility', 'visible');
+			if (!pwReg.test(this._$('input[name=upw]').val())) {
+				this._$('#pwClear').css('visibility', 'hidden');
+				this._$('#pwFalse').css('visibility', 'visible');
 				return;
 			} else {
-				this.$('#pwClear').css('visibility', 'visible');
-				this.$('#pwFalse').css('visibility', 'hidden');
+				this._$('#pwClear').css('visibility', 'visible');
+				this._$('#pwFalse').css('visibility', 'hidden');
 			}
 			if (pwd1 != '' && pwd2 == '') {
 				null;
 			} else if (pwd1 != '' || pwd2 != '') {
 				if (pwd1 == pwd2) {
-					this.$('#alert-success').css('display', 'inline-block');
-					this.$('#alert-danger').css('display', 'none');
+					this._$('#alert-success').css('display', 'inline-block');
+					this._$('#alert-danger').css('display', 'none');
 				} else {
-					this.$('#alert-success').css('display', 'none');
-					this.$('#alert-danger').css('display', 'inline-block');
+					this._$('#alert-success').css('display', 'none');
+					this._$('#alert-danger').css('display', 'inline-block');
 				}
 			}
 		},
 		//비밀 번호 재확인
 		repwCheck() {
-			var pwd1 = this.$('#pw').val();
-			var pwd2 = this.$('#pwcheck').val();
+			var pwd1 = this._$('#pw').val();
+			var pwd2 = this._$('#pwcheck').val();
 
 			if (pwd1 != '' && pwd2 == '') {
 				null;
 			} else if (pwd1 != '' || pwd2 != '') {
 				if (pwd1 == pwd2) {
-					this.$('#alert-success').css('display', 'inline-block');
-					this.$('#alert-danger').css('display', 'none');
+					this._$('#alert-success').css('display', 'inline-block');
+					this._$('#alert-danger').css('display', 'none');
 				} else {
-					this.$('#alert-success').css('display', 'none');
-					this.$('#alert-danger').css('display', 'inline-block');
+					this._$('#alert-success').css('display', 'none');
+					this._$('#alert-danger').css('display', 'inline-block');
 				}
 			}
 		},

@@ -122,7 +122,7 @@ export default {
 		this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 			this.subCommentList = res.data;
 		});
-		this.$('.sub-comment-form-group').hide();
+		this._$('.sub-comment-form-group').hide();
 
 		// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
 		this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {
@@ -142,14 +142,14 @@ export default {
 	methods: {
 		// Opening subcomment form / 대댓글 창 여닫기
 		openForm: function (cm_id) {
-			this.$('.sub-comment-form-group').slideUp();
-			this.$('#subCommentForm' + cm_id).slideDown();
-			this.$('#commentArticle' + cm_id).focus();
+			this._$('.sub-comment-form-group').slideUp();
+			this._$('#subCommentForm' + cm_id).slideDown();
+			this._$('#commentArticle' + cm_id).focus();
 		},
 		// Add subcomment / 대댓글 작성
 		addSubComment: function (cm_id) {
 			var contentId = this.$route.params.contentId;
-			var comment = this.$('input#commentArticle' + cm_id)
+			var comment = this._$('input#commentArticle' + cm_id)
 				.val()
 				.trim();
 
@@ -160,8 +160,8 @@ export default {
 			}
 
 			// Clear input text / 입력창 지우기
-			this.$('input#commentArticle' + cm_id).val('');
-			this.$('input#commentArticle' + cm_id).blur();
+			this._$('input#commentArticle' + cm_id).val('');
+			this._$('input#commentArticle' + cm_id).blur();
 
 			if (this.$session.get('user_idx') == null || this.$session.get('userid') == null) {
 				alert('로그인 후 이용 가능한 기능입니다!');
