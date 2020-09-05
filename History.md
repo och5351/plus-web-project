@@ -236,6 +236,10 @@
     * [Remove] watch method.
     * [Add] login box icon.
 
+> ### 2020-09-05
+
+    * [Fix] commit.
+    
 ## Moo Hyun's History
 
 > ### 2020-04-03
