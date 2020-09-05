@@ -6,41 +6,41 @@ const dbConObj = require("../lib/db_config");
 const conn = dbConObj.init();
 
 // 글 리스트
-router.get("/:category_name", function (req, res) {
+router.get("/:category_name", (req, res) => {
   conn.query(
     "SELECT p.*, u.name FROM post p, capdi_users u WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?) AND p.user_idx = u.user_idx",
     [req.params.category_name],
-    function (err, row) {
+    (err, row) => {
       res.send(row);
     }
   );
 });
 
-router.get("/detail/:category_name", function (req, res) {
+router.get("/detail/:category_name", (req, res) => {
   conn.query(
     "SELECT * FROM category_detail WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?)",
     [req.params.category_name],
-    function (err, row) {
+    (err, row) => {
       res.send(row);
     }
   );
 });
 
-router.get("/info/:category_name", function (req, res) {
+router.get("/info/:category_name", (req, res) => {
   conn.query(
     "SELECT * FROM category WHERE ca_name = ?",
     [req.params.category_name],
-    function (err, row) {
+    (err, row) => {
       res.send(row);
     }
   );
 });
 
-router.post("/views/:postId", function (req, res) {
+router.post("/views/:postId", (req, res) => {
   conn.query(
     "UPDATE post SET views = views + 1 WHERE post_id = ?",
     [req.params.postId],
-    function (err, row) {
+    (err, row) => {
       res.send(row);
     }
   );

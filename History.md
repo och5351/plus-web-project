@@ -198,7 +198,48 @@
 > ### 2020-06-12
 
     * [Fix] Post -> main View Error.
+    
+> ### 2020-06-30
 
+    * [Fix] file upload then api error.
+    
+> ### 2020-07-03
+
+    * [Fix] main page margin.
+    
+> ### 2020-07-11
+
+    * [Add] write row.
+    
+> ### 2020-07-13
+
+    * [Add] admin console post view
+    
+> ### 2020-07-14
+
+    * [Fix] functions es6 change.
+    
+> ### 2020-07-15
+
+    * [Fix] auth check router push.
+    
+> ### 2020-07-24
+
+    * [Fix] search button disabled.
+    * [Fix] login button design change.
+    * [Fix] log console detail.
+    * [Fix] rating update check change.
+    
+> ### 2020-07-24
+    
+    * [Fix] admin console check change.
+    * [Remove] watch method.
+    * [Add] login box icon.
+
+> ### 2020-09-05
+
+    * [Fix] commit.
+    
 ## Moo Hyun's History
 
 > ### 2020-04-03

@@ -6,6 +6,9 @@
 		<div v-else-if="systemMenu === 'board'">
 			<admin-board></admin-board>
 		</div>
+		<div v-else-if="systemMenu === 'post'">
+			<admin-post></admin-post>
+		</div>
 		<div v-else>
 			<admin-category></admin-category>
 		</div>
@@ -15,10 +18,11 @@
 <script>
 import AdminUser from '../components/Admin/AdminUser';
 import AdminBoard from '../components/Admin/AdminBoard';
+import AdminPost from '../components/Admin/AdminPost';
 import AdminCategory from '../components/Admin/AdminCategory';
 
 export default {
-	components: { AdminCategory, AdminBoard, AdminUser },
+	components: { AdminCategory, AdminBoard, AdminUser, AdminPost },
 	data() {
 		return {
 			systemMenu: this.$route.params.systemMenu,

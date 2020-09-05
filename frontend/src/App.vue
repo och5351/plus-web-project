@@ -2,7 +2,7 @@
 	<div id="app" class="container">
 		<div class="logo">
 			<img @click="main" style="width: 200px; height: 200px;" alt="Vue logo" src="./assets/plusLogo.png" />
-			<div v-if="this.$session.get('user_idx') === 1" style="float: right;">
+			<div v-if="this.$session.get('rating') === '관리자'" style="margin-top: 10%; float: right;">
 				<b-button v-b-toggle.sidebar-no-header>Admin Console</b-button>
 				<b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" backdrop shadow>
 					<template>
@@ -12,6 +12,7 @@
 								<b-nav vertical>
 									<b-nav-item active @click="AdminMenu('user')">사용자 관리</b-nav-item>
 									<b-nav-item @click="AdminMenu('board')">게시판 관리</b-nav-item>
+									<b-nav-item @click="AdminMenu('post')">게시글 관리</b-nav-item>
 									<b-nav-item @click="AdminMenu('category')">카테고리 관리</b-nav-item>
 								</b-nav>
 							</nav>
@@ -40,9 +41,9 @@
 
 					<!-- 오른쪽 검색창 -->
 					<b-navbar-nav class="ml-auto">
-						<b-nav-form>
+						<b-nav-form @submit.prevent="search">
 							<b-form-input size="sm" class="mr-sm-2" placeholder="검색"></b-form-input>
-							<b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+							<b-button size="sm" class="my-2 my-sm-0" type="submit" @submit.prevent="search">Search</b-button>
 						</b-nav-form>
 					</b-navbar-nav>
 				</b-collapse>
@@ -65,6 +66,9 @@ export default {
 		AdminMenu(menu) {
 			this.$router.push(`/admin/${menu}`);
 		},
+		search() {
+			alert('준비중입니다.');
+		},
 	},
 	data() {
 		return {
@@ -72,7 +76,6 @@ export default {
 			mySession: false,
 		};
 	},
-	watch: {},
 };
 </script>
 
@@ -83,9 +86,7 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #42b983;
-	margin-top: 60px;
-	margin-right: 150px;
-	margin-left: 150px;
+	margin: 0 auto;
 }
 .loginbox {
 	width: 150px;
