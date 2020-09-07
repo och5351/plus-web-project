@@ -1,8 +1,8 @@
 <template>
 	<div id="app" class="container">
 		<div class="logo">
-			<img @click="main" style="width: 200px; height: 200px" alt="Vue logo" src="./assets/plusLogo.png" />
-			<div v-if="this.$session.get('rating') === '관리자'" style="margin-top: 10%; float: right">
+			<img @click="main" style="width: 200px; height: 200px;" alt="Vue logo" src="./assets/plusLogo.png" />
+			<div v-if="this.$session.get('rating') === '관리자'" style="margin-top: 10%; float: right;">
 				<b-button v-b-toggle.sidebar-no-header>Admin Console</b-button>
 				<b-sidebar id="sidebar-no-header" aria-labelledby="sidebar-no-header-title" backdrop shadow>
 					<template>
