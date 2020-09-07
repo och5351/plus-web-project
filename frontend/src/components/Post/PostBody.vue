@@ -194,8 +194,8 @@ export default {
 							this.$router.replace('/login');
 						}
 					})
-					.catch(error => {
-						console.log(`Error : ${error}`);
+					.catch(() => {
+						alert('알 수 없는 오류가 발생했습니다');
 					});
 			} else {
 				this.$http
@@ -207,8 +207,8 @@ export default {
 							this.$router.replace('/login');
 						}
 					})
-					.catch(error => {
-						console.log(`Error : ${error}`);
+					.catch(() => {
+						alert('알 수 없는 오류가 발생했습니다');
 					});
 			}
 		},
@@ -246,8 +246,8 @@ export default {
 							this.submitFile();
 							this.setPoint('update');
 						})
-						.catch(error => {
-							console.log(`Error : ${error}`);
+						.catch(() => {
+							alert('알 수 없는 오류가 발생했습니다');
 						});
 					this.$router.go(-1).reload();
 				}
@@ -280,8 +280,8 @@ export default {
 						.then(() => {
 							this.$router.push(`/board/${this.categoryName}`);
 						})
-						.catch(error => {
-							console.log(`Error : ${error}`);
+						.catch(() => {
+							alert('알 수 없는 오류가 발생했습니다');
 						});
 				}
 			}
@@ -306,8 +306,8 @@ export default {
 						this.setPoint('delete');
 						this.$router.go(-2);
 					})
-					.catch(error => {
-						console.log(`Error : ${error}`);
+					.catch(() => {
+						alert('알 수 없는 오류가 발생했습니다');
 					});
 			}
 		},

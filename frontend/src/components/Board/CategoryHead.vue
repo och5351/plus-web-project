@@ -51,8 +51,8 @@ export default {
 					this.categoryNameDetail = res.data[0].ca_name;
 					this.categoryDetail = res.data[0].ca_detail;
 				})
-				.catch(error => {
-					console.log(`Error : ${error}`);
+				.catch(() => {
+					alert('알 수 없는 오류가 발생했습니다');
 				});
 		},
 		signUp() {

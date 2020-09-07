@@ -65,8 +65,8 @@ export default {
 						alert(res.data.message);
 					}
 				})
-				.catch(error => {
-					console.log(`Error : ${error}`);
+				.catch(() => {
+					alert('알 수 없는 오류가 발생했습니다');
 				});
 		},
 		UpdateRating() {
