@@ -2,8 +2,8 @@
 	<!--  댓글 -->
 	<div id="commentListItem" class="comment-list-item">
 		<b-container class="comment-box">
-			<div class="row align-items-start" style="margin-bottom: 0.25em;">
-				<div class="col-2" style="background-color: #ccffcc;" title="작성자" v-if="commentObj.user_idx == authorIdx">
+			<div class="row align-items-start" style="margin-bottom: 0.25em">
+				<div class="col-2" style="background-color: #ccffcc" title="작성자" v-if="commentObj.user_idx == authorIdx">
 					<a href="" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span class="far fa-smile" v-bind:style="'color: green; font-size: ' + this.commentLike"></span>
 					</a>
@@ -44,16 +44,11 @@
 			<div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
 				<b-container class="subcomment-box">
 					<div class="row align-items-start">
-						<div
-							class="col-2"
-							style="background-color: #ccffcc;"
-							title="작성자"
-							v-if="subcomment.user_idx == authorIdx"
-						>
-							<small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{ subcomment.name }}
+						<div class="col-2" style="background-color: #ccffcc" title="작성자" v-if="subcomment.user_idx == authorIdx">
+							<small class="far fa-hand-point-right" style="margin-right: 1em"></small>{{ subcomment.name }}
 						</div>
 						<div class="col-2" v-else>
-							<small class="far fa-hand-point-right" style="margin-right: 1em;"></small>{{ subcomment.name }}
+							<small class="far fa-hand-point-right" style="margin-right: 1em"></small>{{ subcomment.name }}
 						</div>
 						<div class="col-5 text-left">{{ subcomment.contents }}</div>
 						<div class="col-3">
