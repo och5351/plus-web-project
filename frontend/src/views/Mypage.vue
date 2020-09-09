@@ -59,7 +59,7 @@ export default {
 		},
 		// 출석 포인트
 		setAttPoint() {
-			this.$http.get(`/api/attendance/point/${this.$session.get('userid')}`).then(res => console.log(res));
+			this.$http.get(`/api/attendance/point/${this.$session.get('userid')}`).then();
 		},
 	},
 	created() {

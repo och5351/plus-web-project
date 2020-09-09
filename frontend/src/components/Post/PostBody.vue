@@ -215,8 +215,7 @@ export default {
 			}
 		},
 		setPoint(type) {
-			if (type === 'update')
-				this.$http.get(`/api/post/pointUpdate/${this.$session.get('userid')}`).then();
+			if (type === 'update') this.$http.get(`/api/post/pointUpdate/${this.$session.get('userid')}`).then();
 			else this.$http.get(`/api/post/pointDelete/${this.$session.get('userid')}`).then();
 		},
 		submitButton() {

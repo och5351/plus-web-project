@@ -70,7 +70,7 @@ export default {
 				});
 		},
 		UpdateRating() {
-			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then(res => console.log(res.data));
+			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();
 		},
 	},
 };
