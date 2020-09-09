@@ -216,8 +216,8 @@ export default {
 		},
 		setPoint(type) {
 			if (type === 'update')
-				this.$http.get(`/api/post/pointUpdate/${this.$session.get('userid')}`).then(res => console.log(res));
-			else this.$http.get(`/api/post/pointDelete/${this.$session.get('userid')}`).then(res => console.log(res));
+				this.$http.get(`/api/post/pointUpdate/${this.$session.get('userid')}`).then();
+			else this.$http.get(`/api/post/pointDelete/${this.$session.get('userid')}`).then();
 		},
 		submitButton() {
 			//작성 버튼
