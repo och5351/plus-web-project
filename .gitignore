@@ -23,3 +23,6 @@ yarn-error.log*
 #
 backend/lib/db_config.js
 #scripts/*
+
+#build file
+backend/public/*
