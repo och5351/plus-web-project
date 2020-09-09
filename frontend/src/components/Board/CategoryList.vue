@@ -119,8 +119,8 @@ export default {
 					this.boardList = res.data;
 					this.categoryId = res.data[0].ca_id;
 				})
-				.catch(error => {
-					console.log(`Error : ${error}`);
+				.catch(() => {
+					alert('알 수 없는 오류 입니다.');
 				});
 		},
 		setPages() {
@@ -142,8 +142,8 @@ export default {
 				.then(res => {
 					this.categoryId = res.data[0].ca_id;
 				})
-				.catch(error => {
-					console.log(`Error : ${error}`);
+				.catch(() => {
+					alert('알 수 없는 오류 입니다.');
 				});
 		},
 		detail(seq) {
