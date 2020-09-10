@@ -29,7 +29,7 @@
 				<b-collapse id="nav-collapse" is-nav>
 					<b-navbar-nav>
 						<b-nav-item @click="main">Home</b-nav-item>
-						<b-nav-item @click="board('notice')">공지사항test</b-nav-item>
+						<b-nav-item @click="board('notice')">공지사항</b-nav-item>
 						<b-nav-item @click="board('free')">자유게시판</b-nav-item>
 					</b-navbar-nav>
 					<b-dropdown size="sm" text="커뮤니티">
