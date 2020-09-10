@@ -21,7 +21,7 @@ yarn-error.log*
 *.sw?
 
 #
-#backend/lib/db_config.js
+backend/lib/db_config.js
 #scripts/*
 
 #build file
