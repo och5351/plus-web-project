@@ -12,7 +12,7 @@
 							aria-valuenow="60"
 							aria-valuemin="0"
 							aria-valuemax="100"
-							style="width: 30%;"
+							style="width: 30%"
 						>
 							<span class="sr-only"></span>
 						</div>
@@ -109,32 +109,30 @@
 				</div>
 			</div>
 
-			<div style="margin-bottom: 30px;" class="file_upload">
+			<div style="margin-bottom: 30px" class="file_upload">
 				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
-				<!-- <button v-on:click="submitFile()">확인</button> -->
+				<button v-on:click="submitFile()">확인</button>
 			</div>
 
 			<div id="buttonFunction">
 				<div v-if="this.att === 'post'">
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitButton">
+					<button class="btn btn-success btn-round" style="margin-right: 20px" @click.prevent="submitButton">
 						작성
 					</button>
-					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
-						취소
-					</button>
+					<button class="btn btn-danger btn-round" style="margin-left: 20px" @click.prevent="cancelButton">취소</button>
 				</div>
 				<div v-else>
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateButton">
+					<button class="btn btn-success btn-round" style="margin-right: 20px" @click.prevent="updateButton">
 						수정
 					</button>
 					<button
 						class="btn btn-danger btn-round"
-						style="margin-left: 20px; margin-right: 20px;"
+						style="margin-left: 20px; margin-right: 20px"
 						@click.prevent="cancelButton"
 					>
 						취소
 					</button>
-					<button class="btn btn-warning btn-round" style="margin-left: 20px;" @click.prevent="removeButton">
+					<button class="btn btn-warning btn-round" style="margin-left: 20px" @click.prevent="removeButton">
 						삭제
 					</button>
 				</div>
