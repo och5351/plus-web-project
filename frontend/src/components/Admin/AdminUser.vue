@@ -12,11 +12,11 @@
 			</thead>
 			<tbody>
 				<tr v-if="userList === null">
-					<td colspan="5" style="text-align: center;">데이터가 없습니다</td>
+					<td colspan="5" style="text-align: center">데이터가 없습니다</td>
 				</tr>
 				<tr v-else v-for="(user, index) in userList" :key="index">
 					<th scope="row">
-						<b-button style="margin-right: 10px;" variant="primary" @click="ViewUser(index)">수정</b-button>
+						<b-button style="margin-right: 10px" variant="primary" @click="ViewUser(index)">수정</b-button>
 						<b-button variant="danger" @click="UserDelete(index)">삭제</b-button>
 					</th>
 					<td>{{ user.userid }}</td>
