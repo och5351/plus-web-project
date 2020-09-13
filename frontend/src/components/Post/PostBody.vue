@@ -33,6 +33,7 @@
 							<div class="col-lg-12 col-sm-4">
 								<div>
 									<label class="col-form-label-lg">본문</label>
+									<editor />
 									<textarea
 										type="text"
 										class="form-control"
@@ -148,6 +149,9 @@ window.onbeforeunload = function () {
 };
 export default {
 	name: 'postBody',
+	components: {
+		editor: this.$toastEditor,
+	},
 	data() {
 		const contentId = this.$route.params.contentId;
 		const att = this.$route.params.att;

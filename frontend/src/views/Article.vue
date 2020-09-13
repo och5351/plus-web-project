@@ -30,7 +30,7 @@
 		</div>
 		<b-container>
 			<div class="row">
-				<div class="article-contents justify-content-center text-left col" style="white-space: pre-line;">
+				<div class="article-contents justify-content-center text-left col" style="white-space: pre-line">
 					{{ contents }}
 				</div>
 			</div>
@@ -53,7 +53,7 @@ import CommentList from '../components/Article/CommentList';
 
 export default {
 	name: 'Article',
-	components: { CommentList },
+	components: { CommentList: CommentList },
 	data() {
 		const contentId = Number(this.$route.params.contentId);
 		return {
