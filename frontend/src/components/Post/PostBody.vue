@@ -33,8 +33,9 @@
 							<div class="col-lg-12 col-sm-4">
 								<div>
 									<label class="col-form-label-lg">본문</label>
-									<editor />
-									<textarea
+									<!-- Toast UI Editor -->
+									<editor ref="toastuiEditor" :height="800" :options="editorOptions" />
+									<!-- <textarea
 										type="text"
 										class="form-control"
 										cols="500"
@@ -42,7 +43,7 @@
 										v-model="contentArea"
 										id="contentArea"
 									></textarea
-									><br />
+									><br /> -->
 								</div>
 							</div>
 						</div>
@@ -111,8 +112,8 @@
 			</div>
 
 			<div style="margin-bottom: 30px" class="file_upload">
-				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
-				<button v-on:click="submitFile()">확인</button>
+				<!-- <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" /> -->
+				<!-- <button v-on:click="submitFile()">확인</button> -->
 			</div>
 
 			<div id="buttonFunction">
@@ -147,10 +148,16 @@
 window.onbeforeunload = function () {
 	return '';
 };
+// 프로토타입 형태로 바꿔야 하는 것들
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import '@toast-ui/editor/dist/i18n/ko-kr';
+import { Editor } from '@toast-ui/vue-editor';
 export default {
 	name: 'postBody',
 	components: {
-		editor: this.$toastEditor,
+		// 프로토타입 형태로 바꿔야 하는 것들
+		editor: Editor,
 	},
 	data() {
 		const contentId = this.$route.params.contentId;
@@ -170,6 +177,9 @@ export default {
 			sessionIdx: this.$session.get('user_idx'),
 			sessionId: this.$session.get('userid'),
 			sessionName: this.$session.get('name'),
+			editorOptions: {
+				language: 'ko-KR',
+			},
 		};
 	},
 	mounted() {
@@ -226,7 +236,7 @@ export default {
 			//유효성 검사 후 전송
 			if (this.titleText === '') {
 				alert('제목을 입력하세요.');
-			} else if (this.contentArea === '') {
+			} else if (this.$refs.toastuiEditor.invoke('getMarkdown') === '') {
 				alert('본문을 입력하세요.');
 			} else if (this.checkedNames === '') {
 				alert('카테고리를 선택하세요.');
@@ -238,7 +248,7 @@ export default {
 								board_id: this.board_id,
 								ca_id: this.categoryId,
 								user_idx: this.sessionIdx,
-								contents: this.contentArea,
+								contents: this.$refs.toastuiEditor.invoke('getMarkdown'),
 								title: this.titleText,
 								write_date: submitdate,
 								update_date: submitdate,
