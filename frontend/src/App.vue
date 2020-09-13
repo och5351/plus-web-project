@@ -38,14 +38,6 @@
 						<b-dropdown-item @click="board('cartoon')">만화</b-dropdown-item>
 						<b-dropdown-item @click="board('music')">음악</b-dropdown-item>
 					</b-dropdown>
-
-					<!-- 오른쪽 검색창 -->
-					<b-navbar-nav class="ml-auto">
-						<b-nav-form @submit.prevent="search">
-							<b-form-input size="sm" class="mr-sm-2" placeholder="검색"></b-form-input>
-							<b-button size="sm" class="my-2 my-sm-0" type="submit" @submit.prevent="search">Search</b-button>
-						</b-nav-form>
-					</b-navbar-nav>
 				</b-collapse>
 			</b-navbar>
 		</div>
@@ -66,15 +58,6 @@ export default {
 		AdminMenu(menu) {
 			this.$router.push(`/admin/${menu}`);
 		},
-		search() {
-			alert('준비중입니다.');
-		},
-	},
-	data() {
-		return {
-			/*로그인 세션 정보를 받아와서 로그인을 할지 닉네임을 표시할지 선택*/
-			mySession: false,
-		};
 	},
 };
 </script>

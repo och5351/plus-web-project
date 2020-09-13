@@ -105,6 +105,7 @@
 export default {
 	data: function () {
 		return {
+			redirect: this.$route.query.redirect,
 			user: {
 				userid: '',
 				name: '',
@@ -129,7 +130,7 @@ export default {
 					.then(res => {
 						if (res.data.success === true) {
 							alert(res.data.message);
-							this.$router.push('/');
+							this.$router.push(this.redirect);
 						}
 					});
 			} else {

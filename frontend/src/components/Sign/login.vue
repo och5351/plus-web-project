@@ -15,10 +15,9 @@
 		<button v-on:click="login">로그인</button>
 		<p>
 			만약, 계정이 없다면,
-			<router-link to="/SignUp">
+			<a @click="signUp">
 				회원가입을 먼저 진행해주세요!
-				<router-view />
-			</router-link>
+			</a>
 		</p>
 	</div>
 </template>
@@ -68,6 +67,12 @@ export default {
 				.catch(() => {
 					alert('알 수 없는 오류가 발생했습니다');
 				});
+		},
+		signUp() {
+			this.$router.push({
+				path: '/SignUp',
+				query: { redirect: this.$route.fullPath },
+			});
 		},
 		UpdateRating() {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();

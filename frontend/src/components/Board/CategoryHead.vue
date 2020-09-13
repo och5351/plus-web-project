@@ -56,7 +56,10 @@ export default {
 				});
 		},
 		signUp() {
-			this.$router.push('/SignUp');
+			this.$router.push({
+				path: '/SignUp',
+				query: { redirect: this.$route.fullPath },
+			});
 		},
 		login() {
 			this.$router.push({

@@ -26,7 +26,15 @@
 					<b-button @click="login" class="loginbutton" align="center">Login</b-button>
 				</div>
 				<div v-else>
-					<img alt="관리자" width="16" height="16" src="/css/rating.png" />
+					<img v-if="this.$session.get('rating') === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
+					<img
+						v-else-if="this.$session.get('rating') === '우수회원'"
+						alt=""
+						width="24"
+						height="24"
+						src="/css/silver.png"
+					/>
+					<img v-else alt="" width="24" height="24" src="/css/diamond.png" />
 					[{{ this.$session.get('rating') }}]<br />
 					{{ this.$session.get('name') }}님 환영 합니다! <br />
 					<b-button variant="primary" v-on:click="Mypage">마이페이지</b-button>&nbsp;
@@ -238,18 +246,6 @@
 			</div>
 		</footer>
 		<!-- Footer -->
-
-		<!-- 라우터 연결할때만 이거 보고 할거임 탭's 안쓸꼬야
-      <b-tabs
-       active-nav-item-class="font-weight-bold text-success"
-        content-class="mt-3">
-        <b-tab title="HOME" @click="main"/>
-        <b-tab title="공지사항" @click="main"/>
-        <b-tab title="HOT게시판" @click="post"/>
-        <b-tab title="커뮤니티" @click="comunity"/>
-      </b-tabs>
-      <router-view></router-view>
-      -->
 	</div>
 </template>
 
@@ -260,7 +256,6 @@ export default {
 			notice: Object,
 			recent: Object,
 			hot: Object,
-			mySession: false,
 		};
 	},
 	methods: {

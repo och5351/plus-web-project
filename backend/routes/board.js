@@ -8,7 +8,7 @@ const conn = dbConObj.init();
 // 글 리스트
 router.get("/:category_name", (req, res) => {
   conn.query(
-    "SELECT p.*, u.name FROM post p, capdi_users u WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?) AND p.user_idx = u.user_idx",
+    "SELECT p.*, u.name, u.rating FROM post p, capdi_users u WHERE ca_id = (SELECT ca_id FROM category WHERE ca_name = ?) AND p.user_idx = u.user_idx",
     [req.params.category_name],
     (err, row) => {
       res.send(row);

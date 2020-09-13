@@ -22,7 +22,9 @@
 						<th scope="row">{{ board.post_id }}</th>
 						<td style="cursor: pointer;">{{ board.title }}</td>
 						<td>
-							<img alt="관리자" width="16" height="16" src="/css/rating.png" />
+							<img v-if="board.rating === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
+							<img v-else-if="board.rating === '우수회원'" alt="" width="24" height="24" src="/css/silver.png" />
+							<img v-else alt="" width="24" height="24" src="/css/diamond.png" />
 							{{ board.name }}
 						</td>
 						<td>{{ board.views }}</td>
