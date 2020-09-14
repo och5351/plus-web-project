@@ -67,6 +67,7 @@ router.get("/categoryName/:categoryId", function (req, res) {
 router.post("/insertPost", function (req, res) {
   const post = req.body.posting;
 
+  // TODO: Convert in NoSQL
   conn.query(
     "INSERT INTO post(board_id, ca_id, user_idx, contents, title, write_date, update_date, hit, views) VALUES(?,?,?,?,?,?,?,?,?)",
     [

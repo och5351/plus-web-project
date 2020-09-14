@@ -15,17 +15,18 @@ router.get("/upload", function (res, req) {
 router.post("/upload", upload.single("file"), function (req, res) {
   const file = req.file;
   console.log(file);
-  conn.query(
-    "INSERT INTO post_file (ori_filename, server_filename, size, type, post_id) VALUES (?,?,?,?,(select max(post_id) from post))",
-    [file.originalname, file.filename, file.size, file.mimetype],
-    function (err, row) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("success!");
-      }
-    }
-  );
+
+  // conn.query(
+  //   "INSERT INTO post_file (ori_filename, server_filename, size, type, post_id) VALUES (?,?,?,?,(select max(post_id) from post))",
+  //   [file.originalname, file.filename, file.size, file.mimetype],
+  //   function (err, row) {
+  //     if (err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log("success!");
+  //     }
+  //   }
+  // );
 });
 
 module.exports = router;

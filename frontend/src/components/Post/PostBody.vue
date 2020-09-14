@@ -12,7 +12,7 @@
 							aria-valuenow="60"
 							aria-valuemin="0"
 							aria-valuemax="100"
-							style="width: 30%;"
+							style="width: 30%"
 						>
 							<span class="sr-only"></span>
 						</div>
@@ -33,7 +33,9 @@
 							<div class="col-lg-12 col-sm-4">
 								<div>
 									<label class="col-form-label-lg">본문</label>
-									<textarea
+									<!-- Toast UI Editor -->
+									<editor ref="toastuiEditor" :height="800" :options="editorOptions" />
+									<!-- <textarea
 										type="text"
 										class="form-control"
 										cols="500"
@@ -41,7 +43,7 @@
 										v-model="contentArea"
 										id="contentArea"
 									></textarea
-									><br />
+									><br /> -->
 								</div>
 							</div>
 						</div>
@@ -109,32 +111,30 @@
 				</div>
 			</div>
 
-			<div style="margin-bottom: 30px;" class="file_upload">
-				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
+			<div style="margin-bottom: 30px" class="file_upload">
+				<!-- <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" /> -->
 				<!-- <button v-on:click="submitFile()">확인</button> -->
 			</div>
 
 			<div id="buttonFunction">
 				<div v-if="this.att === 'post'">
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="submitButton">
+					<button class="btn btn-success btn-round" style="margin-right: 20px" @click.prevent="submitButton">
 						작성
 					</button>
-					<button class="btn btn-danger btn-round" style="margin-left: 20px;" @click.prevent="cancelButton">
-						취소
-					</button>
+					<button class="btn btn-danger btn-round" style="margin-left: 20px" @click.prevent="cancelButton">취소</button>
 				</div>
 				<div v-else>
-					<button class="btn btn-success btn-round" style="margin-right: 20px;" @click.prevent="updateButton">
+					<button class="btn btn-success btn-round" style="margin-right: 20px" @click.prevent="updateButton">
 						수정
 					</button>
 					<button
 						class="btn btn-danger btn-round"
-						style="margin-left: 20px; margin-right: 20px;"
+						style="margin-left: 20px; margin-right: 20px"
 						@click.prevent="cancelButton"
 					>
 						취소
 					</button>
-					<button class="btn btn-warning btn-round" style="margin-left: 20px;" @click.prevent="removeButton">
+					<button class="btn btn-warning btn-round" style="margin-left: 20px" @click.prevent="removeButton">
 						삭제
 					</button>
 				</div>
@@ -148,8 +148,17 @@
 window.onbeforeunload = function () {
 	return '';
 };
+// 프로토타입 형태로 바꿔야 하는 것들
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import '@toast-ui/editor/dist/i18n/ko-kr';
+import { Editor } from '@toast-ui/vue-editor';
 export default {
 	name: 'postBody',
+	components: {
+		// 프로토타입 형태로 바꿔야 하는 것들
+		editor: Editor,
+	},
 	data() {
 		const contentId = this.$route.params.contentId;
 		const att = this.$route.params.att;
@@ -168,6 +177,9 @@ export default {
 			sessionIdx: this.$session.get('user_idx'),
 			sessionId: this.$session.get('userid'),
 			sessionName: this.$session.get('name'),
+			editorOptions: {
+				language: 'ko-KR',
+			},
 		};
 	},
 	mounted() {
@@ -224,7 +236,7 @@ export default {
 			//유효성 검사 후 전송
 			if (this.titleText === '') {
 				alert('제목을 입력하세요.');
-			} else if (this.contentArea === '') {
+			} else if (this.$refs.toastuiEditor.invoke('getMarkdown') === '') {
 				alert('본문을 입력하세요.');
 			} else if (this.checkedNames === '') {
 				alert('카테고리를 선택하세요.');
@@ -236,7 +248,7 @@ export default {
 								board_id: this.board_id,
 								ca_id: this.categoryId,
 								user_idx: this.sessionIdx,
-								contents: this.contentArea,
+								contents: this.$refs.toastuiEditor.invoke('getMarkdown'),
 								title: this.titleText,
 								write_date: submitdate,
 								update_date: submitdate,

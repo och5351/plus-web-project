@@ -30,9 +30,10 @@
 		</div>
 		<b-container>
 			<div class="row">
-				<div class="article-contents justify-content-center text-left col" style="white-space: pre-line;">
+				<!-- <div class="article-contents justify-content-center text-left col" style="white-space: pre-line">
 					{{ contents }}
-				</div>
+				</div> -->
+				<viewer class="col" v-if="contents != ''" :initialValue="contents" height="800px" @load="onViewerLoad" />
 			</div>
 			<div class="row text-center justify-content-center col">
 				<p>
@@ -51,9 +52,16 @@
 // @ is an alias to /src
 import CommentList from '../components/Article/CommentList';
 
+// 프로토타입 형태로 바꿔야 하는 것들
+import '@toast-ui/editor/dist/toastui-editor-viewer.css';
+import { Viewer } from '@toast-ui/vue-editor';
+
 export default {
 	name: 'Article',
-	components: { CommentList },
+	components: {
+		CommentList: CommentList,
+		viewer: Viewer,
+	},
 	data() {
 		const contentId = Number(this.$route.params.contentId);
 		return {
