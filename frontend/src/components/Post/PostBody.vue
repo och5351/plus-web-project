@@ -34,16 +34,7 @@
 								<div>
 									<label class="col-form-label-lg">본문</label>
 									<!-- Toast UI Editor -->
-									<editor ref="toastuiEditor" :height="800" :options="editorOptions" />
-									<!-- <textarea
-										type="text"
-										class="form-control"
-										cols="500"
-										rows="20"
-										v-model="contentArea"
-										id="contentArea"
-									></textarea
-									><br /> -->
+									<editor ref="toastuiEditor" :height="800" :options="editorOptions" initialEditType="wysiwyg" />
 								</div>
 							</div>
 						</div>
@@ -112,8 +103,8 @@
 			</div>
 
 			<div style="margin-bottom: 30px" class="file_upload">
-				<!-- <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" /> -->
-				<!-- <button v-on:click="submitFile()">확인</button> -->
+				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
+				<button v-on:click="submitFile()">확인</button>
 			</div>
 
 			<div id="buttonFunction">
@@ -179,6 +170,7 @@ export default {
 			sessionName: this.$session.get('name'),
 			editorOptions: {
 				language: 'ko-KR',
+				hideModeSwitch: true,
 			},
 		};
 	},

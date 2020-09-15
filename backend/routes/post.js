@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const tfScript = require("./../lib/TFScripts/tfFunction");
 
+// MongoDB Post Model
+const Post = require("../models/post");
+
 // mysql 선언
 const dbConObj = require("../lib/db_config");
 const conn = dbConObj.init();
@@ -66,6 +69,14 @@ router.get("/categoryName/:categoryId", function (req, res) {
 //글쓰기
 router.post("/insertPost", function (req, res) {
   const post = req.body.posting;
+
+  Post.create({
+    title: post.title,
+    content: post.contents,
+  }, (error) => {
+    console.log(error);
+  });
+  
 
   // TODO: Convert in NoSQL
   conn.query(
