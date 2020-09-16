@@ -26,3 +26,5 @@ backend/lib/db_config.js
 
 #build file
 backend/public/*
+
+backend/lib/mongo_config.js
