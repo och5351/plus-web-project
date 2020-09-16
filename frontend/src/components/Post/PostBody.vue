@@ -38,7 +38,7 @@
 										ref="toastuiEditor"
 										v-if="contentArea != ''"
 										:initialValue="contentArea"
-										:height="800"
+										height="800px"
 										:options="editorOptions"
 										initialEditType="wysiwyg"
 									/>
@@ -111,7 +111,18 @@
 
 			<div style="margin-bottom: 30px" class="file_upload">
 				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
-				<button v-on:click="submitFile()">확인</button>
+				<button
+					class="btn btn-success btn-round"
+					id="btnFile"
+					v-on:click="submitFile()"
+					style="margin: 10px"
+					disabled="true"
+				>
+					파일 업로드
+				</button>
+				<button class="btn btn-warning btn-round" id="btnRevokeFile" v-on:click="revokeFile()" disabled="true">
+					해제
+				</button>
 			</div>
 
 			<div id="buttonFunction">
@@ -175,6 +186,7 @@ export default {
 			sessionIdx: this.$session.get('user_idx'),
 			sessionId: this.$session.get('userid'),
 			sessionName: this.$session.get('name'),
+			filename: '',
 			editorOptions: {
 				language: 'ko-KR',
 				hideModeSwitch: true,
@@ -202,6 +214,10 @@ export default {
 							const dic = res.data[0];
 							this.titleText = dic['title'];
 							this.contentArea = dic['contents'];
+							// document.querySelector('#file').value('파일을 수정하려면 해제버튼을 누르세요');
+							document.querySelector('#file').disabled = true;
+							document.querySelector('#btnFile').disabled = true;
+							document.querySelector('#btnRevokeFile').disabled = false;
 						} else {
 							alert('세션 에러!! \n다시 로그인 해주세요.');
 							this.$router.replace('/login');
@@ -254,6 +270,7 @@ export default {
 								write_date: submitdate,
 								update_date: submitdate,
 								hashTag: this.hashTagDistributor(this.checkedNames),
+								filename: this.filename,
 							},
 						})
 						.then(() => {
@@ -289,6 +306,7 @@ export default {
 								contents: this.$refs.toastuiEditor.invoke('getMarkdown'),
 								title: this.titleText,
 								update_date: submitdate,
+								filename: this.filename,
 							},
 						})
 						.then(() => {
@@ -369,12 +387,37 @@ export default {
 						'Content-Type': 'multipart/form-data',
 					},
 				})
-				.then(() => {
-					alert('업로드성공!!');
+				.then(res => {
+					document.querySelector('#file').disabled = true;
+					document.querySelector('#btnFile').disabled = true;
+					document.querySelector('#btnRevokeFile').disabled = true;
+					this.filename = res.data.filename;
+					alert('파일 업로드 성공');
 				});
 		},
 		handleFileUpload() {
-			this.file = this.$refs.file.files[0];
+			if (this.$refs.file.files == null) {
+				document.querySelector('#file').disabled = false;
+				document.querySelector('#btnFile').disabled = true;
+				document.querySelector('#btnRevokeFile').disabled = true;
+			} else {
+				document.querySelector('#file').disabled = true;
+				document.querySelector('#btnFile').disabled = false;
+				document.querySelector('#btnRevokeFile').disabled = false;
+				this.file = this.$refs.file.files[0];
+			}
+		},
+		revokeFile() {
+			if (this.$refs.file.file != null) {
+				document.querySelector('#file').disabled = true;
+				document.querySelector('#btnFile').disabled = false;
+				document.querySelector('#btnRevokeFile').disabled = false;
+			} else {
+				document.querySelector('#file').value = '';
+				document.querySelector('#file').disabled = false;
+				document.querySelector('#btnFile').disabled = true;
+				document.querySelector('#btnRevokeFile').disabled = true;
+			}
 		},
 	},
 };

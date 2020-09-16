@@ -33,7 +33,7 @@
 				<!-- <div class="article-contents justify-content-center text-left col" style="white-space: pre-line">
 					{{ contents }}
 				</div> -->
-				<viewer class="col" v-if="contents != ''" :initialValue="contents" height="800px" @load="onViewerLoad" />
+				<viewer class="col" v-if="contents != ''" :initialValue="contents" height="800px" />
 			</div>
 			<div class="row text-center justify-content-center col">
 				<p>

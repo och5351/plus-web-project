@@ -4,6 +4,8 @@ const tfScript = require("./../lib/TFScripts/tfFunction");
 
 // MongoDB Post Model
 const Post = require("../models/post");
+// MongoDB File Model
+const File = require("../models/file");
 
 // mysql 선언
 const dbConObj = require("../lib/db_config");
@@ -77,6 +79,8 @@ router.get("/categoryName/:categoryId", function (req, res) {
 router.post("/insertPost", function (req, res) {
   const post = req.body.posting;
 
+  console.info(post);
+
   conn.query("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'post' AND table_schema = DATABASE()",
     function(err, row){
       // MongoDB 게시글 추가
@@ -84,10 +88,16 @@ router.post("/insertPost", function (req, res) {
         post_id: row[0].AUTO_INCREMENT,
         contents: post.contents,
       });
+
+      if(post.filename != null) {
+        File.create({
+          post_id: row[0].AUTO_INCREMENT,
+          filename: post.filename,
+        });
+      }
     }
   )
 
-  // TODO: Convert in NoSQL
   conn.query(
     "INSERT INTO post(board_id, ca_id, user_idx, contents, title, write_date, update_date, hit, views) VALUES(?,?,?,?,?,?,?,?,?)",
     [
@@ -120,6 +130,22 @@ router.post("/updatePost", function (req, res) {
     }
   });
 
+  // 파일 존재 시, 파일 업로드 또한 진행
+  if(post.filename != null) {
+    File.findOneAndUpdate({
+      post_id: post.post_seq
+    },{
+      filename: post.filename,
+    }, (err, result) => {
+      if (result === null) {
+        File.create({
+          post_id: row[0].AUTO_INCREMENT,
+          filename: post.filename,
+        })
+      }
+    });
+  }
+
   conn.query(
     "UPDATE post SET board_id = ?, ca_id = ?, user_idx = ?, contents = ?, title = ?, update_date = ? WHERE post_id = ?",
     [
@@ -141,6 +167,9 @@ router.post("/deletePost/:categoryId", function (req, res) {
   // MongoDB 게시글 삭제
   Post.findOneAndDelete({post_id: req.params.categoryId}, (err, result) => {
     // 오류 핸들링이 필요시 이 부분 수정
+  })
+  File.findOneAndDelete({post_id: req.params.categoryId}, (err, result) => {
+    // 오류 핸들링 필요시 이 부분 수정
   })
   conn.query(
     "DELETE FROM post WHERE post_id = ?",
