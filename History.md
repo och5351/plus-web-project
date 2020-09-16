@@ -302,6 +302,21 @@
     * Add comment like table / 像表一样添加评论 / 댓글추천 테이블 생성
     * Show comment like in article page / 在文章页面上显示评论 / 게시글 페이지에서 댓글추천 보이기 기능
 
+> ### 2020-09-14
+
+    * Toast UI Editor 기능 추가
+    * Toast UI Viewer 기능 추가
+
+> ### 2020-09-16
+
+    * MongoDB 게시글 연동
+    * MySQL -> MongoDB 마이그레이션 기능 추가
+
+> ### 2020-09-17
+
+    * 게시글 작성 시 에디터 안 보이는 오류 수정
+    * 게시글 수정 시 에디터 안 보이는 오류 수정
+
 ## Chan Woong's History
 
 > ### 2020-6-30
