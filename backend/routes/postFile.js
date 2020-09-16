@@ -18,7 +18,7 @@ router.post("/upload", upload.single("file"), function (req, res) {
   const file = req.file;
 
   // 파일을 업로드 후, 파일명을 반환한다.
-  res.json({filename: file.filename});
+  res.json({filename: file.filename, originalname: file.originalname});
 });
 
 module.exports = router;

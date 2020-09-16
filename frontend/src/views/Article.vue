@@ -30,6 +30,11 @@
 		</div>
 		<b-container>
 			<div class="row">
+				<div class="col" v-if="filename != '' && filename != undefined">
+					<a v-if="filename != '' && filename != undefined" :href="'/uploads/' + filename">{{ originalname }}</a>
+				</div>
+			</div>
+			<div class="row">
 				<!-- <div class="article-contents justify-content-center text-left col" style="white-space: pre-line">
 					{{ contents }}
 				</div> -->
@@ -74,6 +79,8 @@ export default {
 			created: '',
 			author_idx: '',
 			hit: '',
+			filename: '',
+			originalname: '',
 		};
 	},
 	methods: {
@@ -111,6 +118,8 @@ export default {
 				this.created = res.data[0].write_date;
 				this.author_idx = res.data[0].user_idx;
 				this.hit = res.data[0].hit;
+				this.filename = res.data[0].filename;
+				this.originalname = res.data[0].originalname;
 			} else {
 				this.$router.push('/board');
 			}
