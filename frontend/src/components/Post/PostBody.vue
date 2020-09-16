@@ -218,6 +218,8 @@ export default {
 							// session OK!
 							alert('세션 에러!! \n다시 로그인 해주세요.');
 							this.$router.replace('/login');
+						} else {
+							this.contentArea = '게시글';
 						}
 					})
 					.catch(() => {
