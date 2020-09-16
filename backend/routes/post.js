@@ -31,7 +31,14 @@ router.get("/sessCheckEdit?/:user_idx/:content_id", function (req, res) {
     "SELECT count(*), title, contents FROM post WHERE post_id=? AND user_idx=?",
     [post_id, user_idx],
     function (err, row) {
-      res.send(row);
+      Post.findOne({post_id: post_id}, (err, result) => {
+        // 아직 MongoDB에 등록되지 않은(MySQL시절) 게시글이라면 일단 MySQL 게시글을 반환한다
+        if (result === null) {
+          return res.send(row);
+        }
+        row[0].contents = result.contents;
+        res.send(row);
+      })
     }
   );
 });
@@ -70,13 +77,15 @@ router.get("/categoryName/:categoryId", function (req, res) {
 router.post("/insertPost", function (req, res) {
   const post = req.body.posting;
 
-  Post.create({
-    title: post.title,
-    content: post.contents,
-  }, (error) => {
-    console.log(error);
-  });
-  
+  conn.query("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'post' AND table_schema = DATABASE()",
+    function(err, row){
+      // MongoDB 게시글 추가
+      Post.create({
+        post_id: row[0].AUTO_INCREMENT,
+        contents: post.contents,
+      });
+    }
+  )
 
   // TODO: Convert in NoSQL
   conn.query(
@@ -85,7 +94,7 @@ router.post("/insertPost", function (req, res) {
       post.board_id,
       post.ca_id,
       post.user_idx,
-      post.contents,
+      'MongoDB migrated',
       post.title,
       post.write_date,
       post.update_date,
@@ -103,13 +112,21 @@ router.post("/insertPost", function (req, res) {
 router.post("/updatePost", function (req, res) {
   const post = req.body.posting;
 
+  // MongoDB 게시글 업데이트
+  Post.findOneAndUpdate({post_id: post.post_seq}, {contents: post.contents}, (err, result) => {
+    // 아직 MongoDB에 등록되지 않은(MySQL시절) 게시글이라면 변경된 게시글로 MongoDB 업데이트한다
+    if (result === null) {
+      Post.create({post_id: post.post_seq, contents: post.contents});
+    }
+  });
+
   conn.query(
     "UPDATE post SET board_id = ?, ca_id = ?, user_idx = ?, contents = ?, title = ?, update_date = ? WHERE post_id = ?",
     [
       post.board_id,
       post.ca_id,
       post.user_idx,
-      post.contents,
+      'MongoDB migrated',
       post.title,
       post.update_date,
       post.post_seq,
@@ -121,6 +138,10 @@ router.post("/updatePost", function (req, res) {
 });
 
 router.post("/deletePost/:categoryId", function (req, res) {
+  // MongoDB 게시글 삭제
+  Post.findOneAndDelete({post_id: req.params.categoryId}, (err, result) => {
+    // 오류 핸들링이 필요시 이 부분 수정
+  })
   conn.query(
     "DELETE FROM post WHERE post_id = ?",
     [req.params.categoryId],

@@ -34,7 +34,14 @@
 								<div>
 									<label class="col-form-label-lg">본문</label>
 									<!-- Toast UI Editor -->
-									<editor ref="toastuiEditor" :height="800" :options="editorOptions" initialEditType="wysiwyg" />
+									<editor
+										ref="toastuiEditor"
+										v-if="contentArea != ''"
+										:initialValue="contentArea"
+										:height="800"
+										:options="editorOptions"
+										initialEditType="wysiwyg"
+									/>
 								</div>
 							</div>
 						</div>
@@ -264,7 +271,7 @@ export default {
 			//유효성 검사 후 전송
 			if (this.titleText === '') {
 				alert('제목을 입력하세요.');
-			} else if (this.contentArea === '') {
+			} else if (this.$refs.toastuiEditor.invoke('getMarkdown') === '') {
 				alert('본문을 입력하세요.');
 			} else if (this.checkedNames === '') {
 				alert('카테고리를 선택하세요.');
@@ -277,7 +284,7 @@ export default {
 								board_id: 1,
 								ca_id: this.categoryId,
 								user_idx: this.sessionIdx,
-								contents: this.contentArea,
+								contents: this.$refs.toastuiEditor.invoke('getMarkdown'),
 								title: this.titleText,
 								update_date: submitdate,
 							},

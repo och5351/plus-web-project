@@ -3,7 +3,6 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/admin");
@@ -54,11 +53,5 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render("error");
 });
-
-// CONNECT TO MONGODB SERVER
-// 임시 테스트 서버
-mongoose.connect('mongodb://34.64.200.167/plus', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Successfully connected to mongodb'))
-    .catch(e => console.error(e));
 
 module.exports = app;
