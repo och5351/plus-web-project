@@ -187,6 +187,7 @@ export default {
 			sessionId: this.$session.get('userid'),
 			sessionName: this.$session.get('name'),
 			filename: '',
+			originalname: '',
 			editorOptions: {
 				language: 'ko-KR',
 				hideModeSwitch: true,
@@ -271,6 +272,7 @@ export default {
 								update_date: submitdate,
 								hashTag: this.hashTagDistributor(this.checkedNames),
 								filename: this.filename,
+								originalname: this.originalname,
 							},
 						})
 						.then(() => {
@@ -307,6 +309,7 @@ export default {
 								title: this.titleText,
 								update_date: submitdate,
 								filename: this.filename,
+								originalname: this.originalname,
 							},
 						})
 						.then(() => {
@@ -392,6 +395,7 @@ export default {
 					document.querySelector('#btnFile').disabled = true;
 					document.querySelector('#btnRevokeFile').disabled = true;
 					this.filename = res.data.filename;
+					this.originalname = res.data.originalname;
 					alert('파일 업로드 성공');
 				});
 		},

@@ -79,8 +79,6 @@ router.get("/categoryName/:categoryId", function (req, res) {
 router.post("/insertPost", function (req, res) {
   const post = req.body.posting;
 
-  console.info(post);
-
   conn.query("SELECT AUTO_INCREMENT FROM information_schema.tables WHERE table_name = 'post' AND table_schema = DATABASE()",
     function(err, row){
       // MongoDB 게시글 추가
@@ -89,10 +87,11 @@ router.post("/insertPost", function (req, res) {
         contents: post.contents,
       });
 
-      if(post.filename != null) {
+      if(post.filename != '' && post.filename != null) {
         File.create({
           post_id: row[0].AUTO_INCREMENT,
           filename: post.filename,
+          originalname: post.originalname,
         });
       }
     }
@@ -131,16 +130,18 @@ router.post("/updatePost", function (req, res) {
   });
 
   // 파일 존재 시, 파일 업로드 또한 진행
-  if(post.filename != null) {
+  if(post.filename != '' && post.filename != null) {
     File.findOneAndUpdate({
       post_id: post.post_seq
     },{
       filename: post.filename,
+      originalname: post.originalname,
     }, (err, result) => {
       if (result === null) {
         File.create({
-          post_id: row[0].AUTO_INCREMENT,
+          post_id: post.post_seq,
           filename: post.filename,
+          originalname: post.originalname,
         })
       }
     });
