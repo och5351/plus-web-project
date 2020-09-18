@@ -3,7 +3,7 @@ const router = express.Router();
 const tfScript = require("./../lib/TFScripts/tfFunction");
 var multer = require("multer");
 // public/uploads에 해시값 파일명으로 저장하여 파일명을 통한 임의접근을 방지하고, 파일명을 아는 경우 URL을 통해 간단히 접근 가능하게 한다
-var upload = multer({ dest: "frontend/public/uploads/" });
+var upload = multer({ dest: "../frontend/public/uploads/" });
 
 // mysql 선언
 const dbConObj = require("../lib/db_config");
