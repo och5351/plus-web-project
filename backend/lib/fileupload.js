@@ -4,6 +4,4 @@ var fileupload = {};
 fileupload.path = __dirname + '/../../frontend/public/uploads/';
 fileupload.currentDir = __dirname;
 
-console.log(fileupload.path);
-
 module.exports = fileupload;
