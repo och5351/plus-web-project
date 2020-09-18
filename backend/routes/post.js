@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const tfScript = require("./../lib/TFScripts/tfFunction");
+const fs = require("fs");
 
+const fileupload = require("./../lib/fileupload");
 // MongoDB Post Model
 const Post = require("../models/post");
 // MongoDB File Model
@@ -129,6 +131,16 @@ router.post("/updatePost", function (req, res) {
     }
   });
 
+  File.findOne({post_id: post.post_seq}, (err, result) => {
+    if (result != null && post.filename != '' && post.filename != null) {
+      fs.unlink(fileupload.path + result.filename, err => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    }
+  });
+
   // 파일 존재 시, 파일 업로드 또한 진행
   if(post.filename != '' && post.filename != null) {
     File.findOneAndUpdate({
@@ -165,16 +177,29 @@ router.post("/updatePost", function (req, res) {
 });
 
 router.post("/deletePost/:categoryId", function (req, res) {
+  const post_id = req.params.categoryId;
+
   // MongoDB 게시글 삭제
-  Post.findOneAndDelete({post_id: req.params.categoryId}, (err, result) => {
+  Post.findOneAndDelete({post_id: post_id}, (err, result) => {
     // 오류 핸들링이 필요시 이 부분 수정
   })
+
+  File.findOne({post_id: post_id}, (err, result) => {
+    if (result != null) {
+      fs.unlink(fileupload.path + result.filename, err => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    }
+  });
+
   File.findOneAndDelete({post_id: req.params.categoryId}, (err, result) => {
     // 오류 핸들링 필요시 이 부분 수정
   })
   conn.query(
     "DELETE FROM post WHERE post_id = ?",
-    [req.params.categoryId],
+    [post_id],
     function (err, row) {
       res.send(row);
     }
