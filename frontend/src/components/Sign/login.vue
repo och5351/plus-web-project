@@ -15,9 +15,7 @@
 		<button v-on:click="login">로그인</button>
 		<p>
 			만약, 계정이 없다면,
-			<a @click="signUp">
-				회원가입을 먼저 진행해주세요!
-			</a>
+			<a @click="signUp"> 회원가입을 먼저 진행해주세요! </a>
 		</p>
 	</div>
 </template>
