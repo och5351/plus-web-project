@@ -31,7 +31,9 @@
 		<b-container>
 			<div class="row">
 				<div class="col" v-if="filename != '' && filename != undefined">
-					<a v-if="filename != '' && filename != undefined" :href="'/uploads/' + filename">{{ originalname }}</a>
+					<a v-if="filename != '' && filename != undefined" :href="'/uploads/' + filename" :download="originalname">
+						{{ originalname }}
+					</a>
 				</div>
 			</div>
 			<div class="row">
