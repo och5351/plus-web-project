@@ -1,0 +1,43 @@
+/* 달력 위, 아래 여백 */
+.all {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  /* 출석 체크 글자 */
+  .fc-title {
+    color: #9966ff;
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+  .fc-content {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    text-align: center;
+  }
+  .fc-day-grid-event {
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+  /* Month */
+  .fc-left {
+    color: #ff6666;
+  }
+  /* 월~금 */
+  .fc-week {
+    color: #708090;
+  }
+  .fc-widget-header {
+    color: #708090;
+  }
+  .fc-sun {
+    background-color: #ffffff;
+    color: #ff6666;
+  }
+  .fc-sat {
+    color: #3399ff;
+  }
+  p {
+    color: #df0174;
+    font-family: Arial, Helvetica, sans-serif;
+  }

@@ -1,23 +1,29 @@
 <template>
-	<div class="login">
-		<br /><br />
-		<div class="tag">I D )</div>
-		<input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" /><br /><br />
-		<div class="tag">P W )</div>
-		<input
-			v-on:keydown.enter="login"
-			type="password"
-			id="password"
-			v-model="user.password"
-			placeholder="PW를 입력해주세요!"
-		/>
-		<br /><br />
-		<button v-on:click="login">로그인</button>
-		<p>
-			만약, 계정이 없다면,
-			<a @click="signUp"> 회원가입을 먼저 진행해주세요! </a>
-		</p>
-	</div>
+  <div class="login">
+    <br />
+    <br />
+    <div class="tag">I D )</div>
+    <input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" />
+    <br />
+    <br />
+    <div class="tag">P W )</div>
+    <input
+      v-on:keydown.enter="login"
+      type="password"
+      id="password"
+      v-model="user.password"
+      placeholder="PW를 입력해주세요!"
+    />
+    <br />
+    <br />
+    <button v-on:click="login" class="btn">로그인</button>
+    <br />
+    <br />
+    <p>
+      만약, 계정이 없다면,
+      <a class="click" @click="signUp">회원가입을 먼저 진행해주세요!</a>
+    </p>
+  </div>
 </template>
 
 <script>
@@ -79,44 +85,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.login {
-	margin-top: 40px;
-	text-align: center;
-}
-
-.tag {
-	position: relative;
-	margin-left: -210px;
-	margin-bottom: 5px;
-	font-size: 15px;
-	color: black;
-}
-
-input {
-	margin: 0px 0;
-	width: 22%;
-	padding: 15px;
-}
-
-button {
-	margin-top: 10px;
-	width: 10%;
-	cursor: pointer;
-	background-color: white;
-	border: 0px;
-	height: 0px;
-}
-
-p {
-	margin-top: 40px;
-	font-size: 15px;
-	color: #248657;
-}
-
-p a {
-	text-decoration: underline;
-	cursor: pointer;
-	color: #df0174;
-}
-</style>
+<style src="../../css/login.css"></style>
