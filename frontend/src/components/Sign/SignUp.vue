@@ -244,4 +244,6 @@ export default {
 	},
 };
 </script>
-<style src="../../css/SignUp.css"></style>
+<style lang="scss">
+@import '../../css/SignUp.css';
+</style>

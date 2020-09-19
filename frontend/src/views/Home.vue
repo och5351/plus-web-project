@@ -299,7 +299,7 @@ export default {
 };
 </script>
 
-<style src="../css/Home.css"></style>
-<style>
+<style lang="scss">
+@import '../css/Home.css';
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Poor+Story&family=Sunflower:wght@300&display=swap');
 </style>

@@ -75,4 +75,6 @@ export default {
 };
 </script>
 
-<style src="../../css/CategoryHead.css"></style>
+<style lang="scss">
+@import '../../css/CategoryHead.css';
+</style>
