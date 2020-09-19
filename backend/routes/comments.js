@@ -119,6 +119,8 @@ router.post('/like', function (req, res, next) {
         user_idx: req.body.data.user_idx,
     };
 
+    message = '';
+
     if (data.user_idx == null) {
         message = '로그인 후 사용가능합니다.';
         res.json(message);
@@ -130,14 +132,19 @@ router.post('/like', function (req, res, next) {
             if (row[0] != null && row[0].cm_like == data.type) {
                 sql2 = 'DELETE FROM comment_like WHERE cm_id = ? AND user_idx = ?';
                 conn.query(sql2, [data.cm_id, data.user_idx]);
+                message = '추천이 취소되었습니다';
             } else if (row[0] != null && row[0].cm_like != data.type) {
                 sql2 = 'UPDATE comment_like SET cm_like = ? WHERE cm_id = ? AND user_idx = ?';
                 conn.query(sql2, [data.type, data.cm_id, data.user_idx]);
+                message = '의견이 반영되었습니다';
             } else {
                 sql2 = 'INSERT INTO comment_like(cm_like, cm_id, user_idx) VALUES(?, ?, ?)';
                 conn.query(sql2, [data.type, data.cm_id, data.user_idx]);
+                message = '의견이 반영되었습니다';
             }
         });
+
+        res.json(message);
     }
 });
 
