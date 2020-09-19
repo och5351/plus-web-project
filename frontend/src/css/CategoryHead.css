@@ -1,0 +1,28 @@
+#exBox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+span {
+  font-size: 14px;
+  -webkit-text-fill-color: gray;
+}
+
+.memrog {
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  height: 40px;
+}
+
+.loginBox {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+.logbtn {
+  height: 40px;
+  cursor: pointer;
+  font-weight: 700;
+}

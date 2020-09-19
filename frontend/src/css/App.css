@@ -1,0 +1,22 @@
+#app {
+	font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #42b983;
+	margin: 0 auto;
+}
+.loginbox {
+	width: 150px;
+	vertical-align: middle;
+	clear:both;
+}
+.trueLogin {
+	width: 50px;
+	vertical-align: middle;
+	float: right;
+}
+.link,
+.logo {
+	cursor: pointer;
+}
