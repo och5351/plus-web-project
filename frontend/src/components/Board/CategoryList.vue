@@ -4,7 +4,7 @@
 			<category-head :categoryName="categoryName"></category-head>
 		</div>
 
-		<div style="padding: 20px; text-align: center;">
+		<div style="padding: 20px; text-align: center">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -16,11 +16,11 @@
 				</thead>
 				<tbody>
 					<tr v-if="boardList === null">
-						<td colspan="4" style="text-align: center;">데이터가 없습니다</td>
+						<td colspan="4" style="text-align: center">데이터가 없습니다</td>
 					</tr>
 					<tr v-else v-for="(board, bIdx) in displayedPosts" :key="bIdx" @click="detail(board.post_id)">
 						<th scope="row">{{ board.post_id }}</th>
-						<td style="cursor: pointer;">{{ board.title }}</td>
+						<td style="cursor: pointer">{{ board.title }}</td>
 						<td>
 							<img v-if="board.rating === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
 							<img v-else-if="board.rating === '우수회원'" alt="" width="24" height="24" src="/css/silver.png" />
@@ -50,9 +50,7 @@
 							</button>
 						</li>
 						<li class="page-item">
-							<button type="button" @click="pageNum++" v-if="pageNum < totalPage.length" class="page-link">
-								다음
-							</button>
+							<button type="button" @click="pageNum++" v-if="pageNum < totalPage.length" class="page-link">다음</button>
 						</li>
 					</ul>
 				</nav>
