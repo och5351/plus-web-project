@@ -1,29 +1,29 @@
 <template>
-  <div>
-    <!-- 로그인 박스 -->
-    <div v-if="this.$session.get('user_idx') === undefined" class="loginBox">
-      <b-button @click="signUp" variant="outline-secondary" class="memrog">회원가입</b-button>
-      <span>
-        <!--<a href="#" class="idpw">아이디 ·</a>
-        <a href="#" class="idpw"> 비밀번호 찾기 </a>-->
-      </span>
-      <b-button @click="login" variant="outline-secondary" class="logbtn" size="md">로그인</b-button>
-    </div>
-    <div v-else class="loginBox">
-      <b-button @click="logout" variant="outline-secondary" class="logbtn">로그아웃</b-button>
-    </div>
+	<div>
+		<!-- 로그인 박스 -->
+		<div v-if="this.$session.get('user_idx') === undefined" class="loginBox">
+			<b-button @click="signUp" variant="outline-secondary" class="memrog">회원가입</b-button>
+			<span>
+				<!--<a href="#" class="idpw">아이디 ·</a>
+				<a href="#" class="idpw"> 비밀번호 찾기 </a>-->
+			</span>
+			<b-button @click="login" variant="outline-secondary" class="logbtn" size="md">로그인</b-button>
+		</div>
+		<div v-else class="loginBox">
+			<b-button @click="logout" variant="outline-secondary" class="logbtn">로그아웃</b-button>
+		</div>
 
-    <!-- 게시판 설명 -->
-    <div v-if="categoryNameDetail" id="exBox">
-      <div class="card text-dark bg secondary mb-3">
-        <div class="card-header">{{ categoryNameDetail }}게시판</div>
-        <div class="card-body">
-          <h5 class="card-title">{{ categoryName }}</h5>
-          <p class="card-text">{{ categoryDetail }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+		<!-- 게시판 설명 -->
+		<div v-if="categoryNameDetail" id="exBox">
+			<div class="card text-dark bg secondary mb-3">
+				<div class="card-header">{{ categoryNameDetail }}게시판</div>
+				<div class="card-body">
+					<h5 class="card-title">{{ categoryName }}</h5>
+					<p class="card-text">{{ categoryDetail }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
