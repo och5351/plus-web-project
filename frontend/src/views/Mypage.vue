@@ -75,4 +75,6 @@ export default {
 	},
 };
 </script>
-<style src="../css/Mypage.css"></style>
+<style lang="scss">
+@import '../css/Mypage.css';
+</style>

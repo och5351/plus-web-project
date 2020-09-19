@@ -85,4 +85,6 @@ export default {
 };
 </script>
 
-<style src="../../css/login.css"></style>
+<style lang="scss">
+@import '../../css/login.css';
+</style>

@@ -62,4 +62,6 @@ export default {
 };
 </script>
 
-<style src="./css/App.css"></style>
+<style lang="scss">
+@import './css/App.css';
+</style>
