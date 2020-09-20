@@ -327,6 +327,12 @@
 
     * 대댓글 기능 오류 개선
 
+> ### 2020-09-21
+
+    * AWS MySQL에 commentLike 테이블 추가
+    * CSS 중복현상 개선
+    * FileUploading 디렉토리 자동 생성 코드 작성
+
 ## Chan Woong's History
 
 > ### 2020-6-30
