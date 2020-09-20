@@ -1,6 +1,6 @@
 <template>
 	<div id="app" class="container">
-		<div class="logo">
+		<div class="logo" id="app_logo">
 			<img @click="main" style="width: 200px; height: 200px" alt="Vue logo" src="./assets/plusLogo.png" />
 			<div v-if="this.$session.get('rating') === '관리자'" style="margin-top: 10%; float: right">
 				<b-button v-b-toggle.sidebar-no-header>Admin Console</b-button>
@@ -24,7 +24,7 @@
 
 		<div>
 			<b-navbar toggleable="lg" type="dark" variant="secondary">
-				<b-navbar-brand class="link" @click="main">Plus</b-navbar-brand>
+				<b-navbar-brand class="link" id="app_link" @click="main">Plus</b-navbar-brand>
 				<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 				<b-collapse id="nav-collapse" is-nav>
 					<b-navbar-nav>
