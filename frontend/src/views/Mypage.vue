@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<br />
-		<p>{{ this.$session.get('name') }}님 환영 합니다!</p>
+		<p id="#mypage_">{{ this.$session.get('name') }}님 환영 합니다!</p>
 		<FullCalendar
 			defaultView="dayGridMonth"
 			:plugins="calendarPlugins"

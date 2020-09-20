@@ -1,27 +1,27 @@
-#exBox {
+#categoryhead_exBox {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-span {
+span#categoryhead_ {
   font-size: 14px;
   -webkit-text-fill-color: gray;
 }
 
-.memrog {
+#categoryhead_memrog {
   margin-right: 10px;
   cursor: pointer;
   font-weight: 700;
   height: 40px;
 }
 
-.loginBox {
+#categoryhead_loginBox {
   margin-top: 15px;
   margin-bottom: 30px;
   text-align: right;
 }
 
-.logbtn {
+#categoryhead_logbtn {
   height: 40px;
   cursor: pointer;
   font-weight: 700;

@@ -2,7 +2,7 @@
 	<div id="app" class="container">
 		<!-- 배너 부분 링크 문제 해결해야함 -->
 		<div class="row">
-			<div class="col-md-9" id="banner">
+			<div class="col-md-9" id="home_banner">
 				<b-carousel
 					id="carousel-fade"
 					style="text-shadow: 0px 0px 2px #000"
@@ -23,9 +23,9 @@
 			<!-- 로그인 박스 -->
 			<div class="col-md-3">
 				<div v-if="this.$session.get('user_idx') == null" class="loginbox">
-					<b-button @click="login" class="loginbutton" align="center">Login</b-button>
+					<b-button @click="login" class="loginbutton" id="home_loginbutton" align="center">Login</b-button>
 				</div>
-				<div class="MyInfo" v-else>
+				<div class="MyInfo" id="home_MyInfo" v-else>
 					<img v-if="this.$session.get('rating') === ' 일반회원'" alt width="24" height="24" src="/css/beginer.png" />
 					<img
 						v-else-if="this.$session.get('rating') === ' 우수회원'"
@@ -35,17 +35,17 @@
 						src="/css/silver.png"
 					/>
 					<img v-else alt width="24" height="24" src="/css/diamond.png" />
-					<span class="rate">[{{ this.$session.get('rating') }}]</span>
+					<span class="rate" id="#home_rate">[{{ this.$session.get('rating') }}]</span>
 					<br />
-					<span class="welcome">{{ this.$session.get('name') }}님 환영합니다!</span>
+					<span class="welcome" id="home_welcome">{{ this.$session.get('name') }}님 환영합니다!</span>
 					<br />
-					<b-button variant="outline-info" id="Mybtn" v-on:click="Mypage">마이페이지</b-button>&nbsp;
-					<b-button variant="outline-danger" id="Mybtn" v-on:click="logout">로그아웃</b-button>
+					<b-button variant="outline-info" id="home_Mybtn" v-on:click="Mypage">마이페이지</b-button>&nbsp;
+					<b-button variant="outline-danger" id="home_Mybtn" v-on:click="logout">로그아웃</b-button>
 				</div>
 
 				<!-- TODO: 리스트 CSS 수정 -->
 				<!-- 공지사항 박스 -->
-				<div class="border" id="notice">
+				<div class="border" id="home_notice">
 					<label>공지사항</label>
 					<br />
 					<div :key="item.post_id" v-for="item in notice">
@@ -59,7 +59,7 @@
 		<!-- 인기글 & 최신글 -->
 		<div class="row">
 			<div class="col-md-9">
-				<div class="hottopic">
+				<div class="hottopic" id="home_hottopic">
 					<div class="tabs" variant="secondary">
 						<b-card no-body>
 							<b-tabs pills card>
@@ -86,7 +86,7 @@
 			</div>
 			<!-- 광고 -->
 			<div class="col-md-3">
-				<div class="ad">
+				<div class="ad" id="home_ad">
 					<b-img src="https://picsum.photos/300/400/?image=41" fluid alt="Fluid image"></b-img>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 					<a href="#" class="alert-link">이미지</a>
 				</b-alert>
 				<b-container class="bg-white" id="img_box">
-					<b-row id="first_line">
+					<b-row id="home_first_line">
 						<b-col cols="2">
 							<b-img thumbnail left src="https://picsum.photos/125/125/?image=54" alt="Image 1"></b-img>
 						</b-col>
@@ -119,7 +119,7 @@
 							<b-img thumbnail src="https://picsum.photos/125/125/?image=51" alt="Image 6"></b-img>
 						</b-col>
 					</b-row>
-					<b-row id="second_line">
+					<b-row id="home_second_line">
 						<b-col cols="2">
 							<b-img thumbnail left src="https://picsum.photos/125/125/?image=54" alt="Image 1"></b-img>
 						</b-col>
@@ -144,7 +144,7 @@
 		</div>
 
 		<!-- Footer -->
-		<footer class="footer">
+		<footer class="footer" id="home_footer">
 			<!-- Footer Links -->
 			<div class="container text-center text-md-left">
 				<!-- Grid row -->
