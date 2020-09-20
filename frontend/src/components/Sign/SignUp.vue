@@ -19,6 +19,7 @@
 			style="width: 1%; visibility: hidden; position: relative; right: -260px"
 		/>
 		<input
+			class="signup_"
 			type="text"
 			id="id"
 			name="uid"
@@ -39,6 +40,7 @@
 			style="width: 1%; visibility: hidden; position: relative; right: -400px"
 		/>
 		<input
+			class="signup_"
 			type="text"
 			value="* 한글만 입력해 주세요."
 			id="nameFalse"
@@ -46,6 +48,7 @@
 			disabled
 		/>
 		<input
+			class="signup_"
 			type="text"
 			id="name"
 			v-model="user.name"
@@ -66,6 +69,7 @@
 			style="width: 1%; visibility: hidden; position: relative; right: -540px"
 		/>
 		<input
+			class="signup_"
 			type="text"
 			value="* 비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
 			id="pwFalse"
@@ -73,6 +77,7 @@
 			disabled
 		/>
 		<input
+			class="signup_"
 			type="password"
 			id="pw"
 			name="upw"
@@ -89,6 +94,7 @@
 			<br />
 		</div>
 		<input
+			class="signup_"
 			v-on:keydown.enter="signUp"
 			type="password"
 			id="pwcheck"

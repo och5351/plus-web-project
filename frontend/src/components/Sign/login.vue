@@ -3,11 +3,12 @@
 		<br />
 		<br />
 		<div class="tag" id="login_tag">I D )</div>
-		<input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" />
+		<input class="login_" type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" />
 		<br />
 		<br />
 		<div class="tag" id="login_tag">P W )</div>
 		<input
+			class="login_"
 			v-on:keydown.enter="login"
 			type="password"
 			id="password"
