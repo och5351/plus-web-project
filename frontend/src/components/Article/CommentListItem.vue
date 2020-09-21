@@ -4,14 +4,14 @@
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em">
 				<div class="col-2" style="background-color: #ccffcc" title="작성자" v-if="commentObj.user_idx == authorIdx">
-					<a href="" v-on:click="likeComment(commentObj.cm_id, true)">
+					<a href="" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
 						>
 						</span>
 					</a>
-					<a href="" v-on:click="likeComment(commentObj.cm_id, false)">
+					<a href="" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"
@@ -22,14 +22,14 @@
 					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
-					<a>
+					<a href="" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
 						>
 						</span>
 					</a>
-					<a>
+					<a href="" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"

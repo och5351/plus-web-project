@@ -332,6 +332,12 @@
     * AWS MySQL에 commentLike 테이블 추가
     * CSS 중복현상 개선
     * FileUploading 디렉토리 자동 생성 코드 작성
+    * 서버 NginX.conf 수정
+
+> ### 2020-09-22
+
+    * Font-Awesome 회색화 개선
+    * 댓글 추천기능 오류 개선
 
 ## Chan Woong's History
 

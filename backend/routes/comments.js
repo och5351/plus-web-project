@@ -123,7 +123,7 @@ router.post('/like', function (req, res, next) {
 
     if (data.user_idx == null) {
         message = '로그인 후 사용가능합니다.';
-        res.json(message);
+        return res.send(message);
     } else {
         sql = 'SELECT cm_like FROM comment_like WHERE cm_id = ? AND user_idx = ?';
         
@@ -144,7 +144,7 @@ router.post('/like', function (req, res, next) {
             }
         });
 
-        res.json(message);
+        return res.send(message);
     }
 });
 
