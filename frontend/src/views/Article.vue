@@ -14,7 +14,7 @@
 			<div class="row">
 				<div class="col-2" v-if="this.$session.get('user_idx') == this.author_idx">
 					<b-button class="btn-sm btn-primary" v-on:click="editPost()">
-						<span class="fas fa-edit"> 수정</span>
+						<span class="fas fa-edit article_"> 수정</span>
 					</b-button>
 				</div>
 				<div class="col-2" v-else></div>
@@ -45,7 +45,7 @@
 			<div class="row text-center justify-content-center col">
 				<p>
 					<b-button v-on:click.passive="hitPost()"
-						><span class="fas fa-thumbs-up">&nbsp;{{ hit }}</span></b-button
+						><span class="fas fa-thumbs-up article_">&nbsp;{{ hit }}</span></b-button
 					>
 				</p>
 			</div>
@@ -160,5 +160,9 @@ progress::-webkit-progress-value {
 
 progress::-moz-progress-bar {
 	background-color: orange;
+}
+
+span.article_ {
+	-webkit-text-fill-color: white;
 }
 </style>

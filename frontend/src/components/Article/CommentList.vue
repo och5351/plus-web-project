@@ -5,7 +5,7 @@
 			<h5>
 				댓글
 				<b-button id="btnOpenComments" v-on:click="toggleComments()" class="btn btn-sm btn-primary" title="댓글 닫기">
-					<span id="span-btnOpenComments" class="fas fa-caret-up"></span>
+					<span id="span-btnOpenComments" class="fas fa-caret-up commentlist_"></span>
 				</b-button>
 				&nbsp;
 			</h5></b-container
@@ -52,10 +52,10 @@ export default {
 
 			// Changes btn's arrow direction/ 화살표 방향 변경
 			if (this.showComment) {
-				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-down');
+				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-down commentlist_');
 				this._$('#btnOpenComments').attr('title', '댓글 열기');
 			} else {
-				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-up');
+				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-up commentlist_');
 				this._$('#btnOpenComments').attr('title', '댓글 닫기');
 			}
 		},
@@ -110,4 +110,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+span.commentlist_ {
+	-webkit-text-fill-color: white;
+}
+</style>
