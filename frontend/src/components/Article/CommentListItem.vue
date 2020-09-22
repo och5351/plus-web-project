@@ -73,7 +73,12 @@
 			<div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
 				<b-container class="subcomment-box">
 					<div class="row align-items-start">
-						<div class="col-2" style="background-color: #ccffcc" title="작성자" v-if="subcomment.user_idx == authorIdx">
+						<div
+							class="col-2"
+							style="background-color: rgba(223, 1, 116, 0.3)"
+							title="작성자"
+							v-if="subcomment.user_idx == authorIdx"
+						>
 							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"> </small>
 							{{ subcomment.name }}
 						</div>
@@ -88,6 +93,7 @@
 						<div class="col-2 text-right">
 							<b-button
 								class="btn btn-sm btn-danger"
+								id="commentlistitem_btndel"
 								title="대댓글 삭제"
 								v-on:click.passive="deleteComment(subcomment.cm_id, false)"
 								v-if="sessUserIdx == subcomment.user_idx"
