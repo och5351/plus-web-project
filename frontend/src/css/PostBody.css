@@ -1,24 +1,24 @@
 /* 작성, 수정, 삭제 버튼 */
-#btn {
+#postbody_btn {
     height: 50px;
     font-size: 18pt;
   }
 
 /* 파일 업로드 */
-#btnFile {
+#postbody_btnFile {
     height: 37px;
   }
 
 /* 업로드 해제 */
-#btnRevokeFile {
+#postbody_btnRevokeFile {
     height: 37px;
   }
 
 /* 글쓰기 제목 */
-h1{
+h1.post_body{
     margin-top: 15px;
 }
 
-.section{
+.postbody_section{
     color:#008080;
 }

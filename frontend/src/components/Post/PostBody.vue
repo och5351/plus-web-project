@@ -1,211 +1,226 @@
 <template>
-  <div class="section">
-    <div class="container tim-container">
-      <div id="title" class="cd-section">
-        <div class="tim-typo">
-          <h1>글쓰기</h1>
-          <br />
-          <div class="progress progress-line-primary">
-            <div
-              class="progress-bar progress-bar-striped bg-info"
-              role="progressbar"
-              aria-valuenow="60"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              style="width: 30%"
-            >
-              <span class="sr-only"></span>
-            </div>
-          </div>
-          <div id="inputs">
-            <div class="row">
-              <div class="col-lg-12 col-sm-4">
-                <div>
-                  <label class="col-form-label-lg">제목</label>
-                  <input type="text" class="form-control" v-model="titleText" id="titleText" />
-                </div>
-              </div>
-            </div>
-          </div>
+	<div class="postbody_section">
+		<div class="container tim-container">
+			<div id="title" class="cd-section">
+				<div class="tim-typo">
+					<h1 class="postbody_">글쓰기</h1>
+					<br />
+					<div class="progress progress-line-primary">
+						<div
+							class="progress-bar progress-bar-striped bg-info"
+							role="progressbar"
+							aria-valuenow="60"
+							aria-valuemin="0"
+							aria-valuemax="100"
+							style="width: 30%"
+						>
+							<span class="sr-only"></span>
+						</div>
+					</div>
+					<div id="inputs">
+						<div class="row">
+							<div class="col-lg-12 col-sm-4">
+								<div>
+									<label class="col-form-label-lg">제목</label>
+									<input type="text" class="form-control" v-model="titleText" id="titleText" />
+								</div>
+							</div>
+						</div>
+					</div>
 
-          <div id="content">
-            <div class="row">
-              <div class="col-lg-12 col-sm-4">
-                <div>
-                  <label class="col-form-label-lg">본문</label>
-                  <!-- Toast UI Editor -->
-                  <editor
-                    ref="toastuiEditor"
-                    v-if="contentArea != ''"
-                    :initialValue="contentArea"
-                    height="800px"
-                    :options="editorOptions"
-                    initialEditType="wysiwyg"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="checkFunction">
-            <label class="col-form-label-lg">HashTag</label>
-            <div class="row">
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Food"
-                  v-model="checkedNames"
-                  value="음식"
-                  style="margin-left:12px"
-                /> 음식
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Game"
-                  v-model="checkedNames"
-                  value="게임"
-                  style="margin-left:12px"
-                />게임
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Web"
-                  v-model="checkedNames"
-                  value="모바일"
-                  style="margin-left:30px"
-                />모바일
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Application"
-                  v-model="checkedNames"
-                  value="음악"
-                  style="margin-left:12px"
-                />음악
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="AI"
-                  v-model="checkedNames"
-                  value="그림"
-                  style="margin-left:12px"
-                />그림
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Music"
-                  v-model="checkedNames"
-                  value="소설"
-                  style="margin-left:12px"
-                />소설
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-              <div class="col-xs-8 col-sm-6 col-md-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="Paint"
-                  v-model="checkedNames"
-                  value="여행/사진"
-                  style="margin-left:40px"
-                />여행/사진
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <input type="text" class="form-control" id="showCategory" :value="checkedNames" readonly />
-          <br />
-          <br />
-        </div>
-      </div>
+					<div id="content">
+						<div class="row">
+							<div class="col-lg-12 col-sm-4">
+								<div>
+									<label class="col-form-label-lg">본문</label>
+									<!-- Toast UI Editor -->
+									<editor
+										ref="toastuiEditor"
+										v-if="contentArea != ''"
+										:initialValue="contentArea"
+										height="800px"
+										:options="editorOptions"
+										initialEditType="wysiwyg"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="checkFunction">
+						<label class="col-form-label-lg">HashTag</label>
+						<div class="row">
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Food"
+									v-model="checkedNames"
+									value="음식"
+									style="margin-left: 12px"
+								/>
+								음식
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Game"
+									v-model="checkedNames"
+									value="게임"
+									style="margin-left: 12px"
+								/>게임
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Web"
+									v-model="checkedNames"
+									value="모바일"
+									style="margin-left: 30px"
+								/>모바일
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Application"
+									v-model="checkedNames"
+									value="음악"
+									style="margin-left: 12px"
+								/>음악
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="AI"
+									v-model="checkedNames"
+									value="그림"
+									style="margin-left: 12px"
+								/>그림
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Music"
+									v-model="checkedNames"
+									value="소설"
+									style="margin-left: 12px"
+								/>소설
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+							<div class="col-xs-8 col-sm-6 col-md-3">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									id="Paint"
+									v-model="checkedNames"
+									value="여행/사진"
+									style="margin-left: 40px"
+								/>여행/사진
+								<span class="form-check-sign">
+									<span class="check"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<input type="text" class="form-control" id="showCategory" :value="checkedNames" readonly />
+					<br />
+					<br />
+				</div>
+			</div>
 
-      <div style="margin-bottom: 30px" class="file_upload">
-        <input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
-        <button
-          class="btn btn-success btn-round"
-          id="btnFile"
-          v-on:click="submitFile()"
-          style="margin: 10px"
-          disabled="true"
-        >파일 업로드</button>
-        <button
-          class="btn btn-warning btn-round"
-          id="btnRevokeFile"
-          v-on:click="revokeFile()"
-          style="margin: 10px"
-          disabled="true"
-        >해제</button>
-      </div>
+			<div style="margin-bottom: 30px" class="file_upload">
+				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
+				<button
+					class="btn btn-success btn-round"
+					id="postbody_btnFile"
+					v-on:click="submitFile()"
+					style="margin: 10px"
+					disabled="true"
+				>
+					파일 업로드
+				</button>
+				<button
+					class="btn btn-warning btn-round"
+					id="postbody_btnRevokeFile"
+					v-on:click="revokeFile()"
+					style="margin: 10px"
+					disabled="true"
+				>
+					해제
+				</button>
+			</div>
 
-      <div id="buttonFunction">
-        <div v-if="this.att === 'post'">
-          <button
-            id="btn"
-            class="btn btn-outline-info btn-round"
-            style="margin-right: 20px"
-            @click.prevent="submitButton"
-          >작성</button>
-          <button
-            id="btn"
-            class="btn btn-outline-danger btn-round"
-            style="margin-left: 20px"
-            @click.prevent="cancelButton"
-          >취소</button>
-        </div>
-        <div v-else>
-          <button
-            id="btn"
-            class="btn btn-success btn-round"
-            style="margin-right: 20px"
-            @click.prevent="updateButton"
-          >수정</button>
-          <button
-            id="btn"
-            class="btn btn-danger btn-round"
-            style="margin-left: 20px; margin-right: 20px"
-            @click.prevent="cancelButton"
-          >취소</button>
-          <button
-            id="btn"
-            class="btn btn-warning btn-round"
-            style="margin-left: 20px"
-            @click.prevent="removeButton"
-          >삭제</button>
-        </div>
-      </div>
-    </div>
-    <br />
-    <br />
-  </div>
+			<div id="buttonFunction">
+				<div v-if="this.att === 'post'">
+					<button
+						id="postbody_btn"
+						class="btn btn-outline-info btn-round"
+						style="margin-right: 20px"
+						@click.prevent="submitButton"
+					>
+						작성
+					</button>
+					<button
+						id="postbody_btn"
+						class="btn btn-outline-danger btn-round"
+						style="margin-left: 20px"
+						@click.prevent="cancelButton"
+					>
+						취소
+					</button>
+				</div>
+				<div v-else>
+					<button
+						id="postbody_btn"
+						class="btn btn-success btn-round"
+						style="margin-right: 20px"
+						@click.prevent="updateButton"
+					>
+						수정
+					</button>
+					<button
+						id="postbody_btn"
+						class="btn btn-danger btn-round"
+						style="margin-left: 20px; margin-right: 20px"
+						@click.prevent="cancelButton"
+					>
+						취소
+					</button>
+					<button
+						id="postbody_btn"
+						class="btn btn-warning btn-round"
+						style="margin-left: 20px"
+						@click.prevent="removeButton"
+					>
+						삭제
+					</button>
+				</div>
+			</div>
+		</div>
+		<br />
+		<br />
+	</div>
 </template>
 
 <script>
@@ -272,8 +287,8 @@ export default {
 							this.contentArea = dic['contents'];
 							// document.querySelector('#file').value('파일을 수정하려면 해제버튼을 누르세요');
 							document.querySelector('#file').disabled = true;
-							document.querySelector('#btnFile').disabled = true;
-							document.querySelector('#btnRevokeFile').disabled = false;
+							document.querySelector('#postbody_btnFile').disabled = true;
+							document.querySelector('#postbody_btnRevokeFile').disabled = false;
 						} else {
 							alert('세션 에러!! \n다시 로그인 해주세요.');
 							this.$router.replace('/login');
@@ -447,8 +462,8 @@ export default {
 				})
 				.then(res => {
 					document.querySelector('#file').disabled = true;
-					document.querySelector('#btnFile').disabled = true;
-					document.querySelector('#btnRevokeFile').disabled = true;
+					document.querySelector('#postbody_btnFile').disabled = true;
+					document.querySelector('#postbody_btnRevokeFile').disabled = true;
 					this.filename = res.data.filename;
 					this.originalname = res.data.originalname;
 					alert('파일 업로드 성공');
@@ -457,32 +472,32 @@ export default {
 		handleFileUpload() {
 			if (this.$refs.file.files == null) {
 				document.querySelector('#file').disabled = false;
-				document.querySelector('#btnFile').disabled = true;
-				document.querySelector('#btnRevokeFile').disabled = true;
+				document.querySelector('#postbody_btnFile').disabled = true;
+				document.querySelector('#postbody_btnRevokeFile').disabled = true;
 			} else {
 				document.querySelector('#file').disabled = true;
-				document.querySelector('#btnFile').disabled = false;
-				document.querySelector('#btnRevokeFile').disabled = false;
+				document.querySelector('#postbody_btnFile').disabled = false;
+				document.querySelector('#postbody_btnRevokeFile').disabled = false;
 				this.file = this.$refs.file.files[0];
 			}
 		},
 		revokeFile() {
 			if (this.$refs.file.file != null) {
 				document.querySelector('#file').disabled = true;
-				document.querySelector('#btnFile').disabled = false;
-				document.querySelector('#btnRevokeFile').disabled = false;
+				document.querySelector('#postbody_btnFile').disabled = false;
+				document.querySelector('#postbody_btnRevokeFile').disabled = false;
 			} else {
 				document.querySelector('#file').value = '';
 				document.querySelector('#file').disabled = false;
-				document.querySelector('#btnFile').disabled = true;
-				document.querySelector('#btnRevokeFile').disabled = true;
+				document.querySelector('#postbody_btnFile').disabled = true;
+				document.querySelector('#postbody_btnRevokeFile').disabled = true;
 			}
 		},
 	},
 };
 </script>
 
-<style src="../../css/PostBody.css"></style>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Myeongjo:wght@400;700;800&family=Poor+Story&family=Single+Day&family=Sunflower:wght@300&display=swap");
+@import '../../css/PostBody.css';
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Myeongjo:wght@400;700;800&family=Poor+Story&family=Single+Day&family=Sunflower:wght@300&display=swap');
 </style>

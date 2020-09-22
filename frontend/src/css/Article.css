@@ -1,22 +1,65 @@
+/* 글 제목 */
+h5.article_ {
+    color: black;
+    font-weight: bold;
+    font-size: 30pt;
+    margin-top: 10px;
+}
+
 /* 수정 btn */
-#modifybtn{
+#article_modifybtn {
     height: 27px;
     width: 70px;
 }
 /* 작성 번호 */
-#count{
+#article_count {
     color: black;
     margin-top: 10px;
 }
 
 /* 작성자 */
-#name{
+#article_name {
     color: black;
     margin-top: 10px;
 }
 
 /* 작성 시간 */
-#time{
+#article_time {
     color:black;
     margin-top: 10px;
+}
+
+/* 프로그레스 바 */
+progress {
+	position: fixed;
+	left: 0;
+	top: 0;
+
+	width: 100%;
+	height: 5px;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	border: none;
+
+	background-color: transparent;
+
+	color: red;
+}
+progress::-webkit-progress-bar {
+	background-color: transparent;
+}
+
+progress::-webkit-progress-value {
+	background-color: orange;
+}
+
+progress::-moz-progress-bar {
+	background-color: orange;
+}
+
+span.article_ {
+	-webkit-text-fill-color: white;
 }
