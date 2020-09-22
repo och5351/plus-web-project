@@ -1,10 +1,10 @@
 /* 로그인 후 댓글 작성하세요 */
-#loginplease{
+#commentlist_loginplease{
     color: #df0174;
 }
 
 /* 댓글 작성 btn */
-#Commentbtn{
+#commentlist_Commentbtn{
     height: 40px;
     position: relative;
     top: 0px;
@@ -12,18 +12,23 @@
 }
 
 /* 댓글창 여닫이 btn */
-#btnOpenComments{
-    height: 19px;
-    margin-top: 10px;
+#commentlist_btnOpenComments{
+    height: 20px;
+    margin-top: -5px;
+    padding-top: 0px;
 }
 
-h5{
+h5.commentlist_{
     color: gray;
     position: relative;
     top: 5px;
 }
 
 /* 댓글창 글자 색 */
-#commentSection{
+#commentlist_commentSection{
     color: black;
+}
+
+span.commentlist_ {
+	-webkit-text-fill-color: white;
 }

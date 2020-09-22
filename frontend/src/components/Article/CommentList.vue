@@ -2,21 +2,21 @@
 	<div class="comment-list">
 		<b-container
 			><hr />
-			<h5>
+			<h5 class="commentlist_">
 				댓글
 				<b-button
-          id="btnOpenComments"
-          variant="outline-info"
-          v-on:click="toggleComments()"
-          class="btn btn-sm btn-primary"
-          title="댓글 닫기"
-        >
-					<span id="span-btnOpenComments" class="fas fa-caret-up commentlist_"></span>
+					id="commentlist_btnOpenComments"
+					variant="outline-info"
+					v-on:click="toggleComments()"
+					class="btn btn-sm btn-primary"
+					title="댓글 닫기"
+				>
+					<span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span>
 				</b-button>
 				&nbsp;
 			</h5></b-container
 		>
-		<div id="commentSection" :key="comment.cm_id" v-for="comment in commentList">
+		<div id="commentlist_commentSection" :key="comment.cm_id" v-for="comment in commentList">
 			<CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
 		</div>
 		<div class="form-group">
@@ -33,15 +33,15 @@
 				<!-- Spacer...! -->
 				<div class="col-1"></div>
 				<input
-          type="submit"
-          class="btn btn-primary col-2"
-          id="Commentbtn"
-          value="댓글 작성"
-          v-on:click.passive="addComment()"
-        />
+					type="submit"
+					class="btn btn-primary col-2"
+					id="commentlist_Commentbtn"
+					value="댓글 작성"
+					v-on:click.passive="addComment()"
+				/>
 			</div>
 			<div class="row" v-else>
-				<div class="col" id="loginplease"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
+				<div class="col" id="commentlist_loginplease"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
 			</div>
 		</div>
 	</div>
@@ -59,16 +59,16 @@ export default {
 	methods: {
 		toggleComments: function () {
 			// Toggle Comments/ 댓글 토글
-			this._$("[id='commentSection']").slideToggle();
+			this._$("[id='commentlist_commentSection']").slideToggle();
 			this.showComment = !this.showComment;
 
 			// Changes btn's arrow direction/ 화살표 방향 변경
 			if (this.showComment) {
-				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-down commentlist_');
-				this._$('#btnOpenComments').attr('title', '댓글 열기');
+				this._$('#span-commentlist_btnOpenComments').attr('class', 'fa fa-caret-down commentlist_');
+				this._$('#commentlist_btnOpenComments').attr('title', '댓글 열기');
 			} else {
-				this._$('#span-btnOpenComments').attr('class', 'fa fa-caret-up commentlist_');
-				this._$('#btnOpenComments').attr('title', '댓글 닫기');
+				this._$('#span-commentlist_btnOpenComments').attr('class', 'fa fa-caret-up commentlist_');
+				this._$('#commentlist_btnOpenComments').attr('title', '댓글 닫기');
 			}
 		},
 		addComment: function () {
@@ -123,7 +123,5 @@ export default {
 </script>
 
 <style lang="scss">
-span.commentlist_ {
-	-webkit-text-fill-color: white;
-}
+@import '../../css/CommentList.css';
 </style>
