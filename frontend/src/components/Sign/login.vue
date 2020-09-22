@@ -1,13 +1,14 @@
 <template>
-	<div class="login">
+	<div class="login" id="login_login">
 		<br />
 		<br />
-		<div class="tag">I D )</div>
-		<input type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" />
+		<div class="tag" id="login_tag">I D )</div>
+		<input class="login_" type="text" id="id" v-model="user.userid" placeholder="ID를 입력해주세요!" />
 		<br />
 		<br />
-		<div class="tag">P W )</div>
+		<div class="tag" id="login_tag">P W )</div>
 		<input
+			class="login_"
 			v-on:keydown.enter="login"
 			type="password"
 			id="password"
@@ -16,12 +17,12 @@
 		/>
 		<br />
 		<br />
-		<button v-on:click="login" class="btn">로그인</button>
+		<button v-on:click="login" class="btn" id="login_btn_login">로그인</button>
 		<br />
 		<br />
-		<p>
+		<p id="login_parahgraph">
 			만약, 계정이 없다면,
-			<a class="click" @click="signUp">회원가입을 먼저 진행해주세요!</a>
+			<a class="click" id="login_click_signup" @click="signUp">회원가입을 먼저 진행해주세요!</a>
 		</p>
 	</div>
 </template>
@@ -85,4 +86,6 @@ export default {
 };
 </script>
 
-<style src="../../css/login.css"></style>
+<style lang="scss">
+@import '../../css/login.css';
+</style>

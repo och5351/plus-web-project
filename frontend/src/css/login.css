@@ -1,40 +1,40 @@
-.login {
-    margin-top: 40px;
-    text-align: center;
-  }
-  
-  .tag {
-    position: relative;
-    margin-left: -210px;
-    margin-bottom: 5px;
-    font-size: 15px;
-    color: black;
-  }
-  
-  input {
-    margin: 0px 0;
-    width: 22%;
-    padding: 15px;
-  }
+#login_login {
+  margin-top: 40px;
+  text-align: center;
+}
 
-  .btn{
-    width: 10%;
-    cursor: pointer;
-    background-color: white;
-    border: 0px;
-    height: 0px;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    margin-top: 40px;
-    font-size: 15px;
-    color: #248657;
-  }
-  
-  .click {
-    text-decoration: underline;
-    cursor: pointer;
-    color: #df0174;
-    margin-top: 20px;
-  }
+#login_tag {
+  position: relative;
+  margin-left: -210px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: black;
+}
+
+input.login_ {
+  margin: 0px 0;
+  width: 22%;
+  padding: 15px;
+}
+
+#login_btn_login{
+  width: 10%;
+  cursor: pointer;
+  background-color: white;
+  border: 0px;
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+#login_parahgraph {
+  margin-top: 40px;
+  font-size: 15px;
+  color: #248657;
+}
+
+#login_click_signup {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #df0174;
+  margin-top: 20px;
+}

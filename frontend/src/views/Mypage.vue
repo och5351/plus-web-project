@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <br />
-    <p>{{ this.$session.get('name') }}님 환영 합니다!</p>
-    <FullCalendar
-      defaultView="dayGridMonth"
-      :plugins="calendarPlugins"
-      :events="events"
-      locale="ko"
-      @dateClick="handleDateClick"
-    />
-  </div>
+	<div>
+		<br />
+		<p id="#mypage_">{{ this.$session.get('name') }}님 환영 합니다!</p>
+		<FullCalendar
+			defaultView="dayGridMonth"
+			:plugins="calendarPlugins"
+			:events="events"
+			locale="ko"
+			@dateClick="handleDateClick"
+		/>
+	</div>
 </template>
 
 <script>
@@ -75,4 +75,6 @@ export default {
 	},
 };
 </script>
-<style src="../css/Mypage.css"></style>
+<style lang="scss">
+@import '../css/Mypage.css';
+</style>
