@@ -338,7 +338,7 @@
 
     * Font-Awesome 회색화 개선
     * 댓글 추천기능 오류 개선
-    * 빌드 테스트
+    * 업로드 파일 크기 제한 10GB로 확장
 
 ## Chan Woong's History
 
