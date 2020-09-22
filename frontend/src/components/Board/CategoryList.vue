@@ -1,72 +1,89 @@
 <template>
-	<div class="container">
-		<div>
-			<category-head :categoryName="categoryName"></category-head>
-		</div>
+  <div class="container">
+    <div>
+      <category-head :categoryName="categoryName"></category-head>
+    </div>
 
-		<div style="padding: 20px; text-align: center;">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">번호</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-if="boardList === null">
-						<td colspan="4" style="text-align: center;">데이터가 없습니다</td>
-					</tr>
-					<tr v-else v-for="(board, bIdx) in displayedPosts" :key="bIdx" @click="detail(board.post_id)">
-						<th scope="row">{{ board.post_id }}</th>
-						<td style="cursor: pointer;">{{ board.title }}</td>
-						<td>
-							<img v-if="board.rating === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
-							<img v-else-if="board.rating === '우수회원'" alt="" width="24" height="24" src="/css/silver.png" />
-							<img v-else alt="" width="24" height="24" src="/css/diamond.png" />
-							{{ board.name }}
-						</td>
-						<td>{{ board.views }}</td>
-					</tr>
-				</tbody>
-			</table>
+    <div style="padding: 20px; text-align: center;">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="boardList === null">
+            <td colspan="4" style="text-align: center;">데이터가 없습니다</td>
+          </tr>
+          <tr
+            v-else
+            v-for="(board, bIdx) in displayedPosts"
+            :key="bIdx"
+            @click="detail(board.post_id)"
+          >
+            <th scope="row">{{ board.post_id }}</th>
+            <td style="cursor: pointer;">{{ board.title }}</td>
+            <td>
+              <img v-if="board.rating === '일반회원'" alt width="24" height="24" src="/css/beginer.png" />
+              <img
+                v-else-if="board.rating === '우수회원'"
+                alt
+                width="24"
+                height="24"
+                src="/css/silver.png"
+              />
+              <img v-else alt width="24" height="24" src="/css/diamond.png" />
+              {{ board.name }}
+            </td>
+            <td>{{ board.views }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-			<div id="pageStyle">
-				<nav aria-label="Page navigation">
-					<ul class="pagination">
-						<li class="page-item">
-							<button type="button" class="page-link" v-if="pageNum !== 1" @click="pageNum--">이전</button>
-						</li>
-						<li class="page-item">
-							<button
-								type="button"
-								class="page-link"
-								v-for="pageNumber in totalPage.slice(pageNum - 1, pageNum + 4)"
-								:key="pageNumber"
-								@click="pageNum = pageNumber"
-							>
-								{{ pageNumber }}
-							</button>
-						</li>
-						<li class="page-item">
-							<button type="button" @click="pageNum++" v-if="pageNum < totalPage.length" class="page-link">
-								다음
-							</button>
-						</li>
-					</ul>
-				</nav>
-			</div>
+      <div id="pageStyle">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item">
+              <button type="button" class="page-link" v-if="pageNum !== 1" @click="pageNum--">이전</button>
+            </li>
+            <li class="page-item">
+              <button
+                type="button"
+                class="page-link"
+                v-for="pageNumber in totalPage.slice(pageNum - 1, pageNum + 4)"
+                :key="pageNumber"
+                @click="pageNum = pageNumber"
+              >{{ pageNumber }}</button>
+            </li>
+            <li class="page-item">
+              <button
+                type="button"
+                @click="pageNum++"
+                v-if="pageNum < totalPage.length"
+                class="page-link"
+              >다음</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-			<button v-if="this.$session.get('user_idx')" type="button" class="float-right btn btn-success" @click="post()">
-				글쓰기
-			</button>
-		</div>
+      <b-button
+        id="writebtn"
+        variant="info"
+        v-if="this.$session.get('user_idx')"
+        type="button"
+        class="float-right"
+        @click="post()"
+      >글쓰기</b-button>
+    </div>
 
-		<div>
-			<category-footer></category-footer>
-		</div>
-	</div>
+    <div>
+      <category-footer></category-footer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -167,16 +184,21 @@ export default {
 
 <style>
 #pageStyle {
-	margin: 0 auto;
+  margin: 0 auto;
+}
+
+/* 글쓰기 버튼 */
+#writebtn {
+  height: 50px;
 }
 
 button.page-link {
-	display: inline-block;
+  display: inline-block;
 }
 
 button.page-link {
-	font-size: 20px;
-	color: #29b3ed;
-	font-weight: 500;
+  font-size: 20px;
+  color: #29b3ed;
+  font-weight: 500;
 }
 </style>

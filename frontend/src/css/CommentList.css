@@ -1,0 +1,29 @@
+/* 로그인 후 댓글 작성하세요 */
+#loginplease{
+    color: #df0174;
+}
+
+/* 댓글 작성 btn */
+#Commentbtn{
+    height: 40px;
+    position: relative;
+    top: 0px;
+    left:-60px;
+}
+
+/* 댓글창 여닫이 btn */
+#btnOpenComments{
+    height: 19px;
+    margin-top: 10px;
+}
+
+h5{
+    color: gray;
+    position: relative;
+    top: 5px;
+}
+
+/* 댓글창 글자 색 */
+#commentSection{
+    color: black;
+}

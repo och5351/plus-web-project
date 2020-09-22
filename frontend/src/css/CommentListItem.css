@@ -1,0 +1,12 @@
+/* 대댓글 작성 */
+#btncreate{
+    height: 25px;
+    width: 25px;
+}
+
+/* 대댓글 삭제 */
+#btndel{
+    height: 25px;
+    widows: 25px;
+    padding: 5px;
+}
