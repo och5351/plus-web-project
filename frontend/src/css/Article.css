@@ -1,0 +1,22 @@
+/* 수정 btn */
+#modifybtn{
+    height: 27px;
+    width: 70px;
+}
+/* 작성 번호 */
+#count{
+    color: black;
+    margin-top: 10px;
+}
+
+/* 작성자 */
+#name{
+    color: black;
+    margin-top: 10px;
+}
+
+/* 작성 시간 */
+#time{
+    color:black;
+    margin-top: 10px;
+}

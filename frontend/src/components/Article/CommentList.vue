@@ -4,7 +4,13 @@
 			><hr />
 			<h5>
 				댓글
-				<b-button id="btnOpenComments" v-on:click="toggleComments()" class="btn btn-sm btn-primary" title="댓글 닫기">
+				<b-button
+          id="btnOpenComments"
+          variant="outline-info"
+          v-on:click="toggleComments()"
+          class="btn btn-sm btn-primary"
+          title="댓글 닫기"
+        >
 					<span id="span-btnOpenComments" class="fas fa-caret-up commentlist_"></span>
 				</b-button>
 				&nbsp;
@@ -26,10 +32,16 @@
 				/>
 				<!-- Spacer...! -->
 				<div class="col-1"></div>
-				<input type="submit" class="btn btn-primary col-2" value="댓글 작성" v-on:click.passive="addComment()" />
+				<input
+          type="submit"
+          class="btn btn-primary col-2"
+          id="Commentbtn"
+          value="댓글 작성"
+          v-on:click.passive="addComment()"
+        />
 			</div>
 			<div class="row" v-else>
-				<div class="col"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
+				<div class="col" id="loginplease"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
 			</div>
 		</div>
 	</div>

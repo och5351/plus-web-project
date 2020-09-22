@@ -1,8 +1,8 @@
 <template>
-	<div class="container">
-		<div>
-			<category-head :categoryName="categoryName"></category-head>
-		</div>
+  <div class="container">
+    <div>
+      <category-head :categoryName="categoryName"></category-head>
+    </div>
 
 		<div style="padding: 20px; text-align: center">
 			<table class="table table-hover">
@@ -56,15 +56,20 @@
 				</nav>
 			</div>
 
-			<button v-if="this.$session.get('user_idx')" type="button" class="float-right btn btn-success" @click="post()">
-				글쓰기
-			</button>
-		</div>
+      <b-button
+        id="writebtn"
+        variant="info"
+        v-if="this.$session.get('user_idx')"
+        type="button"
+        class="float-right"
+        @click="post()"
+      >글쓰기</b-button>
+    </div>
 
-		<div>
-			<category-footer></category-footer>
-		</div>
-	</div>
+    <div>
+      <category-footer></category-footer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -165,16 +170,21 @@ export default {
 
 <style>
 #pageStyle {
-	margin: 0 auto;
+  margin: 0 auto;
+}
+
+/* 글쓰기 버튼 */
+#writebtn {
+  height: 50px;
 }
 
 button.page-link {
-	display: inline-block;
+  display: inline-block;
 }
 
 button.page-link {
-	font-size: 20px;
-	color: #29b3ed;
-	font-weight: 500;
+  font-size: 20px;
+  color: #29b3ed;
+  font-weight: 500;
 }
 </style>

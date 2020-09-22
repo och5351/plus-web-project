@@ -3,7 +3,11 @@
 	<div id="commentListItem" class="comment-list-item">
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em">
-				<div class="col-2" style="background-color: #ccffcc" title="작성자" v-if="commentObj.user_idx == authorIdx">
+				<div class="col-2"
+          style="background-color: #df0174"
+          title="작성자"
+          v-if="commentObj.user_idx == authorIdx"
+        >
 					<a href="" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
@@ -46,6 +50,7 @@
 				<div class="col-2">
 					<b-button
 						class="btn btn-sm btn-primary"
+            id="btncreate"
 						title="대댓글 작성"
 						v-on:click.passive="openForm(commentObj.cm_id)"
 						v-if="this.$session.get('user_idx') != null"
@@ -54,6 +59,7 @@
 					</b-button>
 					<b-button
 						class="btn btn-sm btn-danger"
+            id="btndel"
 						title="댓글 삭제"
 						v-on:click.passive="deleteComment(commentObj.cm_id, true)"
 						v-if="this.$session.get('user_idx') == commentObj.user_idx"

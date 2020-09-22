@@ -133,36 +133,37 @@ export default {
 <style lang="scss">
 /* 프로그레스 바 */
 progress {
-	position: fixed;
-	left: 0;
-	top: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
 
-	width: 100%;
-	height: 5px;
+  width: 100%;
+  height: 5px;
 
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
-	border: none;
+  border: none;
 
-	background-color: transparent;
+  background-color: transparent;
 
-	color: red;
+  color: red;
 }
 progress::-webkit-progress-bar {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 progress::-webkit-progress-value {
-	background-color: orange;
+  background-color: orange;
 }
 
 progress::-moz-progress-bar {
-	background-color: orange;
+  background-color: orange;
 }
 
 span.article_ {
 	-webkit-text-fill-color: white;
 }
 </style>
+<style src="../css/Article.css"></style>
