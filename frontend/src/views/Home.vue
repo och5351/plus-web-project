@@ -11,18 +11,12 @@
 					img-width="571"
 					img-height="612"
 				>
-					<b-carousel-slide
-						caption="First slide"
-						img-src="https://picsum.photos/1024/480/?image=18"
-					></b-carousel-slide>
+					<b-carousel-slide caption="First slide" img-src="https://picsum.photos/1024/480/?image=18"></b-carousel-slide>
 					<b-carousel-slide
 						caption="Second Slide"
 						img-src="https://picsum.photos/1024/480/?image=12"
 					></b-carousel-slide>
-					<b-carousel-slide
-						caption="Third Slide"
-						img-src="https://picsum.photos/1024/480/?image=22"
-					></b-carousel-slide>
+					<b-carousel-slide caption="Third Slide" img-src="https://picsum.photos/1024/480/?image=22"></b-carousel-slide>
 				</b-carousel>
 			</div>
 
@@ -32,13 +26,7 @@
 					<b-button @click="login" class="loginbutton" id="home_loginbutton" align="center">Login</b-button>
 				</div>
 				<div class="MyInfo" id="home_MyInfo" v-else>
-					<img
-						v-if="this.$session.get('rating') === ' 일반회원'"
-						alt
-						width="24"
-						height="24"
-						src="/css/beginer.png"
-					/>
+					<img v-if="this.$session.get('rating') === ' 일반회원'" alt width="24" height="24" src="/css/beginer.png" />
 					<img
 						v-else-if="this.$session.get('rating') === ' 우수회원'"
 						alt

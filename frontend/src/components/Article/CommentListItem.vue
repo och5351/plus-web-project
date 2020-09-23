@@ -66,11 +66,7 @@
 				</div>
 			</div>
 			<!--		대댓글 -->
-			<div
-				class="comment-list-item-subcomment-list"
-				:key="subcomment.cm_id"
-				v-for="subcomment in subCommentList"
-			>
+			<div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
 				<b-container class="subcomment-box">
 					<div class="row align-items-start">
 						<div
