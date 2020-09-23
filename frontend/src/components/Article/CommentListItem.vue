@@ -258,5 +258,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../css/CommentListItem.css";
+@import '../../css/CommentListItem.css';
 </style>
