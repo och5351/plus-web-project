@@ -11,12 +11,18 @@
 					img-width="571"
 					img-height="612"
 				>
-					<b-carousel-slide caption="First slide" img-src="https://picsum.photos/1024/480/?image=18"></b-carousel-slide>
+					<b-carousel-slide
+						caption="First slide"
+						img-src="https://picsum.photos/1024/480/?image=18"
+					></b-carousel-slide>
 					<b-carousel-slide
 						caption="Second Slide"
 						img-src="https://picsum.photos/1024/480/?image=12"
 					></b-carousel-slide>
-					<b-carousel-slide caption="Third Slide" img-src="https://picsum.photos/1024/480/?image=22"></b-carousel-slide>
+					<b-carousel-slide
+						caption="Third Slide"
+						img-src="https://picsum.photos/1024/480/?image=22"
+					></b-carousel-slide>
 				</b-carousel>
 			</div>
 
@@ -26,7 +32,13 @@
 					<b-button @click="login" class="loginbutton" id="home_loginbutton" align="center">Login</b-button>
 				</div>
 				<div class="MyInfo" id="home_MyInfo" v-else>
-					<img v-if="this.$session.get('rating') === ' 일반회원'" alt width="24" height="24" src="/css/beginer.png" />
+					<img
+						v-if="this.$session.get('rating') === ' 일반회원'"
+						alt
+						width="24"
+						height="24"
+						src="/css/beginer.png"
+					/>
 					<img
 						v-else-if="this.$session.get('rating') === ' 우수회원'"
 						alt
@@ -46,7 +58,7 @@
 				<!-- TODO: 리스트 CSS 수정 -->
 				<!-- 공지사항 박스 -->
 				<div class="border" id="home_notice">
-					<label>공지사항</label>
+					<label id="home_notice_title">&lt; 공지사항 &gt;</label>
 					<br />
 					<div :key="item.post_id" v-for="item in notice">
 						<b-link v-bind:href="'/article/' + item.post_id">{{ item.title }}</b-link>
@@ -62,7 +74,7 @@
 				<div class="hottopic" id="home_hottopic">
 					<div class="tabs" variant="secondary">
 						<b-card no-body>
-							<b-tabs pills card>
+							<b-tabs active-nav-item-class="font-weight-bold text-danger bg-light" pills card>
 								<b-tab title="인기글" active>
 									<b-card-text>
 										<div :key="item.post_id" v-for="item in hot">

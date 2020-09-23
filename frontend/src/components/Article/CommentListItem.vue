@@ -1,45 +1,41 @@
 <template>
-	<!--  댓글 -->
+	<!--	댓글 -->
 	<div id="commentListItem" class="comment-list-item">
 		<b-container class="comment-box">
 			<div class="row align-items-start" style="margin-bottom: 0.25em">
 				<div
 					class="col-2"
-					style="background-color: rgba(223, 1, 116, 0.3)"
+					style="background-color: rgb(253, 245, 230)"
 					title="작성자"
 					v-if="commentObj.user_idx == authorIdx"
 				>
-					<a href="" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
-						>
-						</span>
+						></span>
 					</a>
-					<a href="" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"
-						>
-						</span>
+						></span>
 						&nbsp;
 					</a>
 					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
-					<a href="" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
-						>
-						</span>
+						></span>
 					</a>
-					<a href="" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"
-						>
-						</span>
+						></span>
 						&nbsp;
 					</a>
 					{{ commentObj.name }}
@@ -50,7 +46,7 @@
 				</div>
 				<div class="col-2">
 					<b-button
-						class="btn btn-sm btn-primary"
+						class="btn btn-sm btn-info"
 						id="commentlistitem_btncreate"
 						title="대댓글 작성"
 						v-on:click.passive="openForm(commentObj.cm_id)"
@@ -69,21 +65,25 @@
 					</b-button>
 				</div>
 			</div>
-			<!--    대댓글 -->
-			<div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
+			<!--		대댓글 -->
+			<div
+				class="comment-list-item-subcomment-list"
+				:key="subcomment.cm_id"
+				v-for="subcomment in subCommentList"
+			>
 				<b-container class="subcomment-box">
 					<div class="row align-items-start">
 						<div
 							class="col-2"
-							style="background-color: rgba(223, 1, 116, 0.3)"
+							style="background-color: rgb(253, 245, 230)"
 							title="작성자"
 							v-if="subcomment.user_idx == authorIdx"
 						>
-							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"> </small>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
 							{{ subcomment.name }}
 						</div>
 						<div class="col-2" v-else>
-							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"> </small>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
 							{{ subcomment.name }}
 						</div>
 						<div class="col-5 text-left">{{ subcomment.contents }}</div>

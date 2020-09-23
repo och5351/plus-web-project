@@ -1,21 +1,20 @@
 <template>
 	<div class="comment-list">
-		<b-container
-			><hr />
+		<b-container>
+			<hr />
 			<h5 class="commentlist_">
 				댓글
 				<b-button
 					id="commentlist_btnOpenComments"
 					variant="outline-info"
 					v-on:click="toggleComments()"
-					class="btn btn-sm btn-primary"
+					class="btn btn-sm btn-info"
 					title="댓글 닫기"
 				>
 					<span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span>
-				</b-button>
-				&nbsp;
-			</h5></b-container
-		>
+				</b-button>&nbsp;
+			</h5>
+		</b-container>
 		<div id="commentlist_commentSection" :key="comment.cm_id" v-for="comment in commentList">
 			<CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
 		</div>
@@ -34,14 +33,16 @@
 				<div class="col-1"></div>
 				<input
 					type="submit"
-					class="btn btn-primary col-2"
+					class="btn btn-info col-2"
 					id="commentlist_Commentbtn"
 					value="댓글 작성"
 					v-on:click.passive="addComment()"
 				/>
 			</div>
 			<div class="row" v-else>
-				<div class="col" id="commentlist_loginplease"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
+				<div class="col" id="commentlist_loginplease">
+					<small>댓글 기능은 로그인 후 사용가능합니다</small>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -49,7 +50,6 @@
 
 <script>
 import CommentListItem from './CommentListItem';
-
 export default {
 	name: 'CommentList',
 	props: {

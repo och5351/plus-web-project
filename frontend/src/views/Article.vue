@@ -13,14 +13,15 @@
 			<!-- 세션값을 이용해 수정버튼을 나타내자 -->
 			<div class="row">
 				<div class="col-2" v-if="this.$session.get('user_idx') == this.author_idx">
-					<b-button id="article_modifybtn" class="btn-sm btn-primary" v-on:click="editPost()">
-						<span class="fas fa-edit article_"> 수정</span>
+					<b-button id="article_modifybtn" class="btn-sm btn-warning" v-on:click="editPost()">
+						<span class="fas fa-edit article_">수정</span>
 					</b-button>
 				</div>
 				<div class="col-2" v-else></div>
 				<div class="col-7"></div>
 				<div class="article-created justify-content-end col-3" id="article_time">
-					작성일 <small>{{ created }}</small>
+					작성일
+					<small>{{ created }}</small>
 				</div>
 			</div>
 		</b-container>
@@ -31,22 +32,24 @@
 		<b-container>
 			<div class="row">
 				<div class="col" v-if="filename != '' && filename != undefined">
-					<a v-if="filename != '' && filename != undefined" :href="'/uploads/' + filename" :download="originalname">
-						{{ originalname }}
-					</a>
+					<a
+						v-if="filename != '' && filename != undefined"
+						:href="'/uploads/' + filename"
+						:download="originalname"
+					>{{ originalname }}</a>
 				</div>
 			</div>
 			<div class="row">
 				<!-- <div class="article-contents justify-content-center text-left col" style="white-space: pre-line">
 					{{ contents }}
-				</div> -->
+				</div>-->
 				<viewer class="col" v-if="contents != ''" :initialValue="contents" height="800px" />
 			</div>
 			<div class="row text-center justify-content-center col">
 				<p>
-					<b-button v-on:click.passive="hitPost()"
-						><span class="fas fa-thumbs-up article_">&nbsp;{{ hit }}</span></b-button
-					>
+					<b-button variant="danger" v-on:click.passive="hitPost()">
+						<span class="fas fa-thumbs-up article_">&nbsp;{{ hit }}</span>
+					</b-button>
 				</p>
 			</div>
 		</b-container>

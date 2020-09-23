@@ -56,7 +56,6 @@
 									id="Food"
 									v-model="checkedNames"
 									value="음식"
-									style="margin-left: 12px"
 								/>
 								음식
 								<span class="form-check-sign">
@@ -70,7 +69,6 @@
 									id="Game"
 									v-model="checkedNames"
 									value="게임"
-									style="margin-left: 12px"
 								/>게임
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -83,7 +81,6 @@
 									id="Web"
 									v-model="checkedNames"
 									value="모바일"
-									style="margin-left: 30px"
 								/>모바일
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -96,7 +93,6 @@
 									id="Application"
 									v-model="checkedNames"
 									value="음악"
-									style="margin-left: 12px"
 								/>음악
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -109,7 +105,6 @@
 									id="AI"
 									v-model="checkedNames"
 									value="그림"
-									style="margin-left: 12px"
 								/>그림
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -122,7 +117,6 @@
 									id="Music"
 									v-model="checkedNames"
 									value="소설"
-									style="margin-left: 12px"
 								/>소설
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -135,7 +129,6 @@
 									id="Paint"
 									v-model="checkedNames"
 									value="여행/사진"
-									style="margin-left: 40px"
 								/>여행/사진
 								<span class="form-check-sign">
 									<span class="check"></span>
@@ -157,18 +150,14 @@
 					v-on:click="submitFile()"
 					style="margin: 10px"
 					disabled="true"
-				>
-					파일 업로드
-				</button>
+				>파일 업로드</button>
 				<button
 					class="btn btn-warning btn-round"
 					id="postbody_btnRevokeFile"
 					v-on:click="revokeFile()"
 					style="margin: 10px"
 					disabled="true"
-				>
-					해제
-				</button>
+				>해제</button>
 			</div>
 
 			<div id="buttonFunction">
@@ -178,17 +167,13 @@
 						class="btn btn-outline-info btn-round"
 						style="margin-right: 20px"
 						@click.prevent="submitButton"
-					>
-						작성
-					</button>
+					>작성</button>
 					<button
 						id="postbody_btn"
 						class="btn btn-outline-danger btn-round"
 						style="margin-left: 20px"
 						@click.prevent="cancelButton"
-					>
-						취소
-					</button>
+					>취소</button>
 				</div>
 				<div v-else>
 					<button
@@ -196,25 +181,19 @@
 						class="btn btn-success btn-round"
 						style="margin-right: 20px"
 						@click.prevent="updateButton"
-					>
-						수정
-					</button>
+					>수정</button>
 					<button
 						id="postbody_btn"
 						class="btn btn-danger btn-round"
 						style="margin-left: 20px; margin-right: 20px"
 						@click.prevent="cancelButton"
-					>
-						취소
-					</button>
+					>취소</button>
 					<button
 						id="postbody_btn"
 						class="btn btn-warning btn-round"
 						style="margin-left: 20px"
 						@click.prevent="removeButton"
-					>
-						삭제
-					</button>
+					>삭제</button>
 				</div>
 			</div>
 		</div>
