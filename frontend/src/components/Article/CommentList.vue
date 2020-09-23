@@ -11,8 +11,8 @@
 					class="btn btn-sm btn-info"
 					title="댓글 닫기"
 				>
-					<span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span>
-				</b-button>&nbsp;
+					<span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span> </b-button
+				>&nbsp;
 			</h5>
 		</b-container>
 		<div id="commentlist_commentSection" :key="comment.cm_id" v-for="comment in commentList">
