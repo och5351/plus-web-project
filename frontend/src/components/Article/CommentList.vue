@@ -1,55 +1,55 @@
 <template>
-	<div class="comment-list">
-		<b-container
-			><hr />
-			<h5 class="commentlist_">
-				댓글
-				<b-button
-					id="commentlist_btnOpenComments"
-					variant="outline-info"
-					v-on:click="toggleComments()"
-					class="btn btn-sm btn-primary"
-					title="댓글 닫기"
-				>
-					<span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span>
-				</b-button>
-				&nbsp;
-			</h5></b-container
-		>
-		<div id="commentlist_commentSection" :key="comment.cm_id" v-for="comment in commentList">
-			<CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
-		</div>
-		<div class="form-group">
-			<br />
-			<div class="row" v-if="this.$session.get('user_idx') != null">
-				<input
-					type="text"
-					class="form-control col-9"
-					name="txtComment"
-					id="commentArticle"
-					placeholder="댓글 내용"
-					v-on:keyup.enter.passive="addComment()"
-				/>
-				<!-- Spacer...! -->
-				<div class="col-1"></div>
-				<input
-					type="submit"
-					class="btn btn-primary col-2"
-					id="commentlist_Commentbtn"
-					value="댓글 작성"
-					v-on:click.passive="addComment()"
-				/>
-			</div>
-			<div class="row" v-else>
-				<div class="col" id="commentlist_loginplease"><small>댓글 기능은 로그인 후 사용가능합니다</small></div>
-			</div>
-		</div>
-	</div>
+  <div class="comment-list">
+    <b-container>
+      <hr />
+      <h5 class="commentlist_">
+        댓글
+        <b-button
+          id="commentlist_btnOpenComments"
+          variant="outline-info"
+          v-on:click="toggleComments()"
+          class="btn btn-sm btn-info"
+          title="댓글 닫기"
+        >
+          <span id="span-commentlist_btnOpenComments" class="fas fa-caret-up commentlist_"></span>
+        </b-button>&nbsp;
+      </h5>
+    </b-container>
+    <div id="commentlist_commentSection" :key="comment.cm_id" v-for="comment in commentList">
+      <CommentListItem :commentObj="comment" :authorIdx="Number(authorIdx)"></CommentListItem>
+    </div>
+    <div class="form-group">
+      <br />
+      <div class="row" v-if="this.$session.get('user_idx') != null">
+        <input
+          type="text"
+          class="form-control col-9"
+          name="txtComment"
+          id="commentArticle"
+          placeholder="댓글 내용"
+          v-on:keyup.enter.passive="addComment()"
+        />
+        <!-- Spacer...! -->
+        <div class="col-1"></div>
+        <input
+          type="submit"
+          class="btn btn-info col-2"
+          id="commentlist_Commentbtn"
+          value="댓글 작성"
+          v-on:click.passive="addComment()"
+        />
+      </div>
+      <div class="row" v-else>
+        <div class="col" id="commentlist_loginplease">
+          <small>댓글 기능은 로그인 후 사용가능합니다</small>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import CommentListItem from './CommentListItem';
-
 export default {
 	name: 'CommentList',
 	props: {
@@ -123,5 +123,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../css/CommentList.css';
+@import "../../css/CommentList.css";
 </style>

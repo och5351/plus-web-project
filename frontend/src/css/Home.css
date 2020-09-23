@@ -20,6 +20,11 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	margin-top: 10px;
+}
+#home_notice_title{
+	color:#C71585;
+	font-weight: bold;
 }
 
 #home_first_line {
@@ -42,7 +47,7 @@
 #home_loginbutton {
 	margin-top: 10px;
 	width: 250px;
-	height: 90px;
+	height:100px;
 	font-size: 15pt;
 }
 
