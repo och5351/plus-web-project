@@ -1,137 +1,137 @@
 <template>
-  <!--  댓글 -->
-  <div id="commentListItem" class="comment-list-item">
-    <b-container class="comment-box">
-      <div class="row align-items-start" style="margin-bottom: 0.25em">
-        <div
-          class="col-2"
-          style="background-color: rgb(253, 245, 230)"
-          title="작성자"
-          v-if="commentObj.user_idx == authorIdx"
-        >
-          <a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
-            <span
-              class="far fa-smile commentlistitem_smile"
-              v-bind:style="'color: green; font-size: ' + this.commentLike"
-            ></span>
-          </a>
-          <a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
-            <span
-              class="far fa-angry commentlistitem_angry"
-              v-bind:style="'color: red; font-size: ' + this.commentDislike"
-            ></span>
-            &nbsp;
-          </a>
-          {{ commentObj.name }}
-        </div>
-        <div class="col-2" v-else>
-          <a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
-            <span
-              class="far fa-smile commentlistitem_smile"
-              v-bind:style="'color: green; font-size: ' + this.commentLike"
-            ></span>
-          </a>
-          <a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
-            <span
-              class="far fa-angry commentlistitem_angry"
-              v-bind:style="'color: red; font-size: ' + this.commentDislike"
-            ></span>
-            &nbsp;
-          </a>
-          {{ commentObj.name }}
-        </div>
-        <div class="col-5 text-left">{{ commentObj.contents }}</div>
-        <div class="col-3">
-          <small>{{ commentObj.write_date }}</small>
-        </div>
-        <div class="col-2">
-          <b-button
-            class="btn btn-sm btn-info"
-            id="commentlistitem_btncreate"
-            title="대댓글 작성"
-            v-on:click.passive="openForm(commentObj.cm_id)"
-            v-if="this.$session.get('user_idx') != null"
-          >
-            <span class="far fa-hand-point-left commentlistitem_"></span>
-          </b-button>
-          <b-button
-            class="btn btn-sm btn-danger"
-            id="commentlistitem_btndel"
-            title="댓글 삭제"
-            v-on:click.passive="deleteComment(commentObj.cm_id, true)"
-            v-if="this.$session.get('user_idx') == commentObj.user_idx"
-          >
-            <span class="far fa-trash-alt commentlistitem_"></span>
-          </b-button>
-        </div>
-      </div>
-      <!--    대댓글 -->
-      <div
-        class="comment-list-item-subcomment-list"
-        :key="subcomment.cm_id"
-        v-for="subcomment in subCommentList"
-      >
-        <b-container class="subcomment-box">
-          <div class="row align-items-start">
-            <div
-              class="col-2"
-              style="background-color: rgb(253, 245, 230)"
-              title="작성자"
-              v-if="subcomment.user_idx == authorIdx"
-            >
-              <small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
-              {{ subcomment.name }}
-            </div>
-            <div class="col-2" v-else>
-              <small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
-              {{ subcomment.name }}
-            </div>
-            <div class="col-5 text-left">{{ subcomment.contents }}</div>
-            <div class="col-3">
-              <small>{{ subcomment.write_date }}</small>
-            </div>
-            <div class="col-2 text-right">
-              <b-button
-                class="btn btn-sm btn-danger"
-                id="commentlistitem_btndel"
-                title="대댓글 삭제"
-                v-on:click.passive="deleteComment(subcomment.cm_id, false)"
-                v-if="sessUserIdx == subcomment.user_idx"
-              >
-                <span class="far fa-trash-alt commentlistitem_"></span>
-              </b-button>
-            </div>
-          </div>
-        </b-container>
-      </div>
-    </b-container>
-    <div
-      class="form-group sub-comment-form-group"
-      :id="'subCommentForm' + commentObj.cm_id"
-      v-if="this.$session.get('user_idx') != null"
-    >
-      <div class="row align-items-start">
-        <div class="col-2"></div>
-        <input
-          type="text"
-          class="form-control col-7"
-          name="txtComment"
-          :id="'commentArticle' + commentObj.cm_id"
-          placeholder="대댓글 내용"
-          v-on:keyup.enter.passive="addSubComment(commentObj.cm_id)"
-        />
-        <div class="col-1"></div>
-        <input
-          type="submit"
-          class="btn btn-sm btn-primary col-1"
-          value="대댓글 작성"
-          v-on:click.passive="addSubComment(commentObj.cm_id)"
-        />
-        <div class="col-1"></div>
-      </div>
-    </div>
-    <hr />
-  </div>
+	<!--	댓글 -->
+	<div id="commentListItem" class="comment-list-item">
+		<b-container class="comment-box">
+			<div class="row align-items-start" style="margin-bottom: 0.25em">
+				<div
+					class="col-2"
+					style="background-color: rgb(253, 245, 230)"
+					title="작성자"
+					v-if="commentObj.user_idx == authorIdx"
+				>
+					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+						<span
+							class="far fa-smile commentlistitem_smile"
+							v-bind:style="'color: green; font-size: ' + this.commentLike"
+						></span>
+					</a>
+					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+						<span
+							class="far fa-angry commentlistitem_angry"
+							v-bind:style="'color: red; font-size: ' + this.commentDislike"
+						></span>
+						&nbsp;
+					</a>
+					{{ commentObj.name }}
+				</div>
+				<div class="col-2" v-else>
+					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+						<span
+							class="far fa-smile commentlistitem_smile"
+							v-bind:style="'color: green; font-size: ' + this.commentLike"
+						></span>
+					</a>
+					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+						<span
+							class="far fa-angry commentlistitem_angry"
+							v-bind:style="'color: red; font-size: ' + this.commentDislike"
+						></span>
+						&nbsp;
+					</a>
+					{{ commentObj.name }}
+				</div>
+				<div class="col-5 text-left">{{ commentObj.contents }}</div>
+				<div class="col-3">
+					<small>{{ commentObj.write_date }}</small>
+				</div>
+				<div class="col-2">
+					<b-button
+						class="btn btn-sm btn-info"
+						id="commentlistitem_btncreate"
+						title="대댓글 작성"
+						v-on:click.passive="openForm(commentObj.cm_id)"
+						v-if="this.$session.get('user_idx') != null"
+					>
+						<span class="far fa-hand-point-left commentlistitem_"></span>
+					</b-button>
+					<b-button
+						class="btn btn-sm btn-danger"
+						id="commentlistitem_btndel"
+						title="댓글 삭제"
+						v-on:click.passive="deleteComment(commentObj.cm_id, true)"
+						v-if="this.$session.get('user_idx') == commentObj.user_idx"
+					>
+						<span class="far fa-trash-alt commentlistitem_"></span>
+					</b-button>
+				</div>
+			</div>
+			<!--		대댓글 -->
+			<div
+				class="comment-list-item-subcomment-list"
+				:key="subcomment.cm_id"
+				v-for="subcomment in subCommentList"
+			>
+				<b-container class="subcomment-box">
+					<div class="row align-items-start">
+						<div
+							class="col-2"
+							style="background-color: rgb(253, 245, 230)"
+							title="작성자"
+							v-if="subcomment.user_idx == authorIdx"
+						>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
+							{{ subcomment.name }}
+						</div>
+						<div class="col-2" v-else>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
+							{{ subcomment.name }}
+						</div>
+						<div class="col-5 text-left">{{ subcomment.contents }}</div>
+						<div class="col-3">
+							<small>{{ subcomment.write_date }}</small>
+						</div>
+						<div class="col-2 text-right">
+							<b-button
+								class="btn btn-sm btn-danger"
+								id="commentlistitem_btndel"
+								title="대댓글 삭제"
+								v-on:click.passive="deleteComment(subcomment.cm_id, false)"
+								v-if="sessUserIdx == subcomment.user_idx"
+							>
+								<span class="far fa-trash-alt commentlistitem_"></span>
+							</b-button>
+						</div>
+					</div>
+				</b-container>
+			</div>
+		</b-container>
+		<div
+			class="form-group sub-comment-form-group"
+			:id="'subCommentForm' + commentObj.cm_id"
+			v-if="this.$session.get('user_idx') != null"
+		>
+			<div class="row align-items-start">
+				<div class="col-2"></div>
+				<input
+					type="text"
+					class="form-control col-7"
+					name="txtComment"
+					:id="'commentArticle' + commentObj.cm_id"
+					placeholder="대댓글 내용"
+					v-on:keyup.enter.passive="addSubComment(commentObj.cm_id)"
+				/>
+				<div class="col-1"></div>
+				<input
+					type="submit"
+					class="btn btn-sm btn-primary col-1"
+					value="대댓글 작성"
+					v-on:click.passive="addSubComment(commentObj.cm_id)"
+				/>
+				<div class="col-1"></div>
+			</div>
+		</div>
+		<hr />
+	</div>
 </template>
 <script>
 export default {
