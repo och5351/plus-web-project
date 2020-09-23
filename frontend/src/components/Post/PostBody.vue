@@ -477,6 +477,6 @@ export default {
 </script>
 
 <style>
-@import "../../css/PostBody.css";
+@import '../../css/PostBody.css';
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Myeongjo:wght@400;700;800&family=Poor+Story&family=Single+Day&family=Sunflower:wght@300&display=swap');
 </style>
