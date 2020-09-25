@@ -19,6 +19,7 @@
 		<br />
 		<button v-on:click="login" class="btn" id="login_btn_login">로그인</button>
 		<br />
+		<button v-on:click="handleClickGetAuth" id="login_btn_login">Google</button>
 		<br />
 		<p id="login_parahgraph">
 			만약, 계정이 없다면,
@@ -81,6 +82,16 @@ export default {
 		},
 		UpdateRating() {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();
+		},
+		handleClickGetAuth() {
+			this.$gAuth
+				.getAuthCode()
+				.then(authCode => {
+					return this.$http.post('/api/auth/google', { code: authCode, redirect_uri: 'postmessage' });
+				})
+				.catch(error => {
+					console.error(error);
+				});
 		},
 	},
 };
