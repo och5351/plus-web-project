@@ -89,9 +89,6 @@ export default {
 				.then(authCode => {
 					return this.$http.post('/api/auth/google', { code: authCode, redirect_uri: 'postmessage' });
 				})
-				.catch(error => {
-					console.error(error);
-				});
 		},
 	},
 };
