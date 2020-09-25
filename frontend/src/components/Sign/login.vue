@@ -84,11 +84,9 @@ export default {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();
 		},
 		handleClickGetAuth() {
-			this.$gAuth
-				.getAuthCode()
-				.then(authCode => {
-					return this.$http.post('/api/auth/google', { code: authCode, redirect_uri: 'postmessage' });
-				})
+			this.$gAuth.getAuthCode().then(authCode => {
+				return this.$http.post('/api/auth/google', { code: authCode, redirect_uri: 'postmessage' });
+			});
 		},
 	},
 };
