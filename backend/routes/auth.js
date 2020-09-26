@@ -11,7 +11,7 @@ router.post('/google', function(req, res, next) {
     var code = req.body.code;
     var redirect_uri = req.body.redirect_uri;
 
-    const {tokens} = await oauth2Client.getToken(code);
+    const {tokens} = oauth2Client.getToken(code);
     oauth2Client.setCredentials(tokens);
 
     oauth2Client.on('tokens', (tokens) => {
