@@ -119,8 +119,8 @@
 				<div class="col-1"></div>
 				<input
 					type="submit"
-					class="btn btn-sm btn-primary col-1"
-					value="대댓글 작성"
+					class="btn btn-sm btn-info col-1"
+					value="답글 작성"
 					v-on:click.passive="addSubComment(commentObj.cm_id)"
 				/>
 				<div class="col-1"></div>
