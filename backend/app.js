@@ -13,6 +13,7 @@ const boardRouter = require("./routes/board");
 const postRouter = require("./routes/post");
 const articleRouter = require("./routes/article");
 const postFileRouter = require("./routes/postFile");
+const authRouter = require("./routes/auth");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use("/api/board", boardRouter);
 app.use("/api/post", postRouter);
 app.use("/api/article", articleRouter);
 app.use("/api/postFile", postFileRouter);
+app.use("/api/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

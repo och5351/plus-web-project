@@ -26,6 +26,10 @@ input.login_ {
   margin-bottom: 20px;
 }
 
+#login_btn_gauth {
+  cursor: pointer;
+}
+
 #login_parahgraph {
   margin-top: 40px;
   font-size: 15px;

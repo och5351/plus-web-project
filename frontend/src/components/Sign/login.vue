@@ -19,7 +19,11 @@
 		<br />
 		<button v-on:click="login" class="btn" id="login_btn_login">로그인</button>
 		<br />
-		<button v-on:click="handleClickGetAuth" id="login_btn_login">Google</button>
+		<img
+			v-on:click="handleClickGetAuth"
+			src="../../assets/OAuthImage/btn_google_signin_dark_normal_web@2x.png"
+			id="login_btn_gauth"
+		/>
 		<br />
 		<p id="login_parahgraph">
 			만약, 계정이 없다면,
