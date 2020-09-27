@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const { OAuth2Client } = require('google-auth-library');
+const passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 // 구글 OAuth 정보
 const googleOAuthInfo = require('../lib/gauth');
@@ -11,23 +12,29 @@ var dbConObj = require('../lib/db_config');
 var conn = dbConObj.init();
 
 //=====================================================================//
-const client = new OAuth2Client(
-    googleOAuthInfo.clientID,
-    googleOAuthInfo.clientSecret,
-    googleOAuthInfo.callbackURL,
-)
+passport.use(new GoogleStrategy({
+        clientID: googleOAuthInfo.clientID,
+        clientSecret: googleOAuthInfo.clientSecret,
+        callbackURL: googleOAuthInfo.callbackURL,
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        conn.query("SELECT * FROM `capdi_users` WHERE googleID = `?`", [profile.id], function (err, row) {
+            console.log(row);
+        });
+    }
+));
 //=====================================================================//
 
 // Google OAuth2.0
-router.post('/google', function(req, res, next) {
-    async function verify() {
-        const ticket = await client.verifyIdToken({
-            idToken: req.body.code
-        });
+router.get('/google', function(req, res, next) {
+    passport.authenticate('google', { scope: ['profile'] });
+});
 
-        return ticket;
+router.get('/google/callback', function(req, res, next) {
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/');
     }
-    verify().then((ticket) => {console.log(ticket)}).catch(console.error);
 });
 
 module.exports = router;

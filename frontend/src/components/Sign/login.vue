@@ -21,6 +21,7 @@
 		<br />
 		<img
 			v-on:click="handleClickGetAuth"
+			:disabled="!isLoaded"
 			src="../../assets/OAuthImage/btn_google_signin_dark_normal_web@2x.png"
 			id="login_btn_gauth"
 		/>
@@ -96,6 +97,9 @@ export default {
 				.then(res => {
 					alert(res);
 				});
+		},
+		isLoaded() {
+			return this.$gAuth.isLoaded();
 		},
 	},
 };
