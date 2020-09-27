@@ -18,7 +18,6 @@ passport.use(new GoogleStrategy({
         callbackURL: googleOAuthInfo.callbackURL,
     },
     function(accessToken, refreshToken, profile, cb) {
-        console.log(profile);
         conn.query('SELECT * FROM capdi_users WHERE googleID = ?', [profile.id], function (err, row) {
             if (err) { console.error(err) }
             else
