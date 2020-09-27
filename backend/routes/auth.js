@@ -18,8 +18,11 @@ passport.use(new GoogleStrategy({
         callbackURL: googleOAuthInfo.callbackURL,
     },
     function(accessToken, refreshToken, profile, cb) {
-        conn.query("SELECT * FROM `capdi_users` WHERE googleID = `?`", [profile.id], function (err, row) {
-            console.log(row);
+        console.log(profile);
+        conn.query('SELECT * FROM capdi_users WHERE googleID = ?', [profile.id], function (err, row) {
+            if (err) { console.error(err) }
+            else
+                console.log(row);
         });
     }
 ));
