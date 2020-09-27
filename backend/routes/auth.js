@@ -31,10 +31,11 @@ passport.use(new GoogleStrategy({
 //=====================================================================//
 
 // Google OAuth2.0
-router.get('/google', passport.authenticate('google', { scpoe: ['profile'] }));
+router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
+        console.info(req.body);
         res.redirect('/');
     }
 );
