@@ -23,6 +23,8 @@ passport.use(new GoogleStrategy({
             if (err) { console.error(err) }
             else
                 console.log(row);
+            
+            return cb(err, row);
         });
     }
 ));
