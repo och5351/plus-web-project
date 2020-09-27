@@ -40,39 +40,7 @@ app.use("/api/board", boardRouter);
 app.use("/api/post", postRouter);
 app.use("/api/article", articleRouter);
 app.use("/api/postFile", postFileRouter);
-// app.use("/api/auth", authRouter);
-
-const passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-
-// 구글 OAuth 정보
-const googleOAuthInfo = require('./lib/gauth');
-
-passport.use(new GoogleStrategy({
-    clientID: googleOAuthInfo.clientID,
-    clientSecret: googleOAuthInfo.clientSecret,
-    callbackURL: googleOAuthInfo.callbackURL,
-},
-
-function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
-    conn.query('SELECT * FROM capdi_users WHERE googleID = ?', [profile.id], function (err, row) {
-        if (err) { console.error(err) }
-        else
-            console.log(row);
-        
-        return cb(err, row);
-    });
-}
-));
-// Google OAuth2.0
-app.get('/google', passport.authenticate('google', { scpoe: ['profile'] }));
-
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
-    function(req, res) {
-        res.redirect('/');
-    }
-);
+app.use("/api/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
