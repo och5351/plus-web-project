@@ -89,20 +89,29 @@ export default {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();
 		},
 		HandleGetAuth() {
-			this.$gAuth
-				.getAuthCode()
-				.then(authCode => {
-					return this.$http.post('/api/auth/google', {
-						code: authCode,
-						redirect_uri: 'postmessage',
-					});
-				})
-				.then(response => {
-					alert(response);
-				})
-				.catch(error => {
-					alert(error);
-				});
+			// this.$gAuth
+			// 	.getAuthCode()
+			// 	.then(authCode => {
+			// 		return this.$http.post('/api/auth/google', {
+			// 			code: authCode,
+			// 			redirect_uri: 'postmessage',
+			// 		});
+			// 	})
+			// 	.then(response => {
+			// 		console.log(response);
+			// 	})
+			// 	.catch(error => {
+			// 		console.log(error);
+			// 	});
+			window.open('/api/auth/google');
+			// this.$gAuth
+			// 	.signIn()
+			// 	.then(GoogleUser => {
+			// 		console.log(GoogleUser.getBasicProfile().getId());
+			// 	})
+			// 	.catch(error => {
+			// 		alert(error);
+			// 	});
 		},
 		isLoaded() {
 			return this.$gAuth.isLoaded();

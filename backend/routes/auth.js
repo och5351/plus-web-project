@@ -18,24 +18,23 @@ passport.use(new GoogleStrategy({
         callbackURL: googleOAuthInfo.callbackURL,
     },
     function(accessToken, refreshToken, profile, cb) {
-        conn.query('SELECT * FROM capdi_users WHERE googleID = ?', [profile.id], function (err, row) {
-            if (err) { console.error(err) }
-            else
-                console.log(row);
-            
-            return cb(err, row);
-        });
+        return cb(null, null);
     }
 ));
 //=====================================================================//
 
+router.get('/google', passport.authenticate('google', { scope: ['profile'], session: false }));
+
 // Google OAuth2.0
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+router.post('/google', function(req, res, next) {
+    console.info(req);
+    res.send(req.body.code);
+});
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
         console.info(req.body);
-        res.redirect('http://localhost:8080/');
+        res.redirect('http://localhost:8080/?token=' + res.req.user);
     }
 );
 
