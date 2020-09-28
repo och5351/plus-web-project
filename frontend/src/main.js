@@ -16,7 +16,7 @@ Vue.use(VueSession, [{ persist: true }]);
 Vue.use(BootstrapVue);
 Vue.use(VueMomentJS, moment);
 Vue.use(GAuth, {
-	client_id: '809678151224-qjgc9adgug76hdu3vd7dsbbc4963hca2.apps.googleusercontent.com',
+	clientId: '809678151224-qjgc9adgug76hdu3vd7dsbbc4963hca2.apps.googleusercontent.com',
 	scope: 'profile',
 });
 
