@@ -117,7 +117,8 @@ export default {
 			// 	});
 		},
 		isLoaded() {
-			return this.$gAuth.isLoaded();
+			return false;
+			// return this.$gAuth.isLoaded();
 		},
 	},
 };
