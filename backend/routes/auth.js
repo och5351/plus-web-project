@@ -11,8 +11,8 @@ passport.use(new GoogleStrategy({
         callbackURL: GAuth.callbackURL,
     },
     function (accessToken, refreshToken, profile, callback) {
-        console.info(profile);
-        return callback(null, null);
+        var userProfile = profile;
+        return callback(null, userProfile);
     }
 ));
 

@@ -19,14 +19,12 @@
 		<br />
 		<button v-on:click="login" class="btn" id="login_btn_login">로그인</button>
 		<br />
-		<a href="/api/auth/google">
-			<img
-				v-on:click="HandleGetAuth"
-				:disabled="!isLoaded"
-				src="../../assets/OAuthImage/btn_google_signin_dark_normal_web@2x.png"
-				id="login_btn_gauth"
-			/>
-		</a>
+		<img
+			v-on:click="HandleGetAuth"
+			:disabled="!isLoaded"
+			src="../../assets/OAuthImage/btn_google_signin_dark_normal_web@2x.png"
+			id="login_btn_gauth"
+		/>
 		<br />
 		<p id="login_parahgraph">
 			만약, 계정이 없다면,
@@ -105,11 +103,9 @@ export default {
 			// 	.catch(error => {
 			// 		console.log(error);
 			// 	});
-			// this.$http
-			// 	.get('/api/auth/google')
-			// 	.then(function (res) {
-			// 		alert(res);
-			// 	})
+			this.$http.get('/api/auth/google').then(function (res) {
+				alert(res);
+			});
 			// 	.catch(() => {});
 			// this.$gAuth
 			// 	.signIn()
