@@ -103,7 +103,12 @@ export default {
 			// 	.catch(error => {
 			// 		console.log(error);
 			// 	});
-			window.open('/api/auth/google');
+			this.$http
+				.get('/api/auth/google')
+				.then(function (res) {
+					alert(res);
+				})
+				.catch(() => {});
 			// this.$gAuth
 			// 	.signIn()
 			// 	.then(GoogleUser => {
