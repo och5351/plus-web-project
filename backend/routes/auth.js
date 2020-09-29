@@ -20,9 +20,7 @@ passport.use(new GoogleStrategy({
 var dbConObj = require('../lib/db_config');
 var conn = dbConObj.init();
 
-router.get('/google', passport.authenticate('google', { scope: ['profile'], session: false }), function(req, res, next) {
-    res.set({'access-control-allow-origin': '*'});
-});
+router.get('/google', passport.authenticate('google', { scope: ['profile'], session: false }));
 
 // Google OAuth2.0
 // router.post('/google', function(req, res, next) {
