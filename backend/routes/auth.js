@@ -3,7 +3,7 @@ const router = express.Router();
 
 const GAuth = require('../lib/gauth');
 const passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
         clientID: GAuth.clientID,
