@@ -1,0 +1,39 @@
+// const express = require('express');
+// const router = express.Router();
+
+// const GAuth = require('../lib/gauth');
+// const passport = require('passport');
+// const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+// passport.use(new GoogleStrategy({
+//         clientID: GAuth.clientID,
+//         clientSecret: GAuth.clientSecret,
+//         callbackURL: GAuth.callbackURL,
+//     },
+//     function (accessToken, refreshToken, profile, callback) {
+//         var userProfile = profile;
+//         return callback(null, userProfile);
+//     }
+// ));
+
+// // mysql 선언
+// var dbConObj = require('../lib/db_config');
+// var conn = dbConObj.init();
+
+// router.get('/google', passport.authenticate('google', { scope: ['profile'], session: false }));
+
+// // Google OAuth2.0
+// // router.post('/google', function(req, res, next) {
+// //     console.info(req);
+// //     res.send(req.body.code);
+// // });
+
+// router.get('/google/callback', passport.authenticate('google', { failureRedirect: 'http://localhost:8080/login' }),
+//     function(req, res) {
+//         console.log('Login Succeed!');
+//         res.send('Hello Waldo');
+//         // res.redirect('http://localhost:8080/login');
+//     }
+// );
+
+// module.exports = router;

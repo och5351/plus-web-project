@@ -25,3 +25,7 @@ span.commentlistitem_smile {
 span.commentlistitem_angry {
 	-webkit-text-fill-color: red;
 }
+
+img.commentlistitem_rating {
+    margin-left: 10px;
+}

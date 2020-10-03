@@ -22,6 +22,23 @@
 						></span>
 						&nbsp;
 					</a>
+					<img
+						class="commentlistitem_rating"
+						v-if="commentObj.rating === '일반회원'"
+						alt=""
+						width="24"
+						height="24"
+						src="/css/beginer.png"
+					/>
+					<img
+						class="commentlistitem_rating"
+						v-else-if="commentObj.rating === '우수회원'"
+						alt=""
+						width="24"
+						height="24"
+						src="/css/silver.png"
+					/>
+					<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
@@ -75,7 +92,24 @@
 							title="작성자"
 							v-if="subcomment.user_idx == authorIdx"
 						>
-							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em;"></small>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
+							<img
+								class="commentlistitem_rating"
+								v-if="subcomment.rating === '일반회원'"
+								alt=""
+								width="24"
+								height="24"
+								src="/css/beginer.png"
+							/>
+							<img
+								class="commentlistitem_rating"
+								v-else-if="subcomment.rating === '우수회원'"
+								alt=""
+								width="24"
+								height="24"
+								src="/css/silver.png"
+							/>
+							<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 							{{ subcomment.name }}
 						</div>
 						<div class="col-2" v-else>

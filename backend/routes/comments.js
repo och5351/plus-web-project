@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.get('/get/:articleID', function(req, res, next) {
     var articleID = req.params.articleID;
 
-    conn.query('SELECT DISTINCT c.cm_id, c.post_id, c.user_idx, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
+    conn.query('SELECT DISTINCT c.cm_id, c.post_id, c.user_idx, u.name, u.rating, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
     FROM comment c, capdi_users u WHERE c.post_id = ? AND c.user_idx = u.user_idx AND c.cm_id NOT IN (SELECT deep_id FROM deep) ORDER BY c.cm_id', [articleID], function(err, row) {
         res.send(row);
     });
@@ -40,7 +40,7 @@ router.get('/getlike/:commentID', function(req, res, next) {
 router.get('/sub/:commentID', function(req, res, next) {
     var commentID = req.params.commentID;
 
-    conn.query('SELECT c.cm_id, c.user_idx, u.name, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
+    conn.query('SELECT c.cm_id, c.user_idx, u.name, u.rating, c.contents, date_format(c.write_date, "%y-%m-%d %a %T") as write_date \
     FROM comment c, capdi_users u, deep d WHERE d.cm_id=? AND c.cm_id = d.deep_id AND c.user_idx = u.user_idx ORDER BY c.cm_id', [commentID], function(err, row) {
         res.send(row);
     })
