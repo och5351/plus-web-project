@@ -19,12 +19,11 @@
 		<br />
 		<button v-on:click="login" class="btn" id="login_btn_login">로그인</button>
 		<br />
-		<!-- <img
-			v-on:click="HandleGetAuth"
-			:disabled="!isLoaded"
-			src="../../assets/OAuthImage/btn_google_signin_dark_normal_web@2x.png"
-			id="login_btn_gauth"
-		/> -->
+		<!-- OAuth 버튼 -->
+		<span v-on:click="HandleGetAuth" :disabled="!isLoaded" id="login_btn_gauth">
+			<img src="https://developers.google.com/identity/images/g-logo.png?hl=ko" id="login_img_gauth_google" />
+			Sign in with Google
+		</span>
 		<br />
 		<p id="login_parahgraph">
 			만약, 계정이 없다면,
@@ -89,36 +88,67 @@ export default {
 			this.$http.get(`/api/users/update/${this.$session.get('user_idx')}`).then();
 		},
 		HandleGetAuth() {
-			// this.$gAuth
-			// 	.getAuthCode()
-			// 	.then(authCode => {
-			// 		return this.$http.post('/api/auth/google', {
-			// 			code: authCode,
-			// 			redirect_uri: 'postmessage',
-			// 		});
-			// 	})
-			// 	.then(response => {
-			// 		console.log(response);
-			// 	})
-			// 	.catch(error => {
-			// 		console.log(error);
-			// 	});
-			this.$http.get('/api/auth/google').then(function (res) {
-				alert(res);
-			});
-			// 	.catch(() => {});
-			// this.$gAuth
-			// 	.signIn()
-			// 	.then(GoogleUser => {
-			// 		console.log(GoogleUser.getBasicProfile().getId());
-			// 	})
-			// 	.catch(error => {
-			// 		alert(error);
-			// 	});
+			var gauthUser = {
+				email: '',
+				name: '',
+				password: '',
+			};
+			// Google OAuth를 이용해 로그인을 시도
+			this.$gAuth
+				.signIn(
+					function (user) {
+						gauthUser.email = user.getBasicProfile().getEmail();
+						gauthUser.name = user.getBasicProfile().getName();
+						gauthUser.password = user.getBasicProfile().getId();
+					},
+					function () {
+						// Use function (err) for handling error
+					},
+				)
+				.then(() => {
+					// 구글 OAuth 로그인 시도
+					this.$http
+						.post('/api/auth/google', {
+							email: gauthUser.email,
+						})
+						.then(res => {
+							// 로그인 되어있지 않은 경우 가입을 시도한다
+							if (res.data.success === false) {
+								// 세션은 삭제한다
+								this.$session.remove('user_idx');
+								this.$session.remove('userid');
+								this.$session.remove('name');
+								this.$session.remove('rating');
+
+								this.$http
+									.post('/api/auth/googleSignUp', {
+										email: gauthUser.email,
+										name: gauthUser.name,
+										password: gauthUser.password,
+									})
+									.then(res => {
+										alert(res.data.message);
+									});
+							} else {
+								// 세션을 등록 한다
+								this.$session.set('user_idx', res.data.user_idx);
+								this.$session.set('userid', res.data.userid);
+								this.$session.set('name', res.data.name);
+
+								this.UpdateRating();
+
+								this.$http.get(`/api/users/check/${this.$session.get('user_idx')}`).then(res => {
+									this.$session.set('rating', res.data.rating);
+								});
+								this.$router.push(this.redirect);
+							}
+
+							alert(res.data.message);
+						});
+				});
 		},
 		isLoaded() {
-			return false;
-			// return this.$gAuth.isLoaded();
+			return this.$gAuth.isLoaded();
 		},
 	},
 };

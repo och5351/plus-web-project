@@ -12,7 +12,7 @@
 							aria-valuenow="60"
 							aria-valuemin="0"
 							aria-valuemax="100"
-							style="width: 30%;"
+							style="width: 30%"
 						>
 							<span class="sr-only"></span>
 						</div>
@@ -112,13 +112,13 @@
 				</div>
 			</div>
 
-			<div style="margin-bottom: 30px;" class="file_upload">
+			<div style="margin-bottom: 30px" class="file_upload">
 				<input type="file" id="file" ref="file" name="file" v-on:change="handleFileUpload()" />
 				<button
 					class="btn btn-success btn-round"
 					id="postbody_btnFile"
 					v-on:click="submitFile()"
-					style="margin: 10px;"
+					style="margin: 10px"
 					disabled="true"
 				>
 					파일 업로드
@@ -127,7 +127,7 @@
 					class="btn btn-warning btn-round"
 					id="postbody_btnRevokeFile"
 					v-on:click="revokeFile()"
-					style="margin: 10px;"
+					style="margin: 10px"
 					disabled="true"
 				>
 					해제
@@ -139,7 +139,7 @@
 					<button
 						id="postbody_btn"
 						class="btn btn-outline-info btn-round"
-						style="margin-right: 20px;"
+						style="margin-right: 20px"
 						@click.prevent="submitButton"
 					>
 						작성
@@ -147,7 +147,7 @@
 					<button
 						id="postbody_btn"
 						class="btn btn-outline-danger btn-round"
-						style="margin-left: 20px;"
+						style="margin-left: 20px"
 						@click.prevent="cancelButton"
 					>
 						취소
@@ -157,7 +157,7 @@
 					<button
 						id="postbody_btn"
 						class="btn btn-success btn-round"
-						style="margin-right: 20px;"
+						style="margin-right: 20px"
 						@click.prevent="updateButton"
 					>
 						수정
@@ -165,7 +165,7 @@
 					<button
 						id="postbody_btn"
 						class="btn btn-danger btn-round"
-						style="margin-left: 20px; margin-right: 20px;"
+						style="margin-left: 20px; margin-right: 20px"
 						@click.prevent="cancelButton"
 					>
 						취소
@@ -173,7 +173,7 @@
 					<button
 						id="postbody_btn"
 						class="btn btn-warning btn-round"
-						style="margin-left: 20px;"
+						style="margin-left: 20px"
 						@click.prevent="removeButton"
 					>
 						삭제
@@ -309,7 +309,6 @@ export default {
 							},
 						})
 						.then(() => {
-							this.submitFile();
 							this.setPoint('update');
 						})
 						.catch(() => {
