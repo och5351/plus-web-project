@@ -1,5 +1,5 @@
 <template>
-	<div style="margin: 10px">
+	<div style="margin: 10px;">
 		<div v-if="systemMenu === 'user'">
 			<admin-user></admin-user>
 		</div>
