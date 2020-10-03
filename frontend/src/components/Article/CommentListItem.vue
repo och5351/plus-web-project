@@ -55,6 +55,23 @@
 						></span>
 						&nbsp;
 					</a>
+					<img
+						class="commentlistitem_rating"
+						v-if="commentObj.rating === '일반회원'"
+						alt=""
+						width="24"
+						height="24"
+						src="/css/beginer.png"
+					/>
+					<img
+						class="commentlistitem_rating"
+						v-else-if="commentObj.rating === '우수회원'"
+						alt=""
+						width="24"
+						height="24"
+						src="/css/silver.png"
+					/>
+					<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 					{{ commentObj.name }}
 				</div>
 				<div class="col-5 text-left">{{ commentObj.contents }}</div>
@@ -65,7 +82,7 @@
 					<b-button
 						class="btn btn-sm btn-info"
 						id="commentlistitem_btncreate"
-						title="대댓글 작성"
+						title="답글 작성"
 						v-on:click.passive="openForm(commentObj.cm_id)"
 						v-if="this.$session.get('user_idx') != null"
 					>
@@ -82,7 +99,7 @@
 					</b-button>
 				</div>
 			</div>
-			<!--		대댓글 -->
+			<!--		답글 -->
 			<div class="comment-list-item-subcomment-list" :key="subcomment.cm_id" v-for="subcomment in subCommentList">
 				<b-container class="subcomment-box">
 					<div class="row align-items-start">
@@ -114,6 +131,23 @@
 						</div>
 						<div class="col-2" v-else>
 							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em;"></small>
+							<img
+								class="commentlistitem_rating"
+								v-if="subcomment.rating === '일반회원'"
+								alt=""
+								width="24"
+								height="24"
+								src="/css/beginer.png"
+							/>
+							<img
+								class="commentlistitem_rating"
+								v-else-if="subcomment.rating === '우수회원'"
+								alt=""
+								width="24"
+								height="24"
+								src="/css/silver.png"
+							/>
+							<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 							{{ subcomment.name }}
 						</div>
 						<div class="col-5 text-left">{{ subcomment.contents }}</div>
@@ -124,7 +158,7 @@
 							<b-button
 								class="btn btn-sm btn-danger"
 								id="commentlistitem_btndel"
-								title="대댓글 삭제"
+								title="답글 삭제"
 								v-on:click.passive="deleteComment(subcomment.cm_id, false)"
 								v-if="sessUserIdx == subcomment.user_idx"
 							>
@@ -147,7 +181,7 @@
 					class="form-control col-7"
 					name="txtComment"
 					:id="'commentArticle' + commentObj.cm_id"
-					placeholder="대댓글 내용"
+					placeholder="답글 내용"
 					v-on:keyup.enter.passive="addSubComment(commentObj.cm_id)"
 				/>
 				<div class="col-1"></div>
@@ -180,7 +214,7 @@ export default {
 		};
 	},
 	mounted() {
-		// 대댓글 불러오기
+		// 답글 불러오기
 		this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 			this.subCommentList = res.data;
 		});
@@ -202,13 +236,13 @@ export default {
 		this.sessUserIdx = this.$session.get('user_idx');
 	},
 	methods: {
-		// Opening subcomment form / 대댓글 창 여닫기
+		// Opening subcomment form / 답글 창 여닫기
 		openForm: function (cm_id) {
 			this._$('.sub-comment-form-group').slideUp();
 			this._$('#subCommentForm' + cm_id).slideDown();
 			this._$('#commentArticle' + cm_id).focus();
 		},
-		// Add subcomment / 대댓글 작성
+		// Add subcomment / 답글 작성
 		addSubComment: function (cm_id) {
 			var contentId = this.$route.params.contentId;
 			var comment = this._$('input#commentArticle' + cm_id)
@@ -240,7 +274,7 @@ export default {
 				},
 			});
 
-			// Reload subcomments / 대댓글 다시 불러오기
+			// Reload subcomments / 답글 다시 불러오기
 			this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 				this.subCommentList = res.data;
 			});
@@ -260,7 +294,7 @@ export default {
 							location.reload();
 						}, 10);
 					} else if (res.data.success && !reload) {
-						// Reload subcomments / 대댓글 다시 불러오기
+						// Reload subcomments / 답글 다시 불러오기
 						this.$http.get(`/api/comments/sub/${this.commentObj.cm_id}`).then(res => {
 							this.subCommentList = res.data;
 						});
