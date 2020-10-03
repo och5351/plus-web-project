@@ -309,7 +309,6 @@ export default {
 							},
 						})
 						.then(() => {
-							this.submitFile();
 							this.setPoint('update');
 						})
 						.catch(() => {

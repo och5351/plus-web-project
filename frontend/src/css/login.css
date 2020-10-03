@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 #login_login {
   margin-top: 40px;
   text-align: center;
@@ -27,7 +29,26 @@ input.login_ {
 }
 
 #login_btn_gauth {
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  min-height: 40px;
+  color: rgba(0, 0, 0, 0.54);
   cursor: pointer;
+  padding: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+#login_img_gauth_google {
+  background-color: white;
+  width: 18px;
+  height: 18px;
+  margin: 0px;
+  margin-right: 24px;
+  padding: 0px;
 }
 
 #login_parahgraph {

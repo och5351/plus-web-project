@@ -78,8 +78,8 @@ DROP TABLE IF EXISTS `capdi_users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `capdi_users` (
   `user_idx` int(11) NOT NULL AUTO_INCREMENT,
-  `userid` varchar(15) NOT NULL,
-  `name` varchar(10) NOT NULL,
+  `userid` varchar(64) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
   `rating` varchar(5) DEFAULT '일반회원',
   `point` int(11) DEFAULT '0',
