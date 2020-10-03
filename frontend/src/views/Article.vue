@@ -8,7 +8,13 @@
 				<div class="article-title justify-content-center col-7">
 					<h5 class="article_">{{ title }}</h5>
 				</div>
-				<div class="article-author justify-content-end col-3" id="article_name">작성자 {{ user }}</div>
+				<div class="article-author justify-content-end col-3" id="article_name">
+					작성자
+					<img v-if="this.rating === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
+					<img v-else-if="this.rating === '우수회원'" alt="" width="24" height="24" src="/css/silver.png" />
+					<img v-else alt="" width="24" height="24" src="/css/diamond.png" />
+					{{ user }}
+				</div>
 			</div>
 			<!-- 세션값을 이용해 수정버튼을 나타내자 -->
 			<div class="row">
@@ -84,6 +90,7 @@ export default {
 			hit: '',
 			filename: '',
 			originalname: '',
+			rating: '',
 		};
 	},
 	methods: {
@@ -123,6 +130,7 @@ export default {
 				this.hit = res.data[0].hit;
 				this.filename = res.data[0].filename;
 				this.originalname = res.data[0].originalname;
+				this.rating = res.data[0].rating;
 			} else {
 				this.$router.push('/board');
 			}

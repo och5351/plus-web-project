@@ -21,7 +21,7 @@ router.get("/get/:articleID", function (req, res, next) {
   var articleID = req.params.articleID;
 
   conn.query(
-    'SELECT p.post_id, p.board_id, p.ca_id, p.user_idx, u.name, p.contents, p.title, p.hit, date_format(p.write_date, "%y-%m-%d %a %T") as write_date FROM post p, capdi_users u WHERE p.post_id = ? AND p.user_idx = u.user_idx',
+    'SELECT p.post_id, p.board_id, p.ca_id, p.user_idx, u.name, u.rating, p.contents, p.title, p.hit, date_format(p.write_date, "%y-%m-%d %a %T") as write_date FROM post p, capdi_users u WHERE p.post_id = ? AND p.user_idx = u.user_idx',
     [articleID],
     function (err, row) {
       if (row != null) {
