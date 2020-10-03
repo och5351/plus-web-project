@@ -14,7 +14,7 @@
 			</thead>
 			<tbody>
 				<tr v-if="postList === null">
-					<td colspan="7" style="text-align: center">데이터가 없습니다</td>
+					<td colspan="7" style="text-align: center;">데이터가 없습니다</td>
 				</tr>
 				<tr v-else v-for="(post, index) in postList" :key="index">
 					<th scope="row">
