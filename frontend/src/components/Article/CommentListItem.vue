@@ -2,10 +2,10 @@
 	<!--	댓글 -->
 	<div id="commentListItem" class="comment-list-item">
 		<b-container class="comment-box">
-			<div class="row align-items-start" style="margin-bottom: 0.25em;">
+			<div class="row align-items-start" style="margin-bottom: 0.25em">
 				<div
 					class="col-2"
-					style="background-color: rgb(253, 245, 230);"
+					style="background-color: rgb(253, 245, 230)"
 					title="작성자"
 					v-if="commentObj.user_idx == authorIdx"
 				>
@@ -105,7 +105,7 @@
 					<div class="row align-items-start">
 						<div
 							class="col-2"
-							style="background-color: rgb(253, 245, 230);"
+							style="background-color: rgb(253, 245, 230)"
 							title="작성자"
 							v-if="subcomment.user_idx == authorIdx"
 						>
@@ -130,7 +130,7 @@
 							{{ subcomment.name }}
 						</div>
 						<div class="col-2" v-else>
-							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em;"></small>
+							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
 							<img
 								class="commentlistitem_rating"
 								v-if="subcomment.rating === '일반회원'"
