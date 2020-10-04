@@ -14,7 +14,8 @@ router.get("/", function (req, res, next) {
 router.post("/attCheck", function (req, res) {
   const user = req.body.user;
   conn.query(
-    "INSERT INTO attendance (user_idx,name) VALUES (?,?)",
+    // DB 서버 시간 수정 전 까지 임시로 사용할 쿼리
+    "INSERT INTO attendance (user_idx, name, date) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 9 HOUR))",
     [user.user_idx, user.name],
     function (err, row) {
       if (err) {
