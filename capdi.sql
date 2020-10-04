@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.17-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: capdi
+-- Host: plus-market-db.cuypzfyecqxg.ap-northeast-2.rds.amazonaws.com    Database: capdi
 -- ------------------------------------------------------
--- Server version	8.0.18
+-- Server version	5.7.26-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,28 +21,22 @@
 
 DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attendance` (
   `att_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_idx` int(11) NOT NULL,
-  `name` varchar(10) NOT NULL,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(64) NOT NULL,
+  `date` timestamp NULL DEFAULT NULL,
   `title` varchar(8) NOT NULL DEFAULT '체크완료!',
   PRIMARY KEY (`att_id`),
   KEY `capdi_users_attendance_user_idx` (`user_idx`),
   CONSTRAINT `capdi_users_attendance_user_idx` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `attendance`
 --
-
-LOCK TABLES `attendance` WRITE;
-/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (10,11,'테스트','2020-05-17 09:21:30','체크완료!');
-/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `board`
@@ -50,13 +44,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `board` (
   `board_id` int(11) NOT NULL AUTO_INCREMENT,
   `board_name` varchar(10) NOT NULL,
   PRIMARY KEY (`board_id`),
   UNIQUE KEY `board_name` (`board_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +69,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `capdi_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `capdi_users` (
   `user_idx` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(64) NOT NULL,
@@ -85,18 +79,12 @@ CREATE TABLE `capdi_users` (
   `point` int(11) DEFAULT '0',
   PRIMARY KEY (`user_idx`),
   UNIQUE KEY `userid` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `capdi_users`
 --
-
-LOCK TABLES `capdi_users` WRITE;
-/*!40000 ALTER TABLE `capdi_users` DISABLE KEYS */;
-INSERT INTO `capdi_users` VALUES (11,'didi451','테스트','$2a$10$D7shYVKlLwNTSdMOT1odkOrzx7OCJFRq9T6nbP/96EdSZh9L8CNcS','우수회원',1000);
-/*!40000 ALTER TABLE `capdi_users` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `category`
@@ -104,13 +92,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `ca_id` int(11) NOT NULL AUTO_INCREMENT,
   `ca_name` varchar(10) NOT NULL,
   PRIMARY KEY (`ca_id`),
   UNIQUE KEY `ca_name` (`ca_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +107,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (4,'cartoon'),(3,'food'),(1,'free'),(7,'imsi'),(5,'music'),(6,'notice'),(2,'tour');
+INSERT INTO `category` VALUES (4,'cartoon'),(3,'food'),(1,'free'),(5,'music'),(6,'notice'),(2,'tour');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,14 +117,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `category_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category_detail` (
   `ca_id` int(11) DEFAULT NULL,
   `ca_name` varchar(10) DEFAULT NULL,
   `ca_detail` varchar(100) DEFAULT NULL,
   KEY `category_category_detail_ca_id` (`ca_id`),
   CONSTRAINT `category_category_detail_ca_id` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,30 +143,47 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comment` (
   `cm_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
   `user_idx` int(11) NOT NULL,
   `contents` varchar(500) NOT NULL,
   `write_date` datetime DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`cm_id`),
-  KEY `post_comment_post_id` (`post_id`),
-  KEY `capdi_users_comment_user_idx` (`user_idx`),
-  CONSTRAINT `capdi_users_comment_user_idx` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
-  CONSTRAINT `post_comment_post_id` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `capdi_users_comment_user_idx_cascade` (`user_idx`),
+  KEY `post_comment_post_id_cascade` (`post_id`),
+  CONSTRAINT `capdi_users_comment_user_idx_cascade` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
+  CONSTRAINT `post_comment_post_id_cascade` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `comment`
 --
 
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Table structure for table `comment_like`
+--
+
+DROP TABLE IF EXISTS `comment_like`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comment_like` (
+  `cm_id` int(11) NOT NULL,
+  `user_idx` int(11) NOT NULL,
+  `cm_like` tinyint(1) NOT NULL,
+  UNIQUE KEY `uk_like` (`cm_id`,`user_idx`),
+  KEY `user_idx` (`user_idx`),
+  CONSTRAINT `capdi_users_comment_like_user_idx_cascade` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
+  CONSTRAINT `comment_comment_like_cm_id_cascade` FOREIGN KEY (`cm_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comment_like`
+--
 
 --
 -- Table structure for table `deep`
@@ -186,25 +191,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `deep`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `deep` (
   `deep_id` int(11) NOT NULL,
   `cm_id` int(11) NOT NULL,
-  KEY `comment_deep_deep_id` (`deep_id`),
-  KEY `comment_deep_cm_id` (`cm_id`),
-  CONSTRAINT `comment_deep_cm_id` FOREIGN KEY (`cm_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE,
-  CONSTRAINT `comment_deep_deep_id` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `comment_deep_cm_id_cascade` (`cm_id`),
+  KEY `comment_deep_deep_id_cascade` (`deep_id`),
+  CONSTRAINT `comment_deep_cm_id_cascade` FOREIGN KEY (`cm_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE,
+  CONSTRAINT `comment_deep_deep_id_cascade` FOREIGN KEY (`deep_id`) REFERENCES `comment` (`cm_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `deep`
 --
-
-LOCK TABLES `deep` WRITE;
-/*!40000 ALTER TABLE `deep` DISABLE KEYS */;
-/*!40000 ALTER TABLE `deep` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `post`
@@ -212,7 +212,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `post`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `board_id` int(11) NOT NULL,
@@ -231,17 +231,53 @@ CREATE TABLE `post` (
   CONSTRAINT `board_post_board_id` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`) ON DELETE CASCADE,
   CONSTRAINT `capdi_users_post_user_idx` FOREIGN KEY (`user_idx`) REFERENCES `capdi_users` (`user_idx`) ON DELETE CASCADE,
   CONSTRAINT `category_post_ca_id` FOREIGN KEY (`ca_id`) REFERENCES `category` (`ca_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `post`
 --
 
-LOCK TABLES `post` WRITE;
-/*!40000 ALTER TABLE `post` DISABLE KEYS */;
-/*!40000 ALTER TABLE `post` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Table structure for table `post_file`
+--
+
+DROP TABLE IF EXISTS `post_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `post_file` (
+  `pf_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ori_filename` varchar(30) NOT NULL,
+  `server_filename` varchar(50) NOT NULL,
+  `size` int(11) NOT NULL,
+  `type` varchar(15) DEFAULT NULL,
+  `post_id` int(11) NOT NULL,
+  PRIMARY KEY (`pf_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `post_file`
+--
+
+--
+-- Table structure for table `test`
+--
+
+DROP TABLE IF EXISTS `test`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test`
+--
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -252,4 +288,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-18 20:24:08
+-- Dump completed on 2020-10-05  1:28:04
