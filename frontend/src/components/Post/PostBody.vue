@@ -187,9 +187,6 @@
 </template>
 
 <script>
-window.onbeforeunload = function () {
-	return '';
-};
 // 프로토타입 형태로 바꿔야 하는 것들
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
