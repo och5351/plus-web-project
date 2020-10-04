@@ -9,19 +9,19 @@
 					title="작성자"
 					v-if="commentObj.user_idx == authorIdx"
 				>
-					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+					<span id="commentlistitem_hit" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
 						></span>
-					</a>
-					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+					</span>
+					<span id="commentlistitem_hit" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"
 						></span>
 						&nbsp;
-					</a>
+					</span>
 					<img
 						class="commentlistitem_rating"
 						v-if="commentObj.rating === '일반회원'"
@@ -42,19 +42,19 @@
 					{{ commentObj.name }}
 				</div>
 				<div class="col-2" v-else>
-					<a href title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
+					<span id="commentlistitem_hit" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
 							v-bind:style="'color: green; font-size: ' + this.commentLike"
 						></span>
-					</a>
-					<a href title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
+					</span>
+					<span id="commentlistitem_hit" title="비추천" v-on:click="likeComment(commentObj.cm_id, false)">
 						<span
 							class="far fa-angry commentlistitem_angry"
 							v-bind:style="'color: red; font-size: ' + this.commentDislike"
 						></span>
 						&nbsp;
-					</a>
+					</span>
 					<img
 						class="commentlistitem_rating"
 						v-if="commentObj.rating === '일반회원'"
@@ -220,8 +220,16 @@ export default {
 		});
 		this._$('.sub-comment-form-group').hide();
 
+		this.sessUserIdx = this.$session.get('user_idx');
+
 		// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
 		this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {
+			if (res.data[0].total === 0) {
+				this.commentLike = '18px';
+				this.commentDislike = '18px';
+				return;
+			}
+
 			var like = (res.data[0].dolike / res.data[0].total) * 50;
 			var dislike = 50 - like;
 
@@ -232,8 +240,6 @@ export default {
 			this.commentLike = like + 'px';
 			this.commentDislike = dislike + 'px';
 		});
-
-		this.sessUserIdx = this.$session.get('user_idx');
 	},
 	methods: {
 		// Opening subcomment form / 답글 창 여닫기
@@ -315,6 +321,25 @@ export default {
 				})
 				.then(res => {
 					if (res.data.message != null) alert(res.data.message);
+
+					// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
+					this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {
+						if (res.data[0].total === 0) {
+							this.commentLike = '18px';
+							this.commentDislike = '18px';
+							return;
+						}
+
+						var like = (res.data[0].dolike / res.data[0].total) * 50;
+						var dislike = 50 - like;
+
+						// 최소 5픽셀
+						like = like <= 5 ? 5 : like;
+						dislike = dislike <= 5 ? 5 : dislike;
+
+						this.commentLike = like + 'px';
+						this.commentDislike = dislike + 'px';
+					});
 				});
 		},
 	},

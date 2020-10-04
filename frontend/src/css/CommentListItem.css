@@ -12,6 +12,10 @@
     padding: 0px;
 }
 
+#commentlistitem_hit {
+    cursor: pointer;
+}
+
 span.commentlistitem_ {
     -webkit-text-fill-color: white;
     margin: 0px;
