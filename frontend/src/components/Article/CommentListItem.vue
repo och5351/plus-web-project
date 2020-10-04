@@ -320,7 +320,7 @@ export default {
 					},
 				})
 				.then(res => {
-					if (res.data.message != null) alert(res.data.message);
+					if (res.data != null) alert(res.data);
 
 					// 댓글 좋아요 갯수 읽어온 뒤, 픽셀 조정
 					this.$http.get(`/api/comments/getlike/${this.commentObj.cm_id}`).then(res => {

@@ -94,9 +94,7 @@ router.post('/remove', function (req, res, next) {
     const data = {
         'cm_id': req.body.data.cm_id
     }
-    sql = "DELETE FROM comment_like WHERE cm_id = ?";
-    conn.query(sql, [data.cm_id]);
-    sql = "DELETE FROM comment WHERE cm_id = ? AND (SELECT COUNT(deep_id) FROM deep WHERE cm_id = ?) = 0";
+    sql = "DELETE FROM comment WHERE cm_id IN (SELECT cm_id FROM comment WHERE cm_id IN (SELECT deep_id as cm_id FROM deep WHERE cm_id = ? UNION SELECT cm_id FROM deep WHERE cm_id = ?) ORDER BY cm_id DESC)";
     conn.query(sql, [data.cm_id, data.cm_id], function(err, result) {
         if (result.affectedRows != 0) {
             res.json({
@@ -142,9 +140,8 @@ router.post('/like', function (req, res, next) {
                 conn.query(sql2, [data.type, data.cm_id, data.user_idx]);
                 message = '의견이 반영되었습니다';
             }
+            return res.send(message);
         });
-
-        return res.send(message);
     }
 });
 
