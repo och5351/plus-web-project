@@ -15,12 +15,10 @@
 
 input.login_ {
   margin: 0px 0;
-  width: 22%;
   padding: 15px;
 }
 
 #login_btn_login{
-  width: 10%;
   cursor: pointer;
   background-color: white;
   border: 0px;
