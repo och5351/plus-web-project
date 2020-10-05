@@ -94,8 +94,8 @@ router.post('/remove', function (req, res, next) {
     const data = {
         'cm_id': req.body.data.cm_id
     }
-    sql = "DELETE FROM comment WHERE cm_id IN (SELECT cm_id FROM comment WHERE cm_id IN (SELECT deep_id as cm_id FROM deep WHERE cm_id = ? UNION SELECT cm_id FROM deep WHERE cm_id = ?) ORDER BY cm_id DESC)";
-    conn.query(sql, [data.cm_id, data.cm_id], function(err, result) {
+    sql = "DELETE FROM comment WHERE cm_id IN (SELECT cm_id FROM (SELECT cm_id FROM comment WHERE cm_id IN (SELECT deep_id as cm_id FROM deep WHERE cm_id = ? UNION SELECT cm_id FROM deep WHERE cm_id = ? UNION SELECT cm_id FROM comment WHERE cm_id = ?) ORDER BY cm_id DESC) tmp)";
+    conn.query(sql, [data.cm_id, data.cm_id, data.cm_id], function(err, result) {
         if (result.affectedRows != 0) {
             res.json({
                 success: true,
