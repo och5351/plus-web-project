@@ -12,6 +12,17 @@
     padding: 0px;
 }
 
+#commentlistitem_btnhidden {
+    height: 0px;
+    width: 0px;
+    padding: 0px;
+    margin-left: 25px;
+}
+
+#commentlistitem_author {
+    text-align: left;
+}
+
 #commentlistitem_hit {
     cursor: pointer;
 }
@@ -32,4 +43,10 @@ span.commentlistitem_angry {
 
 img.commentlistitem_rating {
     margin-left: 10px;
+}
+
+.subcomment-box {
+    margin-left: 20px;
+    padding: 0px;
+    padding-right: 20px;
 }
