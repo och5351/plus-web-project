@@ -5,6 +5,7 @@
 			<div class="row align-items-start" style="margin-bottom: 0.25em">
 				<div
 					class="col-2"
+					id="commentlistitem_author"
 					style="background-color: rgb(253, 245, 230)"
 					title="작성자"
 					v-if="commentObj.user_idx == authorIdx"
@@ -41,7 +42,7 @@
 					<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 					{{ commentObj.name }}
 				</div>
-				<div class="col-2" v-else>
+				<div class="col-2" id="commentlistitem_author" v-else>
 					<span id="commentlistitem_hit" title="추천" v-on:click="likeComment(commentObj.cm_id, true)">
 						<span
 							class="far fa-smile commentlistitem_smile"
@@ -78,7 +79,7 @@
 				<div class="col-3">
 					<small>{{ commentObj.write_date }}</small>
 				</div>
-				<div class="col-2">
+				<div class="col-2 text-right">
 					<b-button
 						class="btn btn-sm btn-info"
 						id="commentlistitem_btncreate"
@@ -97,6 +98,7 @@
 					>
 						<span class="far fa-trash-alt commentlistitem_"></span>
 					</b-button>
+					<span v-else id="commentlistitem_btnhidden"></span>
 				</div>
 			</div>
 			<!--		답글 -->
@@ -105,6 +107,7 @@
 					<div class="row align-items-start">
 						<div
 							class="col-2"
+							id="commentlistitem_author"
 							style="background-color: rgb(253, 245, 230)"
 							title="작성자"
 							v-if="subcomment.user_idx == authorIdx"
@@ -129,7 +132,7 @@
 							<img class="commentlistitem_rating" v-else alt="" width="24" height="24" src="/css/diamond.png" />
 							{{ subcomment.name }}
 						</div>
-						<div class="col-2" v-else>
+						<div class="col-2" id="commentlistitem_author" v-else>
 							<small class="far fa-hand-point-right commentlistitem_" style="margin-right: 1em"></small>
 							<img
 								class="commentlistitem_rating"
