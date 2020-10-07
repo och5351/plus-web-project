@@ -20,7 +20,10 @@
 					</tr>
 					<tr v-else v-for="(board, bIdx) in displayedPosts" :key="bIdx" @click="detail(board.post_id)">
 						<th scope="row">{{ board.post_id }}</th>
-						<td style="cursor: pointer">{{ board.title }}</td>
+						<td style="cursor: pointer">
+							{{ board.title }}
+							<span style="-webkit-text-fill-color: red">[{{ board.comments }}]</span>
+						</td>
 						<td>
 							<img v-if="board.rating === '일반회원'" alt="" width="24" height="24" src="/css/beginer.png" />
 							<img v-else-if="board.rating === '우수회원'" alt="" width="24" height="24" src="/css/silver.png" />
