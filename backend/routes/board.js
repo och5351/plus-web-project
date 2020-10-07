@@ -8,7 +8,7 @@ const conn = dbConObj.init();
 // 글 리스트
 router.get("/:category_name", (req, res) => {
   conn.query(
-    "SELECT p.*, u.name, (SELECT COUNT(*) FROM comment) - COUNT(*) as comments FROM post p, capdi_users u, comment c WHERE ca_id = ( SELECT ca_id FROM category WHERE ca_name = ?) AND p.user_idx = u.user_idx AND p.post_id <> c.post_id GROUP BY p.post_id",
+    "SELECT p.*, u.name, u.rating, (SELECT COUNT(*) FROM comment) - COUNT(*) as comments FROM post p, capdi_users u, comment c WHERE ca_id = ( SELECT ca_id FROM category WHERE ca_name = ?) AND p.user_idx = u.user_idx AND p.post_id <> c.post_id GROUP BY p.post_id",
     [req.params.category_name],
     (err, row) => {
       res.send(row);
