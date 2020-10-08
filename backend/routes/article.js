@@ -2,9 +2,8 @@ var express = require("express");
 var router = express.Router();
 
 // MongoDB Models
-const Post = require('../models/post');
-const File = require('../models/file');
-
+const Post = require("../models/post");
+const File = require("../models/file");
 
 // mysql 선언
 var dbConObj = require("../lib/db_config");
@@ -26,18 +25,21 @@ router.get("/get/:articleID", function (req, res, next) {
     function (err, row) {
       if (row != null) {
         // 파일이 존재하는 경우 파일이름을 row에 포함한다
-        File.findOne({post_id: row[0].post_id}, (err, result) => {
-          if (result !== null) {
+        File.findOne({ post_id: row[0].post_id }, (err, result) => {
+          if (result !== null && result !== undefined) {
             row[0].filename = result.filename;
             row[0].originalname = result.originalname;
           }
 
           // MongoDB에서 본문 부분만 읽어들여 row에 추가한다
-          Post.findOne({post_id: row[0].post_id}, (err, result) => {
+          Post.findOne({ post_id: row[0].post_id }, (err, result) => {
             // 아직 MongoDB에 등록되지 않은(MySQL시절) 게시글이라면
             // 읽어온 MySQL게시글로 MongoDB 데이터를 생성 후, 구 MySQL 게시글을 반환한다
-            if (result === null) {
-              Post.create({post_id: row[0].post_id, contents: row[0].contents})
+            if (result === null || result === undefined) {
+              Post.create({
+                post_id: row[0].post_id,
+                contents: row[0].contents,
+              });
               return res.send(row);
             }
             row[0].contents = result.contents; // MongoDB에서 본문 부분만 읽어들여 row에 추가한다
