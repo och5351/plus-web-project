@@ -5,7 +5,7 @@
 			<div class="col-md-9" id="home_banner">
 				<b-carousel
 					id="carousel-fade"
-					style="text-shadow: 0px 0px 2px #000;"
+					style="text-shadow: 0px 0px 2px #000"
 					fade
 					indicators
 					img-width="571"

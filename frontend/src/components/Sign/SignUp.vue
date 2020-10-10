@@ -1,22 +1,22 @@
 <template>
 	<div class="sign-up">
 		<br />
-		<div style="font-size: 150%; border: 15%; color: green;">회 원 가 입</div>
+		<div style="font-size: 150%; border: 15%; color: green">회 원 가 입</div>
 		<br />
 		<br />
 
-		<div style="position: relative; left: -140px; color: green;">I D )</div>
+		<div style="position: relative; left: -140px; color: green">I D )</div>
 		<b-button
 			v-on:click="idCheck"
 			id="idCheckClear"
 			variant="outline-secondary"
-			style="position: relative; right: -350px; width: 75pt; height: 35pt; visibility: visible;"
+			style="position: relative; right: -350px; width: 75pt; height: 35pt; visibility: visible"
 			>중복 확인
 		</b-button>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="idClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -260px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -260px"
 		/>
 		<input
 			class="signup_"
@@ -25,26 +25,26 @@
 			name="uid"
 			v-model="user.userid"
 			placeholder="ID를 입력해주세요!"
-			style="position: relative; left: -77px;"
+			style="position: relative; left: -77px"
 		/>
 		<br />
 		<br />
 
-		<div style="position: relative; left: -125px; color: green;">
+		<div style="position: relative; left: -125px; color: green">
 			N A M E )
 			<br />
 		</div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="nameClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -400px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -400px"
 		/>
 		<input
 			class="signup_"
 			type="text"
 			value="* 한글만 입력해 주세요."
 			id="nameFalse"
-			style="width: 20%; position: relative; right: -380px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 20%; position: relative; right: -380px; visibility: visible; font-weight: bold; border: 0px"
 			disabled
 		/>
 		<input
@@ -54,26 +54,26 @@
 			v-model="user.name"
 			@keyup="nameCheck"
 			placeholder="이름을 입력해주세요!"
-			style="position: relative; left: -139px;"
+			style="position: relative; left: -139px"
 		/>
 		<br />
 		<br />
 
-		<div style="position: relative; left: -140px; color: green;">
+		<div style="position: relative; left: -140px; color: green">
 			P W )
 			<br />
 		</div>
 		<img
 			src="../../assets/loginComponentIMG/check.png"
 			id="pwClear"
-			style="width: 1%; visibility: hidden; position: relative; right: -540px;"
+			style="width: 1%; visibility: hidden; position: relative; right: -540px"
 		/>
 		<input
 			class="signup_"
 			type="text"
 			value="* 비밀번호는 영문,숫자,특수 문자 조합 4~15이내로 입력해주세요."
 			id="pwFalse"
-			style="width: 45%; position: relative; right: -520px; visibility: visible; font-weight: bold; border: 0px;"
+			style="width: 45%; position: relative; right: -520px; visibility: visible; font-weight: bold; border: 0px"
 			disabled
 		/>
 		<input
@@ -83,13 +83,13 @@
 			name="upw"
 			v-model="user.password"
 			@keyup="pwCheck"
-			style="position: relative; left: -279px;"
+			style="position: relative; left: -279px"
 			placeholder="PW를입력해주세요!"
 		/>
 		<br />
 		<br />
 
-		<div style="position: relative; left: -102px; color: green;">
+		<div style="position: relative; left: -102px; color: green">
 			C H E C K P W )
 			<br />
 		</div>
@@ -98,14 +98,14 @@
 			v-on:keydown.enter="signUp"
 			type="password"
 			id="pwcheck"
-			style="position: relative; left: -23px;"
+			style="position: relative; left: -23px"
 			@keyup="repwCheck"
 			placeholder="PW를 다시 입력해주세요!"
 		/>
 		<br />
 		<br />
-		<span id="alert-success" style="display: none; font-weight: bold; color: blue;">비밀번호가 일치합니다.</span>
-		<span id="alert-danger" style="display: none; font-weight: bold; color: red;">비밀번호가 일치하지 않습니다.</span>
+		<span id="alert-success" style="display: none; font-weight: bold; color: blue">비밀번호가 일치합니다.</span>
+		<span id="alert-danger" style="display: none; font-weight: bold; color: red">비밀번호가 일치하지 않습니다.</span>
 
 		<br />
 		<br />
@@ -113,7 +113,7 @@
 			v-on:click="signUp"
 			id="allClear"
 			variant="outline-secondary"
-			style="border: 1px solid black; width: 70pt; height: 35pt;"
+			style="border: 1px solid black; width: 70pt; height: 35pt"
 			>가입하기
 		</b-button>
 		<br />
