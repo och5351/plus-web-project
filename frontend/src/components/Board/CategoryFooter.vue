@@ -25,16 +25,16 @@
 						<h5 class="font-weight-bold text-uppercase mt-3 mb-4">Game</h5>
 						<ul class="list-unstyled">
 							<li>
-								<a href="#!">League Of Legend</a>
+								<a href="https://kr.leagueoflegends.com/ko-kr/">League Of Legend</a>
 							</li>
 							<li>
-								<a href="#!">Battle Ground</a>
+								<a href="https://www.pubg.com/ko/">PUBG</a>
 							</li>
 							<li>
-								<a href="#!">Sudden Attack</a>
+								<a href="http://fifaonline4.nexon.com/main/index">FIFA Online 4</a>
 							</li>
 							<li>
-								<a href="#!">Maple Stroy</a>
+								<a href="https://maplestory.nexon.com/Home/Main">Maplestory</a>
 							</li>
 						</ul>
 					</div>
@@ -109,7 +109,7 @@
 			<!-- Copyright -->
 			<div class="footer-copyright text-center py-3">
 				© 2020 Copyright:
-				<a href="https://plus-market.com">PLUS</a>
+				<a href="https://www.plus-market.com">PLUS</a>
 			</div>
 		</footer>
 		<!-- Footer -->
