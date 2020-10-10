@@ -10,11 +10,11 @@
 			</thead>
 			<tbody>
 				<tr v-if="boardList === null">
-					<td colspan="3" style="text-align: center;">데이터가 없습니다</td>
+					<td colspan="3" style="text-align: center">데이터가 없습니다</td>
 				</tr>
 				<tr v-else v-for="(board, index) in boardList" :key="index">
 					<th scope="row">
-						<b-button style="margin-right: 10px;" variant="primary" @click="ViewBoard(index)">수정</b-button>
+						<b-button style="margin-right: 10px" variant="primary" @click="ViewBoard(index)">수정</b-button>
 						<b-button variant="danger" @click="BoardDelete(index)">삭제</b-button>
 					</th>
 					<td>{{ board.boardId }}</td>
@@ -23,7 +23,7 @@
 			</tbody>
 		</table>
 
-		<div style="float: right;">
+		<div style="float: right">
 			<b-button variant="info" v-b-modal.add>게시판 추가</b-button>
 		</div>
 
